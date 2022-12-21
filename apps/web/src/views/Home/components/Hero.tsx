@@ -80,9 +80,7 @@ const StarsWrapper = styled.div`
 
 const starsImage: CompositeImageProps = {
   path: '/images/home/lunar-bunny/',
-  attributes: [
-    { src: '', alt: '' },
-  ],
+  attributes: [{ src: '', alt: '' }],
 }
 
 const Hero = () => {
@@ -126,7 +124,9 @@ const Hero = () => {
             {t('Tower Swap Exchange')}
           </Heading>
           <Heading scale="md" color="white" mb="24px">
-            {t('Decentralized Exchange Made For Everybody. Swap, Farm, Stake, Earn passive income and increase your financial freedom by trade on TowerSwap exchange.')}
+            {t(
+              'Decentralized Exchange Made For Everybody. Swap, Farm, Stake, Earn passive income and increase your financial freedom by trade on TowerSwap exchange.',
+            )}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}

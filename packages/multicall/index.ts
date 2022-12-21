@@ -80,7 +80,13 @@ export function createMulticall<TProvider extends Provider>(
     return res as any
   }
 
-  const multicallv2: MultiCallV2 = async ({ abi, calls, chainId = ChainId.CMP_TESTNET, options, provider: _provider }) => {
+  const multicallv2: MultiCallV2 = async ({
+    abi,
+    calls,
+    chainId = ChainId.CMP_TESTNET,
+    options,
+    provider: _provider,
+  }) => {
     const { requireSuccess = true, ...overrides } = options || {}
     const multi = getMulticallContract(chainId, _provider || provider({ chainId }))
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)

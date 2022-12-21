@@ -1,4 +1,3 @@
-import { Text, Link } from '@pancakeswap/uikit'
 import { ContextApi } from '@pancakeswap/localization'
 
 type FAQsType = {
@@ -8,19 +7,11 @@ type FAQsType = {
 const config = ({ t }: FAQsType) => [
   {
     title: t('What is CADECEUS (CMP) blockchain ?'),
-    description: [
-      t(
-        'THE WORLD’S FIRST BLOCKCHAIN DEDICATED TO METAVERSE DEVELOPMENT',
-      ),
-    ],
+    description: [t('THE WORLD’S FIRST BLOCKCHAIN DEDICATED TO METAVERSE DEVELOPMENT')],
   },
   {
     title: t('How much gas fees on Cadeceus ?'),
-    description: [
-      t(
-        '0.0001$',
-      ),
-    ],
+    description: [t('0.0001$')],
   },
   {
     title: t('Where and How to buy CMP ?'),
@@ -32,11 +23,7 @@ const config = ({ t }: FAQsType) => [
   },
   {
     title: t('Which Chains are supported?'),
-    description: [
-      t(
-        'For now we just support Cadeceus Chain (CMP)',
-      ),
-    ],
+    description: [t('For now we just support Cadeceus Chain (CMP)')],
   },
   {
     title: t('Is smart contract platform secured?'),
@@ -48,9 +35,7 @@ const config = ({ t }: FAQsType) => [
     title: t('Airdrops?'),
     description: [
       t('Yes!'),
-      t(
-        'We launch first airdrop for testing the DEX by swap, add liquidity, farming and staking on testnet.',
-      ),
+      t('We launch first airdrop for testing the DEX by swap, add liquidity, farming and staking on testnet.'),
     ],
   },
 ]

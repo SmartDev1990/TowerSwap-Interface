@@ -36,7 +36,12 @@ const config = ({ t }: FAQsType) => [
   {
     title: t('Q2, 2023'),
     icon: '🌐',
-    description: ['Tier1 TW token Exchange listing', 'Launch NFT Marketplace', 'Launch Cadeceus Bridge', 'Launch Cadeceus LaunchPad'],
+    description: [
+      'Tier1 TW token Exchange listing',
+      'Launch NFT Marketplace',
+      'Launch Cadeceus Bridge',
+      'Launch Cadeceus LaunchPad',
+    ],
     reached: 'Apr-June 2022 (Under Progress)',
   },
   {
@@ -48,7 +53,10 @@ const config = ({ t }: FAQsType) => [
   {
     title: t('Q4, 2023'),
     icon: '🌔',
-    description: ['Tier2 TW token Exchange listing', 'Starting evaluation for year project, Platform upgrade and adding currency payment system'],
+    description: [
+      'Tier2 TW token Exchange listing',
+      'Starting evaluation for year project, Platform upgrade and adding currency payment system',
+    ],
   },
 ]
 export default config

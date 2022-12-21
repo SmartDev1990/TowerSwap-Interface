@@ -8,7 +8,13 @@ import { useTranslation } from '@pancakeswap/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { ChainId } from '@pancakeswap/sdk'
 import Hero from './components/Hero'
-import { swapSectionData, earnSectionData, bridgeSectionData, moreSectionData, launchpadSectionData } from './components/SalesSection/data'
+import {
+  swapSectionData,
+  earnSectionData,
+  bridgeSectionData,
+  moreSectionData,
+  launchpadSectionData,
+} from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
 import RoadmapSection from './components/RoadmapSection'
@@ -26,22 +32,6 @@ const StyledHeroSection = styled(PageSection)`
 
   ${({ theme }) => theme.mediaQueries.md} {
     padding-top: 48px;
-  }
-`
-
-const UserBannerWrapper = styled(Container)`
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  padding-left: 0px;
-  padding-right: 0px;
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    padding-left: 24px;
-    padding-right: 24px;
   }
 `
 
@@ -148,7 +138,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background='linear-gradient(90deg, rgba(125,16,168,1) 6%, rgba(45,10,85,1) 93%)'
+        background="linear-gradient(90deg, rgba(125,16,168,1) 6%, rgba(45,10,85,1) 93%)"
         index={2}
         hasCurvedDivider={false}
       >
@@ -156,11 +146,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background='linear-gradient(90deg, rgba(75,7,102,1) 6%, rgba(10,55,85,1) 93%)'
+        background="linear-gradient(90deg, rgba(75,7,102,1) 6%, rgba(10,55,85,1) 93%)"
         index={2}
         hasCurvedDivider={false}
       >
-				<FaqSection />
+        <FaqSection />
       </PageSection>
     </>
   )

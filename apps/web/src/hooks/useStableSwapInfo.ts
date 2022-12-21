@@ -4,7 +4,7 @@ import { JSBI, Percent } from '@pancakeswap/sdk'
 import StableSwapABI from 'config/abi/stableSwap.json'
 import LPTokenABI from 'config/abi/lpToken.json'
 import { useContract } from 'hooks/useContract'
-import { useMultiContractsMultiMethods, CallState } from 'state/multicall/hooks'
+import { useSingleContractMultipleData, CallState } from 'state/multicall/hooks'
 
 function parseCallStates(states: CallState[]) {
   let balance0: JSBI | undefined
@@ -90,7 +90,7 @@ export function useStableSwapInfo(stableSwapAddress: string | undefined, lpAddre
     [stableSwapContract, lpTokenContract],
   )
 
-  const results = useMultiContractsMultiMethods(inputs)
+  const results = useSingleContractMultipleData(inputs)
 
   return useMemo(() => parseCallStates(results), [results])
 }

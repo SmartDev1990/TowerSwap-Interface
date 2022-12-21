@@ -37,7 +37,7 @@ const Stats = () => {
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       <GradientLogo height="100px" width="100px" mb="24px" />
-      <Heading textAlign="center" color= "#42fff4" scale="xl" mb="32px">
+      <Heading textAlign="center" color="#42fff4" scale="xl" mb="32px">
         {t('Tower Token')}
       </Heading>
       {/* <Heading textAlign="center" scale="xl" mb="32px"> */}
@@ -45,12 +45,7 @@ const Stats = () => {
       {/* </Heading> */}
       <Text textAlign="center" color="textSubtle">
         {t('Tower token is the main token token in TowerSwap. Read more on ')}
-        <Link
-          display="inline-flex"
-          color="#658dff"
-          title="IceCreamSwap Wiki"
-          href=""
-        >
+        <Link display="inline-flex" color="#658dff" title="IceCreamSwap Wiki" href="">
           WhitePaper
         </Link>
       </Text>
@@ -64,26 +59,20 @@ const Stats = () => {
       </Flex>
       */}
 
-
       <Text textAlign="center" color="textSubtle" bold mb="32px">
         {t('')}
       </Text>
 
-
-       <Flex flexDirection={['column', null, null, 'row']}>
-         <IconCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
+      <Flex flexDirection={['column', null, null, 'row']}>
+        <IconCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
           <StatCardContent
-             headingText={t('Name')}
+            headingText={t('Name')}
             bodyText={t('TowerSwap Token')}
             highlightColor={theme.colors.secondary}
           />
         </IconCard>
         <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-           <StatCardContent
-            headingText={t('Symbol')}
-            bodyText={t('TW')}
-            highlightColor={theme.colors.primary}
-          />
+          <StatCardContent headingText={t('Symbol')} bodyText={t('TW')} highlightColor={theme.colors.primary} />
         </IconCard>
         <IconCard {...StakedCardData}>
           <StatCardContent
@@ -96,22 +85,13 @@ const Stats = () => {
         <Text textAlign="center" color="textSubtle" bold mb="32px">
           {t('')}
         </Text>
-
-       </Flex>
-       <Flex flexDirection={['column', null, null, 'row']}>
-         <IconCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-          <StatCardContent
-             headingText={t('Decimal')}
-            bodyText={t('18')}
-            highlightColor={theme.colors.secondary}
-          />
+      </Flex>
+      <Flex flexDirection={['column', null, null, 'row']}>
+        <IconCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
+          <StatCardContent headingText={t('Decimal')} bodyText={t('18')} highlightColor={theme.colors.secondary} />
         </IconCard>
         <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-           <StatCardContent
-            headingText={t('Chain')}
-            bodyText={t('Cadeceus')}
-            highlightColor={theme.colors.primary}
-          />
+          <StatCardContent headingText={t('Chain')} bodyText={t('Cadeceus')} highlightColor={theme.colors.primary} />
         </IconCard>
         <IconCard {...StakedCardData}>
           <StatCardContent
@@ -120,7 +100,7 @@ const Stats = () => {
             highlightColor={theme.colors.failure}
           />
         </IconCard>
-       </Flex>
+      </Flex>
     </Flex>
   )
 }
