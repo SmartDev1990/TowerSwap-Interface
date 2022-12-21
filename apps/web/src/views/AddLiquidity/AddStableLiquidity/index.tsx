@@ -1,6 +1,6 @@
 import { useCallback, useContext, useMemo, useState } from 'react'
-import { CurrencyAmount, Token, WNATIVE, Percent } from '@pancakeswap/sdk'
-import { Button, Text, AddIcon, CardBody, Message, useModal, QuestionHelper } from '@pancakeswap/uikit'
+import { CurrencyAmount, Token, WNATIVE } from '@pancakeswap/sdk'
+import { Button, Text, AddIcon, CardBody, Message, useModal } from '@pancakeswap/uikit'
 import { logError } from 'utils/sentry'
 import { useTranslation } from '@pancakeswap/localization'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -8,7 +8,6 @@ import { CommitButton } from 'components/CommitButton'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
 import { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
 import { LightCard } from 'components/Card'
-import { ONE_HUNDRED_PERCENT } from 'config/constants/exchange'
 
 import { AutoColumn, ColumnCenter } from '../../../components/Layout/Column'
 import CurrencyInputPanel from '../../../components/CurrencyInputPanel'
@@ -31,12 +30,9 @@ import ConfirmAddLiquidityModal from '../components/ConfirmAddLiquidityModal'
 import { useCurrencySelectRoute } from '../useCurrencySelectRoute'
 import { CommonBasesType } from '../../../components/SearchModal/types'
 import { AppHeader, AppBody } from '../../../components/App'
-import { RowBetween, RowFixed } from '../../../components/Layout/Row'
+import { RowBetween } from '../../../components/Layout/Row'
 import { MinimalPositionCard } from '../../../components/PositionCard'
 import { useStableLPDerivedMintInfo } from './hooks/useStableLPDerivedMintInfo'
-import { useDerivedLPInfo } from './hooks/useDerivedLPInfo'
-import { FormattedSlippage } from './components'
-import { warningSeverity } from './utils/slippage'
 
 export default function AddStableLiquidity({ currencyA, currencyB }) {
   const { account, chainId, isWrongNetwork } = useActiveWeb3React()
@@ -55,12 +51,12 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
     pairState,
     currencyBalances,
     parsedAmounts,
+    price,
     noLiquidity,
     liquidityMinted,
     poolTokenPercentage,
     error,
     addError,
-    loading: infoLoading,
   } = useStableLPDerivedMintInfo(currencyA ?? undefined, currencyB ?? undefined)
 
   const { onFieldAInput, onFieldBInput } = useMintActionHandlers(true)
@@ -78,22 +74,6 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
 
   // txn values
   const [allowedSlippage] = useUserSlippageTolerance() // custom from users
-  const {
-    lpOutputWithoutFee: expectedOutputWithoutFee,
-    loading,
-    price,
-  } = useDerivedLPInfo(parsedAmounts[Field.CURRENCY_A], parsedAmounts[Field.CURRENCY_B])
-  const minLPOutput = useMemo(
-    () => expectedOutputWithoutFee && calculateSlippageAmount(expectedOutputWithoutFee, allowedSlippage)[0],
-    [expectedOutputWithoutFee, allowedSlippage],
-  )
-  const executionSlippage = useMemo(() => {
-    if (!liquidityMinted || !expectedOutputWithoutFee) {
-      return null
-    }
-    return ONE_HUNDRED_PERCENT.subtract(new Percent(liquidityMinted.quotient, expectedOutputWithoutFee.quotient))
-  }, [liquidityMinted, expectedOutputWithoutFee])
-  const slippageSeverity = warningSeverity(executionSlippage)
 
   // get the max amounts user can add
   const maxAmounts: { [field in Field]?: CurrencyAmount<Token> } = [Field.CURRENCY_A, Field.CURRENCY_B].reduce(
@@ -154,7 +134,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
         ? [parsedAmountA?.quotient?.toString(), parsedAmountB?.quotient?.toString()]
         : [parsedAmountB?.quotient?.toString(), parsedAmountA?.quotient?.toString()]
 
-    const args = [tokenAmounts, minLPOutput?.toString() || lpMintedSlippage?.toString()]
+    const args = [tokenAmounts, lpMintedSlippage?.toString()]
 
     const value = null
 
@@ -215,7 +195,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
 
   const [onPresentAddLiquidityModal] = useModal(
     <ConfirmAddLiquidityModal
-      title={noLiquidity ? t('You are creating a trading pair') : t('You will receive')}
+      title={noLiquidity ? t('You are creating a pool') : t('You will receive')}
       customOnDismiss={handleDismissConfirmation}
       attemptingTxn={attemptingTxn}
       hash={txHash}
@@ -243,11 +223,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
   isValid = !error && !addError
   errorText = error ?? addError
 
-  const buttonDisabled =
-    !isValid ||
-    approvalA !== ApprovalState.APPROVED ||
-    approvalB !== ApprovalState.APPROVED ||
-    (slippageSeverity > 2 && !expertMode)
+  const buttonDisabled = !isValid || approvalA !== ApprovalState.APPROVED || approvalB !== ApprovalState.APPROVED
 
   const showFieldAApproval = approvalA === ApprovalState.NOT_APPROVED || approvalA === ApprovalState.PENDING
   const showFieldBApproval = approvalB === ApprovalState.NOT_APPROVED || approvalB === ApprovalState.PENDING
@@ -279,7 +255,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                       <Text bold mb="8px">
                         {t('You are the first liquidity provider.')}
                       </Text>
-                      <Text mb="8px">{t('The ratio of tokens you add will set the price of this pair.')}</Text>
+                      <Text mb="8px">{t('The ratio of tokens you add will set the price of this pool.')}</Text>
                       <Text>{t('Once you are happy with the rate click supply to review.')}</Text>
                     </div>
                   </Message>
@@ -324,7 +300,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                   <LightCard padding="0px" borderRadius="20px">
                     <RowBetween padding="1rem">
                       <Text fontSize="14px">
-                        {noLiquidity ? t('Initial prices and share in the pair') : t('Prices and Share')}
+                        {noLiquidity ? t('Initial prices and pool share') : t('Prices and pool share')}
                       </Text>
                     </RowBetween>{' '}
                     <LightCard padding="1rem" borderRadius="20px">
@@ -338,27 +314,6 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                   </LightCard>
                 </>
               )}
-
-              <RowBetween>
-                <RowFixed>
-                  <Text bold fontSize="12px" color="secondary">
-                    {t('Slippage')}
-                  </Text>
-                  <QuestionHelper
-                    text={t(
-                      'Based on % contributed to stable pair, fees will vary. Deposits with fees >= 0.15% will be rejected',
-                    )}
-                    size="14px"
-                    ml="4px"
-                    placement="top-start"
-                  />
-                </RowFixed>
-
-                <FormattedSlippage
-                  slippage={executionSlippage}
-                  loading={!executionSlippage && (loading || infoLoading)}
-                />
-              </RowBetween>
 
               <RowBetween>
                 <Text bold fontSize="12px" color="secondary">
@@ -398,7 +353,7 @@ export default function AddStableLiquidity({ currencyA, currencyB }) {
                     </RowBetween>
                   )}
                   <CommitButton
-                    variant={!isValid || slippageSeverity > 2 ? 'danger' : 'primary'}
+                    variant={!isValid ? 'danger' : 'primary'}
                     onClick={() => {
                       if (expertMode) {
                         onAdd()
