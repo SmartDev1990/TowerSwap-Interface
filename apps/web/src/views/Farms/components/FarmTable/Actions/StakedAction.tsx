@@ -347,7 +347,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       onConfirm={handleUnstake}
       tokenName={lpSymbol}
       decimals={18}
-      showCrossChainFarmWarning={chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP_TESTNET_TESTNET}
+      showCrossChainFarmWarning={chainId !== ChainId.CMP && chainId !== ChainId.CMP_TESTNET}
     />,
   )
 
