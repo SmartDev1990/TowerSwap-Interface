@@ -1,0 +1,46 @@
+{
+  "name": "Pancake Default List",
+  "timestamp": "2022-01-26T11:45:09Z",
+  "version": {
+    "major": 4,
+    "minor": 0,
+    "patch": 0
+  },
+  "tags": {},
+  "logoURI": "https://pancakeswap.finance/logo.png",
+  "keywords": ["pancake", "default"],
+  "tokens": [
+    {
+      "name": "Wrapped CMP",
+      "symbol": "WCMP",
+      "address": "0xaB6b6212e5443228D586cE5Aeb54B02b185208Cc",
+      "chainId": 512512,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/CMP.png"
+    },
+    {
+      "name": "TowerTestnet Token",
+      "symbol": "TW",
+      "address": "0x09FB691A786284e99D122D2B68dE40D253fec299",
+      "chainId": 512512,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
+    },
+    {
+      "name": "Tower BUSD",
+      "symbol": "BUSD",
+      "address": "0xB21668048d42d7d6423B070B278F5Af14e1f1600",
+      "chainId": 512512,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/BUSD.png"
+    },
+    {
+      "name": "Tower USDT",
+      "symbol": "USDT",
+      "address": "0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a",
+      "chainId": 512512,
+      "decimals": 6,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    }
+  ]
+}
