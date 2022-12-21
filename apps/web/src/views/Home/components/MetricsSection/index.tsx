@@ -4,7 +4,6 @@ import useTheme from 'hooks/useTheme'
 import { formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
 import useSWRImmutable from 'swr/immutable'
 import IconCard, { IconCardData } from '../IconCard'
-import { Link } from '@pancakeswap/uikit'
 import StatCardContent from './StatCardContent'
 import GradientLogo from '../GradientLogoSvg'
 
@@ -44,10 +43,7 @@ const Stats = () => {
       {/*   {t('Trusted with billions.')} */}
       {/* </Heading> */}
       <Text textAlign="center" color="textSubtle">
-        {t('Tower token is the main token token in TowerSwap. Read more on ')}
-        <Link display="inline-flex" color="#658dff" title="IceCreamSwap Wiki" href="">
-          WhitePaper
-        </Link>
+        {t('Tower token is the main token token in TowerSwap')}
       </Text>
       {/*
       <Flex flexWrap="wrap">

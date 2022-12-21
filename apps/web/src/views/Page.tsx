@@ -29,7 +29,6 @@ const Page: React.FC<
   return (
     <>
       <PageMeta />
-      /*
       <Swap.Page
         removePadding={removePadding}
         noMinHeight={noMinHeight}

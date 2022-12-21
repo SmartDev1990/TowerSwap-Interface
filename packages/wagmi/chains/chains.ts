@@ -115,7 +115,7 @@ export const bscTest: Chain = {
   testnet: true,
 }
 
-export const cmp_testnet: Chain = {
+export const cmpTestnet: Chain = {
   id: 512512,
   name: 'Cadeceus Testnet',
   network: 'cmp_testnet',
@@ -137,7 +137,7 @@ export const cmp_testnet: Chain = {
   },
 }
 
-export const cmp_mainnet: Chain = {
+export const cmpMainnet: Chain = {
   id: 256256,
   name: 'Cadeceus Mainnet',
   network: 'cmp_mainnet',

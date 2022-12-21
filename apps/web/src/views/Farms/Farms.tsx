@@ -366,14 +366,14 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             <FarmH2 scale="lg" color="text">
               {t('Stake LP tokens to earn.')}
             </FarmH2>
-            {/*<NextLinkFromReactRouter to="/farms/auction" prefetch={false}>
+            {/* <NextLinkFromReactRouter to="/farms/auction" prefetch={false}>
               <Button p="0" variant="text">
                 <Text color="primary" bold fontSize="16px" mr="4px">
                   {t('Community Auctions')}
                 </Text>
                 <ArrowForwardIcon color="primary" />
               </Button>
-            </NextLinkFromReactRouter>*/}
+            </NextLinkFromReactRouter> */}
           </Box>
           {chainId === ChainId.CMP_TESTNET && (
             <Box>
