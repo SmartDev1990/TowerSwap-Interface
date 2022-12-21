@@ -326,7 +326,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       cakePrice={cakePrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
       bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP_TESTNET_TESTNET}
+      showCrossChainFarmWarning={chainId !== ChainId.CMP && chainId !== ChainId.CMP_TESTNET}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
