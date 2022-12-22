@@ -6,7 +6,7 @@ import { useState } from 'react'
 const IntroSteps = [
   {
     title: <Trans>Your first step in the DeFi world</Trans>,
-    icon: <Image src="/images/decorations/3dwallet.png" alt="Get some help" width={198} height={178} />,
+    icon: 'https://towerswap.finance/images/decorations/3dwallet.png',
     description: (
       <Trans>
         A Web3 Wallet allows you to send and receive crypto assets like bitcoin, BNB, ETH, NFTs and much more.

@@ -20,7 +20,7 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.GOERLI]: FACTORY_ADDRESS_ETH,
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
-  [ChainId.CMP]: FACTORY_ADDRESS,
+  [ChainId.CMP]: '0x330772E15F9f9711a3a7EDFdDd5212f2537d5f89',
   [ChainId.CMP_TESTNET]: '0xd05cd3b72a851f29804f23bc8b27fe86bc9b0eac',
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -32,7 +32,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.GOERLI]: INIT_CODE_HASH_ETH,
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
-  [ChainId.CMP]: INIT_CODE_HASH,
+  [ChainId.CMP]: '0x213c174b789e5ea16be4c5e395a6a1736149d6262ceb6ff305315feeae2bb864',
   [ChainId.CMP_TESTNET]: '0x8115b4c5f514c78f37bd8951dc5c327f8ec90a1ffecaaa3e6141835310c7fe1f',
 }
 
