@@ -90,7 +90,7 @@ export const WBNB = {
   ),
   [ChainId.CMP]: new ERC20Token(
     ChainId.CMP,
-    '0xA5d20d84deeEd3850a7538e993E3b2592bf997A0',
+    '0x1fcbA3Cb797465F38839F48CA7c9cDA9d9aac28b',
     18,
     'WCMP',
     'Wrapped CMP',
