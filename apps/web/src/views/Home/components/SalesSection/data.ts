@@ -118,8 +118,7 @@ export const launchpadSectionData = (t: TranslateFunction): SalesSectionProps =>
   images: {
     path: '/images/home/bridge/',
     attributes: [
-      { src: 'launchpad_b', alt: t('Folder with cake token') },
-      { src: 'launchpad_a', alt: t('Stocks chart') },
+      { src: 'hero', alt: t('Folder with cake token') },
     ],
   },
 })
