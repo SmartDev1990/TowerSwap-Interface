@@ -65,7 +65,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               {showFinishedPools && (
                 <FinishedTextContainer>
                   <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
-                    {t('Looking for v1 CAKE syrup pools?')}
+                    {t('Looking for v1 TW syrup pools?')}
                   </Text>
                   <FinishedTextLink href="/migration" fontSize={['16px', null, '20px']} color="failure">
                     {t('Go to migration page')}.
@@ -137,7 +137,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               <Image
                 mx="auto"
                 mt="12px"
-                src="/images/decorations/3d-syrup-bunnies.png"
+                src="/images/decorations/3dtree.png"
                 alt="Pancake illustration"
                 width={192}
                 height={184.5}
