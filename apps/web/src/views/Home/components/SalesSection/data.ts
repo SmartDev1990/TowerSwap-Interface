@@ -14,7 +14,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance/product/exchange',
     text: t('Learn'),
     external: true,
   },
@@ -41,7 +41,7 @@ export const bridgeSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance',
     text: '',
     external: true,
   },
@@ -66,7 +66,7 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance',
     text: '',
     external: true,
   },
@@ -84,12 +84,12 @@ export const moreSectionData = (t: TranslateFunction): SalesSectionProps => ({
   ),
   reverse: true,
   primaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance',
     text: 'Coming Soon',
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance',
     text: '',
     external: true,
   },
@@ -106,12 +106,12 @@ export const launchpadSectionData = (t: TranslateFunction): SalesSectionProps =>
   ),
   reverse: false,
   primaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance',
     text: t('Coming Soon'),
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.towerswap.finance',
+    to: 'https://towerswap.gitbook.io/towerswap-finance',
     text: t(''),
     external: true,
   },

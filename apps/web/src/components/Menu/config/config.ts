@@ -159,7 +159,7 @@ const config: (
       items: [
         {
           label: t('Docs'),
-          href: 'https://docs.pancakeswap.finance',
+          href: 'https://towerswap.gitbook.io/towerswap-finance',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
         {

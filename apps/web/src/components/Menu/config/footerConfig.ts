@@ -7,12 +7,12 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Contact'),
-        href: '',
+        href: 'https://towerswap.gitbook.io/towerswap-finance/team',
         isHighlighted: true,
       },
       {
         label: t('Whitepaper'),
-        href: '',
+        href: 'https://towerswap.gitbook.io/towerswap-finance',
       },
       {
         label: t('Community'),
@@ -25,7 +25,7 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Guides'),
-        href: '',
+        href: 'https://towerswap.gitbook.io/towerswap-finance',
       },
     ],
   },
