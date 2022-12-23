@@ -1,15 +1,17 @@
 import styled from 'styled-components'
-import { Flex, Text, TicketFillIcon, PredictionsIcon } from '@pancakeswap/uikit'
+import { Flex, Text } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import useTheme from 'hooks/useTheme'
 import ColoredWordHeading from '../ColoredWordHeading'
 import IconCard, { IconCardData } from '../IconCard'
 import PredictionCardContent from './PredictionCardContent'
 import LotteryCardContent from './LotteryCardContent'
+import TeamACardContent from './TeamACardContent'
+import TeamBCardContent from './TeamBCardContent'
 import CompositeImage from '../CompositeImage'
 
 const TransparentFrame = styled.div<{ isDark: boolean }>`
-  background: ${({ theme }) => (theme.isDark ? 'rgba(8, 6, 11, 0.6)' : ' rgba(255, 255, 255, 0.6)')};
+  background: transparent;
   padding: 16px;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   box-sizing: border-box;
@@ -55,37 +57,44 @@ const TopRightImgWrapper = styled(Flex)`
 `
 
 const PredictionCardData: IconCardData = {
-  icon: <PredictionsIcon width="36px" color="inverseContrast" />,
-  background: 'linear-gradient(180deg, #ffb237 0%, #ffcd51 51.17%, #ffe76a 100%);',
-  borderColor: '#ffb237',
-  rotation: '-2.36deg',
+  icon: '',
+  background: 'linear-gradient(90deg, rgba(60,226,204,1) 43%, rgba(4,172,133,1) 93%);',
+  borderColor: '#ff37fe',
+  rotation: '-2',
 }
 
 const LotteryCardData: IconCardData = {
-  icon: <TicketFillIcon color="white" width="36px" />,
-  background: ' linear-gradient(180deg, #7645D9 0%, #5121B1 100%);',
-  borderColor: '#3C1786',
-  rotation: '1.43deg',
+  icon: '',
+  background: 'linear-gradient(90deg, rgba(176,60,226,1) 43%, rgba(158,4,172,1) 93%);',
+  borderColor: '#fbff37',
+  rotation: '1',
+}
+
+const TeamACardData: IconCardData = {
+  icon: '',
+  background: 'linear-gradient(90deg, rgba(226,224,60,1) 43%, rgba(187,170,6,1) 93%);',
+  borderColor: '#5572ff',
+  rotation: '-1',
+}
+
+const TeamBCardData: IconCardData = {
+  icon: '',
+  background: 'linear-gradient(90deg, rgba(73,60,226,1) 43%, rgba(8,6,187,1) 93%);',
+  borderColor: '#37ff80',
+  rotation: '2',
 }
 
 const bottomLeftImage = {
   path: '/images/home/prediction-cards/',
   attributes: [
-    { src: 'bottom-left', alt: 'CAKE card' },
-    { src: 'green', alt: 'Green CAKE card with up arrow' },
-    { src: 'red', alt: 'Red Cake card with down arrow' },
-    { src: 'top-right', alt: 'CAKE card' },
+    { src: '', alt: '' },
   ],
 }
 
 const topRightImage = {
   path: '/images/home/lottery-balls/',
   attributes: [
-    { src: '2', alt: 'Lottery ball number 2' },
-    { src: '4', alt: 'Lottery ball number 4' },
-    { src: '6', alt: 'Lottery ball number 6' },
-    { src: '7', alt: 'Lottery ball number 7' },
-    { src: '9', alt: 'Lottery ball number 9' },
+    { src: '', alt: '' },
   ],
 }
 
@@ -105,23 +114,47 @@ const WinSection = () => {
       </BgWrapper>
       <TransparentFrame isDark={theme.isDark}>
         <Flex flexDirection="column" alignItems="center" justifyContent="center">
-          <ColoredWordHeading textAlign="center" text={t('Win millions in prizes')} />
-          <Text color="textSubtle">{t('Provably fair, on-chain games.')}</Text>
-          <Text mb="40px" color="textSubtle">
-            {t('Win big with PancakeSwap.')}
-          </Text>
-          <Flex m="0 auto" flexDirection={['column', null, null, 'row']} maxWidth="600px">
+          <ColoredWordHeading textAlign="center" text={t('TowerSwap Team')} mb="50px" />
+          <Flex m="0 auto" flexDirection={['column', null, null,'row']} maxWidth="600px">
+            <Flex
+              flex="1"
+              maxWidth={['275px', null, null, '100%']}
+              mr={[null, null, null, '24px']}
+              mb={['32px', null, null, '24px']}
+            >
+              <IconCard {...TeamACardData}>
+                <TeamACardContent />
+              </IconCard>
+            </Flex>
+            <Flex flex="1"
+            maxWidth={['275px', null, null, '100%']}
+            mr={[null, null, null, '24px']}
+            mb={['32px', null, null, '24px']}
+            >
+              <IconCard {...TeamBCardData}>
+                <TeamBCardContent />
+              </IconCard>
+            </Flex>
+          </Flex>
+        </Flex>
+        <Flex flexDirection="column" alignItems="center" justifyContent="center">
+          <Flex m="0 auto" flexDirection={['column', null, null,'row']} maxWidth="600px">
             <Flex
               flex="1"
               maxWidth={['275px', null, null, '100%']}
               mr={[null, null, null, '24px']}
               mb={['32px', null, null, '0']}
-            >
+              >
               <IconCard {...PredictionCardData}>
                 <PredictionCardContent />
               </IconCard>
             </Flex>
-            <Flex flex="1" maxWidth={['275px', null, null, '100%']}>
+            <Flex
+              flex="1"
+              maxWidth={['275px', null, null, '100%']}
+              mr={[null, null, null, '24px']}
+              mb={['32px', null, null, '0']}
+              >
               <IconCard {...LotteryCardData}>
                 <LotteryCardContent />
               </IconCard>

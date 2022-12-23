@@ -19,7 +19,7 @@ import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
 import RoadmapSection from './components/RoadmapSection'
 import FaqSection from './components/FaqSection'
-// import WinSection from './components/WinSection'
+import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
 // import Footer from './components/Footer'
 // import CakeDataRow from './components/CakeDataRow'
@@ -147,6 +147,14 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(90deg, rgba(75,7,102,1) 6%, rgba(10,55,85,1) 93%)"
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <WinSection />
+      </PageSection>
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background="linear-gradient(90deg, rgba(42,28,120,1) 28%, rgba(92,22,105,1) 80%)"
         index={2}
         hasCurvedDivider={false}
       >

@@ -53,18 +53,16 @@ const PredictionCardContent = () => {
   return (
     <>
       <Flex flexDirection="column" alignItems="center" justifyContent="center" mt="10px">
-        <Image src="/images/home/team/oky.png" width={512} height={512} mb="10px" />
+        <Image src="/images/home/team/yakub.png" width={512} height={512} mb="10px" />
         <Text color="#280D5F" mb="15px">
-          {t('Oky')}
+          {t('Yakub Lekan')}
         </Text>
-        <Flex alignItems="center" justifyContent="center">
         <Text color="#280D5F" mb="15px">
-          {t('TowerSwap Marketing & Parnership Staff')}
+          {t('Towerswap Co-Owner and Head Of Marketing')}
         </Text>
-        </Flex>
       </Flex>
       <Flex alignItems="center" justifyContent="center">
-        <StyledLink to="https://t.me/mailu03" id="homepage-prediction-cta">
+        <StyledLink to="https://www.linkedin.com/in/akeem-yakub-1b527619a" id="homepage-prediction-cta">
           <Button width="100%">
             <Text bold color="invertedContrast">
               {t('Profile')}

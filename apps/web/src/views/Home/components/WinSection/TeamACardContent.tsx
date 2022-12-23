@@ -49,16 +49,16 @@ const LotteryCardContent = () => {
   return (
     <>
     <Flex flexDirection="column" alignItems="center" justifyContent="center" mt="10px">
-        <Image src="/images/logo.png" width={512} height={512} mb="10px" />
+        <Image src="/images/home/team/nara1.png" width={512} height={512} mb="10px" />
         <Text color="black" mb="15px">
-          {t('Aremsoon')}
+          {t('Na Ra')}
         </Text>
-        <Text color="#280D5F"  mb="15px">
-        {t('TowerSwap Fronend & Backend Developer')}
+        <Text color="#280D5F" mb="15px">
+          {t('Towerswap Owner & Head Of Developer')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">
-        <StyledLink to="https://www.linkedin.com/in/habeeb-aliu-a15b001b0" id="homepage-prediction-cta">
+        <StyledLink to="https://www.linkedin.com/in/nandayusra/" id="homepage-prediction-cta">
           <Button width="100%">
             <Text bold color="invertedContrast">
               {t('Profile')}
