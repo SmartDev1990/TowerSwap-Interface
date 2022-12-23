@@ -49,7 +49,7 @@ const LotteryCardContent = () => {
   return (
     <>
     <Flex flexDirection="column" alignItems="center" justifyContent="center" mt="10px">
-        <Image src="/images/home/team/nara1.png" width={256} height={256} mb="10px" />
+        <Image src="/images/nara1.png" width={256} height={256} mb="10px" />
         <Text color="black" mb="15px">
           {t('Na Ra')}
         </Text>
