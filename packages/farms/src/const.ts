@@ -8,7 +8,7 @@ export const FIXED_TWO = FixedNumber.from(2)
 export const FIXED_TEN_IN_POWER_18 = FixedNumber.from(getFullDecimalMultiplier(18))
 
 export const masterChefAddresses = {
-  512512: '0x46211609f0067e942337d8d1057e5F02274CA997',
+  512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
 }
 
 export const nonBSCVaultAddresses = {
