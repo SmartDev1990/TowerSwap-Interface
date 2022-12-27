@@ -69,6 +69,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '10',
     isFinished: false,
   },
+  /*
   {
     sousId: 1,
     stakingToken: testnetTokens.cake,
@@ -108,6 +109,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '100',
     isFinished: false,
   },
+  */
 ].map((p) => ({
   ...p,
   stakingToken: p.stakingToken.serialize,
