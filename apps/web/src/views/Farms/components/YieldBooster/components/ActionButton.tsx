@@ -31,7 +31,7 @@ const BoosterTooltip = () => {
   return (
     <>
       {t(
-        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term CAKE syrup pool and will be automatically updated upon user actions.`,
+        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term TW syrup pool and will be automatically updated upon user actions.`,
       )}
       <LinkExternal
         href="https://towerswap.gitbook.io/towerswap-finance/product/yield-farming"

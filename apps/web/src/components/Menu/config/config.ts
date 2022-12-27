@@ -152,7 +152,7 @@ const config: (
       ],
     },
     {
-      label: '',
+      label: 'Info',
       href: '/info',
       icon: MoreIcon,
       hideSubNav: true,

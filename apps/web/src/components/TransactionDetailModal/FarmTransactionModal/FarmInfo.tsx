@@ -62,9 +62,9 @@ const FarmResult: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedDa
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <Flex flexDirection="column">
-      <ListStyle>{t('You have received 0.0005 BNB as a first-time BNB Smart Chain user')}</ListStyle>
+      <ListStyle>{t('You have received 0.0005 CMP as a first-time Cadeceus Chain user')}</ListStyle>
       <ListStyle>
-        {t('You can swap more BNB on')}
+        {t('You can swap more CMP on')}
         <LinkStyle href="/swap">{t('Swap.')}</LinkStyle>
       </ListStyle>
       <ListStyle>
@@ -72,7 +72,7 @@ const FarmResult: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedDa
         <LinkStyle href="/pools?chainId=56">{t('Pools')}</LinkStyle>
         {t('and')}
         <LinkStyle href="/prediction?chainId=56">{t('Win')}</LinkStyle>
-        {t('with your CAKE earned.')}
+        {t('with your TW earned.')}
       </ListStyle>
     </Flex>,
     { placement: 'top' },

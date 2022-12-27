@@ -88,15 +88,6 @@ export const USDT_CMP = new ERC20Token(
   'https://tether.to/',
 )
 
-export const USDT_CMPTESTNET = new ERC20Token(
-  ChainId.CMP_TESTNET,
-  '0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a',
-  6,
-  'USDT',
-  'Tether USD',
-  'https://tether.to/',
-)
-
 export const USDT_ETH = new ERC20Token(
   ChainId.ETHEREUM,
   '0xdAC17F958D2ee523a2206206994597C13D831ec7',
@@ -187,8 +178,6 @@ export const USDC = {
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
   [ChainId.ETHEREUM]: USDT_ETH,
-  [ChainId.CMP]: USDT_CMP,
-  [ChainId.CMP_TESTNET]: USDT_CMPTESTNET,
 }
 
 export const WBTC_ETH = new ERC20Token(

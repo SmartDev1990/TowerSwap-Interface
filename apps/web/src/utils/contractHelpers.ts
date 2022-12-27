@@ -222,7 +222,7 @@ export const getMasterchefContract = (signer?: Signer | Provider, chainId?: numb
   return getContract({ abi: masterChef, address: getMasterChefAddress(chainId), signer }) as Masterchef
 }
 export const getMasterchefV1Contract = (signer?: Signer | Provider) => {
-  return getContract({ abi: masterChefV1, address: getMasterChefV1Address(), signer }) as MasterchefV1
+  return null // getContract({ abi: masterChefV1, address: getMasterChefV1Address(), signer }) as MasterchefV1
 }
 export const getClaimRefundContract = (signer?: Signer | Provider) => {
   return getContract({ abi: claimRefundAbi, address: getClaimRefundAddress(), signer }) as ClaimRefund

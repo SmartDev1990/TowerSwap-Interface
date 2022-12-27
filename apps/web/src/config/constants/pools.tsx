@@ -3,7 +3,7 @@ import { Pool } from '@pancakeswap/uikit'
 import { SerializedWrappedToken } from '@pancakeswap/token-lists'
 import Trans from 'components/Trans'
 import { VaultKey } from 'state/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { testnetTokens } from '@pancakeswap/tokens'
 import { PoolCategory } from './types'
 
 export const MAX_LOCK_DURATION = 31536000
@@ -19,7 +19,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 380000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -29,7 +29,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -39,7 +39,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -49,7 +49,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },
@@ -58,67 +58,56 @@ export const vaultPoolConfig = {
 export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   {
     sousId: 0,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.cake,
+    stakingToken: testnetTokens.cake,
+    earningToken: testnetTokens.cake,
     contractAddress: {
-      97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
-      56: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
-      512512: '',
+      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      512512: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,
   },
-  /*
   {
-    sousId: 305,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.hft,
+    sousId: 1,
+    stakingToken: testnetTokens.cake,
+    earningToken: testnetTokens.cake,
     contractAddress: {
-      56: '0x92465602f35bb0F22aA1Cf2102B17B563B0a26Dd',
-      97: '',
+      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      512512: '0x82F6fC7AD9124Ef3196a571E6d06De0713437736',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.6319',
-    version: 3,
+    tokenPerBlock: '100',
+    isFinished: false,
   },
   {
-    sousId: 304,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.xcad,
+    sousId: 2,
+    stakingToken: testnetTokens.cake,
+    earningToken: testnetTokens.wbnb,
     contractAddress: {
-      56: '0x68Cc90351a79A4c10078FE021bE430b7a12aaA09',
-      97: '',
+      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      512512: '0x201583a8907F76EC2f0300052d88c70b7b97dA34',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.1102',
-    version: 3,
+    tokenPerBlock: '1000',
+    isFinished: false,
   },
   {
-    sousId: 303,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.mgp,
+    sousId: 3,
+    stakingToken: testnetTokens.cake,
+    earningToken: testnetTokens.busd,
     contractAddress: {
-      56: '0x365F744c8b7608253697cA2Ed561537B65a3438B',
-      97: '',
+      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      512512: '0xe9047467CBFb9c9B1c6f831666301718689fCD11',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '6.944',
-    version: 3,
+    tokenPerBlock: '100',
+    isFinished: false,
   },
-  {
-    sousId: 302,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.wmx,
-    contractAddress: {
-      56: '0xaEd58Af2c98dbF05d26B3E5b3cc809fc70D203ce',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.5787',
-    version: 3,
-  },
-  */
 ].map((p) => ({
   ...p,
   stakingToken: p.stakingToken.serialize,

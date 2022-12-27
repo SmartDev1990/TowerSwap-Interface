@@ -5,6 +5,7 @@ const farms: SerializedFarmConfig[] = [
   /**
    * These 3 farms (PID 0, 2, 3) should always be at the top of the file.
    */
+   /*
   {
     pid: 0,
     lpSymbol: 'CAKE',
@@ -51,6 +52,7 @@ const farms: SerializedFarmConfig[] = [
     stableSwapAddress: '0xc418d68751Cbe0407C8fdd90Cde73cE95b892f39',
     infoStableSwapAddress: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
   },
+  */
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

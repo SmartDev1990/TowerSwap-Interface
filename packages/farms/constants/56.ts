@@ -6,6 +6,7 @@ const farms: SerializedFarmConfig[] = [
   /**
    * These 3 farms (PID 0, 2, 3) should always be at the top of the file.
    */
+   /*
   {
     pid: 0,
     v1pid: 0,
@@ -1052,6 +1053,7 @@ const farms: SerializedFarmConfig[] = [
     token: bscTokens.abnbc,
     quoteToken: bscTokens.wbnb,
   },
+  */
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

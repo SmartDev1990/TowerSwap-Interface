@@ -5,12 +5,11 @@ const farms: SerializedFarmConfig[] = [
   /**
    * These 3 farms (PID 0, 2, 3) should always be at the top of the file.
    */
-  /*
   {
     pid: 0,
     lpSymbol: 'TW',
     lpAddress: '0x09FB691A786284e99D122D2B68dE40D253fec299',
-    token: testnetTokens.cake,
+    token: testnetTokens.syrub,
     quoteToken: testnetTokens.wbnb,
   },
   {
@@ -34,7 +33,6 @@ const farms: SerializedFarmConfig[] = [
     token: testnetTokens.busd,
     quoteToken: testnetTokens.wbnb,
   },
-  */
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

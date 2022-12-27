@@ -1,5 +1,5 @@
 import { ChainId, WBNB, ERC20Token } from '@pancakeswap/sdk'
-import { BUSD_CMPTESTNET, USDT_CMPTESTNET, TOWER_TESTNET } from './common'
+import { BUSD_CMPTESTNET, TOWER_TESTNET } from './common'
 
 export const testnetTokens = {
   wbnb: WBNB[ChainId.CMP_TESTNET],
@@ -13,5 +13,4 @@ export const testnetTokens = {
     'https://towerswap.finance',
   ),
   busd: BUSD_CMPTESTNET,
-  usdt: BUSD_CMPTESTNET,
 }

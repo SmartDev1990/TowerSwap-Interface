@@ -84,7 +84,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
 
   const crossChainWarningText = useMemo(() => {
     return isFirstTime
-      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain CAKE farming.', {
+      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain TW farming.', {
           nativeToken: native.symbol,
         })
       : t('For safety, cross-chain transactions will take around 30 minutes to confirm.')
@@ -196,7 +196,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
             },
             {
               step: 2,
-              chainId: ChainId.BSC,
+              chainId: ChainId.CMP_TESTNET,
               tx: '',
               status: FarmTransactionStatus.PENDING,
             },
@@ -251,7 +251,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       cakePrice={cakePrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
       bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET}
+      showCrossChainFarmWarning={chainId !== ChainId.CMP && chainId !== ChainId.CMP_TESTNET}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
@@ -271,7 +271,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       max={stakedBalance}
       onConfirm={handleUnstake}
       tokenName={lpSymbol}
-      showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET}
+      showCrossChainFarmWarning={chainId !== ChainId.CMP && chainId !== ChainId.CMP_TESTNET}
       decimals={18}
     />,
   )

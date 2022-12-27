@@ -45,10 +45,15 @@ const cakeBusdPairMap = {
     tokenA: CAKE[ChainId.BSC_TESTNET],
     tokenB: BUSD[ChainId.BSC_TESTNET],
   },
+  [ChainId.CMP_TESTNET]: {
+    address: Pair.getAddress(CAKE[ChainId.CMP_TESTNET], BUSD[ChainId.CMP_TESTNET]),
+    tokenA: CAKE[ChainId.CMP_TESTNET],
+    tokenB: BUSD[ChainId.CMP_TESTNET],
+  },
 }
 
 const getCakePrice = async (isTestnet: boolean) => {
-  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC]
+  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.CMP : ChainId.CMP_TESTNET]
   const pairContract = new Contract(pairConfig.address, pairAbi, isTestnet ? bscTestnetProvider : bscProvider)
   const reserves = await pairContract.getReserves()
   const { reserve0, reserve1 } = reserves
@@ -125,7 +130,7 @@ export async function handleLpAprs(chainId: number, farmsConfig?: SerializedFarm
 
 export async function saveLPsAPR(chainId: number, farmsConfig?: SerializedFarmConfig[]) {
   // TODO: add other chains
-  if (chainId === 56) {
+  if (chainId === 512512) {
     let data = farmsConfig
     if (!data) {
       const value = await FarmKV.getFarms(chainId)

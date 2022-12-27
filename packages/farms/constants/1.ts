@@ -2,6 +2,7 @@ import { ethereumTokens } from '@pancakeswap/tokens'
 import { SerializedFarmConfig } from '@pancakeswap/farms'
 
 const farms: SerializedFarmConfig[] = [
+  /*
   {
     pid: 124,
     vaultPid: 1,
@@ -26,6 +27,7 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: ethereumTokens.weth,
     token: ethereumTokens.wbtc,
   },
+  */
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

@@ -3,6 +3,7 @@ import { bscTokens } from '@pancakeswap/tokens'
 import { FarmAuctionBidderConfig } from './types'
 
 export const whitelistedBidders: FarmAuctionBidderConfig[] = [
+  /*
   // Those farms changed their project wallet address.
   {
     account: '0xA6D19C2A2EA13e9eF02d795155F6c335af764955', // Auction #19
@@ -845,6 +846,7 @@ export const whitelistedBidders: FarmAuctionBidderConfig[] = [
     tokenName: 'QUO',
     projectSite: 'https://quoll.finance/',
   },
+  */
 ].map((bidderConfig) => ({
   ...bidderConfig,
   lpAddress: getLpAddress(bidderConfig.tokenAddress, bidderConfig.quoteToken),
