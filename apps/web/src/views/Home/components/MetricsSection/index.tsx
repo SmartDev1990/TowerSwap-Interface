@@ -87,7 +87,7 @@ const Stats = () => {
           <StatCardContent headingText={t('Decimal')} bodyText={t('18')} highlightColor={theme.colors.secondary} />
         </IconCard>
         <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-          <StatCardContent headingText={t('Chain')} bodyText={t('Cadeceus')} highlightColor={theme.colors.primary} />
+          <StatCardContent headingText={t('Chain')} bodyText={t('Caduceus')} highlightColor={theme.colors.primary} />
         </IconCard>
         <IconCard {...StakedCardData}>
           <StatCardContent

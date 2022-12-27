@@ -62,7 +62,7 @@ const FarmResult: React.FC<React.PropsWithChildren<FarmInfoProps>> = ({ pickedDa
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <Flex flexDirection="column">
-      <ListStyle>{t('You have received 0.0005 CMP as a first-time Cadeceus Chain user')}</ListStyle>
+      <ListStyle>{t('You have received 0.0005 CMP as a first-time Caduceus Chain user')}</ListStyle>
       <ListStyle>
         {t('You can swap more CMP on')}
         <LinkStyle href="/swap">{t('Swap.')}</LinkStyle>

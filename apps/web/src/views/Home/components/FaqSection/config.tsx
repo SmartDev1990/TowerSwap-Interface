@@ -10,20 +10,20 @@ const config = ({ t }: FAQsType) => [
     description: [t('THE WORLD’S FIRST BLOCKCHAIN DEDICATED TO METAVERSE DEVELOPMENT')],
   },
   {
-    title: t('How much gas fees on Cadeceus ?'),
+    title: t('How much gas fees on Caduceus ?'),
     description: [t('0.0001$')],
   },
   {
     title: t('Where and How to buy CMP ?'),
     description: [
       t(
-        'CMP Tokens has been listed on several big exchange like Gate.io, Kucoin and another several major exchanges. All of this exchanges was support Cadeceus Blockchain.',
+        'CMP Tokens has been listed on several big exchange like Gate.io, Kucoin and another several major exchanges. All of this exchanges was support Caduceus Blockchain.',
       ),
     ],
   },
   {
     title: t('Which Chains are supported?'),
-    description: [t('For now we just support Cadeceus Chain (CMP)')],
+    description: [t('For now we just support Caduceus Chain (CMP)')],
   },
   {
     title: t('Is smart contract platform secured?'),

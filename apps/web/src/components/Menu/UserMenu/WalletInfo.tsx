@@ -21,7 +21,7 @@ import { ChainLogo } from 'components/Logo/ChainLogo'
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
 import { formatBigNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
 import { useBalance } from 'wagmi'
-import CakeBenefitsCard from './CakeBenefitsCard'
+// import CakeBenefitsCard from './CakeBenefitsCard'
 
 const COLORS = {
   ETH: '#627EEA',
@@ -117,7 +117,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           <Flex bg={COLORS.BNB} borderRadius="16px" pl="4px" pr="8px" py="2px">
             <ChainLogo chainId={ChainId.CMP_TESTNET} />
             <Text color="white" ml="4px">
-              Cadeceus Chain
+              Caduceus Chain
             </Text>
           </Flex>
           <LinkExternal href={getBlockExploreLink(account, 'address', ChainId.CMP_TESTNET)}>
@@ -134,7 +134,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
         </Flex>
         {wBNBBalance.gt(0) && (
           <Flex alignItems="center" justifyContent="space-between">
-            <Text color="textSubtle">WBNB {t('Balance')}</Text>
+            <Text color="textSubtle">WCMP {t('Balance')}</Text>
             {wBNBFetchStatus !== FetchStatus.Fetched ? (
               <Skeleton height="22px" width="60px" />
             ) : (
@@ -151,7 +151,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           )}
         </Flex>
       </Box>
-      <CakeBenefitsCard onDismiss={onDismiss} />
+      {/* <CakeBenefitsCard onDismiss={onDismiss} /> */}
       <Button variant="secondary" width="100%" minHeight={48} onClick={handleLogout}>
         {t('Disconnect Wallet')}
       </Button>

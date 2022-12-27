@@ -38,16 +38,16 @@ const Multiplier: React.FunctionComponent<React.PropsWithChildren<FarmTableMulti
       <Text>
         {rewardCakePerSecond
           ? t(
-              "The Multiplier represents the proportion of CAKE rewards each farm receives, as a proportion of the CAKE produced each second."
+              "The Multiplier represents the proportion of TW rewards each farm receives, as a proportion of the TW produced each second."
             )
           : t(
-              "The Multiplier represents the proportion of CAKE rewards each farm receives, as a proportion of the CAKE produced each block."
+              "The Multiplier represents the proportion of TW rewards each farm receives, as a proportion of the TW produced each block."
             )}
       </Text>
       <Text my="24px">
         {rewardCakePerSecond
-          ? t("For example, if a 1x farm received 1 CAKE per second, a 40x farm would receive 40 CAKE per second.")
-          : t("For example, if a 1x farm received 1 CAKE per block, a 40x farm would receive 40 CAKE per block.")}
+          ? t("For example, if a 1x farm received 1 TW per second, a 40x farm would receive 40 TW per second.")
+          : t("For example, if a 1x farm received 1 TW per block, a 40x farm would receive 40 TW per block.")}
       </Text>
       <Text>{t("This amount is already included in all APR calculations for the farm.")}</Text>
     </>

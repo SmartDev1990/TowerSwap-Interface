@@ -117,7 +117,7 @@ export const bscTest: Chain = {
 
 export const cmpTestnet: Chain = {
   id: 512512,
-  name: 'Cadeceus Testnet',
+  name: 'Caduceus Testnet',
   network: 'cmp_testnet',
   rpcUrls: {
     public: 'https://galaxy.block.caduceus.foundation',
@@ -139,7 +139,7 @@ export const cmpTestnet: Chain = {
 
 export const cmpMainnet: Chain = {
   id: 256256,
-  name: 'Cadeceus Mainnet',
+  name: 'Caduceus Mainnet',
   network: 'cmp_mainnet',
   rpcUrls: {
     public: 'https://mainnet.block.caduceus.foundation',

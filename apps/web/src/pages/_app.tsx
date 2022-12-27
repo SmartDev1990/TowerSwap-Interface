@@ -72,10 +72,10 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         <meta name="twitter:image" content="https://towerswap.finance/images/hero.png" />
         <meta
           name="twitter:description"
-          content="The new DeFi AMM on Cadeceus! Earn TW through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by PancakeSwap), NFTs, and more, on a platform you can trust."
+          content="The new DeFi AMM on Caduceus! Earn TW through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by PancakeSwap), NFTs, and more, on a platform you can trust."
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🗼TowerSwap - A next evolution DeFi exchange on Cadeceus Chain (CMP)" />
+        <meta name="twitter:title" content="🗼TowerSwap - A next evolution DeFi exchange on Caduceus Chain (CMP)" />
         <title>TowerSwap</title>
         {(Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts

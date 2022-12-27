@@ -9,7 +9,7 @@ const config = ({ t }: FAQsType) => [
     icon: '🚀',
     title: t('2022'),
     description: [
-      'Cadeceus blockchain identification',
+      'Caduceus blockchain identification',
       'Ideas and Concepts',
       'Website and whitepaper development',
       'Dex development and testnet integration',
@@ -27,7 +27,7 @@ const config = ({ t }: FAQsType) => [
       'Mainnet Launch',
       'Farming & Staking features launch',
       'Airdrop Distribution',
-      'AMA section with Cadeceus and Towerswap community',
+      'AMA section with Caduceus and Towerswap community',
       'Start Partnership',
       'Platform Audit',
     ],
@@ -39,8 +39,8 @@ const config = ({ t }: FAQsType) => [
     description: [
       'Tier1 TW token Exchange listing',
       'Launch NFT Marketplace',
-      'Launch Cadeceus Bridge',
-      'Launch Cadeceus LaunchPad',
+      'Launch Caduceus Bridge',
+      'Launch Caduceus LaunchPad',
     ],
     reached: 'Apr-June 2022 (Under Progress)',
   },
