@@ -6,12 +6,14 @@ const mapping = {
   [ChainId.BSC]: 'smartchain',
   [ChainId.ETHEREUM]: 'ethereum',
   [ChainId.CMP]: 'cadeceus',
+  [ChainId.CMP_TESTNET]: 'cmptestnet',
+
 }
 
 const getTokenLogoURL = memoize(
   (token?: Token) => {
     if (token && mapping[token.chainId]) {
-      return `https://raw.githubusercontent.com/SmartDev1990/tower-asset/${mapping[token.chainId]}/assets/${getAddress(
+      return `https://raw.githubusercontent.com/smartdev1990/trustwallet-assets/master/blockchains/${chainName[token.chainId].toLowerCase()}/assets/${getAddress(
         token.address,
       )}/logo.svg`
     }
@@ -23,7 +25,7 @@ const getTokenLogoURL = memoize(
 export const getTokenLogoURLByAddress = memoize(
   (address?: string, chainId?: number) => {
     if (address && chainId && mapping[chainId]) {
-      return `https://raw.githubusercontent.com/SmartDev1990/tower-asset/${mapping[chainId]}/assets/${getAddress(address)}/logo.svg`
+      return `https://raw.githubusercontent.com/smartdev1990/trustwallet-assets/master/blockchains/${mapping[chainId]}/assets/${getAddress(address)}/logo.svg`
     }
     return null
   },

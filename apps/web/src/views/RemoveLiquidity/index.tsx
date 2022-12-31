@@ -69,7 +69,7 @@ const BorderCard = styled.div`
   padding: 16px;
 `
 
-const zapSupportedChainId = [ChainId.CMP, ChainId.CMP_TESTNET]
+const zapSupportedChainId = []
 
 export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, currencyIdB }) {
   const router = useRouter()
@@ -147,6 +147,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
 
   // pair contract
   const pairContractRead: Contract | null = usePairContract(pair?.liquidityToken?.address, false)
+  const pairContract: Contract | null = usePairContract(pair?.liquidityToken?.address)
 
   // allowance handling
   const [signatureData, setSignatureData] = useState<{ v: number; r: string; s: string; deadline: number } | null>(null)
@@ -156,7 +157,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
   )
 
   async function onAttemptToApprove() {
-    if (!pairContractRead || !pair || !library || !deadline) throw new Error('missing dependencies')
+    if (!pairContract || !pairContractRead || !pair || !library || !deadline) throw new Error('missing dependencies')
     const liquidityAmount = parsedAmounts[Field.LIQUIDITY]
     if (!liquidityAmount) {
       toastError(t('Error'), t('Missing liquidity amount'))
@@ -173,7 +174,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
       { name: 'verifyingContract', type: 'address' },
     ]
     const domain = {
-      name: 'Pancake LPs',
+      name: 'Tower LPs',
       version: '1',
       chainId,
       verifyingContract: pair.liquidityToken.address,
@@ -234,7 +235,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
   const onCurrencyAInput = useCallback((value: string): void => onUserInput(Field.CURRENCY_A, value), [onUserInput])
   const onCurrencyBInput = useCallback((value: string): void => onUserInput(Field.CURRENCY_B, value), [onUserInput])
 
-  const zapContract = useZapContract()
+  const zapContract = useZapContract(true)
 
   // tx sending
   const addTransaction = useTransactionAdder()
