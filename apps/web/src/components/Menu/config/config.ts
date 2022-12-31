@@ -162,18 +162,18 @@ const config: (
           href: 'https://towerswap.gitbook.io/towerswap-finance',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
-        {
-          label: t('Info'),
-          href: '/404',
-        },
-        {
-          label: t('LaunchPad'),
-          href: '/404',
-        },
-        {
-          label: t('TowerLabs'),
-          href: '/404',
-        },
+        // {
+        //   label: t('Info'),
+        //   href: '/404',
+        // },
+        // {
+        //   label: t('LaunchPad'),
+        //   href: '/404',
+        // },
+        // {
+        //   label: t('TowerLabs'),
+        //   href: '/404',
+        // },
         // {
         //   label: t('IFO'),
         //   href: '/ifo',
