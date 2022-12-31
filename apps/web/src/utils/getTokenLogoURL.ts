@@ -5,7 +5,6 @@ import { ChainId, Token } from '@pancakeswap/sdk'
 const mapping = {
   [ChainId.BSC]: 'smartchain',
   [ChainId.ETHEREUM]: 'ethereum',
-  [ChainId.CMP]: 'cadeceus',
   [ChainId.CMP_TESTNET]: 'cmptestnet',
 
 }
@@ -13,7 +12,7 @@ const mapping = {
 const getTokenLogoURL = memoize(
   (token?: Token) => {
     if (token && mapping[token.chainId]) {
-      return `https://raw.githubusercontent.com/smartdev1990/trustwallet-assets/master/blockchains/${chainName[token.chainId].toLowerCase()}/assets/${getAddress(
+      return `https://raw.githubusercontent.com/smartdev1990/trustwallet-assets/master/blockchains/${mapping[token.chainId].toLowerCase()}/assets/${getAddress(
         token.address,
       )}/logo.svg`
     }
