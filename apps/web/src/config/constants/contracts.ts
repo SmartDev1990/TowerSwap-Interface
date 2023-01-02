@@ -12,6 +12,7 @@ export default {
   masterChefV1: {
     97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
     56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
+    512512: '0x92ebcdA1e2C2d5B388d3f5450cF46930F0D179A0',
   },
   sousChef: {
     97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
@@ -29,19 +30,19 @@ export default {
   pancakeProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
-    512512: '',
+    512512: '0x3774a1265745fe85689b1391c58fc5BE2b098052',
     256256: '',
   },
   pancakeBunnies: {
     56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
     97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
-    512512: '',
+    512512: '0xadfa8f3558d4937603df64f286d405300d6ee32c',
     256256: '',
   },
   bunnyFactory: {
     56: '0xfa249Caa1D16f75fa159F7DFBAc0cC5EaB48CeFf',
     97: '0x707CBF373175fdB601D34eeBF2Cf665d08f01148',
-    512512: '',
+    512512: '0x3997b0215D24984A7500645D2aD37ee2417B9e07',
     256256: '',
   },
   claimRefund: {
@@ -94,14 +95,14 @@ export default {
   },
   cakeVault: {
     56: '0x45c54210128a065de780C4B0Df3d16664f7f859e',
-    97: '0x683433ba14e8F26774D43D3E90DA6Dd7a22044Fe',
-    512512: '0x8EB8b40361730a6cEC17d4CF8da1e81cD351a0ee',
+    97: '',
+    512512: '0x4EFe0F3A0a4d037b2770Db655C8c9708B15aeC88',
     256256: '',
   },
   cakeFlexibleSideVault: {
     56: '0x615e896A8C2CA8470A2e9dc2E9552998f8658Ea0',
     97: '',
-    512512: '',
+    512512: '0x03588D7e2995f900729A47bB2eB9563aFA6b05A1',
     256256: '',
   },
   predictionsBNB: {
@@ -173,7 +174,7 @@ export default {
   nftMarket: {
     56: '0x17539cCa21C7933Df5c980172d22659B8C345C5A',
     97: '0x7f9f37ddcaa33893f9beb3d8748c8d6bfbde6ab2',
-    512512: '',
+    512512: '0x45F7b7FEc614a06C362ffCcb8F0c8aE6B787223C',
     256256: '',
   },
   nftSale: {
@@ -185,7 +186,7 @@ export default {
   pancakeSquad: {
     56: '0x0a8901b0E25DEb55A87524f0cC164E9644020EBA',
     97: '0xfC0c3F11fDA72Cb9A56F28Ec8D44C0ae4B3ABF86',
-    512512: '',
+    512512: '0xEdFa035C3db4709ebcFDd88E722B012fcCDd2139',
     256256: '',
   },
   potteryDraw: {

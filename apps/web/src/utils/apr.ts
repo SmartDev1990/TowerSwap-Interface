@@ -3,11 +3,14 @@ import { ChainId } from '@pancakeswap/sdk'
 import { BLOCKS_PER_YEAR } from 'config'
 import lpAprs56 from 'config/constants/lpAprs/56.json'
 import lpAprs1 from 'config/constants/lpAprs/1.json'
+import lpAprs512512 from 'config/constants/lpAprs/512512.json'
 
 const getLpApr = (chainId: number) => {
   switch (chainId) {
     case ChainId.BSC:
       return lpAprs56
+    case ChainId.CMP_TESTNET:
+      return lpAprs512512
     case ChainId.ETHEREUM:
       return lpAprs1
     default:

@@ -5,8 +5,9 @@ import {
   SwapFillIcon,
   EarnFillIcon,
   EarnIcon,
-  TrophyIcon,
-  TrophyFillIcon,
+  // TrophyIcon,
+  ShareIcon,
+  // TrophyFillIcon,
   NftIcon,
   NftFillIcon,
   MoreIcon,
@@ -82,22 +83,24 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Earn'),
+      label: t('Farm'),
       href: '/farms',
+      supportChainIds: SUPPORT_ONLY_BSC,
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
+      showItemsOnMobile: false,
       image: '/images/decorations/pe2.png',
       items: [
-        {
-          label: t('Farms'),
-          href: '/farms',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
-        {
-          label: t('Pools'),
-          href: '/pools',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
+        // {
+        //   label: t('Farms'),
+        //   href: '/farms',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        // },
+        // {
+        //   label: t('Pools'),
+        //   href: '/pools',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     // {
@@ -130,13 +133,13 @@ const config: (
     //     },
     //   ],
     // },
-    {
-      label: t('NFT'),
-      href: '/404',
-      icon: NftIcon,
-      fillIcon: NftFillIcon,
-      image: '/images/decorations/nft.png',
-      items: [
+    // {
+    //   label: t('NFT'),
+    //   href: '/404',
+    //   icon: NftIcon,
+    //   fillIcon: NftFillIcon,
+    //   image: '/images/decorations/nft.png',
+    //   items: [
         // {
         //   label: t('Overview'),
         //   href: `${nftsBaseUrl}`,
@@ -149,31 +152,49 @@ const config: (
         //   label: t('Activity'),
         //   href: `${nftsBaseUrl}/activity`,
         // },
-      ],
+    //   ],
+    // },
+    {
+      label: 'Docs',
+      href: 'https://towerswap.gitbook.io/towerswap-finance',
+      type: DropdownMenuItemType.EXTERNAL_LINK,
+      icon: ShareIcon,
+      showItemsOnMobile: false,
+      // hideSubNav: true,
+      items: [
+        // {
+        //   label: t('Docs'),
+        //   href: 'https://towerswap.gitbook.io/towerswap-finance',
+        //   type: DropdownMenuItemType.EXTERNAL_LINK,
+        // },
+      ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: 'Info',
+      label: 'Coming Soon',
       href: '/info',
       icon: MoreIcon,
       hideSubNav: true,
       items: [
         {
-          label: t('Docs'),
-          href: 'https://towerswap.gitbook.io/towerswap-finance',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
+          label: t('Stake'),
+          href: '/404',
         },
-        // {
-        //   label: t('Info'),
-        //   href: '/404',
-        // },
-        // {
-        //   label: t('LaunchPad'),
-        //   href: '/404',
-        // },
-        // {
-        //   label: t('TowerLabs'),
-        //   href: '/404',
-        // },
+        {
+          label: t('NFT'),
+          href: '/404',
+        },
+        {
+          label: t('LaunchPad'),
+          href: '/404',
+        },
+        {
+          label: t('TowerLabs'),
+          href: '/404',
+        },
+        {
+          label: t('Info'),
+          href: '/404',
+        },
         // {
         //   label: t('IFO'),
         //   href: '/ifo',

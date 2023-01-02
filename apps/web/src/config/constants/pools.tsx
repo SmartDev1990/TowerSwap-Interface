@@ -61,15 +61,14 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     stakingToken: testnetTokens.cake,
     earningToken: testnetTokens.cake,
     contractAddress: {
-      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
-      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
-      512512: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
+      97: '',
+      56: '',
+      512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,
   },
-  /*
   {
     sousId: 1,
     stakingToken: testnetTokens.cake,
@@ -109,7 +108,6 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '100',
     isFinished: false,
   },
-  */
 ].map((p) => ({
   ...p,
   stakingToken: p.stakingToken.serialize,
