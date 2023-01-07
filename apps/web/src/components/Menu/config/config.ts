@@ -177,7 +177,8 @@ const config: (
       items: [
         {
           label: t('Stake'),
-          href: '/404',
+          href: '/pools',
+          supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
           label: t('NFT'),

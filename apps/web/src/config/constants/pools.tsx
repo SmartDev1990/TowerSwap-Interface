@@ -19,7 +19,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 380000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
+      primarySrc: `/images/512512/tokens/${testnetTokens.cake.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -29,7 +29,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
+      primarySrc: `/images/512512/tokens/${testnetTokens.cake.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -69,6 +69,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '10',
     isFinished: false,
   },
+  /*
   {
     sousId: 1,
     stakingToken: testnetTokens.cake,
@@ -108,6 +109,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '100',
     isFinished: false,
   },
+  */
 ].map((p) => ({
   ...p,
   stakingToken: p.stakingToken.serialize,
