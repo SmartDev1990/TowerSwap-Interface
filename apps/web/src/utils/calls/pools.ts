@@ -18,12 +18,12 @@ export const getActivePools = async (block?: number) => {
     .filter((pool) => pool.isFinished === false || pool.isFinished === undefined)
   const startBlockCalls = eligiblePools.map(({ contractAddress }) => ({
     abi: sousChefV2,
-    address: getAddress(contractAddress, 512512),
+    address: getAddress(contractAddress, 56),
     name: 'startBlock',
   }))
   const endBlockCalls = eligiblePools.map(({ contractAddress }) => ({
     abi: sousChefV2,
-    address: getAddress(contractAddress, 512512),
+    address: getAddress(contractAddress, 56),
     name: 'bonusEndBlock',
   }))
   const blockCall = !block

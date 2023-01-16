@@ -24,7 +24,7 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeVault]: {
-    name: <Trans>Stake CAKE</Trans>,
+    name: <Trans>Stake TW</Trans>,
     description: <Trans>Stake, Earn – And more!</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
@@ -34,7 +34,7 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeFlexibleSideVault]: {
-    name: <Trans>Flexible CAKE</Trans>,
+    name: <Trans>Flexible TW</Trans>,
     description: <Trans>Flexible staking on the side.</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
@@ -56,46 +56,58 @@ export const vaultPoolConfig = {
 } as const
 
 export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
+  // Auto TW: 512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
   {
     sousId: 0,
     stakingToken: testnetTokens.cake,
     earningToken: testnetTokens.cake,
     contractAddress: {
-      97: '',
-      56: '',
+      256256: '',
       512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,
   },
-  /*
   {
     sousId: 1,
     stakingToken: testnetTokens.cake,
-    earningToken: testnetTokens.cake,
+    earningToken: testnetTokens.usdt,
     contractAddress: {
-      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
-      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
-      512512: '0x82F6fC7AD9124Ef3196a571E6d06De0713437736',
+      256256: '',
+      512512: '0xd727eCaDe0D9B77De4927f631553c8fbF8cb6e03',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '100',
+    Version: 3,
+  },
+  /*
+  {
+    sousId: 2,
+    stakingToken: testnetTokens.cake,
+    earningToken: testnetTokens.bnb,
+    contractAddress: {
+      256256: '',
+      512512: '0xB0466Ce4BF4D091093C630C5fe891e91cB25e3E7',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '100',
     isFinished: false,
   },
+  /*
   {
-    sousId: 2,
+    sousId: 3,
     stakingToken: testnetTokens.cake,
-    earningToken: testnetTokens.wbnb,
+    earningToken: testnetTokens.busd,
     contractAddress: {
-      256256: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
-      56: '0xdd25bdce10e6c7d4bb4804fe1f5d2aa04aac8d01',
-      512512: '0x201583a8907F76EC2f0300052d88c70b7b97dA34',
+      256256: '',
+      512512: '0xEBAb681E2453aa7e8BD9666AE3ff3e59B88db091',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '1000',
+    tokenPerBlock: '100',
     isFinished: false,
   },
+  /*
   {
     sousId: 3,
     stakingToken: testnetTokens.cake,

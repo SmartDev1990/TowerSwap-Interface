@@ -63,13 +63,15 @@ export default {
     512512: '',
     256256: '',
   },
+  // cakeVault: 0x08ab028b29caF39542a3C1EacC260D8637FAd4a9
   cakeVault: {
-    512512: '0x4EFe0F3A0a4d037b2770Db655C8c9708B15aeC88',
     256256: '',
+    512512: '',
   },
+  // cakeFlexibleSideVault: 0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa
   cakeFlexibleSideVault: {
-    512512: '0x03588D7e2995f900729A47bB2eB9563aFA6b05A1',
     256256: '',
+    512512: '',
   },
   predictionsBNB: {
     512512: '',
@@ -137,7 +139,7 @@ export default {
     256256: '',
   },
   iCake: {
-    512512: '',
+    512512: '0x04f7462b2C5418aa93d17CB72921C82560415598',
     256256: '',
   },
   bCakeFarmBooster: {

@@ -85,22 +85,21 @@ const config: (
     {
       label: t('Farm'),
       href: '/farms',
-      supportChainIds: SUPPORT_ONLY_BSC,
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
       showItemsOnMobile: false,
       image: '/images/decorations/pe2.png',
       items: [
-        // {
-        //   label: t('Farms'),
-        //   href: '/farms',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        // },
-        // {
-        //   label: t('Pools'),
-        //   href: '/pools',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        // },
+        {
+          label: t('Farms'),
+          href: '/farms',
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
+        {
+          label: t('Pools'),
+          href: '/pools',
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     // {
@@ -175,11 +174,11 @@ const config: (
       icon: MoreIcon,
       hideSubNav: true,
       items: [
-        {
-          label: t('Stake'),
-          href: '/pools',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
+        // {
+        //   label: t('Stake'),
+        //   href: '/pools',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        // },
         {
           label: t('NFT'),
           href: '/404',
