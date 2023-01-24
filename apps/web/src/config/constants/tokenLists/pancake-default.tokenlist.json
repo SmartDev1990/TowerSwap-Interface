@@ -51,6 +51,14 @@
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/CMP.png"
     },
     {
+      "name": "TowerTest Token",
+      "symbol": "TTT",
+      "address": "0xaC63c9D1c337766CD321886E6d789cB266a45F5e",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
+    },
+    {
       "name": "Tower BUSD",
       "symbol": "BUSDt",
       "address": "0x09FB691A786284e99D122D2B68dE40D253fec299",

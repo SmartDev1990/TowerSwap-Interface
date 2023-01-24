@@ -77,12 +77,12 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
       {chainName === 'BSC' && !isStableSwap && (
         <Message variant="warning" mb="10px">
           <MessageText fontSize={16}>
-            {t('PancakeSwap Info is currently under maintenance. Data may not be accurate or up-to-date.')}
+            {t('TowerkeSwap Info is currently under maintenance. Data may not be accurate or up-to-date.')}
           </MessageText>
         </Message>
       )}
       <Heading scale="lg" mb="16px" id="info-overview-title">
-        {t('PancakeSwap Info & Analytics')}
+        {t('TowerSwap Info & Analytics')}
       </Heading>
       <ChartCardsContainer>
         <Card>

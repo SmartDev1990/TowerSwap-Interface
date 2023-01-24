@@ -86,16 +86,12 @@ const TeamBCardData: IconCardData = {
 
 const bottomLeftImage = {
   path: '/images/home/prediction-cards/',
-  attributes: [
-    { src: '', alt: '' },
-  ],
+  attributes: [{ src: '', alt: '' }],
 }
 
 const topRightImage = {
   path: '/images/home/lottery-balls/',
-  attributes: [
-    { src: '', alt: '' },
-  ],
+  attributes: [{ src: '', alt: '' }],
 }
 
 const WinSection = () => {
@@ -115,7 +111,7 @@ const WinSection = () => {
       <TransparentFrame isDark={theme.isDark}>
         <Flex flexDirection="column" alignItems="center" justifyContent="center">
           <ColoredWordHeading textAlign="center" text={t('TowerSwap Team')} mb="50px" />
-          <Flex m="0 auto" flexDirection={['column', null, null,'row']} maxWidth="600px">
+          <Flex m="0 auto" flexDirection={['column', null, null, 'row']} maxWidth="600px">
             <Flex
               flex="1"
               maxWidth={['275px', null, null, '100%']}
@@ -126,10 +122,11 @@ const WinSection = () => {
                 <TeamACardContent />
               </IconCard>
             </Flex>
-            <Flex flex="1"
-            maxWidth={['275px', null, null, '100%']}
-            mr={[null, null, null, '24px']}
-            mb={['32px', null, null, '24px']}
+            <Flex
+              flex="1"
+              maxWidth={['275px', null, null, '100%']}
+              mr={[null, null, null, '24px']}
+              mb={['32px', null, null, '24px']}
             >
               <IconCard {...TeamBCardData}>
                 <TeamBCardContent />
@@ -138,13 +135,13 @@ const WinSection = () => {
           </Flex>
         </Flex>
         <Flex flexDirection="column" alignItems="center" justifyContent="center">
-          <Flex m="0 auto" flexDirection={['column', null, null,'row']} maxWidth="600px">
+          <Flex m="0 auto" flexDirection={['column', null, null, 'row']} maxWidth="600px">
             <Flex
               flex="1"
               maxWidth={['275px', null, null, '100%']}
               mr={[null, null, null, '24px']}
               mb={['32px', null, null, '0']}
-              >
+            >
               <IconCard {...PredictionCardData}>
                 <PredictionCardContent />
               </IconCard>
@@ -154,7 +151,7 @@ const WinSection = () => {
               maxWidth={['275px', null, null, '100%']}
               mr={[null, null, null, '24px']}
               mb={['32px', null, null, '0']}
-              >
+            >
               <IconCard {...LotteryCardData}>
                 <LotteryCardContent />
               </IconCard>

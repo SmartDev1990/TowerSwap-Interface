@@ -110,12 +110,12 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => 
 
 export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) => {
   const allowanceCall = {
-    address: testnetTokens.cake.address,
+    address: testnetTokens.tw.address,
     name: 'allowance',
     params: [account, cakeVaultAddress],
   }
   const balanceOfCall = {
-    address: testnetTokens.cake.address,
+    address: testnetTokens.tw.address,
     name: 'balanceOf',
     params: [account],
   }
@@ -167,7 +167,7 @@ export const fetchPoolsPublicDataAsync =
       const farmsData = getState().farms.data
       const bnbBusdFarm =
         activePriceHelperLpsConfig.length > 0
-          ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WBNB')
+          ? farmsData.find((farm) => farm.token.symbol === 'BUSD' && farm.quoteToken.symbol === 'WCMP')
           : null
       const farmsWithPricesOfDifferentTokenPools = bnbBusdFarm
         ? getFarmsPrices([bnbBusdFarm, ...poolsWithDifferentFarmToken], chainId)

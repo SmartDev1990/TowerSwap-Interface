@@ -10,7 +10,7 @@
   "keywords": ["pancakeswap", "extended"],
   "tokens": [
     {
-       "name": "Wrapped CMP",
+      "name": "Wrapped CMP",
       "symbol": "WCMP",
       "address": "0xaB6b6212e5443228D586cE5Aeb54B02b185208Cc",
       "chainId": 512512,

@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { ArrowForwardIcon, Button, Flex, Heading, Image, Skeleton, Text, NextLinkFromReactRouter } from '@pancakeswap/uikit'
+import {
+  ArrowForwardIcon,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  Skeleton,
+  Text,
+  NextLinkFromReactRouter,
+} from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import { formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
 import { useIntersectionObserver } from '@pancakeswap/hooks'
@@ -58,9 +67,9 @@ const PredictionCardContent = () => {
           {t('Oky')}
         </Text>
         <Flex alignItems="center" justifyContent="center">
-        <Text color="#280D5F" mb="15px">
-          {t('TowerSwap Marketing & Parnership Staff')}
-        </Text>
+          <Text color="#280D5F" mb="15px">
+            {t('TowerSwap Marketing & Parnership Staff')}
+          </Text>
         </Flex>
       </Flex>
       <Flex alignItems="center" justifyContent="center">

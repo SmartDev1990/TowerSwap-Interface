@@ -88,10 +88,10 @@ const CakeDataRow = () => {
   } = useSWR(
     loadData ? ['cakeDataRow'] : null,
     async () => {
-      const totalSupplyCall = { abi: cakeAbi, address: testnetTokens.cake.address, name: 'totalSupply' }
+      const totalSupplyCall = { abi: cakeAbi, address: testnetTokens.tw.address, name: 'totalSupply' }
       const burnedTokenCall = {
         abi: cakeAbi,
-        address: testnetTokens.cake.address,
+        address: testnetTokens.tw.address,
         name: 'balanceOf',
         params: ['0x000000000000000000000000000000000000dEaD'],
       }

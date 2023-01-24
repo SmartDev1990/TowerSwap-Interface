@@ -15,7 +15,7 @@ import {
 import { useTranslation } from '@pancakeswap/localization'
 import BigNumber from 'bignumber.js'
 import { usePotteryData, useLatestVaultAddress } from 'state/pottery/hook'
-import { CAKE } from '@pancakeswap/tokens'
+import { TW } from '@pancakeswap/tokens'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { getFullDisplayBalance, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
 import { PotteryDepositStatus } from 'state/types'
@@ -55,13 +55,13 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
   const maxTotalDepositToNumber = getBalanceNumber(publicData.maxTotalDeposit)
   const remainingCakeCanStake = new BigNumber(maxTotalDepositToNumber).minus(totalValueLockedValue).toString()
 
-  const { balance: userCake } = useTokenBalance(CAKE[chainId]?.address)
+  const { balance: userCake } = useTokenBalance(TW[chainId]?.address)
   const userCakeDisplayBalance = getFullDisplayBalance(userCake, 18, 3)
   const { userNotEnoughCake, notEnoughErrorMessage } = useUserEnoughCakeValidator(depositAmount, userCake)
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(
-      'CAKE deposit will be diverted to the fixed-term staking pool. Please note that CAKE deposited can ONLY be withdrawn after 10 weeks.',
+      'TW deposit will be diverted to the fixed-term staking pool. Please note that TW deposited can ONLY be withdrawn after 10 weeks.',
     ),
     {
       placement: 'bottom',
@@ -122,7 +122,7 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
           {t('Deposit')}
         </Text>
         <Text fontSize="12px" ml="4px" color="textSubtle" bold as="span">
-          CAKE
+          TW
         </Text>
       </Box>
       <InputPanel>
@@ -150,7 +150,7 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
         </Container>
         {isLessThanOneCake && (
           <Text color="failure" fontSize="14px" textAlign="right">
-            {t('Please deposit at least 1 CAKE to participate in the Pottery')}
+            {t('Please deposit at least 1 TW to participate in the Pottery')}
           </Text>
         )}
       </InputPanel>

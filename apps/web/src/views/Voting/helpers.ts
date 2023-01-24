@@ -1,5 +1,5 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { bscTokens } from '@pancakeswap/tokens'
+import { testnetTokens } from '@pancakeswap/tokens'
 import BigNumber from 'bignumber.js'
 import cakeVaultAbiV2 from 'config/abi/cakeVaultV2.json'
 import { SNAPSHOT_HUB_API } from 'config/constants/endpoints'
@@ -44,7 +44,7 @@ export interface Message {
 }
 
 const STRATEGIES = [
-  { name: 'cake', params: { symbol: 'CAKE', address: bscTokens.cake.address, decimals: 18, max: 300 } },
+  { name: 'cake', params: { symbol: 'CAKE', address: testnetTokens.tw.address, decimals: 18, max: 300 } },
 ]
 const NETWORK = '56'
 

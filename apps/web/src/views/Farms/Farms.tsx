@@ -363,7 +363,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             <FarmH1 as="h1" scale="xxl" color="secondary" mb="24px">
               {t('Farms')}
             </FarmH1>
-              {/*  <FarmH2 scale="lg" color="text">
+            {/*  <FarmH2 scale="lg" color="text">
               {t('Avalable on mainnet soon.')}
             </FarmH2>  */}
             <FarmH2 scale="lg" color="text">
@@ -378,11 +378,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               </Button>
             </NextLinkFromReactRouter> */}
           </Box>
-          {chainId === ChainId.CMP_TESTNET && (
+          {/* {chainId === ChainId.CMP_TESTNET && (
             <Box>
               <BCakeBoosterCard />
             </Box>
-          )}
+          )} */}
         </FarmFlexWrapper>
       </PageHeader>
       <Page>

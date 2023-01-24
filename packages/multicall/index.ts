@@ -6,11 +6,11 @@ import { ChainId } from '@pancakeswap/sdk'
 import multicallAbi from './Multicall.json'
 
 export const multicallAddresses = {
-  1: '',
-  56: '',
-  97: '',
-  5: '',
-  4: '',
+  1: '0xcA11bde05977b3631167028862bE2a173976CA1',
+  56: '0xcA11bde05977b3631167028862bE2a173976CA1',
+  97: '0xcA11bde05977b3631167028862bE2a173976CA1',
+  5: '0xcA11bde05977b3631167028862bE2a173976CA1',
+  4: '0xcA11bde05977b3631167028862bE2a173976CA1',
   256256: '0x3dc18345e131a673e11401696a35e7927673eeea',
   512512: '0x3c93435d183bfc976037ec8296a89e05833ab7e3',
 }

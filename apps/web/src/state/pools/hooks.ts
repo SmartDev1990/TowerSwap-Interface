@@ -48,8 +48,8 @@ const getActiveFarms = async (chainId: number) => {
     .filter(
       ({ token, pid, quoteToken }) =>
         pid !== 0 &&
-        ((token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
-          (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB') ||
+        ((token.symbol === 'TW' && quoteToken.symbol === 'WCMP') ||
+          (token.symbol === 'BUSD' && quoteToken.symbol === 'WCMP') ||
           lPoolAddresses.find((poolAddress) => poolAddress === token.address)),
     )
     .map((farm) => farm.pid)
@@ -61,8 +61,8 @@ const getCakePriceFarms = async (chainId: number) => {
     .filter(
       ({ token, pid, quoteToken }) =>
         pid !== 0 &&
-        ((token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
-          (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB')),
+        ((token.symbol === 'TW' && quoteToken.symbol === 'WCMP') ||
+          (token.symbol === 'BUSD' && quoteToken.symbol === 'WCMP')),
     )
     .map((farm) => farm.pid)
 }

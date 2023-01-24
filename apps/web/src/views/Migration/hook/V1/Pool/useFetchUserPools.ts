@@ -5,7 +5,7 @@ import { SerializedPool } from 'state/types'
 import { transformPool } from 'state/pools/helpers'
 import { getCakeContract } from 'utils/contractHelpers'
 import { PoolCategory } from 'config/constants/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { testnetTokens } from '@pancakeswap/tokens'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { fetchUserStakeBalances, fetchUserPendingRewards } from './fetchPoolsUser'
 
@@ -19,14 +19,16 @@ const cakeContract = getCakeContract()
 const initialData = {
   data: {
     sousId: 0,
-    stakingToken: bscTokens.cake.serialize,
-    earningToken: bscTokens.cake.serialize,
+    stakingToken: testnetTokens.tw.serialize,
+    earningToken: testnetTokens.tw.serialize,
     contractAddress: {
-      97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
-      56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
+      97: '',
+      56: '',
+      256256: '',
+      512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '10',
+    tokenPerBlock: '100',
     isFinished: false,
     totalStaked: '0',
   },

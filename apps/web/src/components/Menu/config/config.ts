@@ -88,7 +88,6 @@ const config: (
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
       showItemsOnMobile: false,
-      image: '/images/decorations/pe2.png',
       items: [
         {
           label: t('Farms'),
@@ -139,18 +138,18 @@ const config: (
     //   fillIcon: NftFillIcon,
     //   image: '/images/decorations/nft.png',
     //   items: [
-        // {
-        //   label: t('Overview'),
-        //   href: `${nftsBaseUrl}`,
-        // },
-        // {
-        //   label: t('Collections'),
-        //   href: `${nftsBaseUrl}/collections`,
-        // },
-        // {
-        //   label: t('Activity'),
-        //   href: `${nftsBaseUrl}/activity`,
-        // },
+    // {
+    //   label: t('Overview'),
+    //   href: `${nftsBaseUrl}`,
+    // },
+    // {
+    //   label: t('Collections'),
+    //   href: `${nftsBaseUrl}/collections`,
+    // },
+    // {
+    //   label: t('Activity'),
+    //   href: `${nftsBaseUrl}/activity`,
+    // },
     //   ],
     // },
     {

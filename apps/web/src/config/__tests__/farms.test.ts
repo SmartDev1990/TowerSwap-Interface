@@ -9,7 +9,7 @@ const farmsToTest: [number, SerializedFarm, number][] = farms56
   .filter((farm) => farm.pid !== 0 && farm.pid !== null)
   .filter((farm) => !farm.stableSwapAddress)
   .slice(0, 10)
-  .map((farm) => [farm.pid, farm, 56])
+  .map((farm) => [farm.pid, farm, 512512])
 
 const farms1ToTest: [number, SerializedFarm, number][] = farms1.slice(0, 10).map((farm) => [farm.pid, farm, 1])
 
@@ -55,7 +55,7 @@ describe('Config farms', () => {
   // The first pid using the new factory
   // BSC
   const START_PID = 2
-  const FACTORY_ADDRESS = '0xca143ce32fe78f1f7019d7d551a6402fc5350c73'
+  const FACTORY_ADDRESS = '0xd05cd3b72a851f29804f23bc8b27fe86bc9b0eac'
   const newFarmsToTest = farmsToTest.filter((farmSet) => farmSet[0] >= START_PID)
 
   it.each(newFarmsToTest)('farm %d is using correct factory address', async (pid, farm) => {

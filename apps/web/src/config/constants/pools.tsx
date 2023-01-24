@@ -19,7 +19,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 380000,
     tokenImage: {
-      primarySrc: `/images/512512/tokens/${testnetTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -29,7 +29,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/512512/tokens/${testnetTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -39,7 +39,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -49,7 +49,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.address}.svg`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },
@@ -59,45 +59,44 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   // Auto TW: 512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
   {
     sousId: 0,
-    stakingToken: testnetTokens.cake,
-    earningToken: testnetTokens.cake,
+    stakingToken: testnetTokens.tw,
+    earningToken: testnetTokens.tw,
     contractAddress: {
       256256: '',
       512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '10',
+    tokenPerBlock: '100',
     isFinished: false,
   },
   {
     sousId: 1,
-    stakingToken: testnetTokens.cake,
-    earningToken: testnetTokens.usdt,
+    stakingToken: testnetTokens.tw,
+    earningToken: testnetTokens.wcmp,
     contractAddress: {
       256256: '',
-      512512: '0xd727eCaDe0D9B77De4927f631553c8fbF8cb6e03',
+      512512: '0x18Ea23f980716557Da6Af169D2EA5d39175f72Ed',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '100',
-    Version: 3,
+    tokenPerBlock: '0.1',
+    isFinished: false,
   },
-  /*
   {
     sousId: 2,
-    stakingToken: testnetTokens.cake,
-    earningToken: testnetTokens.bnb,
+    stakingToken: testnetTokens.tw,
+    earningToken: testnetTokens.busd,
     contractAddress: {
       256256: '',
-      512512: '0xB0466Ce4BF4D091093C630C5fe891e91cB25e3E7',
+      512512: '0x2132921e45139Ca153992555bDCf7F3C0c63E004',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '100',
+    tokenPerBlock: '0.03',
     isFinished: false,
   },
   /*
   {
     sousId: 3,
-    stakingToken: testnetTokens.cake,
+    stakingToken: testnetTokens.tw,
     earningToken: testnetTokens.busd,
     contractAddress: {
       256256: '',
@@ -105,7 +104,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '100',
-    isFinished: false,
+    Version: 3,
   },
   /*
   {
@@ -122,14 +121,23 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     isFinished: false,
   },
   */
-].map((p) => ({
-  ...p,
-  stakingToken: p.stakingToken.serialize,
-  earningToken: p.earningToken.serialize,
-}))
+]
 
 // known finished pools
-const finishedPools = [].map((p) => ({
+const finishedPools = [
+  {
+    sousId: 1,
+    stakingToken: testnetTokens.tw,
+    earningToken: testnetTokens.usdt,
+    contractAddress: {
+      256256: '',
+      512512: '0xd727eCaDe0D9B77De4927f631553c8fbF8cb6e03',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '100',
+    isFinished: true,
+  },
+].map((p) => ({
   ...p,
   isFinished: true,
   stakingToken: p.stakingToken.serialize,

@@ -15,16 +15,16 @@ export const CAKE_TESTNET = new ERC20Token(
   18,
   'CAKE',
   'PancakeSwap Token',
-  'https://pancakeswap.finance/',
+  'https://towerswap.finance/',
 )
 
 export const TOWER_MAINNET = new ERC20Token(
   ChainId.CMP,
-  '0x09FB691A786284e99D122D2B68dE40D253fec299',
+  '0xaC63c9D1c337766CD321886E6d789cB266a45F5e',
   18,
-  'TW',
-  'TowerSwap Token',
-  'https://pancakeswap.finance/',
+  'TTT',
+  'TowerTest Token',
+  'https://towerswap.finance/',
 )
 
 export const TOWER_TESTNET = new ERC20Token(
@@ -32,8 +32,8 @@ export const TOWER_TESTNET = new ERC20Token(
   '0x09FB691A786284e99D122D2B68dE40D253fec299',
   18,
   'TW',
-  'TowerSwap Token',
-  'https://pancakeswap.finance/',
+  'TowerTestnet Token',
+  'https://towerswap.finance/',
 )
 
 export const USDC_BSC = new ERC20Token(
@@ -164,6 +164,9 @@ export const BUSD: Record<ChainId, ERC20Token> = {
 export const CAKE = {
   [ChainId.BSC]: CAKE_MAINNET,
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
+}
+
+export const TW = {
   [ChainId.CMP]: TOWER_MAINNET,
   [ChainId.CMP_TESTNET]: TOWER_TESTNET,
 }

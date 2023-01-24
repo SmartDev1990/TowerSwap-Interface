@@ -20,7 +20,7 @@ export default {
   },
   multiCall: multicallAddresses,
   pancakeProfile: {
-    512512: '0x3774a1265745fe85689b1391c58fc5BE2b098052',
+    512512: '0x843887ac63f97dA742d35C7e150069ff5827Cf80',
     256256: '',
   },
   pancakeBunnies: {
@@ -66,12 +66,12 @@ export default {
   // cakeVault: 0x08ab028b29caF39542a3C1EacC260D8637FAd4a9
   cakeVault: {
     256256: '',
-    512512: '',
+    512512: '0x08ab028b29caF39542a3C1EacC260D8637FAd4a9',
   },
   // cakeFlexibleSideVault: 0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa
   cakeFlexibleSideVault: {
     256256: '',
-    512512: '',
+    512512: '0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa',
   },
   predictionsBNB: {
     512512: '',
@@ -118,7 +118,7 @@ export default {
     256256: '',
   },
   nftMarket: {
-    512512: '0x45F7b7FEc614a06C362ffCcb8F0c8aE6B787223C',
+    512512: '0xf5d0451128064c1aa5b3dff43fa2608d97c2572d',
     256256: '',
   },
   nftSale: {
