@@ -124,20 +124,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
 ]
 
 // known finished pools
-const finishedPools = [
-  {
-    sousId: 1,
-    stakingToken: testnetTokens.tw,
-    earningToken: testnetTokens.usdt,
-    contractAddress: {
-      256256: '',
-      512512: '0xd727eCaDe0D9B77De4927f631553c8fbF8cb6e03',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '100',
-    isFinished: true,
-  },
-].map((p) => ({
+const finishedPools = [].map((p) => ({
   ...p,
   isFinished: true,
   stakingToken: p.stakingToken.serialize,
