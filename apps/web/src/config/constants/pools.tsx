@@ -19,7 +19,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 380000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.tw.address}.png`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.symbol}.png`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -29,7 +29,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.tw.address}.png`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.symbol}.png`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -39,7 +39,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.tw.address}.png`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.symbol}.png`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -49,7 +49,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${testnetTokens.tw.address}.png`,
+      primarySrc: `/images/tokens/${testnetTokens.tw.symbol}.png`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },
