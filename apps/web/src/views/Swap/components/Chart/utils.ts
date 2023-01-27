@@ -1,3 +1,4 @@
+import { ChainId, NATIVE } from '@pancakeswap/sdk/src'
 import { BNB_ADDRESS } from './constants'
 
 const MIN_VALUE_DISPLAYED = 0.001
@@ -21,7 +22,7 @@ export const getTimeWindowChange = (lineChartData) => {
   }
 }
 
-export const getTokenAddress = (tokenAddress: undefined | string) => {
+export const getTokenAddress = (tokenAddress: undefined | string, chainId: number) => {
   if (!tokenAddress) {
     return ''
   }

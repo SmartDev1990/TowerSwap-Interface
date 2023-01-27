@@ -96,12 +96,12 @@ const getAprsForFarmGroup = async (addresses: string[], blockWeekAgo: number, ch
 }
 
 // Copy paste of Stable farm logic
-export const bscProvider = new StaticJsonRpcProvider(
+export const cmptestnetProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://bsc-mainnet.nodereal.io/v1/5a516406afa140ffa546ee10af7c9b24',
+    url: 'https://galaxy.block.caduceus.foundation',
     skipFetchSetup: true,
   },
-  56,
+  512512,
 )
 
 interface SplitFarmResult {
@@ -166,7 +166,7 @@ function splitNormalAndStableFarmsReducer(result: SplitFarmResult, farm: any): S
 }
 // ====
 
-const FETCH_CHAIN_ID = [ChainId.BSC, ChainId.ETHEREUM]
+const FETCH_CHAIN_ID = [CMP_TESTNET]
 const fetchAndUpdateLPsAPR = async () => {
   Promise.all(
     FETCH_CHAIN_ID.map(async (chainId) => {

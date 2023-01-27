@@ -23,8 +23,8 @@ export const SwapFeaturesContext = createContext<{
 })
 
 const CHART_SUPPORT_CHAIN_IDS = [ChainId.CMP_TESTNET, ChainId.CMP]
-const ACCESS_TOKEN_SUPPORT_CHAIN_IDS = [ChainId.CMP_TESTNET]
-const STABLE_SUPPORT_CHAIN_IDS = [ChainId.CMP_TESTNET, ChainId.CMP]
+const ACCESS_TOKEN_SUPPORT_CHAIN_IDS = [ChainId.BSC]
+const STABLE_SUPPORT_CHAIN_IDS = [ChainId.BSC]
 
 export const SwapFeaturesProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { isMobile } = useMatchBreakpoints()

@@ -81,7 +81,7 @@ export const USDT_BSC = new ERC20Token(
 
 export const USDT_CMP = new ERC20Token(
   ChainId.CMP,
-  '0xEcf18be7525EF1af19BA495B7a9e3583254DDd73',
+  '0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c',
   6,
   'USDT',
   'Tether USD',

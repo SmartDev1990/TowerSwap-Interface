@@ -24,7 +24,7 @@ const BLOCKS_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.RINKEBY]: '',
-  [ChainId.CMP_TESTNET]: '',
+  [ChainId.CMP_TESTNET]: 'https://api.thegraph.com/subgraphs/name/smartdev1990/blocks',
 }
 
 const INFO_CLIENT_WITH_CHAIN = {
@@ -33,7 +33,7 @@ const INFO_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.RINKEBY]: '',
-  [ChainId.CMP_TESTNET]: '',
+  [ChainId.CMP_TESTNET]: 'https://api.thegraph.com/subgraphs/name/smartdev1990/exchangev2',
 }
 
 const blockClientWithChain = (chainId: ChainId) => {
@@ -57,7 +57,7 @@ const getWeekAgoTimestamp = () => {
   return getUnixTime(weekAgo)
 }
 
-const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.BSC) => {
+const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.CMP_TESTNET) => {
   try {
     const { blocks } = await blockClientWithChain(chainId).request<BlockResponse>(
       `query getBlock($timestampGreater: Int!, $timestampLess: Int!) {
