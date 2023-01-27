@@ -33,6 +33,7 @@ import {
 import { SwapState } from './reducer'
 import { derivedPairByDataIdSelector, pairByDataIdSelector } from './selectors'
 import { PairDataTimeWindowEnum } from './types'
+import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>((state) => state.swap)
@@ -63,8 +64,9 @@ export function useSingleTokenSwapInfo(
   outputCurrencyId: string | undefined,
   outputCurrency: Currency | undefined,
 ): { [key: string]: number } {
-  const token0Address = getTokenAddress(inputCurrencyId)
-  const token1Address = getTokenAddress(outputCurrencyId)
+  const { chainId } = useActiveWeb3React()
+  const token0Address = getTokenAddress(inputCurrencyId, chainId)
+  const token1Address = getTokenAddress(outputCurrencyId, chainId)
 
   const parsedAmount = tryParseAmount('1', inputCurrency ?? undefined)
 

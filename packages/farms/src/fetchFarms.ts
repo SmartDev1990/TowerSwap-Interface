@@ -25,6 +25,7 @@ export const getTokenAmount = (balance: FixedNumber, decimals: number) => {
 export type FetchFarmsParams = {
   farms: SerializedFarmConfig[]
   multicallv2: MultiCallV2
+  isTestnet: boolean
   masterChefAddress: string
   chainId: number
   totalRegularAllocPoint: BigNumber
@@ -34,6 +35,7 @@ export type FetchFarmsParams = {
 export async function farmV2FetchFarms({
   farms,
   multicallv2,
+  isTestnet,
   masterChefAddress,
   chainId,
   totalRegularAllocPoint,
@@ -43,7 +45,7 @@ export async function farmV2FetchFarms({
 
   const [stableFarmsResults, poolInfos, lpDataResults] = await Promise.all([
     fetchStableFarmData(stableFarms, chainId, multicallv2),
-    fetchMasterChefData(farms, multicallv2, masterChefAddress),
+    fetchMasterChefData(farms, isTestnet, multicallv2, masterChefAddress),
     fetchPublicFarmsData(farms, chainId, multicallv2, masterChefAddress),
   ])
 
@@ -159,6 +161,7 @@ const masterChefFarmCalls = (farm: SerializedFarmConfig, masterChefAddress: stri
 
 export const fetchMasterChefData = async (
   farms: SerializedFarmConfig[],
+  isTestnet: boolean,
   multicallv2: MultiCallV2,
   masterChefAddress: string,
 ): Promise<any[]> => {
@@ -169,7 +172,7 @@ export const fetchMasterChefData = async (
     const masterChefMultiCallResult = await multicallv2({
       abi: masterChefV2Abi,
       calls: masterChefAggregatedCalls,
-      chainId: ChainId.CMP_TESTNET,
+      chainId: isTestnet ? ChainId.CMP : ChainId.CMP_TESTNET,
     })
 
     let masterChefChunkedResultCounter = 0
@@ -188,9 +191,11 @@ export const fetchMasterChefData = async (
 }
 
 export const fetchMasterChefV2Data = async ({
+  isTestnet,
   multicallv2,
   masterChefAddress,
 }: {
+  isTestnet: boolean
   multicallv2: MultiCallV2
   masterChefAddress: string
 }) => {
@@ -218,7 +223,7 @@ export const fetchMasterChefV2Data = async ({
           params: [true],
         },
       ],
-      chainId: ChainId.CMP_TESTNET,
+      chainId: isTestnet ? ChainId.CMP : ChainId.CMP_TESTNET,
     })
 
     return {
