@@ -41,6 +41,38 @@
       "chainId": 512512,
       "decimals": 6,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    },
+    {
+      "name": "Wrapped CMP",
+      "symbol": "WCMP",
+      "address": "0x1fcbA3Cb797465F38839F48CA7c9cDA9d9aac28b",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/CMP.png"
+    },
+    {
+      "name": "TowerTest Token",
+      "symbol": "TTT",
+      "address": "0xaC63c9D1c337766CD321886E6d789cB266a45F5e",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
+    },
+    {
+      "name": "Tower BUSD",
+      "symbol": "BUSDt",
+      "address": "0x09FB691A786284e99D122D2B68dE40D253fec299",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/BUSD.png"
+    },
+    {
+      "name": "Tower USDT",
+      "symbol": "USDTt",
+      "address": "0xEcf18be7525EF1af19BA495B7a9e3583254DDd73",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
     }
   ]
 }

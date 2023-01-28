@@ -81,7 +81,7 @@ export const USDT_BSC = new ERC20Token(
 
 export const USDT_CMP = new ERC20Token(
   ChainId.CMP,
-  '0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c',
+  '0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C',
   6,
   'USDT',
   'Tether USD',
@@ -129,7 +129,7 @@ export const BUSD_CMPTESTNET = new ERC20Token(
   '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
   18,
   'BUSD',
-  'Binance USD',
+  'Tower BUSD',
   'https://www.paxos.com/busd/',
 )
 

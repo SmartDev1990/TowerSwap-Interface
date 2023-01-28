@@ -140,7 +140,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
             {
               step: 2,
               tx: '',
-              chainId: ChainId.BSC,
+              chainId: ChainId.CMP_TESTNET,
               status: FarmTransactionStatus.PENDING,
             },
           ],
