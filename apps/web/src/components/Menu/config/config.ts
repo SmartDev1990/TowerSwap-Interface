@@ -158,13 +158,18 @@ const config: (
       type: DropdownMenuItemType.EXTERNAL_LINK,
       icon: ShareIcon,
       showItemsOnMobile: false,
-      // hideSubNav: true,
+      hideSubNav: true,
       items: [
-        // {
-        //   label: t('Docs'),
-        //   href: 'https://towerswap.gitbook.io/towerswap-finance',
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
+        {
+          label: t('Docs'),
+          href: 'https://towerswap.gitbook.io/towerswap-finance',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+        },
+        {
+          label: t('PitchDeck'),
+          href: 'https://docdro.id/a2O3TXW',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+        },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {

@@ -34,7 +34,7 @@ const getWeekAgoTimestamp = () => {
 const LP_HOLDERS_FEE = 0.0017
 const WEEKS_IN_A_YEAR = 52.1429
 
-const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.BSC) => {
+const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.CMP_TESTNET) => {
   try {
     const { blocks } = await request<BlockResponse>(
       BLOCKS_CLIENT_WITH_CHAIN[chainId],

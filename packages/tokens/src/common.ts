@@ -20,10 +20,10 @@ export const CAKE_TESTNET = new ERC20Token(
 
 export const TOWER_MAINNET = new ERC20Token(
   ChainId.CMP,
-  '0xaC63c9D1c337766CD321886E6d789cB266a45F5e',
+  '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
   18,
-  'TTT',
-  'TowerTest Token',
+  'TWS',
+  'TowerSwap Token',
   'https://towerswap.finance/',
 )
 
@@ -117,7 +117,7 @@ export const BUSD_TESTNET = new ERC20Token(
 
 export const BUSD_CMP = new ERC20Token(
   ChainId.CMP,
-  '0x09FB691A786284e99D122D2B68dE40D253fec299',
+  '0x33fea934d76C80C9a857a766Ee1354381d6C6364',
   18,
   'BUSD',
   'Binance USD',

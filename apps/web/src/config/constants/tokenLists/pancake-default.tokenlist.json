@@ -52,27 +52,27 @@
     },
     {
       "name": "TowerTest Token",
-      "symbol": "TTT",
-      "address": "0xaC63c9D1c337766CD321886E6d789cB266a45F5e",
+      "symbol": "TWS",
+      "address": "0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5",
       "chainId": 256256,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     },
     {
-      "name": "Tower BUSD",
-      "symbol": "BUSDt",
-      "address": "0x09FB691A786284e99D122D2B68dE40D253fec299",
-      "chainId": 256256,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/BUSD.png"
-    },
-    {
-      "name": "Tower USDT",
-      "symbol": "USDTt",
-      "address": "0xEcf18be7525EF1af19BA495B7a9e3583254DDd73",
+      "name": "Tether USDT",
+      "symbol": "USDT",
+      "address": "0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C",
       "chainId": 256256,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    },
+    {
+      "name": "BUSD Token",
+      "symbol": "BUSD",
+      "address": "0x33fea934d76C80C9a857a766Ee1354381d6C6364",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/busd.png"
     }
   ]
 }
