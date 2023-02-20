@@ -71,7 +71,7 @@ export default {
   // cakeFlexibleSideVault: 0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa
   cakeFlexibleSideVault: {
     256256: '',
-    512512: '',
+    512512: '0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa',
   },
   predictionsBNB: {
     512512: '',

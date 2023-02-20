@@ -65,7 +65,7 @@ describe('Config farms', () => {
   })
 
   // ETH
-  const ETH_START_PID = 124
+  const ETH_START_PID = 2
   const ETH_FACTORY_ADDRESS = '0x1097053fd2ea711dad45caccc45eff7548fcb362'
   const ethNewFarmsToTest = farms1ToTest.filter((farmSet) => farmSet[0] >= ETH_START_PID)
 
