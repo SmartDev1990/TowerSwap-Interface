@@ -93,6 +93,15 @@ const config = {
         ],
       },
       {
+        source: '/images/512512/tokens/:all*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, immutable, max-age=31536000',
+          },
+        ],
+      },
+      {
         source: '/images/tokens/:all*',
         headers: [
           {

@@ -167,7 +167,7 @@ const config: (
         },
         {
           label: t('PitchDeck'),
-          href: 'https://docdro.id/a2O3TXW',
+          href: 'https://docdro.id/thzR1J1',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),

@@ -4,8 +4,8 @@ import { SalesSectionProps } from '.'
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Trade your favorite Token'),
   bodyText: t(
-    'Towerswap is the first dex with an adequate UI for beginners. anyone can trade any token under Caduceus blokchain.  ' +
-      'with almost zero fees, lowest slippage and guaranteed asset security will make anyone feel comfortable when trading on our dex. ',
+    'Towerswap is the first dex with an adequate UI for beginners. anyone can trade any token under Caduceus Blokchain.  ' +
+      'with almost zero fees, lowest slippage and guaranteed asset security will make anyone feel comfortable when trading on our DEX. ',
   ),
   reverse: false,
   primaryButton: {
@@ -101,7 +101,7 @@ export const moreSectionData = (t: TranslateFunction): SalesSectionProps => ({
 })
 
 export const launchpadSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Tower Launcpad'),
+  headingText: t('Tower Launchpad'),
   bodyText: t(
     'Get additional income through the features that we have provided, We have prepared farming and staking features so that the tokens that you have work for you, everyone is free to choose where their tokens will be stored and we have prepared a place..',
   ),
