@@ -56,16 +56,16 @@ const AptosBanner = () => {
           <Box>
             <Image src={AptosXPancakeSwap} alt="aptosXPancakeSwapImage" width={211} height={18} placeholder="blur" />
           </Box>
-          <AptosTitle>{t('Hello Aptos Project Teams!')}</AptosTitle>
+          <AptosTitle>{t('Trading now LIVE!')}</AptosTitle>
 
           <Button
             minHeight="48px"
             onClick={() =>
-              window?.open('https://docs.pancakeswap.finance/aptos-deployment', '_blank', 'noopener noreferrer')
+              window?.open('https://towerswap.finance/swap', '_blank', 'noopener noreferrer')
             }
           >
             <Text color="invertedContrast" bold fontSize="16px" mr="4px">
-              👋 {t('Get in Touch')}
+              👋 {t('Trade Now')}
             </Text>
             <OpenNewIcon color="invertedContrast" />
           </Button>

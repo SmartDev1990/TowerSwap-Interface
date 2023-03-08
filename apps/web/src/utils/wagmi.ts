@@ -10,7 +10,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from '@gnosis.pm/safe-apps-wagmi'
 
-const CHAINS = [cmpMainnet, cmpTestnet]
+const CHAINS = [cmpMainnet]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

@@ -49,7 +49,7 @@ const getActiveFarms = async (chainId: number) => {
       ({ token, pid, quoteToken }) =>
         pid !== 0 &&
         ((token.symbol === 'TW' && quoteToken.symbol === 'WCMP') ||
-          (token.symbol === 'BUSD' && quoteToken.symbol === 'WCMP') ||
+          (token.symbol === 'USDT' && quoteToken.symbol === 'WCMP') ||
           lPoolAddresses.find((poolAddress) => poolAddress === token.address)),
     )
     .map((farm) => farm.pid)
@@ -62,7 +62,7 @@ const getCakePriceFarms = async (chainId: number) => {
       ({ token, pid, quoteToken }) =>
         pid !== 0 &&
         ((token.symbol === 'TW' && quoteToken.symbol === 'WCMP') ||
-          (token.symbol === 'BUSD' && quoteToken.symbol === 'WCMP')),
+          (token.symbol === 'USDT' && quoteToken.symbol === 'WCMP')),
     )
     .map((farm) => farm.pid)
 }

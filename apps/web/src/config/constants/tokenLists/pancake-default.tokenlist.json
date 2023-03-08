@@ -13,45 +13,13 @@
     {
       "name": "Wrapped CMP",
       "symbol": "WCMP",
-      "address": "0xaB6b6212e5443228D586cE5Aeb54B02b185208Cc",
-      "chainId": 512512,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/CMP.png"
-    },
-    {
-      "name": "TowerTestnet Token",
-      "symbol": "TW",
-      "address": "0x09FB691A786284e99D122D2B68dE40D253fec299",
-      "chainId": 512512,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
-    },
-    {
-      "name": "Tower BUSD",
-      "symbol": "BUSD",
-      "address": "0xB21668048d42d7d6423B070B278F5Af14e1f1600",
-      "chainId": 512512,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/BUSD.png"
-    },
-    {
-      "name": "Tower USDT",
-      "symbol": "USDT",
-      "address": "0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a",
-      "chainId": 512512,
-      "decimals": 6,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
-    },
-    {
-      "name": "Wrapped CMP",
-      "symbol": "WCMP",
       "address": "0x1fcbA3Cb797465F38839F48CA7c9cDA9d9aac28b",
       "chainId": 256256,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/CMP.png"
     },
     {
-      "name": "TowerTest Token",
+      "name": "TowerSwap Token",
       "symbol": "TWS",
       "address": "0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5",
       "chainId": 256256,
@@ -59,20 +27,12 @@
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     },
     {
-      "name": "Tether USDT",
+      "name": "Tower USDT",
       "symbol": "USDT",
-      "address": "0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C",
+      "address": "0x8bFB6654C5cE007DD8E9474928c9Bf5199a09055",
       "chainId": 256256,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
-    },
-    {
-      "name": "BUSD Token",
-      "symbol": "BUSD",
-      "address": "0x33fea934d76C80C9a857a766Ee1354381d6C6364",
-      "chainId": 256256,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/busd.png"
     }
   ]
 }

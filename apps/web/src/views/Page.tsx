@@ -22,7 +22,7 @@ const Page: React.FC<
 }) => {
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
-  const isBSC = chainId === ChainId.CMP_TESTNET
+  const isBSC = chainId === ChainId.CMP
   const externalText = isBSC ? t('Bridge your Asset to CMP chain') : ''
   const externalLinkUrl = isBSC ? 'https://app.multichain.org/#/router' : ''
 

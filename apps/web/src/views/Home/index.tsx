@@ -25,7 +25,7 @@ import FarmsPoolsRow from './components/FarmsPoolsRow'
 // import CakeDataRow from './components/CakeDataRow'
 // import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 // import UserBanner from './components/UserBanner'
-// import MultipleBanner from './components/Banners/MultipleBanner'
+import MultipleBanner from './components/Banners/MultipleBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -79,6 +79,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
+        <MultipleBanner />
         <Hero />
       </StyledHeroSection>
       <PageSection
