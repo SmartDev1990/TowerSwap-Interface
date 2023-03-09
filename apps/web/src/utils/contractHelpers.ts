@@ -153,7 +153,7 @@ import { ChainId } from '@pancakeswap/sdk'
 export const getContract = ({
   abi,
   address,
-  chainId,
+  chainId = ChainId.CMP,
   signer,
 }: {
   abi: any

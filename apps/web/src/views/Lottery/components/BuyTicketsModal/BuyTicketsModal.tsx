@@ -1,6 +1,6 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { useTranslation } from '@pancakeswap/localization'
-import { testnetTokens } from '@pancakeswap/tokens'
+import { mainnetTokens } from '@pancakeswap/tokens'
 import {
   ArrowForwardIcon,
   BalanceInput,
@@ -85,7 +85,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const lotteryContract = useLotteryV2Contract()
   const { reader: cakeContractReader, signer: cakeContractApprover } = useCake()
   const { toastSuccess } = useToast()
-  const { balance: userCake, fetchStatus } = useTokenBalance(testnetTokens.tw.address)
+  const { balance: userCake, fetchStatus } = useTokenBalance(mainnetTokens.tw.address)
   // balance from useTokenBalance causes rerenders in effects as a new BigNumber is instantiated on each render, hence memoising it using the stringified value below.
   const stringifiedUserCake = userCake.toJSON()
   const memoisedUserCake = useMemo(() => new BigNumber(stringifiedUserCake), [stringifiedUserCake])

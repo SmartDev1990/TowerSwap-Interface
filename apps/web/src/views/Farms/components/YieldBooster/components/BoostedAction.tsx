@@ -49,7 +49,7 @@ const BoostedAction: React.FunctionComponent<BoostedActionPropsType> = ({
         return (
           <ActionButton
             title={`${t('Up to')} ${boostMultiplierDisplay}x`}
-            description={t('Lock TW to activate yield booster')}
+            description={t('Lock TWS to activate yield booster')}
             style={{ whiteSpace: 'nowrap' }}
             button={
               <NextLinkFromReactRouter to="/pools">
@@ -62,7 +62,7 @@ const BoostedAction: React.FunctionComponent<BoostedActionPropsType> = ({
         return (
           <ActionButton
             title={`${t('Up to')} ${boostMultiplierDisplay}x`}
-            description={t('Lock TW is ended. Re-lock TW to activate yield booster')}
+            description={t('Lock TWS is ended. Re-lock TWS to activate yield booster')}
             style={{ whiteSpace: 'nowrap' }}
             button={
               <NextLinkFromReactRouter to="/pools">

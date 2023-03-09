@@ -1,7 +1,7 @@
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
 import erc20ABI from 'config/abi/erc20.json'
-import { testnetTokens } from '@pancakeswap/tokens'
+import { mainnetTokens } from '@pancakeswap/tokens'
 import { Token } from '@pancakeswap/sdk'
 import multicall from 'utils/multicall'
 
@@ -10,7 +10,7 @@ import multicall from 'utils/multicall'
 // remove HERO because there are two tokens with the symbol HERO (StepHero and Hero)
 // remove aBNBc because the token has been exploited
 const tokensToTest = omitBy(
-  testnetTokens,
+  mainnetTokens,
   (token) =>
     token.symbol.toLowerCase() === 'bnb' ||
     token.symbol.toLowerCase() === 'cake' ||

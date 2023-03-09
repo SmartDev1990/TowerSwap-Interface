@@ -1,6 +1,6 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@pancakeswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { testnetTokens, bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
+import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -28,7 +28,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdc,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.CMP_TESTNET]: [testnetTokens.wcmp, testnetTokens.tw, testnetTokens.busd],
+  [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
 }
 
@@ -59,7 +59,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.CMP_TESTNET]: [testnetTokens.wcmp, testnetTokens.tw, testnetTokens.busd],
+  [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
 }
 
@@ -70,7 +70,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.CMP_TESTNET]: [testnetTokens.wcmp, testnetTokens.tw, testnetTokens.busd],
+  [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
 }
 
@@ -85,7 +85,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [bscTokens.busd, bscTokens.usdt],
     [bscTokens.dai, bscTokens.usdt],
   ],
-  [ChainId.CMP_TESTNET]: [[testnetTokens.wcmp, testnetTokens.tw]],
+  [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
 }
 

@@ -1,14 +1,15 @@
 import { multicallAddresses } from '@pancakeswap/multicall'
 
-// Masterchef v1: 0x92ebcdA1e2C2d5B388d3f5450cF46930F0D179A0
+// Masterchef v1: 0xbeF35383ce0a377D618f309CCfCA7A702850817d
 
 export default {
   masterChef: {
     512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
-    256256: '0x058263cd3ad6240ad5a6b50997e41b150b8b7084',
+    256256: '0xd964CB5A5cE6B7c8fA26796760F8A5AeE9bee1a1',
   },
   masterChefV1: {
     512512: '0x92ebcdA1e2C2d5B388d3f5450cF46930F0D179A0',
+    256256: '0x60229Cdb2647803c42D9E37E71cDCAB489f6e859',
   },
   sousChef: {
     512512: '',
@@ -65,13 +66,13 @@ export default {
   },
   // cakeVault: 0x08ab028b29caF39542a3C1EacC260D8637FAd4a9
   cakeVault: {
-    256256: '',
-    512512: '0x08ab028b29caF39542a3C1EacC260D8637FAd4a9',
+    256256: '0xbCB28Cc9972c12205c19C2127b90352c3Df0F515',
+    512512: '',
   },
   // cakeFlexibleSideVault: 0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa
   cakeFlexibleSideVault: {
-    256256: '',
-    512512: '0x0B587597A89dA6DB5D5E1E18cdA96276eF67dAEa',
+    256256: '0xc8EE2a23D92Bc1B9EBD45d6CF5caba217F0EcB03',
+    512512: '',
   },
   predictionsBNB: {
     512512: '',

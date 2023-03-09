@@ -46,7 +46,7 @@ const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>>
       : null,
   )
 
-  const labelText = t('Recent TW profit')
+  const labelText = t('Recent TWS profit')
   const earningTokenBalance = autoCakeToDisplay
   const hasEarnings = hasAutoEarnings
   const earningTokenDollarBalance = autoUsdToDisplay

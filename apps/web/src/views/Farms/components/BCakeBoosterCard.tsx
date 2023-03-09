@@ -72,7 +72,7 @@ export const useBCakeTooltipContent = () => {
     <>
       <Box mb="20px">
         {t(
-          'Yield Boosters allow you to boost your farming yields by locking TW in the fixed-term staking TW pool. The more TW you lock, and the longer you lock them, the higher the boost you will receive.',
+          'Yield Boosters allow you to boost your farming yields by locking TWS in the fixed-term staking TWS pool. The more TWS you lock, and the longer you lock them, the higher the boost you will receive.',
         )}
       </Box>
       <Box>
@@ -136,7 +136,7 @@ const CardContent: React.FC = () => {
           {t('Connect wallet to view booster')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term TW staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term TWS staking position is required for activating farm yield boosters.')}
         </Text>
         <ConnectWalletButton width="100%" style={{ backgroundColor: theme.colors.textSubtle }} />
       </Box>
@@ -145,10 +145,10 @@ const CardContent: React.FC = () => {
     return (
       <Box width="100%">
         <Text color="textSubtle" fontSize={12} bold>
-          {t('No TW locked')}
+          {t('No TWS locked')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term TW staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term TWS staking position is required for activating farm yield boosters.')}
         </Text>
         <NextLink href="/pools" passHref>
           <Button as="a" width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>
@@ -164,7 +164,7 @@ const CardContent: React.FC = () => {
           {t('Locked staking is ended')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term TW staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term TWS staking position is required for activating farm yield boosters.')}
         </Text>
         <NextLink href="/pools" passHref>
           <Button as="a" width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>

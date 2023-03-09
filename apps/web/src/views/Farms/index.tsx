@@ -38,7 +38,7 @@ function BloctoWarning() {
         header={
           <>
             {t(
-              'Crosschain farming on Ethereum does NOT support Blocto wallet, as you won’t be able to harvest TW rewards.',
+              'Crosschain farming on Ethereum does NOT support Blocto wallet, as you won’t be able to harvest TWS rewards.',
             )}
             <LinkExternal href={getDocLink(code)} mt="4px">
               {t('Check out our wallet guide for the list of supported wallets.')}

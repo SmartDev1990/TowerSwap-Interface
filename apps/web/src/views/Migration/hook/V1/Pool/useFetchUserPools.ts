@@ -5,7 +5,7 @@ import { SerializedPool } from 'state/types'
 import { transformPool } from 'state/pools/helpers'
 import { getCakeContract } from 'utils/contractHelpers'
 import { PoolCategory } from 'config/constants/types'
-import { testnetTokens } from '@pancakeswap/tokens'
+import { mainnetTokens } from '@pancakeswap/tokens'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { fetchUserStakeBalances, fetchUserPendingRewards } from './fetchPoolsUser'
 
@@ -19,8 +19,8 @@ const cakeContract = getCakeContract()
 const initialData = {
   data: {
     sousId: 0,
-    stakingToken: testnetTokens.tw.serialize,
-    earningToken: testnetTokens.tw.serialize,
+    stakingToken: mainnetTokens.tw.serialize,
+    earningToken: mainnetTokens.tw.serialize,
     contractAddress: {
       97: '',
       56: '',

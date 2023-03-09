@@ -17,7 +17,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
   const { switchNetworkAsync, isLoading, canSwitch } = useSwitchNetwork()
   const switchNetworkLocal = useSwitchNetworkLocal()
   const { chains } = useNetwork()
-  const chainId = useLocalNetworkChain() || ChainId.CMP_TESTNET
+  const chainId = useLocalNetworkChain() || ChainId.CMP
   const { isConnected } = useAccount()
   const { logout } = useAuth()
   const { t } = useTranslation()
@@ -62,7 +62,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
               if (supportedMainnetChains.map((c) => c.id).includes(chainId)) {
                 switchNetworkAsync(chainId)
               } else {
-                switchNetworkAsync(ChainId.CMP_TESTNET)
+                switchNetworkAsync(ChainId.CMP)
               }
             }}
           >
@@ -78,7 +78,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
             variant="secondary"
             onClick={() =>
               logout().then(() => {
-                switchNetworkLocal(ChainId.CMP_TESTNET)
+                switchNetworkLocal(ChainId.CMP)
               })
             }
           >

@@ -17,7 +17,7 @@ import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
 import cakeAbi from 'config/abi/cake.json'
 import { getCakeVaultAddress, getCakeFlexibleSideVaultAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
-import { testnetTokens } from '@pancakeswap/tokens'
+import { mainnetTokens } from '@pancakeswap/tokens'
 import { isAddress } from 'utils'
 import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
 import { cmpRpcProvider } from 'utils/providers'
@@ -110,12 +110,12 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => 
 
 export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) => {
   const allowanceCall = {
-    address: testnetTokens.tw.address,
+    address: mainnetTokens.tw.address,
     name: 'allowance',
     params: [account, cakeVaultAddress],
   }
   const balanceOfCall = {
-    address: testnetTokens.tw.address,
+    address: mainnetTokens.tw.address,
     name: 'balanceOf',
     params: [account],
   }

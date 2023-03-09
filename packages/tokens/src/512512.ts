@@ -20,13 +20,5 @@ export const testnetTokens = {
     'Tower USDT',
     'https://towerswap.finance',
   ),
-  tst: new ERC20Token(
-    ChainId.CMP_TESTNET,
-    '0x0f06d6d0a4f4c8b85ba271e74b2060f7320639fa',
-    18,
-    'TST',
-    'TestnetTokens',
-    'https://towerswap.finance',
-  ),
   busd: BUSD_CMPTESTNET,
 }
