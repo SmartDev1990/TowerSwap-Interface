@@ -432,7 +432,7 @@ export function useGasPrice(chainIdOverride?: number): string {
   if (chainId === ChainId.CMP) {
     return userGas === GAS_PRICE_GWEI.rpcDefault ? bscProviderGasPrice : userGas
   }
-  if (chainId === ChainId.CMP_TESTNET) {
+  if (chainId === ChainId.CMP) {
     return GAS_PRICE_GWEI.testnet
   }
   if (chain?.testnet) {

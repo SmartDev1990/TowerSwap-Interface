@@ -5,7 +5,7 @@ import { useActiveChainId } from './useActiveChainId'
 
 export const useProviderOrSigner = (withSignerIfPossible = true, forceBSC?: boolean) => {
   const { chainId } = useActiveChainId()
-  const provider = useProvider({ chainId: forceBSC ? ChainId.CMP_TESTNET : chainId })
+  const provider = useProvider({ chainId: forceBSC ? ChainId.CMP : chainId })
   const { address, isConnected } = useAccount()
   const { data: signer } = useSigner()
 

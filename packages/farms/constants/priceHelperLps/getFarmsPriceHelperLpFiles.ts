@@ -13,9 +13,9 @@ export const getFarmsPriceHelperLpFiles = (chainId: ChainId) => {
     case ChainId.BSC_TESTNET:
       return FarmsBscTestnetPriceHelper
     case ChainId.CMP:
-      return FarmsBscPriceHelper
+      return FarmsCmpPriceHelper
     case ChainId.CMP_TESTNET:
-      return FarmsBscTestnetPriceHelper
+      return FarmsCmpTestnetPriceHelper
     case ChainId.ETHEREUM:
       return FarmsEthereumPriceHelper
     case ChainId.GOERLI:

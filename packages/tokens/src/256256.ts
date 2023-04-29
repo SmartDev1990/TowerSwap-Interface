@@ -1,5 +1,4 @@
 import { ChainId, WBNB, ERC20Token } from '@pancakeswap/sdk'
-import { TOWER_MAINNET } from './common'
 
 export const mainnetTokens = {
   wcmp: WBNB[ChainId.CMP],

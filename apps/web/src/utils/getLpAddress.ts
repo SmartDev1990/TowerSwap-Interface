@@ -3,7 +3,7 @@ import { isAddress } from 'utils'
 import memoize from 'lodash/memoize'
 
 const getLpAddress = memoize(
-  (token1: string | ERC20Token, token2: string | ERC20Token, chainId: number = ChainId.CMP_TESTNET) => {
+  (token1: string | ERC20Token, token2: string | ERC20Token, chainId: number = ChainId.CMP) => {
     let token1AsTokenInstance = token1
     let token2AsTokenInstance = token2
     if (!token1 || !token2) {

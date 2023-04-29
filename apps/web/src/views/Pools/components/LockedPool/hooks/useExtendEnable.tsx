@@ -23,7 +23,7 @@ export const useExtendEnable = () => {
 
   const parsedAmount = tryParseAmount(swapAmount, TW[chainId])
 
-  const trade = useTradeExactOut(Native.onChain(ChainId.CMP_TESTNET), parsedAmount)
+  const trade = useTradeExactOut(Native.onChain(ChainId.CMP), parsedAmount)
 
   const swapCalls = useSwapCallArguments(trade, INITIAL_ALLOWED_SLIPPAGE, null)
 

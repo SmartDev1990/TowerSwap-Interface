@@ -33,6 +33,22 @@
       "chainId": 256256,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    },
+    {
+      "name": "TowerSwap Testnet",
+      "symbol": "TWST",
+      "address": "0xA5d20d84deeEd3850a7538e993E3b2592bf997A0",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
+    },
+    {
+      "name": "Wrapped ZETA",
+      "symbol": "WZETA",
+      "address": "0x3DC18345E131A673e11401696A35e7927673EEEA",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
     }
   ]
 }

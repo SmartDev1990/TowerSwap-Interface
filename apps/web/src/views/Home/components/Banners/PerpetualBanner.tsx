@@ -64,7 +64,7 @@ const PerpetualBanner = () => {
       <S.Inner>
         <S.LeftWrapper>
           <S.StyledSubheading ref={headerRef}>{t('Coming Soon')}</S.StyledSubheading>
-          <Header width={['160px', '160px', 'auto']}>{t('Earn reward from Farming')}</Header>
+          <Header width={['160px', '160px', 'auto']}>{t('Airdrop Distribution')}</Header>
           <Link href={perpetualUrl} external>
             <Button>
               <Text color="invertedContrast" bold fontSize="16px" mr="4px">

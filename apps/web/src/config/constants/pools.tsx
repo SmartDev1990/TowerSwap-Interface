@@ -13,7 +13,6 @@ export const BOOST_WEIGHT = BigNumber.from('20000000000000')
 export const DURATION_FACTOR = BigNumber.from('31536000')
 
 export const vaultPoolConfig = {
-  /*
   [VaultKey.CakeVaultV1]: {
     name: <Trans>Auto CAKE</Trans>,
     description: <Trans>Automatic restaking</Trans>,
@@ -24,7 +23,6 @@ export const vaultPoolConfig = {
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
-  */
   [VaultKey.CakeVault]: {
     name: <Trans>Stake TW</Trans>,
     description: <Trans>Stake, Earn – And more!</Trans>,
@@ -45,7 +43,6 @@ export const vaultPoolConfig = {
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
-  /*
   [VaultKey.IfoPool]: {
     name: 'IFO CAKE',
     description: <Trans>Stake CAKE to participate in IFOs</Trans>,
@@ -56,7 +53,6 @@ export const vaultPoolConfig = {
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },
-  */
 } as const
 
 export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
@@ -76,14 +72,14 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   /*
   {
     sousId: 1,
-    stakingToken: mainnetTokens.tw,
+    stakingToken: mainnetTokens.wcmp,
     earningToken: mainnetTokens.tw,
     contractAddress: {
-      256256: '',
-      512512: '0x7c21087c20d0078A183AC0b409539C2b74242455',
+      256256: '0xb865b267163eC850507DA3aed079Cc1938f6777B',
+      512512: '',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '8',
+    tokenPerBlock: '0.01',
     isFinished: false,
   },
   /*

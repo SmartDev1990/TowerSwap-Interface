@@ -17,6 +17,22 @@ export const avalandche: Chain = {
   },
 }
 
+export const zeta: Chain = {
+  id: 7001,
+  name: 'ZetaChain Testnet',
+  network: 'ZETA TESTNET',
+  rpcUrls: {
+    default: 'https://api.athens2.zetachain.com/evm',
+  },
+  nativeCurrency: { name: 'Zetachain', symbol: 'ZETA', decimals: 18 },
+  blockExplorers: {
+    default: {
+      name: 'ZetaScan',
+      url: 'https://explorer.zetachain.com/',
+    },
+  },
+}
+
 export const avalandcheFuji: Chain = {
   id: 43113,
   name: 'Avalanche Fuji',

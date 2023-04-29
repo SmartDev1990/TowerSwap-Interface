@@ -37,12 +37,12 @@ interface WalletInfoProps {
 const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss }) => {
   const { t } = useTranslation()
   const { account, chainId, chain } = useActiveWeb3React()
-  const isBSC = chainId === ChainId.CMP_TESTNET
-  const bnbBalance = useBalance({ addressOrName: account, chainId: ChainId.CMP_TESTNET })
+  const isBSC = chainId === ChainId.CMP
+  const bnbBalance = useBalance({ addressOrName: account, chainId: ChainId.CMP })
   const nativeBalance = useBalance({ addressOrName: account, enabled: !isBSC })
   const native = useNativeCurrency()
   const wNativeToken = !isBSC ? WNATIVE[chainId] : null
-  const wBNBToken = WNATIVE[ChainId.CMP_TESTNET]
+  const wBNBToken = WNATIVE[ChainId.CMP]
   const { balance: wNativeBalance, fetchStatus: wNativeFetchStatus } = useTokenBalance(wNativeToken?.address)
   const { balance: wBNBBalance, fetchStatus: wBNBFetchStatus } = useTokenBalance(wBNBToken?.address, true)
   const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useGetCakeBalance()
@@ -115,13 +115,13 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
       <Box mb="24px">
         <Flex justifyContent="space-between" alignItems="center" mb="8px">
           <Flex bg={COLORS.BNB} borderRadius="16px" pl="4px" pr="8px" py="2px">
-            <ChainLogo chainId={ChainId.CMP_TESTNET} />
+            <ChainLogo chainId={ChainId.CMP} />
             <Text color="white" ml="4px">
               Caduceus Chain
             </Text>
           </Flex>
-          <LinkExternal href={getBlockExploreLink(account, 'address', ChainId.CMP_TESTNET)}>
-            {getBlockExploreName(ChainId.CMP_TESTNET)}
+          <LinkExternal href={getBlockExploreLink(account, 'address', ChainId.CMP)}>
+            {getBlockExploreName(ChainId.CMP)}
           </LinkExternal>
         </Flex>
         <Flex alignItems="center" justifyContent="space-between">

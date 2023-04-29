@@ -7,7 +7,7 @@ export enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   CMP = 256256,
-  CMP_TESTNET = 512512,
+  CMP_TESTNET = 7001,
 }
 
 export const FACTORY_ADDRESS = '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73'
@@ -21,7 +21,7 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
   [ChainId.CMP]: '0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a', //unverify contract
-  [ChainId.CMP_TESTNET]: '0xd05cd3b72a851f29804f23bc8b27fe86bc9b0eac',
+  [ChainId.CMP_TESTNET]: '0xd957D7DE9C06F4d70D7399a5360A841a8854A2C1',
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
 
@@ -33,7 +33,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
   [ChainId.CMP]: '0xf6106b14de90ff9d265a71eb198a4c0cb6eb1e3eb65b5d976cd5c6466315e7ae',
-  [ChainId.CMP_TESTNET]: '0x8115b4c5f514c78f37bd8951dc5c327f8ec90a1ffecaaa3e6141835310c7fe1f',
+  [ChainId.CMP_TESTNET]: '0xc30606cc1c19202c4233faa572dbdaf9f29e1216b0a0dcdb952dec176361398e',
 }
 
 export const WETH9 = {
@@ -98,11 +98,11 @@ export const WBNB = {
   ),
   [ChainId.CMP_TESTNET]: new ERC20Token(
     ChainId.CMP_TESTNET,
-    '0xaB6b6212e5443228D586cE5Aeb54B02b185208Cc',
+    '0x3DC18345E131A673e11401696A35e7927673EEEA',
     18,
-    'WCMP',
-    'Wrapped CMP',
-    'https://www.binance.org'
+    'WZETA',
+    'Wrapped ZETA',
+    'https://www.zetachain.org'
   ),
 }
 
@@ -138,5 +138,5 @@ export const NATIVE: Record<
     decimals: 18,
   },
   [ChainId.CMP]: { name: 'CMP', symbol: 'CMP', decimals: 18 },
-  [ChainId.CMP_TESTNET]: { name: 'CMP', symbol: 'CMP', decimals: 18 },
+  [ChainId.CMP_TESTNET]: { name: 'ZETA', symbol: 'ZETA', decimals: 18 },
 }

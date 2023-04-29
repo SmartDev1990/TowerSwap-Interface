@@ -92,7 +92,6 @@ const config: (
         {
           label: t('Farms'),
           href: '/farms',
-          supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
           label: t('Pools'),
