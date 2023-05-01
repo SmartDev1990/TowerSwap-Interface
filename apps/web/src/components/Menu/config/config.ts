@@ -89,6 +89,7 @@ const config: (
       fillIcon: EarnFillIcon,
       showItemsOnMobile: false,
       items: [
+        /*
         {
           label: t('Farms'),
           href: '/farms',
@@ -98,6 +99,7 @@ const config: (
           href: '/pools',
           supportChainIds: SUPPORT_ONLY_BSC,
         },
+        */
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     // {

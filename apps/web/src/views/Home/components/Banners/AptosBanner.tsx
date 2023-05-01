@@ -53,9 +53,9 @@ const AptosBanner = () => {
     >
       <S.Inner>
         <S.LeftWrapper>
-          {/* <Box>
+          <Box>
             <Image src={AptosXPancakeSwap} alt="aptosXPancakeSwapImage" width={211} height={18} placeholder="blur" />
-          </Box> */}
+          </Box>
           <AptosTitle>{t('ZetaChain Integration')}</AptosTitle>
 
           <Button
