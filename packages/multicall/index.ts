@@ -64,7 +64,7 @@ export type MultiCall = <T = any>(abi: any[], calls: Call[], chainId?: ChainId) 
 export function createMulticall<TProvider extends Provider>(
   provider: ({ chainId }: { chainId?: number | undefined }) => TProvider,
 ) {
-  const multicall: MultiCall = async (abi: any[], calls: Call[], chainId = ChainId.CMP_TESTNET) => {
+  const multicall: MultiCall = async (abi: any[], calls: Call[], chainId = ChainId.CMP) => {
     const multi = getMulticallContract(chainId, provider({ chainId }))
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)
     const itf = new Interface(abi)
@@ -83,7 +83,7 @@ export function createMulticall<TProvider extends Provider>(
   const multicallv2: MultiCallV2 = async ({
     abi,
     calls,
-    chainId = ChainId.CMP_TESTNET,
+    chainId = ChainId.CMP,
     options,
     provider: _provider,
   }) => {
@@ -106,7 +106,7 @@ export function createMulticall<TProvider extends Provider>(
     return res as any
   }
 
-  const multicallv3 = async ({ calls, chainId = ChainId.CMP_TESTNET, allowFailure, overrides }: MulticallV3Params) => {
+  const multicallv3 = async ({ calls, chainId = ChainId.CMP, allowFailure, overrides }: MulticallV3Params) => {
     const multi = getMulticallContract(chainId, provider({ chainId }))
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)
     const interfaceCache = new WeakMap()

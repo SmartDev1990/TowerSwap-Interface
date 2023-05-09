@@ -9,7 +9,15 @@ export const mainnetTokens = {
   'TWS',
   'TowerSwap Token',
   'https://towerswap.finance',
-),
+  ),
+  atws: new ERC20Token(
+  ChainId.CMP,
+  '0x7B7CdCa2DD5F45100bb702cc442e6F6BA7C0c134',
+  18,
+  'ATWS',
+  'Airdrop TWS',
+  'https://towerswap.finance',
+  ),
   syrup: new ERC20Token(ChainId.CMP, '0x04f33cC38Ff069fD21CF9C785d40192485322868', 18, 'Syrup', 'Syrup Bar Token'),
   usdt: new ERC20Token(
     ChainId.CMP,

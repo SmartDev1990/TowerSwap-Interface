@@ -1,6 +1,6 @@
 import { Flex, Link, LinkExternal, Skeleton, Text, TimerIcon, Balance, Pool } from '@pancakeswap/uikit'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
-import { cmpTestnet } from '@pancakeswap/wagmi/chains'
+import { cmpMainnet } from '@pancakeswap/wagmi/chains'
 import { useTranslation } from '@pancakeswap/localization'
 import { memo } from 'react'
 import { useCurrentBlock } from 'state/block/hooks'
@@ -133,7 +133,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       {poolContractAddress && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
           <LinkExternal
-            href={`${cmpTestnet.blockExplorers.default.url}/address/${
+            href={`${cmpMainnet.blockExplorers.default.url}/address/${
               vaultKey ? cakeVaultContractAddress : poolContractAddress
             }`}
             bold={false}

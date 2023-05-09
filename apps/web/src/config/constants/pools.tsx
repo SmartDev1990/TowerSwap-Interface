@@ -56,30 +56,31 @@ export const vaultPoolConfig = {
 } as const
 
 export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
-  // Auto TW: 512512: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
   {
     sousId: 0,
     stakingToken: mainnetTokens.tw,
     earningToken: mainnetTokens.tw,
     contractAddress: {
       256256: '0xd964CB5A5cE6B7c8fA26796760F8A5AeE9bee1a1',
-      512512: '',
+      7001: '',
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '100',
     isFinished: false,
   },
   /*
+  Pools1 : 0x0618Cb7aE1C100973ea6538cceE54661DB52F222
+  */
   {
     sousId: 1,
-    stakingToken: mainnetTokens.wcmp,
+    stakingToken: mainnetTokens.atws,
     earningToken: mainnetTokens.tw,
     contractAddress: {
-      256256: '0xb865b267163eC850507DA3aed079Cc1938f6777B',
-      512512: '',
+      256256: '0x242Cf50765344AfB613615318cbfD2608d0c48Ce',
+      7001: '',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.01',
+    tokenPerBlock: '5',
     isFinished: false,
   },
   /*
