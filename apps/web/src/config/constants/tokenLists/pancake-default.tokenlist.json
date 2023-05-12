@@ -27,6 +27,14 @@
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     },
     {
+      "name": "LayerShit Token",
+      "symbol": "LSHIT",
+      "address": "0x9aa38572a33dc5bbed152f07e262bba526cfdb2b",
+      "chainId": 256256,
+      "decimals": 18,
+      "logoURI": "https://i.ibb.co/1mjgGjt/LSHIT-MASK1.png"
+    },
+    {
       "name": "Tower USDT",
       "symbol": "USDT",
       "address": "0x8bFB6654C5cE007DD8E9474928c9Bf5199a09055",
