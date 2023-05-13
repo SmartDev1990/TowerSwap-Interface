@@ -43,7 +43,7 @@ const PerpetualBanner = () => {
   const { isDark } = useTheme()
 
   const perpetualUrl = useMemo(
-    () => `https://towerswap.finance/farms`,
+    () => `https://towerswap.finance/swap`,
     [code, isDark],
   )
   const headerRef = useRef<HTMLDivElement>(null)
@@ -63,12 +63,12 @@ const PerpetualBanner = () => {
     <S.Wrapper>
       <S.Inner>
         <S.LeftWrapper>
-          <S.StyledSubheading ref={headerRef}>{t('Coming Soon')}</S.StyledSubheading>
-          <Header width={['160px', '160px', 'auto']}>{t('Airdrop Distribution')}</Header>
+          <S.StyledSubheading ref={headerRef}>{t('New Token Added')}</S.StyledSubheading>
+          <Header width={['160px', '160px', 'auto']}>{t('$LSHIT TOKEN')}</Header>
           <Link href={perpetualUrl} external>
             <Button>
               <Text color="invertedContrast" bold fontSize="16px" mr="4px">
-                {t('Stake Now')}
+                {t('Trade Now')}
               </Text>
               <ArrowForwardIcon color="invertedContrast" />
             </Button>
