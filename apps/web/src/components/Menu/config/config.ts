@@ -100,6 +100,27 @@ const config: (
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    {
+      label: t('Presale'),
+      href: 'https://gempad.app/presale/0x6D951610615B457A4875e6e88a05A8555ee09C63?chainId=56',
+      type: DropdownMenuItemType.EXTERNAL_LINK,
+      icon: EarnIcon,
+      fillIcon: EarnFillIcon,
+      showItemsOnMobile: false,
+      items: [
+        /*
+        {
+          label: t('Farms'),
+          href: '/farms',
+        },
+        {
+          label: t('Pools'),
+          href: '/pools',
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
+        */
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
     // {
     //   label: t('Win'),
     //   href: '/prediction',

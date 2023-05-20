@@ -22,15 +22,15 @@ const Stats = () => {
   const [entrusting, inFunds] = tvlText.split(tvlString)
 
   const UsersCardData: IconCardData = {
-    icon: <CommunityIcon color="secondary" width="36px" />,
+    icon: <CommunityIcon color="secondary" width="0px" />,
   }
 
   const TradesCardData: IconCardData = {
-    icon: <SwapIcon color="primary" width="36px" />,
+    icon: <SwapIcon color="primary" width="0px" />,
   }
 
   const StakedCardData: IconCardData = {
-    icon: <ChartIcon color="failure" width="36px" />,
+    icon: <ChartIcon color="failure" width="0px" />,
   }
 
   return (
@@ -68,12 +68,15 @@ const Stats = () => {
           />
         </IconCard>
         <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-          <StatCardContent headingText={t('Symbol')} bodyText={t('TW')} highlightColor={theme.colors.primary} />
+          <StatCardContent headingText={t('Symbol')} bodyText={t('TWS')} highlightColor={theme.colors.primary} />
+        </IconCard>
+        <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
+          <StatCardContent headingText={t('Supply')} bodyText={t('12.000.000')} highlightColor={theme.colors.primary} />
         </IconCard>
         <IconCard {...StakedCardData}>
           <StatCardContent
-            headingText={t('Supply')}
-            bodyText={t('12.000.000 TW')}
+            headingText={t('Chain')}
+            bodyText={t('Caduceus & BSC')}
             highlightColor={theme.colors.failure}
           />
         </IconCard>
@@ -81,21 +84,6 @@ const Stats = () => {
         <Text textAlign="center" color="textSubtle" bold mb="32px">
           {t('')}
         </Text>
-      </Flex>
-      <Flex flexDirection={['column', null, null, 'row']}>
-        <IconCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-          <StatCardContent headingText={t('Decimal')} bodyText={t('18')} highlightColor={theme.colors.secondary} />
-        </IconCard>
-        <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-          <StatCardContent headingText={t('Chain')} bodyText={t('Caduceus')} highlightColor={theme.colors.primary} />
-        </IconCard>
-        <IconCard {...StakedCardData}>
-          <StatCardContent
-            headingText={t('Function')}
-            bodyText={t('Utility Token')}
-            highlightColor={theme.colors.failure}
-          />
-        </IconCard>
       </Flex>
     </Flex>
   )

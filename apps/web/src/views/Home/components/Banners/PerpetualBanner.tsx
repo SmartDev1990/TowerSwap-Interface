@@ -43,7 +43,7 @@ const PerpetualBanner = () => {
   const { isDark } = useTheme()
 
   const perpetualUrl = useMemo(
-    () => `https://towerswap.finance/swap`,
+    () => `https://gempad.app/presale/0x6D951610615B457A4875e6e88a05A8555ee09C63?chainId=56`,
     [code, isDark],
   )
   const headerRef = useRef<HTMLDivElement>(null)
@@ -63,12 +63,12 @@ const PerpetualBanner = () => {
     <S.Wrapper>
       <S.Inner>
         <S.LeftWrapper>
-          <S.StyledSubheading ref={headerRef}>{t('New Token Added')}</S.StyledSubheading>
-          <Header width={['160px', '160px', 'auto']}>{t('$LSHIT TOKEN')}</Header>
+          <S.StyledSubheading ref={headerRef}>{t('Presale LIVE')}</S.StyledSubheading>
+          <Header width={['160px', '160px', 'auto']}>{t('TOWERSWAP TOKEN (BSC)')}</Header>
           <Link href={perpetualUrl} external>
             <Button>
               <Text color="invertedContrast" bold fontSize="16px" mr="4px">
-                {t('Trade Now')}
+                {t('Join Now')}
               </Text>
               <ArrowForwardIcon color="invertedContrast" />
             </Button>
