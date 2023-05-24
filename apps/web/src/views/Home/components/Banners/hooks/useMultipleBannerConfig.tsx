@@ -1,13 +1,13 @@
 import { ReactElement, useMemo } from 'react'
 import shuffle from 'lodash/shuffle'
 import CompetitionBanner from '../CompetitionBanner'
-// import IFOBanner from '../IFOBanner'
+import IFOBanner from '../IFOBanner'
 import LotteryBanner from '../LotteryBanner'
 import PerpetualBanner from '../PerpetualBanner'
 import useIsRenderIfoBanner from './useIsRenderIFOBanner'
 import useIsRenderLotteryBanner from './useIsRenderLotteryBanner'
 import useIsRenderCompetitionBanner from './useIsRenderCompetitionBanner'
-// import AptosBanner from '../AptosBanner'
+import AptosBanner from '../AptosBanner'
 
 interface IBannerConfig {
   shouldRender: boolean
@@ -33,13 +33,11 @@ export const useMultipleBannerConfig = () => {
 
   return useMemo(() => {
     const NO_SHUFFLE_BANNERS: IBannerConfig[] = [
-      /*
       { shouldRender: true, banner: <AptosBanner /> },
       {
         shouldRender: isRenderIFOBanner,
         banner: <IFOBanner />,
       },
-      */
     ]
 
     const SHUFFLE_BANNERS: IBannerConfig[] = [

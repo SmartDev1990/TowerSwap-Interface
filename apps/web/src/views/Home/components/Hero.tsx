@@ -121,7 +121,7 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="white" mb="24px">
-            {t('Tower Swap Exchange')}
+            {t('TowerSwap Exchange')}
           </Heading>
           <Heading scale="md" color="white" mb="24px">
             {t(

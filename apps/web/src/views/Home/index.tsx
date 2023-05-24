@@ -19,7 +19,7 @@ import MetricsSection from './components/MetricsSection'
 import SalesSection from './components/SalesSection'
 import RoadmapSection from './components/RoadmapSection'
 import FaqSection from './components/FaqSection'
-import WinSection from './components/WinSection'
+// import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
 // import Footer from './components/Footer'
 // import CakeDataRow from './components/CakeDataRow'
@@ -75,7 +75,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       `}</style>
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
-        background="radial-gradient(103.12% 50% at 50% 50%, #21193a 0%, #191326 100%);"
+        background="radial-gradient(circle, rgba(0,0,0,0.7625175070028012) 43%, rgba(80,255,117,0.6924894957983193) 93%);"
         index={2}
         hasCurvedDivider={false}
       >
@@ -145,14 +145,14 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       >
         <RoadmapSection />
       </PageSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(90deg, rgba(75,7,102,1) 6%, rgba(10,55,85,1) 93%)"
         index={2}
         hasCurvedDivider={false}
       >
         <WinSection />
-      </PageSection>
+      </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(90deg, rgba(42,28,120,1) 28%, rgba(92,22,105,1) 80%)"
