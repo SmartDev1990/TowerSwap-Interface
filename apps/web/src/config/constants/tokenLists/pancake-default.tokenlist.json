@@ -27,14 +27,6 @@
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     },
     {
-      "name": "RageFun Token",
-      "symbol": "$RAGE",
-      "address": "0x332022c0d9d87d06aa5b6eccec5c850ed622e49f",
-      "chainId": 256256,
-      "decimals": 9,
-      "logoURI": "https://i.ibb.co/VLRgPJS/Sale-Logo.png"
-    },
-    {
       "name": "LayerShit Token",
       "symbol": "LSHIT",
       "address": "0x9aa38572a33dc5bbed152f07e262bba526cfdb2b",
