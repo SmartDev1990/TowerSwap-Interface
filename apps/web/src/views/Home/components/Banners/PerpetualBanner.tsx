@@ -64,7 +64,7 @@ const PerpetualBanner = () => {
       <S.Inner>
         <S.LeftWrapper>
           <S.StyledSubheading ref={headerRef}>{t('PARTNERSHIP')}</S.StyledSubheading>
-          <Header width={['160px', '160px', 'auto']}>{t('UNSTOPPABLE DOMAIN')}</Header>
+          <Header width={['160px', '160px', 'auto']}>{t('UNSTOPPABLE DOMAINS')}</Header>
           <Link href={perpetualUrl} external>
             <Button>
               <Text color="invertedContrast" bold fontSize="16px" mr="4px">
