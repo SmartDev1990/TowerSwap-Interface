@@ -69,8 +69,6 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     isFinished: false,
   },
   /*
-  Pools1 : 0x0618Cb7aE1C100973ea6538cceE54661DB52F222
-  */
   {
     sousId: 1,
     stakingToken: mainnetTokens.atws,
