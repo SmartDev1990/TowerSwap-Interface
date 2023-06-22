@@ -1,6 +1,6 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@pancakeswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
+import { shardeumTokens, bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -10,7 +10,8 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
-  [ChainId.CMP_TESTNET]: '0x09FB691A786284e99D122D2B68dE40D253fec299',
+  [ChainId.CMP_TESTNET]: '0xb7a1ac42b4CbE9C5D65111391BAb84F6A06E7c17',
+  [ChainId.SHARDEUM]: '0x493181757C654c20d26C5d80BF8E704E38352062',
 }
 
 // used to construct intermediary pairs for trading
@@ -30,6 +31,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
 }
 
 /**
@@ -61,6 +63,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -72,6 +75,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -87,6 +91,9 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   ],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [
+    [shardeumTokens.tw, shardeumTokens.usdt],
+  ],
 }
 
 export const BIG_INT_ZERO = JSBI.BigInt(0)
@@ -117,7 +124,7 @@ export const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 // BNB
 export const DEFAULT_INPUT_CURRENCY = 'BNB'
 // CAKE
-export const DEFAULT_OUTPUT_CURRENCY = '0x09FB691A786284e99D122D2B68dE40D253fec299'
+export const DEFAULT_OUTPUT_CURRENCY = '0x828AefE6579eBc100788128C3db8c7ECc8844A62'
 
 // Handler string is passed to Gelato to use PCS router
 export const GELATO_HANDLER = 'pancakeswap'

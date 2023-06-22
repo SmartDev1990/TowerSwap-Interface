@@ -126,6 +126,24 @@ export const BUSD_CMP = new ERC20Token(
 
 export const BUSD_CMPTESTNET = new ERC20Token(
   ChainId.CMP_TESTNET,
+  '0x33fea934d76C80C9a857a766Ee1354381d6C6364',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
+export const BUSD_NET = new ERC20Token(
+  ChainId.SHARDEUM,
+  '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
+  18,
+  'BUSD',
+  'Tower BUSD',
+  'https://www.paxos.com/busd/',
+)
+
+export const USDC_NET = new ERC20Token(
+  ChainId.SHARDEUM,
   '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
   18,
   'BUSD',
@@ -159,6 +177,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.CMP]: BUSD_CMP,
   [ChainId.CMP_TESTNET]: BUSD_CMPTESTNET,
+  [ChainId.SHARDEUM]: BUSD_NET,
 }
 
 export const CAKE = {
@@ -176,6 +195,7 @@ export const USDC = {
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
+  [ChainId.SHARDEUM]: USDC_NET,
 }
 
 export const USDT = {

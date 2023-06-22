@@ -11,6 +11,7 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
   [ChainId.CMP_TESTNET]: '0x09FB691A786284e99D122D2B68dE40D253fec299',
+  [ChainId.SHARDEUM]: '0x493181757C654c20d26C5d80BF8E704E38352062',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -21,6 +22,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
   [ChainId.CMP]: '',
   [ChainId.CMP_TESTNET]: '',
+  [ChainId.SHARDEUM]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -46,6 +48,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [],
 }
 
 /**
@@ -81,6 +84,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -98,6 +102,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [],
 }
 
 export const PINNED_PAIRS: {
@@ -117,4 +122,5 @@ export const PINNED_PAIRS: {
   ],
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
+  [ChainId.SHARDEUM]: [],
 }

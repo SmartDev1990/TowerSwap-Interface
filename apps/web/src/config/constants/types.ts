@@ -21,6 +21,7 @@ export type TranslatableText =
 export interface Address {
   7001?: string
   256256: string
+  8081: string
   [chainId: number]: string
 }
 

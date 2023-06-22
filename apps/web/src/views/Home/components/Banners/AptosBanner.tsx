@@ -56,12 +56,12 @@ const AptosBanner = () => {
           <Box>
             <Image src={AptosXPancakeSwap} alt="aptosXPancakeSwapImage" width={211} height={18} placeholder="blur" />
           </Box>
-          <AptosTitle>{t('ZetaChain Integration')}</AptosTitle>
+          <AptosTitle>{t('Shardeum Integration')}</AptosTitle>
 
           <Button
             minHeight="48px"
             onClick={() =>
-              window?.open('https://towerswap.finance/?chainId=7001', '_blank', 'noopener noreferrer')
+              window?.open('https://towerswap.finance/?chainId=8081', '_blank', 'noopener noreferrer')
             }
           >
             <Text color="invertedContrast" bold fontSize="16px" mr="4px">

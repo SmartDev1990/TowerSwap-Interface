@@ -5,7 +5,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'TowerSwap',
   description:
-    'The most popular AMM on CMP by user count! Earn TW through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by PancakeSwap), NFTs, and more, on a platform you can trust.',
+    'The most popular AMM on CMP by user count! Earn TW through yield farming or staking',
   image: 'https://towerswap.finance/images/hero.png',
 }
 

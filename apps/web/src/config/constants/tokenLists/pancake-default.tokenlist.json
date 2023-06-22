@@ -65,6 +65,30 @@
       "chainId": 7001,
       "decimals": 18,
       "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
+    },
+    {
+      "name": "Wrapped SHARDEUM",
+      "symbol": "WSHM",
+      "address": "0xF88EF72D453B94ABB390275dA1a02Fc0CB723b5F",
+      "chainId": 8081,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
+    },
+    {
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "address": "0x8bfF3074829588E2CE5f6B1dA45e65D0C5a611b3",
+      "chainId": 8081,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    },
+    {
+      "name": "TowerSwap Testnet",
+      "symbol": "TWST",
+      "address": "0x828AefE6579eBc100788128C3db8c7ECc8844A62",
+      "chainId": 8081,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     }
   ]
 }

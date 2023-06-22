@@ -184,6 +184,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
     [ChainId.BSC_TESTNET]: { ...map1[ChainId.BSC_TESTNET], ...map2[ChainId.BSC_TESTNET] },
     [ChainId.CMP]: { ...map1[ChainId.CMP], ...map2[ChainId.CMP] },
     [ChainId.CMP_TESTNET]: { ...map1[ChainId.CMP_TESTNET], ...map2[ChainId.CMP_TESTNET] },
+    [ChainId.SHARDEUM]: { ...map1[ChainId.SHARDEUM], ...map2[ChainId.SHARDEUM] },
   }
 }
 

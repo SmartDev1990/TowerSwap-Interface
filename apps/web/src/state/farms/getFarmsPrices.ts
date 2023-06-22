@@ -153,4 +153,9 @@ const nativeStableLpMap = {
     wNative: 'WCMP',
     stable: 'BUSD',
   },
+  [ChainId.CMP_TESTNET]: {
+    address: '0xdfb709e2a4724379e7337846e523eb688441b52f',
+    wNative: 'WSHM',
+    stable: 'USDT',
+  },
 }

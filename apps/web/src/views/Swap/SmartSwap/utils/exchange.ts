@@ -18,6 +18,7 @@ export const SMART_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xCF457465fC0E98a50Bc3E1b3DDAAF1373622f059',
   [ChainId.CMP]: '0xbb38062B022c7d51E16Cd547264887b1950c1a32',
   [ChainId.CMP_TESTNET]: '0xbb38062B022c7d51E16Cd547264887b1950c1a32',
+  [ChainId.SHARDEUM]: '',
 }
 
 export function useSmartRouterContract() {

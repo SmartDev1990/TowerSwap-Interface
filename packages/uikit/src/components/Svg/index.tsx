@@ -169,4 +169,6 @@ export { default as BloctoIcon } from "./Icons/Blocto";
 export { default as MartianWalletIcon } from "./Icons/MartianWallet";
 export { default as PetraWalletIcon } from "./Icons/PetraWallet";
 export { default as SortArrowIcon } from "./Icons/SortArrowIcon";
+export { default as FaucetFillIcon } from "./Icons/FaucetFill";
+export { default as FaucetIcon } from "./Icons/Faucet";
 export type { SvgProps } from "./types";

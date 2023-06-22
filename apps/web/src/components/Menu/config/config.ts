@@ -3,6 +3,8 @@ import {
   DropdownMenuItemType,
   SwapIcon,
   SwapFillIcon,
+  FaucetIcon,
+  FaucetFillIcon,
   EarnFillIcon,
   EarnIcon,
   // TrophyIcon,
@@ -83,7 +85,7 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Farm'),
+      label: t('Earn'),
       href: '/farms',
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
@@ -96,6 +98,28 @@ const config: (
         {
           label: t('Pools'),
           href: '/pools',
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('Faucet'),
+      href: 'https://faucet-dapps.shardeum.org/',
+      type: DropdownMenuItemType.EXTERNAL_LINK,
+      icon: FaucetIcon,
+      fillIcon: FaucetFillIcon,
+      showItemsOnMobile: false,
+      items: [
+        {
+          label: t('Zeta Faucet'),
+          href: 'https://faucet-dapps.shardeum.org/',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
+        {
+          label: t('Shardeum Faucet'),
+          href: 'https://faucet-dapps.shardeum.org/',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
           supportChainIds: SUPPORT_ONLY_BSC,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
@@ -171,8 +195,9 @@ const config: (
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    /*
     {
-      label: 'Coming Soon',
+      label: 'More',
       href: '/info',
       icon: MoreIcon,
       hideSubNav: true,
@@ -229,6 +254,7 @@ const config: (
         // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    */
   ].map((item) => addMenuItemSupported(item, chainId))
 
 export default config

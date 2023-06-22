@@ -33,6 +33,22 @@ export const zeta: Chain = {
   },
 }
 
+export const shardeum: Chain = {
+  id: 8081,
+  name: 'Shardeum Betanet',
+  network: 'Shardeum Sphinx 1.X',
+  rpcUrls: {
+    default: 'https://dapps.shardeum.org/',
+  },
+  nativeCurrency: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
+  blockExplorers: {
+    default: {
+      name: 'ShardeumScan',
+      url: 'https://explorer-dapps.shardeum.org/',
+    },
+  },
+}
+
 export const avalandcheFuji: Chain = {
   id: 43113,
   name: 'Avalanche Fuji',
