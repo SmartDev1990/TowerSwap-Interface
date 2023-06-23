@@ -11,7 +11,7 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
   [ChainId.CMP_TESTNET]: '0xb7a1ac42b4CbE9C5D65111391BAb84F6A06E7c17',
-  [ChainId.SHARDEUM]: '0x493181757C654c20d26C5d80BF8E704E38352062',
+  [ChainId.SHARDEUM]: '0x4adffb6b308bdfc2aae94d7887d904303ed78113',
 }
 
 // used to construct intermediary pairs for trading

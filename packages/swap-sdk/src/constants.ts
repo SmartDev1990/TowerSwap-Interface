@@ -109,7 +109,7 @@ export const WBNB = {
   ),
   [ChainId.SHARDEUM]: new ERC20Token(
     ChainId.SHARDEUM,
-    '0xF88EF72D453B94ABB390275dA1a02Fc0CB723b5F',
+    '0x1DAcbaB28Decd115c8AA6F183877C71b942aE406',
     18,
     'WSHM',
     'Wrapped SHARDEUM',
