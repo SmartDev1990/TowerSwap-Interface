@@ -112,7 +112,7 @@ const config: (
       items: [
         {
           label: t('Zeta Faucet'),
-          href: 'https://faucet-dapps.shardeum.org/',
+          href: 'https://mirror.xyz/0xe61FEacC0F78538Cd1C7cDBACD46d7c7EB50d562/i5rHBWO6CbvXyHYeooiIpnsqtLPGvYBEMRnl75cQaFM',
           type: DropdownMenuItemType.EXTERNAL_LINK,
           supportChainIds: SUPPORT_ONLY_BSC,
         },

@@ -98,10 +98,10 @@ const getAprsForFarmGroup = async (addresses: string[], blockWeekAgo: number, ch
 // Copy paste of Stable farm logic
 export const cmptestnetProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://galaxy.block.caduceus.foundation',
+    url: 'https://mainnet.block.caduceus.foundation',
     skipFetchSetup: true,
   },
-  512512,
+  256256,
 )
 
 interface SplitFarmResult {
