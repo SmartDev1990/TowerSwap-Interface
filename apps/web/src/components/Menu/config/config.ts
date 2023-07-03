@@ -108,7 +108,6 @@ const config: (
       type: DropdownMenuItemType.EXTERNAL_LINK,
       icon: FaucetIcon,
       fillIcon: FaucetFillIcon,
-      showItemsOnMobile: false,
       items: [
         {
           label: t('Zeta Faucet'),
@@ -180,7 +179,6 @@ const config: (
       href: 'https://towerswap.gitbook.io/towerswap-finance',
       type: DropdownMenuItemType.EXTERNAL_LINK,
       icon: ShareIcon,
-      showItemsOnMobile: false,
       hideSubNav: true,
       items: [
         {
