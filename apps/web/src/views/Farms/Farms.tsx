@@ -5,7 +5,7 @@ import { useAccount } from 'wagmi'
 import {
   Image,
   Heading,
-  Toggle,
+  // Toggle,
   Text,
   Button,
   ArrowForwardIcon,
@@ -39,7 +39,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import Table from './components/FarmTable/FarmTable'
 import { FarmWithStakedValue } from './components/types'
 import { BCakeBoosterCard } from './components/BCakeBoosterCard'
-import { FarmTypesFilter } from './components/FarmTypesFilter'
+// import { FarmTypesFilter } from './components/FarmTypesFilter'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -78,16 +78,6 @@ const FarmH2 = styled(Heading)`
   ${({ theme }) => theme.mediaQueries.sm} {
     font-size: 24px;
     margin-bottom: 18px;
-  }
-`
-
-const ToggleWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-
-  ${Text} {
-    margin-left: 8px;
   }
 `
 
@@ -357,10 +347,10 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   return (
     <FarmsContext.Provider value={{ chosenFarmsMemoized }}>
-      <PageHeader>
+      <PageHeader borderRadius="10px" margin='22px'>
         <FarmFlexWrapper justifyContent="space-between">
           <Box>
-            <FarmH1 as="h1" scale="xxl" color="secondary" mb="24px">
+            <FarmH1 as="h1" scale="xxl" color="white" mb="24px">
               {t('Farms')}
             </FarmH1>
             {/*  <FarmH2 scale="lg" color="text">
@@ -393,23 +383,23 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             </Flex>
             <FarmUI.FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
             <Flex mt="20px" ml="16px">
-              <FarmTypesFilter
+              {/* <FarmTypesFilter
                 boostedOnly={boostedOnly}
                 handleSetBoostedOnly={setBoostedOnly}
                 stableSwapOnly={stableSwapOnly}
                 handleSetStableSwapOnly={setStableSwapOnly}
                 farmTypesEnableCount={farmTypesEnableCount}
                 handleSetFarmTypesEnableCount={setFarmTypesEnableCount}
-              />
-              <ToggleWrapper>
-                <Toggle
+              /> */}
+              {/* <ToggleWrapper>
+                {/* <Toggle
                   id="staked-only-farms"
                   checked={stakedOnly}
                   onChange={() => setStakedOnly(!stakedOnly)}
                   scale="sm"
                 />
                 <Text> {t('Staked only')}</Text>
-              </ToggleWrapper>
+              </ToggleWrapper> */}
             </Flex>
           </ViewControls>
           <FilterContainer>
