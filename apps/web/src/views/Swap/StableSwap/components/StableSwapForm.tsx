@@ -223,7 +223,7 @@ export default function StableSwapForm() {
             />
           </Flex>
         }
-        subtitle={t('Trade tokens in an instant. To avoid errors. first select the two tokens you want to exchange before entering the amount of tokens')}
+        subtitle={t('Trade tokens in an instant. ')}
         hasAmount={hasAmount}
         onRefreshPrice={onRefreshPrice}
       />

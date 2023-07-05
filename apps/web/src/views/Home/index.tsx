@@ -16,6 +16,7 @@ import {
   launchpadSectionData,
 } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
+import Partner from './components/Partner'
 import SalesSection from './components/SalesSection'
 import RoadmapSection from './components/RoadmapSection'
 import FaqSection from './components/FaqSection'
@@ -29,6 +30,9 @@ import MultipleBanner from './components/Banners/MultipleBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
+  background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  background-size: 100% 120%;
+  background-repeat: no-repeat;
 
   ${({ theme }) => theme.mediaQueries.md} {
     padding-top: 48px;
@@ -75,11 +79,12 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       `}</style>
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
-        background="radial-gradient(circle, rgba(0,0,0,0.7625175070028012) 43%, rgba(80,255,117,0.6924894957983193) 93%);"
         index={2}
         hasCurvedDivider={false}
+        borderRadius="20px"
+        margin="20px"
       >
-        <MultipleBanner />
+        {/* <MultipleBanner /> */}
         <Hero />
       </StyledHeroSection>
       <PageSection
@@ -111,14 +116,14 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       >
         <SalesSection {...earnSectionData(t)} />
       </PageSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.gradientCardHeader}
         index={2}
         hasCurvedDivider={false}
       >
         <SalesSection {...moreSectionData(t)} />
-        {/* TODO: until we are enable fetch multi-chain farms */}
+        TODO: until we are enable fetch multi-chain farms
         {chainId === ChainId.BSC && <FarmsPoolsRow />}
       </PageSection>
       <PageSection
@@ -128,10 +133,10 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         hasCurvedDivider={false}
       >
         <SalesSection {...launchpadSectionData(t)} />
-      </PageSection>
+      </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(90deg, rgba(80,13,106,1) 34%, rgba(3,13,117,1) 93%)"
+        background={theme.colors.gradientCardHeader}
         index={2}
         hasCurvedDivider={false}
       >
@@ -139,7 +144,15 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(90deg, rgba(125,16,168,1) 6%, rgba(45,10,85,1) 93%)"
+        background={theme.colors.background}
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <Partner />
+      </PageSection>
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background={theme.colors.gradientCardHeader}
         index={2}
         hasCurvedDivider={false}
       >
@@ -155,7 +168,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background="linear-gradient(90deg, rgba(42,28,120,1) 28%, rgba(92,22,105,1) 80%)"
+        background={theme.colors.background}
         index={2}
         hasCurvedDivider={false}
       >

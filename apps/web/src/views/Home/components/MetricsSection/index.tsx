@@ -5,7 +5,7 @@ import { formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
 import useSWRImmutable from 'swr/immutable'
 import IconCard, { IconCardData } from '../IconCard'
 import StatCardContent from './StatCardContent'
-import GradientLogo from '../GradientLogoSvg'
+// import GradientLogo from '../GradientLogoSvg'
 
 const Stats = () => {
   const { t } = useTranslation()
@@ -35,15 +35,15 @@ const Stats = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
-      <GradientLogo height="100px" width="100px" mb="24px" />
-      <Heading textAlign="center" color="#42fff4" scale="xl" mb="32px">
+      {/* <GradientLogo height="100px" width="100px" mb="24px" /> */}
+      <Heading textAlign="center" color="black" scale="xl" mb="32px">
         {t('Tower Token')}
       </Heading>
       {/* <Heading textAlign="center" scale="xl" mb="32px"> */}
       {/*   {t('Trusted with billions.')} */}
       {/* </Heading> */}
       <Text textAlign="center" color="textSubtle">
-        {t('Tower token is the main token token in TowerSwap')}
+        {t('Tower token is the main token in TowerSwap')}
       </Text>
       {/*
       <Flex flexWrap="wrap">
@@ -81,7 +81,7 @@ const Stats = () => {
           />
         </IconCard>
 
-        <Text textAlign="center" color="textSubtle" bold mb="32px">
+        <Text color="textSubtle" bold mb="32px">
           {t('')}
         </Text>
       </Flex>

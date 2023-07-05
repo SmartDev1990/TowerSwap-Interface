@@ -15,17 +15,18 @@ const StatCardContent: React.FC<
       minWidth="180px"
       width="fit-content"
       flexDirection="column"
-      justifyContent="center"
+      justifyContent="flex-end"
+      mt={[null, null, null, '64px']}
     >
       {isSmallerScreen && remainingWords.length > 13 ? (
-        <Heading scale="lg" textAlign="center">{remainingWords}</Heading>
+        <Heading scale="lg">{remainingWords}</Heading>
       ) : (
         <Heading scale="xl">{remainingWords}</Heading>
       )}
-      <Heading color={highlightColor} textAlign="center" scale="xl" mb="24px">
+      <Heading color={highlightColor} scale="xl" mb="24px">
         {lastWord}
       </Heading>
-      <Text textAlign="center" color="textSubtle">{bodyText}</Text>
+      <Text color="textSubtle">{bodyText}</Text>
     </Flex>
   )
 }
