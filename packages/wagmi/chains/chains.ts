@@ -19,7 +19,7 @@ export const avalandche: Chain = {
 
 export const zeta: Chain = {
   id: 7001,
-  name: 'ZetaChain Testnet',
+  name: 'ZETA',
   network: 'ZETA TESTNET',
   rpcUrls: {
     default: 'https://api.athens2.zetachain.com/evm',
@@ -35,7 +35,7 @@ export const zeta: Chain = {
 
 export const shardeum: Chain = {
   id: 8081,
-  name: 'Shardeum Betanet',
+  name: 'SHARDEUM',
   network: 'Shardeum Sphinx 1.X',
   rpcUrls: {
     default: 'https://dapps.shardeum.org/',
@@ -171,7 +171,7 @@ export const cmpTestnet: Chain = {
 
 export const cmpMainnet: Chain = {
   id: 256256,
-  name: 'Caduceus Mainnet',
+  name: 'CMP',
   network: 'cmp_mainnet',
   rpcUrls: {
     public: 'https://mainnet.block.caduceus.foundation',

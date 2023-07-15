@@ -47,28 +47,29 @@ const config: (
 ) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
   [
     {
-      label: t('Trade'),
+      label: t('Exchange'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
       href: '/swap',
       showItemsOnMobile: false,
+      supportChainIds: SUPPORT_ONLY_BSC,
       items: [
-        {
-          label: t('Swap'),
-          href: '/swap',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
+        // {
+        //   label: t('Swap'),
+        //   href: '/swap',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        // },
         // {
         //   label: t('Limit'),
         //   href: '/limit-orders',
         //   supportChainIds: SUPPORT_ONLY_BSC,
         //   image: '/images/decorations/3d-coin.png',
         // },
-        {
-          label: t('Liquidity'),
-          href: '/liquidity',
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
+        // {
+        //   label: t('Liquidity'),
+        //   href: '/liquidity',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        // },
         // {
         //   label: t('Perpetual'),
         //   href: `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/BTCUSDT?theme=${perpTheme(
@@ -83,6 +84,15 @@ const config: (
         //   type: DropdownMenuItemType.EXTERNAL_LINK,
         // },
       ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('Pool'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: '/liquidity',
+      showItemsOnMobile: false,
+      supportChainIds: SUPPORT_ONLY_BSC,
+      items: [].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
       label: t('Earn'),

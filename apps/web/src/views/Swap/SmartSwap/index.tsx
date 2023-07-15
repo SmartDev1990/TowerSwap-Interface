@@ -245,8 +245,8 @@ export function SmartSwapForm() {
   return (
     <>
       <CurrencyInputHeader
-        title={t('Swap')}
-        subtitle={t('First select the two tokens you want to exchange before entering the amount of tokens')}
+        title={""}
+        subtitle={""}
         hasAmount={hasAmount}
         onRefreshPrice={onRefreshPrice}
       />

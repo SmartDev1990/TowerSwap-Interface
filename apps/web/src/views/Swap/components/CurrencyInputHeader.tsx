@@ -8,8 +8,13 @@ import {
   IconButton,
   NotificationDot,
   Swap,
+  useTooltip,
+  HelpIcon,
+  Text,
+  Button,
   useModal,
 } from '@pancakeswap/uikit'
+import { useTranslation } from '@pancakeswap/localization'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import RefreshIcon from 'components/Svg/RefreshIcon'
@@ -49,14 +54,27 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
   const handleOnClick = useCallback(() => onRefreshPrice?.(), [onRefreshPrice])
   const [isSwapHotTokenDisplay, setIsSwapHotTokenDisplay] = useSwapHotTokenDisplay()
 
+  // Tooltips
+  const { t } = useTranslation()
+  const { targetRef, tooltip, tooltipVisible } = useTooltip(
+    <>
+      <Text>
+        {t(
+          'To avoid error, First select the two tokens you want to exchange before entering the amount of tokens',
+        )}
+      </Text>
+    </>,
+    { placement: 'bottom' },
+  )
+
   return (
     <Swap.CurrencyInputHeader
       title={
         <Flex width="100%" alignItems="center" justifyContent="space-between" flexDirection="column">
-          <Flex flexDirection="column" alignItems="center" width="100%" marginBottom={25}>
+          <Flex flexDirection="column" alignItems="center" width="100%" marginBottom={0}>
             <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
           </Flex>
-          <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="14px" marginBottom={25}>
+          <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="14px" marginBottom={0}>
             <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
           </Flex>
           <Flex width="100%" justifyContent="center">
@@ -96,6 +114,15 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 )}
               </ColoredIconButton>
             )}
+            <Flex alignItems="flex" >
+              <Button scale="sm">
+                {t('Avoid Error')}
+                {tooltipVisible && tooltip}
+                <Flex ref={targetRef}>
+                  <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
+                </Flex>
+              </Button>
+            </Flex>
             <NotificationDot show={expertMode}>
               <GlobalSettings color="textSubtle" mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
             </NotificationDot>

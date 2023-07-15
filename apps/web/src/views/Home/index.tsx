@@ -23,7 +23,7 @@ import FaqSection from './components/FaqSection'
 // import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
 // import Footer from './components/Footer'
-// import CakeDataRow from './components/CakeDataRow'
+import CakeDataRow from './components/CakeDataRow'
 // import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 // import UserBanner from './components/UserBanner'
 import MultipleBanner from './components/Banners/MultipleBanner'
@@ -87,6 +87,17 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         {/* <MultipleBanner /> */}
         <Hero />
       </StyledHeroSection>
+      <PageSection
+        innerProps={{ style: HomeSectionContainerStyles }}
+        background={theme.colors.background}
+        containerProps={{
+          id: 'home-4',
+        }}
+        index={2}
+        hasCurvedDivider={false}
+      >
+        <CakeDataRow />
+      </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}

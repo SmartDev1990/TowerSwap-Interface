@@ -22,7 +22,7 @@ export const LiquidityCard = ({ children, ...props }: LiquidityCardProps) => (
 );
 
 const ListBody = styled(CardBody)`
-  background-color: ${({ theme }) => theme.colors.dropdownDeep};
+  background-color: blue;
 `;
 
 LiquidityCard.ListBody = ListBody;

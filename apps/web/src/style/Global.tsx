@@ -11,7 +11,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Inknut Antiqua', sans-serif;
   }
   body {
-    background-color: ${({ theme }) => theme.colors.background};
+    // background-color: ${({ theme }) => theme.colors.background};
+    background: url('/images/bg.png') center center / cover no-repeat;
+    // background-color: #000000;
+    // background-size: cover;
 
     img {
       height: auto;

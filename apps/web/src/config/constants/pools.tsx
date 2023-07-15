@@ -81,19 +81,20 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     tokenPerBlock: '5',
     isFinished: true,
   },
-  /*
+  */
   {
     sousId: 2,
-    stakingToken: mainnetTokens.busd,
+    stakingToken: mainnetTokens.tw,
     earningToken: mainnetTokens.tw,
     contractAddress: {
-      256256: '',
-      512512: '0xF9f7F84cD9DC507cb71D5a037E89e8A94a68A74b',
+      256256: '0xe8405e403424A6d21575c77B0FDA3333a67d234C',
+      512512: '',
     },
     poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '8',
+    tokenPerBlock: '0.01',
     isFinished: false,
   },
+  /*
   {
     sousId: 3,
     stakingToken: mainnetTokens.wcmp,

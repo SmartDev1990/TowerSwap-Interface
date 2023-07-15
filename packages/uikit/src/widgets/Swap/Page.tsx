@@ -31,8 +31,8 @@ export const SwapPage = ({
       <SwapFooter
         externalText={externalText}
         externalLinkUrl={externalLinkUrl}
-        helpUrl={helpUrl}
-        helpImage={helpImage}
+        // helpUrl={helpUrl}
+        // helpImage={helpImage}
       />
     </AtomBox>
   </AtomBox>

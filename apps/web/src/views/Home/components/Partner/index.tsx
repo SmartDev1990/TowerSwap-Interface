@@ -13,6 +13,10 @@ import PartnerLogo5 from './Partner5'
 import PartnerLogo6 from './Partner6'
 import PartnerLogo7 from './Partner7'
 import PartnerLogo8 from './Partner8'
+import PartnerLogo9 from './Partner9'
+import PartnerLogo10 from './Partner10'
+import PartnerLogo11 from './Partner11'
+import PartnerLogo12 from './Partner12'
 
 const Stats = () => {
   const { t } = useTranslation()
@@ -79,6 +83,20 @@ const Stats = () => {
         </PartnerCard>
         <PartnerCard {...StakedCardData} mb="16px">
         <PartnerLogo8 height="80px" width="180px"/>
+        </PartnerCard>
+      </Flex>
+      <Flex flexDirection={['column', null, null, 'row']}>
+        <PartnerCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
+        <PartnerLogo9 height="80px" width="180px"/>
+        </PartnerCard>
+        <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
+        <PartnerLogo10 height="80px" width="180px"/>
+        </PartnerCard>
+        <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
+        <PartnerLogo11 height="80px" width="180px"/>
+        </PartnerCard>
+        <PartnerCard {...StakedCardData} mb="16px">
+        <PartnerLogo12 height="80px" width="180px"/>
         </PartnerCard>
       </Flex>
     </Flex>
