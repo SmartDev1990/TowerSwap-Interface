@@ -410,11 +410,11 @@ export function useGasPrice(chainIdOverride?: number): string {
   const library = useWeb3LibraryContext()
   const chainId = chainIdOverride ?? chainId_
   const userGas = useSelector<AppState, AppState['user']['gasPrice']>((state) => state.user.gasPrice)
-  const { data: bscProviderGasPrice = GAS_PRICE_GWEI.default } = useSWR(
+  const { data: cmpProviderGasPrice = GAS_PRICE_GWEI.default } = useSWR(
     library &&
       library.provider &&
       chainId === ChainId.CMP &&
-      userGas === GAS_PRICE_GWEI.rpcDefault && ['bscProviderGasPrice', library.provider],
+      userGas === GAS_PRICE_GWEI.rpcDefault && ['cmpProviderGasPrice', library.provider],
     async () => {
       const gasPrice = await library.getGasPrice()
       return gasPrice.toString()
@@ -430,7 +430,7 @@ export function useGasPrice(chainIdOverride?: number): string {
     watch: true,
   })
   if (chainId === ChainId.CMP) {
-    return userGas === GAS_PRICE_GWEI.rpcDefault ? bscProviderGasPrice : userGas
+    return userGas === GAS_PRICE_GWEI.rpcDefault ? cmpProviderGasPrice : userGas
   }
   if (chainId === ChainId.CMP) {
     return GAS_PRICE_GWEI.testnet

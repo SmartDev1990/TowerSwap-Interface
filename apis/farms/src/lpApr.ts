@@ -24,7 +24,7 @@ const BLOCKS_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.RINKEBY]: '',
-  [ChainId.CMP_TESTNET]: 'https://api.thegraph.com/subgraphs/name/smartdev1990/blocks',
+  [ChainId.CMP]: 'https://api.thegraph.com/subgraphs/name/smartdev1990/blocks',
 }
 
 const INFO_CLIENT_WITH_CHAIN = {
@@ -33,7 +33,7 @@ const INFO_CLIENT_WITH_CHAIN = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
   [ChainId.RINKEBY]: '',
-  [ChainId.CMP_TESTNET]: 'https://api.thegraph.com/subgraphs/name/smartdev1990/exchangev2',
+  [ChainId.CMP]: 'https://api.thegraph.com/subgraphs/name/smartdev1990/exchangev2',
 }
 
 const blockClientWithChain = (chainId: ChainId) => {

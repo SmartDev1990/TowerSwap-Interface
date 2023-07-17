@@ -41,8 +41,8 @@ export function useSwapState(): AppState['swap'] {
 
 // TODO: update
 const BAD_RECIPIENT_ADDRESSES: string[] = [
-  '0xd05cd3b72a851f29804f23bc8b27fe86bc9b0eac', // v2 factory
-  '00xbb38062B022c7d51E16Cd547264887b1950c1a32', // v2 router 02
+  '0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a', // v2 factory
+  '0xb0240848456412D1a33792DF4A1178053b9aecAa', // v2 router 02
 ]
 
 /**

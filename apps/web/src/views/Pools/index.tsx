@@ -46,11 +46,11 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
       <PageHeader>
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
-            <Heading as="h1" scale="xxl" color="white" mb="24px">
+            <Heading as="h1" scale="xl" color="white" mb="24px">
               {t('Tower Pools')}
             </Heading>
             <Heading scale="md" color="white">
-              {t('Available soon')}
+              {t('Manual Staking')}
             </Heading>
             {/* <Heading scale="md" color="text">
               {t('Just stake some tokens to earn.')}

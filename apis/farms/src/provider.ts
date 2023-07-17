@@ -24,10 +24,10 @@ export const goerliProvider = new StaticJsonRpcProvider(
   5,
 )
 
-export const cmptestnetProvider = new StaticJsonRpcProvider(
+export const cmpProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://galaxy.block.caduceus.foundation',
+    url: 'https://mainnet.block.caduceus.foundation',
     skipFetchSetup: true,
   },
-  512512,
+  256256,
 )

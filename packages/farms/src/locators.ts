@@ -1,5 +1,5 @@
 import { ChainId, WBNB } from '@pancakeswap/sdk'
-import { BUSD } from '@pancakeswap/tokens'
+import { TW } from '@pancakeswap/tokens'
 import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
 import { FarmData } from './types'
 
@@ -13,7 +13,7 @@ import { FarmData } from './types'
 export const getFarmFromTokenAddress = (
   farms: FarmData[],
   tokenAddress: string,
-  preferredQuoteTokensAddress: string[] = [BUSD[ChainId.CMP].address, WBNB[ChainId.CMP].address],
+  preferredQuoteTokensAddress: string[] = [TW[ChainId.CMP].address, WBNB[ChainId.CMP].address],
 ): FarmData => {
   const farmsWithToken = farms.filter((farm) => equalsIgnoreCase(farm.token.address, tokenAddress))
   const filteredFarm = farmsWithToken.find((farm) => {

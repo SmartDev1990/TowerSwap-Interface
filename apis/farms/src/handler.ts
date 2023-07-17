@@ -2,7 +2,7 @@ import { FixedNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { getFarmCakeRewardApr, SerializedFarmConfig } from '@pancakeswap/farms'
 import { ChainId, CurrencyAmount, Pair } from '@pancakeswap/sdk'
-import { BUSD, CAKE, TW } from '@pancakeswap/tokens'
+import { BUSD, CAKE, TW, WBNB } from '@pancakeswap/tokens'
 import { farmFetcher } from './helper'
 import { FarmKV, FarmResult } from './kv'
 import { updateLPsAPR } from './lpApr'
@@ -46,14 +46,14 @@ const cakeBusdPairMap = {
     tokenB: BUSD[ChainId.BSC_TESTNET],
   },
   [ChainId.CMP_TESTNET]: {
-    address: Pair.getAddress(TW[ChainId.CMP_TESTNET], BUSD[ChainId.CMP_TESTNET]),
+    address: Pair.getAddress(TW[ChainId.CMP_TESTNET], WBNB[ChainId.CMP_TESTNET]),
     tokenA: TW[ChainId.CMP_TESTNET],
-    tokenB: BUSD[ChainId.CMP_TESTNET],
+    tokenB: WBNB[ChainId.CMP_TESTNET],
   },
 }
 
 const getCakePrice = async (isTestnet: boolean) => {
-  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.CMP : ChainId.CMP_TESTNET]
+  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.BSC : ChainId.CMP
   const pairContract = new Contract(pairConfig.address, pairAbi, isTestnet ? bscTestnetProvider : cmptestnetProvider)
   const reserves = await pairContract.getReserves()
   const { reserve0, reserve1 } = reserves

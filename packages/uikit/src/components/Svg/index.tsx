@@ -71,6 +71,8 @@ export { default as LanguageCurrencyIcon } from "./Icons/LanguageCurrency";
 export { default as LanguageIcon } from "./Icons/Language";
 export { default as LaurelLeftIcon } from "./Icons/LaurelLeft";
 export { default as LaurelRightIcon } from "./Icons/LaurelRight";
+export { default as LiquidityIcon } from "./Icons/Liquidity";
+export { default as LiquidityFillIcon } from "./Icons/LiquidityFill";
 export { default as LineGraphIcon } from "./Icons/LineGraph";
 export { default as ListViewIcon } from "./Icons/ListView";
 export { default as LockIcon } from "./Icons/Lock";

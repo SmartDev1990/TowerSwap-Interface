@@ -79,14 +79,24 @@ export default {
     7001: '',
     256256: '',
   },
+  // cakeVault: {
+  //   8081: '',
+  //   256256: '0x72f78a9B330cBA12F046BBf3C7D18610061fC65c',
+  //   7001: '',
+  // },
+  // cakeFlexibleSideVault: {
+  //   8081: '',
+  //   256256: '0xD962DAE1d0DCF72dEfA8ad4dd37D34837ad61b2d',
+  //   7001: '',
+  // },
   cakeVault: {
     8081: '',
-    256256: '0x72f78a9B330cBA12F046BBf3C7D18610061fC65c',
+    256256: '',
     7001: '',
   },
   cakeFlexibleSideVault: {
     8081: '',
-    256256: '0xD962DAE1d0DCF72dEfA8ad4dd37D34837ad61b2d',
+    256256: '',
     7001: '',
   },
   predictionsBNB: {
