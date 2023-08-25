@@ -114,6 +114,7 @@ const config: (
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    /*
     {
       label: t('Faucet'),
       href: 'https://faucet-dapps.shardeum.org/',
@@ -165,13 +166,14 @@ const config: (
     //     },
     //   ],
     // },
-    // {
-    //   label: t('NFT'),
-    //   href: '/404',
-    //   icon: NftIcon,
-    //   fillIcon: NftFillIcon,
-    //   image: '/images/decorations/nft.png',
-    //   items: [
+    */
+    {
+      label: t('NFT'),
+      href: '/nfts',
+      icon: NftIcon,
+      fillIcon: NftFillIcon,
+      image: '/images/decorations/nft.png',
+      items: [
     // {
     //   label: t('Overview'),
     //   href: `${nftsBaseUrl}`,
@@ -184,8 +186,9 @@ const config: (
     //   label: t('Activity'),
     //   href: `${nftsBaseUrl}/activity`,
     // },
-    //   ],
-    // },
+      ],
+    },
+    /*
     {
       label: 'Docs',
       href: 'https://towerswap.gitbook.io/towerswap-finance',
@@ -203,9 +206,21 @@ const config: (
           href: 'https://docdro.id/thzR1J1',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
+        {
+          label: t('Zeta Faucet'),
+          href: 'https://mirror.xyz/0xe61FEacC0F78538Cd1C7cDBACD46d7c7EB50d562/i5rHBWO6CbvXyHYeooiIpnsqtLPGvYBEMRnl75cQaFM',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
+        {
+          label: t('Shardeum Faucet'),
+          href: 'https://faucet-dapps.shardeum.org/',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
-    /*
+    */
     {
       label: 'More',
       href: '/info',
@@ -218,20 +233,26 @@ const config: (
         //   supportChainIds: SUPPORT_ONLY_BSC,
         // },
         {
-          label: t('NFT'),
-          href: '/404',
+          label: t('Zeta Faucet'),
+          href: 'https://mirror.xyz/0xe61FEacC0F78538Cd1C7cDBACD46d7c7EB50d562/i5rHBWO6CbvXyHYeooiIpnsqtLPGvYBEMRnl75cQaFM',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+          supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
-          label: t('LaunchPad'),
-          href: '/404',
+          label: t('Shardeum Faucet'),
+          href: 'https://faucet-dapps.shardeum.org/',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+          supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
-          label: t('TowerLabs'),
-          href: '/404',
+          label: t('Docs'),
+          href: 'https://towerswap.gitbook.io/towerswap-finance',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
         },
         {
-          label: t('Info'),
-          href: '/404',
+          label: t('PitchDeck'),
+          href: 'https://docdro.id/thzR1J1',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
         },
         // {
         //   label: t('IFO'),
@@ -264,7 +285,6 @@ const config: (
         // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
-    */
   ].map((item) => addMenuItemSupported(item, chainId))
 
 export default config

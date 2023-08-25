@@ -350,13 +350,13 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       <PageHeader borderRadius="10px" margin='22px'>
         <FarmFlexWrapper justifyContent="space-between">
           <Box>
-            <FarmH1 as="h1" scale="xxl" color="white" mb="24px">
+            <FarmH1 as="h1" scale="xxl" color="black" mb="24px">
               {t('Farms')}
             </FarmH1>
             {/*  <FarmH2 scale="lg" color="text">
               {t('Avalable on mainnet soon.')}
             </FarmH2>  */}
-            <FarmH2 scale="lg" color="white">
+            <FarmH2 scale="lg" color="black">
               {t('Stake LP tokens to earn.')}
             </FarmH2>
             {/* <NextLinkFromReactRouter to="/farms/auction" prefetch={false}>

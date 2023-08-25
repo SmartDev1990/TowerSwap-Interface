@@ -4,7 +4,7 @@ import Container from "../Layouts/Container";
 import { PageHeaderProps } from "./types";
 
 const Outer = styled(Box)<{ background?: string }>`
-  background-image: url(./images/farm-banner.png);
+  background-image: url(./images/farm-banner3.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 

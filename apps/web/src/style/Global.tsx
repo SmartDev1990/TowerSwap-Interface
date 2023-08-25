@@ -8,11 +8,11 @@ declare module 'styled-components' {
 
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Inknut Antiqua', sans-serif;
+    font-family: 'Bahnschrift', sans-serif;
   }
   body {
     // background-color: ${({ theme }) => theme.colors.background};
-    background: url('/images/bg.png') center center / cover no-repeat;
+    background: url('/images/bg8.jpg') center center / cover no-repeat;
     // background-color: #000000;
     // background-size: cover;
 

@@ -19,7 +19,7 @@ const RightWrapper = styled.div`
   }
 `
 const AptosTitle = styled.div`
-  font-family: 'Inknut Antiqua';
+  font-family: 'Bahnschrift';
   font-style: normal;
   font-weight: 600;
   font-size: 23px;
