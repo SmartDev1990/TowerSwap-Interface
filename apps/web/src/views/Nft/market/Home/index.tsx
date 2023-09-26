@@ -37,7 +37,7 @@ const Home: React.FC = () => {
               {t('NFT Marketplace')}
             </Heading>
             <Heading scale="lg" color="black">
-              {t('Mint NFTs with BANDIT')}
+              {t('Mint NFTs with TowerSwap')}
             </Heading>
           </div>
           <Box>
