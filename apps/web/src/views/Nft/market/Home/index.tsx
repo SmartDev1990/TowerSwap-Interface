@@ -19,14 +19,16 @@ declare global {
 
 const Home: React.FC = () => {
   const { t } = useTranslation()
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://sdk.bandit.network/static/js/index.js'
-    script.async = true
+  
+useEffect(()=>{
+    const script = document.createElement("script")
+    script.src = "https://sdk.bandit.network/sdk/index.js"
+    script.type = "module"
     script.onload = () => window.renderStats()
-
+    
     document.body.appendChild(script)
-  }, [])
+},[])
+  
 
   return (
     <>
