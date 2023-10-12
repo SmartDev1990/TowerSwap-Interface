@@ -7,27 +7,27 @@ import { ETH_TOKEN_BLACKLIST, PCS_ETH_START, PCS_V2_START, TOKEN_BLACKLIST } fro
 export type MultiChainName = 'BSC' | 'ETH'
 
 export const multiChainQueryMainToken = {
-  BSC: 'BNB',
+  BSC: 'CMP',
   ETH: 'ETH',
 }
 
 export const multiChainBlocksClient = {
-  BSC: BLOCKS_CLIENT,
+  BSC: "http://127.0.0.1:8000/subgraphs/name/Towerswap-info",
   ETH: BLOCKS_CLIENT_ETH,
 }
 
 export const multiChainStartTime = {
-  BSC: PCS_V2_START,
+  BSC: 8438988,
   ETH: PCS_ETH_START,
 }
 
 export const multiChainId = {
-  BSC: ChainId.BSC,
+  BSC: ChainId.CMP,
   ETH: ChainId.ETHEREUM,
 }
 
 export const multiChainPaths = {
-  [ChainId.BSC]: '',
+  [ChainId.CMP]: '',
   [ChainId.ETHEREUM]: '/eth',
 }
 
@@ -37,12 +37,12 @@ export const multiChainQueryClient = {
 }
 
 export const multiChainQueryEndPoint = {
-  BSC: INFO_CLIENT,
+  BSC: "http://127.0.0.1:8000/subgraphs/name/Towerswap-info",
   ETH: INFO_CLIENT_ETH,
 }
 
 export const multiChainScan = {
-  BSC: 'BscScan',
+  BSC: 'https://mainnet.scan.caduceus.foundation/',
   ETH: 'EtherScan',
 }
 

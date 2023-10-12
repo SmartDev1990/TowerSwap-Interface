@@ -6,6 +6,7 @@ import { metaMaskConnector, walletConnectNoQrCodeConnector } from '../utils/wagm
 
 export enum ConnectorNames {
   MetaMask = 'metaMask',
+  Okx = 'okxWallet',
   Injected = 'injected',
   WalletConnect = 'walletConnect',
   BSC = 'bsc',
@@ -43,6 +44,17 @@ const walletsConfig = ({
       deepLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
       qrCode,
       downloadLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
+    },
+    {
+      id: 'okx',
+      title: 'OKX Wallet',
+      icon: '/images/wallets/OKX.png',
+      connectorId: ConnectorNames.Okx,
+      installed: typeof window !== 'undefined' && Boolean(window.okxwallet),
+      downloadLink: {
+        desktop: 'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
+      },
+      qrCode,
     },
     {
       id: 'binance',
@@ -85,22 +97,6 @@ const walletsConfig = ({
       title: 'WalletConnect',
       icon: '/images/wallets/walletconnect.png',
       connectorId: ConnectorNames.WalletConnect,
-    },
-    {
-      id: 'opera',
-      title: 'Opera Wallet',
-      icon: '/images/wallets/opera.png',
-      connectorId: ConnectorNames.Injected,
-      installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isOpera),
-      downloadLink: 'https://www.opera.com/crypto/next',
-    },
-    {
-      id: 'brave',
-      title: 'Brave Wallet',
-      icon: '/images/wallets/brave.png',
-      connectorId: ConnectorNames.Injected,
-      installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isBraveWallet),
-      downloadLink: 'https://brave.com/wallet/',
     },
     {
       id: 'math',

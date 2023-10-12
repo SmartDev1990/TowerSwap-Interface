@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     // background-color: ${({ theme }) => theme.colors.background};
-    background: url('/images/bg8.jpg') center center / cover no-repeat;
+    background: url('/images/bg1.avif') center center / cover no-repeat;
     // background-color: #000000;
     // background-size: cover;
 

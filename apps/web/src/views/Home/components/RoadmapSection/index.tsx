@@ -10,7 +10,7 @@ const FaqSection = () => {
     <LandingBodyWrapper>
       <LandingBodyWrapper>
         <Flex flexDirection="column">
-          <Heading scale="xl" color="black" display="block" marginLeft="40px">
+          <Heading scale="xl" color="white" display="block" marginLeft="40px">
             {t('Roadmap')}
           </Heading>
           <Flex flexDirection="column">

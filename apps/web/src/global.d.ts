@@ -12,6 +12,7 @@ export interface ExtendEthereum extends Ethereum {
 declare global {
   interface Window {
     coin98?: true
+    okxwallet?: true
     ethereum?: ExtendEthereum
     BinanceChain?: {
       bnbSign?: (address: string, message: string) => Promise<{ publicKey: string; signature: string }>

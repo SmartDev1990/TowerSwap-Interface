@@ -4,7 +4,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@pancakeswap/localization'
 import Image from 'next/legacy/image'
 import styled, { keyframes } from 'styled-components'
-import bunnyImage from '../../../../public/images/home/lunar-bunny/header1.png'
+import bunnyImage from '../../../../public/images/home/lunar-bunny/astronaut-bunni.png'
 import CompositeImage, { CompositeImageProps } from './CompositeImage'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 
@@ -119,7 +119,7 @@ const Hero = () => {
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xl" color="white" mb="24px">
-            {t('TOWERSWAP')}
+            {t('TOWERSWAP DEX')}
           </Heading>
           <Heading scale="md" color="white" mb="24px">
             {t(

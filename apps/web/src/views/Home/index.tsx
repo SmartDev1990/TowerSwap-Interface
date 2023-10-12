@@ -30,7 +30,7 @@ import MultipleBanner from './components/Banners/MultipleBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
-  background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  background: radial-gradient(circle, rgba(255,255,255,0.2191001400560224) 0%, rgba(237,240,255,0.3227415966386554) 100%);
   background-size: 100% 120%;
   background-repeat: no-repeat;
 

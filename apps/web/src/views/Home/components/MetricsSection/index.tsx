@@ -36,13 +36,13 @@ const Stats = () => {
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       {/* <GradientLogo height="100px" width="100px" mb="24px" /> */}
-      <Heading textAlign="center" color="black" scale="xl" mb="32px">
+      <Heading textAlign="center" color="white" scale="xl" mb="32px">
         {t('Tower Token')}
       </Heading>
       {/* <Heading textAlign="center" scale="xl" mb="32px"> */}
       {/*   {t('Trusted with billions.')} */}
       {/* </Heading> */}
-      <Text textAlign="center" color="textSubtle">
+      <Text textAlign="center" color="white">
         {t('Tower token is the main token in TowerSwap')}
       </Text>
       {/*

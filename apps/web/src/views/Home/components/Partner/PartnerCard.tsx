@@ -41,7 +41,7 @@ const PartnerCard: React.FC<React.PropsWithChildren<PartnerCardProps>> = ({
   ...props
 }) => {
   return (
-    <StyledCard background={background} borderBackground={borderColor} rotation={rotation} {...props}>
+    <StyledCard background="white" borderBackground={borderColor} rotation={rotation} {...props}>
       <CardBody>
         <IconWrapper rotation={rotation}>{icon}</IconWrapper>
         {children}
