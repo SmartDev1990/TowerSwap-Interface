@@ -103,7 +103,7 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
   )
 }
 
-const MOBILE_DEFAULT_DISPLAY_COUNT = 6
+const MOBILE_DEFAULT_DISPLAY_COUNT = 10
 
 function MobileModal<T>({
   wallets,

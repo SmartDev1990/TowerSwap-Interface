@@ -254,12 +254,12 @@ const config: (
           href: 'https://docdro.id/thzR1J1',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
-        // {
-        //   label: t('IFO'),
-        //   href: '/ifo',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        //   image: '/images/ifos/ifo-bunny.png',
-        // },
+        {
+          label: t('IFO'),
+          href: '/ifo',
+          supportChainIds: SUPPORT_ONLY_BSC,
+          image: '/images/ifos/ifo-bunny.png',
+        },
         // {
         //   label: t('Voting'),
         //   href: '/voting',
