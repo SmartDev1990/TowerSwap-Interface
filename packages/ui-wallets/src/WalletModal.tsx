@@ -178,7 +178,7 @@ function MobileModal<T>({
 function WalletSelect<T>({
   wallets,
   onClick,
-  displayCount = 5,
+  displayCount = 8,
 }: {
   wallets: WalletConfigV2<T>[]
   onClick: (wallet: WalletConfigV2<T>) => void
