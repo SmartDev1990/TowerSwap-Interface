@@ -75,6 +75,14 @@
       "logoURI": "https://svgshare.com/i/yqH.svg"
     },
     {
+      "name": "EMMET ETH",
+      "symbol": "ETH",
+      "address": "0x9FAdC446f0968946a1242D98E640a7A84c4D4A80",
+      "chainId": 7001,
+      "decimals": 18,
+      "logoURI": "https://i.ibb.co/jr6G75d/emETH.png"
+    },
+    {
       "name": "Wrapped SHARDEUM",
       "symbol": "WSHM",
       "address": "0x1DAcbaB28Decd115c8AA6F183877C71b942aE406",
