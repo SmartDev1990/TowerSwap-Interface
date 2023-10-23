@@ -28,7 +28,7 @@ export const zeta: Chain = {
   blockExplorers: {
     default: {
       name: 'ZetaScan',
-      url: 'https://explorer.zetachain.com/',
+      url: 'https://zetachain-athens-3.blockscout.com/',
     },
   },
 }
