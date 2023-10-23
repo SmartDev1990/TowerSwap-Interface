@@ -22,7 +22,7 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
   [ChainId.CMP]: '0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a', //unverify contract
-  [ChainId.CMP_TESTNET]: '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
+  [ChainId.CMP_TESTNET]: '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
   [ChainId.SHARDEUM]: '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -35,7 +35,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
   [ChainId.CMP]: '0xf6106b14de90ff9d265a71eb198a4c0cb6eb1e3eb65b5d976cd5c6466315e7ae',
-  [ChainId.CMP_TESTNET]: '0xf82f837023e4a7c1f2e65f08b9d9aac39a0f9209b95198c672008d3c1e303d21',
+  [ChainId.CMP_TESTNET]: '0xae2716f3f717dc7a8bff548df955914dbd417b22c2c0fece9c0880b203d4b359',
   [ChainId.SHARDEUM]: '0x1e1e5a8682174c135a501eebbf35c5ce244ee90f78317202363873eb44dca7ca',
 }
 
@@ -101,7 +101,7 @@ export const WBNB = {
   ),
   [ChainId.CMP_TESTNET]: new ERC20Token(
     ChainId.CMP_TESTNET,
-    '0x3DC18345E131A673e11401696A35e7927673EEEA',
+    '0xF88EF72D453B94ABB390275dA1a02Fc0CB723b5F',
     18,
     'WZETA',
     'Wrapped ZETA',
@@ -150,6 +150,6 @@ export const NATIVE: Record<
     decimals: 18,
   },
   [ChainId.CMP]: { name: 'CMP', symbol: 'CMP', decimals: 18 },
-  [ChainId.CMP_TESTNET]: { name: 'ZETA', symbol: 'ZETA', decimals: 18 },
+  [ChainId.CMP_TESTNET]: { name: 'ZETA', symbol: 'aZETA', decimals: 18 },
   [ChainId.SHARDEUM]: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
 }
