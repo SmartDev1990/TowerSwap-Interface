@@ -3,6 +3,8 @@ import {
   DropdownMenuItemType,
   SwapIcon,
   SwapFillIcon,
+  BridgeIcon,
+  BridgeFillIcon,
   FaucetIcon,
   FaucetFillIcon,
   EarnFillIcon,
@@ -53,25 +55,25 @@ const config: (
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
       href: '/swap',
-      showItemsOnMobile: false,
+      showItemsOnMobile: true,
       supportChainIds: SUPPORT_ONLY_BSC,
       items: [
-        // {
-        //   label: t('Swap'),
-        //   href: '/swap',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        // },
+        {
+          label: t('Swap'),
+          href: '/swap',
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
         // {
         //   label: t('Limit'),
         //   href: '/limit-orders',
         //   supportChainIds: SUPPORT_ONLY_BSC,
         //   image: '/images/decorations/3d-coin.png',
         // },
-        // {
-        //   label: t('Liquidity'),
-        //   href: '/liquidity',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        // },
+        {
+          label: t('Liquidity'),
+          href: '/liquidity',
+          supportChainIds: SUPPORT_ONLY_BSC,
+        },
         // {
         //   label: t('Perpetual'),
         //   href: `https://perp.pancakeswap.finance/${perpLangMap(languageCode)}/futures/BTCUSDT?theme=${perpTheme(
@@ -88,20 +90,11 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Pool'),
-      icon: LiquidityIcon,
-      fillIcon: LiquidityFillIcon,
-      href: '/liquidity',
-      showItemsOnMobile: false,
-      supportChainIds: SUPPORT_ONLY_BSC,
-      items: [].map((item) => addMenuItemSupported(item, chainId)),
-    },
-    {
       label: t('Earn'),
       href: '/farms',
       icon: EarnIcon,
       fillIcon: EarnFillIcon,
-      showItemsOnMobile: false,
+      showItemsOnMobile: true,
       items: [
         {
           label: t('Farms'),
@@ -222,6 +215,15 @@ const config: (
     },
     */
     {
+      label: t('Bridge'),
+      href: 'https://emmet.finance/bridge',
+      icon: BridgeIcon,
+      fillIcon: BridgeFillIcon,
+      type: DropdownMenuItemType.EXTERNAL_LINK,
+      image: '/images/decorations/nft.png',
+      items: [],
+    },
+    {
       label: 'More',
       href: '/info',
       icon: MoreIcon,
@@ -254,12 +256,12 @@ const config: (
           href: 'https://docdro.id/thzR1J1',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
-        {
-          label: t('IFO'),
-          href: '/ifo',
-          supportChainIds: SUPPORT_ONLY_BSC,
-          image: '/images/ifos/ifo-bunny.png',
-        },
+        // {
+        //   label: t('IFO'),
+        //   href: '/ifo',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        //   image: '/images/ifos/ifo-bunny.png',
+        // },
         // {
         //   label: t('Voting'),
         //   href: '/voting',
