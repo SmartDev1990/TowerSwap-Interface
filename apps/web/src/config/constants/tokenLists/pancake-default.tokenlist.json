@@ -69,10 +69,10 @@
     {
       "name": "EMMET Token",
       "symbol": "EMMET",
-      "address": "0x9698b2bf20286248C5CCeBaCE53A94BB1A088854",
+      "address": "0xc03B1253770a34289f8Aa44b694b190dF9bb69b8",
       "chainId": 7001,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/mTmxhm7/Emmet-Logo-Yellow.png"
+      "logoURI": "https://svgshare.com/i/yqH.svg"
     },
     {
       "name": "Wrapped SHARDEUM",
