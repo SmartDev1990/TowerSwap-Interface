@@ -219,8 +219,8 @@ const config: (
       href: 'https://emmet.finance/bridge',
       icon: BridgeIcon,
       fillIcon: BridgeFillIcon,
-      type: DropdownMenuItemType.EXTERNAL_LINK,
-      image: '/images/decorations/nft.png',
+      // type: DropdownMenuItemType.EXTERNAL_LINK,
+      // image: '/images/decorations/nft.png',
       items: [],
     },
     {
