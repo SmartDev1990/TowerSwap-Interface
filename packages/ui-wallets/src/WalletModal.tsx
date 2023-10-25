@@ -106,81 +106,91 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
 const MOBILE_DEFAULT_DISPLAY_COUNT = 10
 
 function MobileModal<T>({
-  wallets,
+  wallets: wallets_,
   connectWallet,
   docLink,
   docText,
 }: Pick<WalletModalV2Props<T>, 'wallets' | 'docLink' | 'docText'> & {
   connectWallet: (wallet: WalletConfigV2<T>) => void
 }) {
-  const { t } = useTranslation()
+  const wallets: WalletConfigV2<T>[] = wallets_
 
-  const [selected] = useSelectedWallet()
+  const [selected] = useSelectedWallet<T>()
   const [error] = useAtom(errorAtom)
   const [qrCode, setQrCode] = useState<string | undefined>(undefined)
-
-  const installedWallets: WalletConfigV2<T>[] = wallets.filter((w) => w.installed)
-  const walletsToShow: WalletConfigV2<T>[] = wallets.filter((w) => {
-    if (installedWallets.length) {
-      return w.installed
-    }
-    return w.installed !== false || (!w.installed && (w.guide || w.downloadLink || w.qrCode))
-  })
+  const { t } = useTranslation()
 
   const connectToWallet = (wallet: WalletConfigV2<T>) => {
     connectWallet(wallet)
   }
 
   return (
-    <AtomBox width="full">
-      {error ? (
-        <AtomBox
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          style={{ gap: '24px' }}
-          textAlign="center"
-          p="24px"
-        >
-          {selected && typeof selected.icon === 'string' && <Image src={selected.icon} width={108} height={108} />}
-          <div style={{ maxWidth: '246px' }}>
-            <ErrorMessage message={error} />
-          </div>
-        </AtomBox>
-      ) : (
-        <Text color="textSubtle" small p="24px">
-          {t(
-            'Start by connecting with one of the wallets below. Be sure to store your private keys or seed phrase securely. Never share them with anyone.',
-          )}
-        </Text>
-      )}
-      <AtomBox flex={1} py="16px" style={{ maxHeight: '230px' }} overflow="auto">
-      <WalletSelect
-        wallets={wallets}
-        onClick={(w) => {
-          connectToWallet(w)
-          setQrCode(undefined)
-          if (w.qrCode) {
-            w.qrCode().then((uri) => {
-              setQrCode(uri)
-            })
-          }
-        }}
-      />
-      </AtomBox>
-      <AtomBox p="24px" borderTop="1">
-        <AtomBox>
-          <Text textAlign="center" color="textSubtle" as="p" mb="24px">
-            {t('Haven’t got a crypto wallet yet?')}
+    <>
+      <AtomBox
+        display="flex"
+        flexDirection="column"
+        bg="backgroundAlt"
+        py="32px"
+        zIndex="modal"
+        borderRadius="card"
+        className={desktopWalletSelectionClass}
+      >
+        <AtomBox px="48px">
+          <Heading color="color" as="h4">
+            {t('Connect Wallet')}
+          </Heading>
+          <Text color="textSubtle" small pt="24px" pb="32px">
+            {t(
+              'Start by connecting with one of the wallets below. Be sure to store your private keys or seed phrase securely. Never share them with anyone.',
+            )}
           </Text>
         </AtomBox>
-        <Button as="a" href={docLink} variant="subtle" width="100%" external>
-          {docText}
-        </Button>
+        <WalletSelect
+          wallets={wallets}
+          onClick={(w) => {
+            connectToWallet(w)
+            setQrCode(undefined)
+            if (w.qrCode) {
+              w.qrCode().then((uri) => {
+                setQrCode(uri)
+              })
+            }
+          }}
+        />
       </AtomBox>
-    </AtomBox>
+      <AtomBox
+        flex={1}
+        mx="24px"
+        display={{
+          xs: 'none',
+          sm: 'flex',
+        }}
+        justifyContent="center"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <AtomBox display="flex" flexDirection="column" alignItems="center" style={{ gap: '24px' }} textAlign="center">
+          {!selected && <Intro docLink={docLink} docText={docText} />}
+          {selected && selected.installed !== false && (
+            <>
+              {typeof selected.icon === 'string' && <Image src={selected.icon} width={108} height={108} />}
+              <Heading as="h1" fontSize="20px" color="secondary">
+                {t('Opening')} {selected.title}
+              </Heading>
+              {error ? (
+                <ErrorContent message={error} onRetry={() => connectToWallet(selected)} />
+              ) : (
+                <Text>{t('Please confirm in %wallet%', { wallet: selected.title })}</Text>
+              )}
+            </>
+          )}
+          {selected && selected.installed === false && <NotInstalled qrCode={qrCode} wallet={selected} />}
+        </AtomBox>
+      </AtomBox>
+    </>
   )
 }
+
 
 function WalletSelect<T>({
   wallets,
