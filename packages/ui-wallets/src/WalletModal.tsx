@@ -117,14 +117,19 @@ function MobileModal<T>({
 
   const [selected] = useSelectedWallet()
   const [error] = useAtom(errorAtom)
+  const [qrCode, setQrCode] = useState<string | undefined>(undefined)
 
   const installedWallets: WalletConfigV2<T>[] = wallets.filter((w) => w.installed)
   const walletsToShow: WalletConfigV2<T>[] = wallets.filter((w) => {
     if (installedWallets.length) {
       return w.installed
     }
-    return w.installed !== false || w.deepLink
+    return w.installed !== false || (!w.installed && (w.guide || w.downloadLink || w.qrCode))
   })
+
+  const connectToWallet = (wallet: WalletConfigV2<T>) => {
+    connectWallet(wallet)
+  }
 
   return (
     <AtomBox width="full">
@@ -150,16 +155,18 @@ function MobileModal<T>({
         </Text>
       )}
       <AtomBox flex={1} py="16px" style={{ maxHeight: '230px' }} overflow="auto">
-        <WalletSelect
-          displayCount={MOBILE_DEFAULT_DISPLAY_COUNT}
-          wallets={walletsToShow}
-          onClick={(wallet) => {
-            connectWallet(wallet)
-            if (wallet.deepLink && wallet.installed === false) {
-              window.open(wallet.deepLink)
-            }
-          }}
-        />
+      <WalletSelect
+        wallets={wallets}
+        onClick={(w) => {
+          connectToWallet(w)
+          setQrCode(undefined)
+          if (w.qrCode) {
+            w.qrCode().then((uri) => {
+              setQrCode(uri)
+            })
+          }
+        }}
+      />
       </AtomBox>
       <AtomBox p="24px" borderTop="1">
         <AtomBox>
