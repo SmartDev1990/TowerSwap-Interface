@@ -2,7 +2,7 @@ import { WalletConfigV2 } from '@pancakeswap/ui-wallets'
 import { WalletFilledIcon } from '@pancakeswap/uikit'
 import type { ExtendEthereum } from 'global'
 import { isFirefox } from 'react-device-detect'
-import { metaMaskConnector, walletConnectNoQrCodeConnector } from '../utils/wagmi'
+import { metaMaskConnector, walletConnectNoQrCodeConnector, okxConnector } from '../utils/wagmi'
 
 export enum ConnectorNames {
   MetaMask = 'metaMask',
@@ -43,7 +43,7 @@ const walletsConfig = ({
       connectorId: ConnectorNames.MetaMask,
       deepLink: 'https://metamask.app.link/dapp/Towerswap.finance/',
       qrCode,
-      downloadLink: 'https://metamask.app.link/dapp/Towerswapp.finance/',
+      downloadLink: 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn',
     },
     {
       id: 'okx',
@@ -51,6 +51,7 @@ const walletsConfig = ({
       icon: '/images/wallets/OKX.png',
       connectorId: ConnectorNames.Okx,
       installed: typeof window !== 'undefined' && Boolean(window.okxwallet),
+      deepLink: 'https://okx.com/web3',
       downloadLink: {
         desktop: 'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       },

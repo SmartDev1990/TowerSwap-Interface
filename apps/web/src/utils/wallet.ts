@@ -39,5 +39,6 @@ export const canRegisterToken = () =>
   !window?.ethereum?.isSafePal &&
   (window?.ethereum?.isMetaMask ||
     window?.ethereum?.isTrust ||
+    window?.okxwallet ||
     window?.ethereum?.isCoinbaseWallet ||
     window?.ethereum?.isTokenPocket)
