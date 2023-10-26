@@ -51,7 +51,7 @@ const walletsConfig = ({
       icon: '/images/wallets/OKX.png',
       connectorId: ConnectorNames.Okx,
       installed: typeof window !== 'undefined' && Boolean(window.okxwallet),
-      deepLink: 'https://okx.com/web3',
+      deepLink: 'https://okex.com/web3/connect-dapp?uri=https://towerswap.finance',
       downloadLink: {
         desktop: 'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       },

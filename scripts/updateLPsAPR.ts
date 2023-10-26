@@ -34,7 +34,7 @@ const getWeekAgoTimestamp = () => {
 const LP_HOLDERS_FEE = 0.0017
 const WEEKS_IN_A_YEAR = 52.1429
 
-const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.CMP_TESTNET) => {
+const getBlockAtTimestamp = async (timestamp: number, chainId: ChainId = ChainId.CMP) => {
   try {
     const { blocks } = await request<BlockResponse>(
       BLOCKS_CLIENT_WITH_CHAIN[chainId],
@@ -164,9 +164,10 @@ function splitNormalAndStableFarmsReducer(result: SplitFarmResult, farm: any): S
     normalFarms: [...normalFarms, farm],
   }
 }
+
 // ====
 
-const FETCH_CHAIN_ID = [CMP_TESTNET]
+const FETCH_CHAIN_ID: ChainId[] = [ChainId.CMP];
 const fetchAndUpdateLPsAPR = async () => {
   Promise.all(
     FETCH_CHAIN_ID.map(async (chainId) => {

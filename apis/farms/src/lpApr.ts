@@ -57,7 +57,7 @@ const getWeekAgoTimestamp = () => {
   return getUnixTime(weekAgo)
 }
 
-const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.CMP_TESTNET) => {
+const getBlockAtTimestamp = async (timestamp: number, chainId = ChainId.CMP) => {
   try {
     const { blocks } = await blockClientWithChain(chainId).request<BlockResponse>(
       `query getBlock($timestampGreater: Int!, $timestampLess: Int!) {
