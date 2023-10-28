@@ -65,6 +65,22 @@ export const shardeum: Chain = {
   },
 }
 
+export const quai: Chain = {
+  id: 9000,
+  name: 'QUAI IRON AGE',
+  network: 'Cyprus1',
+  rpcUrls: {
+    default: 'https://rpc.cyprus1.colosseum.quaiscan.io/',
+  },
+  nativeCurrency: { name: 'QUAI', symbol: 'QUAI', decimals: 18 },
+  blockExplorers: {
+    default: {
+      name: 'QuaiScan',
+      url: 'https://cyprus1.colosseum.quaiscan.io/',
+    },
+  },
+}
+
 export const avalandcheFuji: Chain = {
   id: 43113,
   name: 'Avalanche Fuji',

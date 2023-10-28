@@ -6,6 +6,7 @@ export interface ExtendEthereum extends Ethereum {
   isBlocto?: true
   isMathWallet?: true
   isTrustWallet?: true
+  isPelagus?: true
   isBlocto?: true
 }
 
@@ -13,6 +14,7 @@ declare global {
   interface Window {
     coin98?: true
     okxwallet?: true
+    pelaguswallet?: true
     ethereum?: ExtendEthereum
     BinanceChain?: {
       bnbSign?: (address: string, message: string) => Promise<{ publicKey: string; signature: string }>

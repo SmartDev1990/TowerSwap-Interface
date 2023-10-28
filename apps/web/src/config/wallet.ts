@@ -2,11 +2,12 @@ import { WalletConfigV2 } from '@pancakeswap/ui-wallets'
 import { WalletFilledIcon } from '@pancakeswap/uikit'
 import type { ExtendEthereum } from 'global'
 import { isFirefox } from 'react-device-detect'
-import { metaMaskConnector, walletConnectNoQrCodeConnector, okxConnector } from '../utils/wagmi'
+import { metaMaskConnector, walletConnectNoQrCodeConnector, okxConnector, pelagusConnector } from '../utils/wagmi'
 
 export enum ConnectorNames {
   MetaMask = 'metaMask',
   Okx = 'okxWallet',
+  Pelagus = 'pelagusWallet',
   Injected = 'injected',
   WalletConnect = 'walletConnect',
   BSC = 'bsc',
@@ -51,7 +52,17 @@ const walletsConfig = ({
       icon: '/images/wallets/OKX.png',
       connectorId: ConnectorNames.Okx,
       installed: typeof window !== 'undefined' && Boolean(window.okxwallet),
-      deepLink: 'https://okex.com/web3/connect-dapp?uri=https://towerswap.finance',
+      downloadLink: {
+        desktop: 'https://chrome.google.com/webstore/detail/pelagus/gaegollnpijhedifeeeepdoffkgfcmbc',
+      },
+      qrCode,
+    },
+    {
+      id: 'pelagus',
+      title: 'pelagus',
+      icon: '/images/wallets/pelagus.png',
+      connectorId: ConnectorNames.Pelagus,
+      installed: typeof window !== 'undefined' && Boolean(window.pelaguswallet),
       downloadLink: {
         desktop: 'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       },

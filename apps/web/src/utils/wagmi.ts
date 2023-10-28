@@ -1,6 +1,6 @@
 import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
-import { cmpMainnet, shardeum, zeta, bsc, mainnet } from '@pancakeswap/wagmi/chains'
+import { cmpMainnet, shardeum, zeta, bsc, mainnet, quai } from '@pancakeswap/wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -10,7 +10,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from '@gnosis.pm/safe-apps-wagmi'
 
-const CHAINS = [cmpMainnet, zeta, shardeum]
+const CHAINS = [cmpMainnet, zeta, shardeum, quai]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
@@ -128,6 +128,26 @@ export const okxConnector = new OkxConnector({
   },
 })
 
+class PelagusConnector extends InjectedConnector {
+  provider?: Window['ethereum']
+
+  public id = 'pelagus'
+
+  async getProvider() {
+    if (!(window as any).pelaguswallet) throw new Error('Okx Wallet not found')
+    this.provider = (window as any).pelaguswallet
+    return this.provider
+  }
+}
+
+export const pelagusConnector = new PelagusConnector({
+  chains,
+  options: {
+    shimDisconnect: true,
+    shimChainChangedDisconnect: true,
+  },
+})
+
 export const client = createClient({
   autoConnect: false,
   provider,
@@ -140,6 +160,7 @@ export const client = createClient({
     bscConnector,
     bloctoConnector,
     okxConnector,
+    pelagusConnector,
   ],
 })
 

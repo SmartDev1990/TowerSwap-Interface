@@ -40,5 +40,6 @@ export const canRegisterToken = () =>
   (window?.ethereum?.isMetaMask ||
     window?.ethereum?.isTrust ||
     window?.okxwallet ||
+    window?.pelaguswallet ||
     window?.ethereum?.isCoinbaseWallet ||
     window?.ethereum?.isTokenPocket)

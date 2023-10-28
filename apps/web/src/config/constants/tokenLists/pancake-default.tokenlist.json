@@ -105,6 +105,22 @@
       "chainId": 8081,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
+    },
+    {
+      "name": "Wrapped QUAI",
+      "symbol": "WQUAI",
+      "address": "0x14e756126AE02064dEb5E8FC006F6D2178B7B9A0",
+      "chainId": 9000,
+      "decimals": 18,
+      "logoURI": "https://i.ibb.co/nR8q0NC/9000.png"
+    },
+    {
+      "name": "TowerSwap Token",
+      "symbol": "TWS",
+      "address": "0x030d7c5E786E9A287DDE9cB42A5f470c64dF0837",
+      "chainId": 9000,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     }
   ]
 }
