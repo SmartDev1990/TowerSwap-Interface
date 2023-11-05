@@ -1,6 +1,6 @@
 import { ChainId, WBNB, ERC20Token } from '@pancakeswap/sdk'
 
-export const shardeumvTokens = {
+export const shardeumTokens = {
   wcmp: WBNB[ChainId.SHARDEUM],
   tw: new ERC20Token(
   ChainId.SHARDEUM,

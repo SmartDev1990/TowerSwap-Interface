@@ -97,6 +97,15 @@ export const USDT_ETH = new ERC20Token(
   'https://tether.to/',
 )
 
+export const USDT_SHARDEUMV = new ERC20Token(
+  ChainId.SHARDEUMV,
+  '0x43891084581fD07Ee1189f3a2f04e51c26a95B77',
+  18,
+  'USDT',
+  'Tether USD',
+  'https://tether.to/',
+)
+
 export const BUSD_BSC = new ERC20Token(
   ChainId.BSC,
   '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
@@ -178,7 +187,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.CMP]: BUSD_CMP,
   [ChainId.CMP_TESTNET]: BUSD_CMPTESTNET,
   [ChainId.SHARDEUM]: BUSD_NET,
-  [ChainId.SHARDEUMV]: BUSD_NET,
+  [ChainId.SHARDEUMV]: USDT_SHARDEUMV,
   [ChainId.QUAI]: BUSD_NET,
 }
 

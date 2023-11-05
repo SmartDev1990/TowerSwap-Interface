@@ -134,4 +134,5 @@ export const PINNED_PAIRS: {
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [],
+  [ChainId.SHARDEUMV]: [],
 }
