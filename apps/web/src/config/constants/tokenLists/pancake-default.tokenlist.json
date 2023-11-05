@@ -85,23 +85,15 @@
     {
       "name": "Wrapped SHARDEUM",
       "symbol": "WSHM",
-      "address": "0x1DAcbaB28Decd115c8AA6F183877C71b942aE406",
+      "address": "0xaF56dAa09dD5C6eF1e72fC9cEf34CDf48AB33303",
       "chainId": 8081,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
     },
     {
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "address": "0x8bfF3074829588E2CE5f6B1dA45e65D0C5a611b3",
-      "chainId": 8081,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
-    },
-    {
-      "name": "TowerSwap Testnet",
-      "symbol": "TWST",
-      "address": "0x828AefE6579eBc100788128C3db8c7ECc8844A62",
+      "name": "TowerSwap Token",
+      "symbol": "TWS",
+      "address": "0x8d6e7213bad28e00156c7ecddefac64cc508cad5",
       "chainId": 8081,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
@@ -119,6 +111,38 @@
       "symbol": "TWS",
       "address": "0x030d7c5E786E9A287DDE9cB42A5f470c64dF0837",
       "chainId": 9000,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
+    },
+    {
+      "name": "Wrapped SHARDEUM",
+      "symbol": "WSHM",
+      "address": "0xBb5e1777A331ED93E07cF043363e48d320eb96c4",
+      "chainId": 8082,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
+    },
+    {
+      "name": "IceCreamSwap",
+      "symbol": "ICE",
+      "address": "0xb5C7882e37359572FD1cCFAA276e7Fdf70145D42",
+      "chainId": 8082,
+      "decimals": 18,
+      "logoURI": "https://pbs.twimg.com/profile_images/1532715330782605312/S3PvFlua_400x400.png"
+    },
+    {
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "address": "0x43891084581fD07Ee1189f3a2f04e51c26a95B77",
+      "chainId": 8082,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    },
+    {
+      "name": "TowerSwap Token",
+      "symbol": "TWS",
+      "address": "0xF6b74a6ca157e990B55B822558CBE5D3147BE508",
+      "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
     }

@@ -178,6 +178,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.CMP]: BUSD_CMP,
   [ChainId.CMP_TESTNET]: BUSD_CMPTESTNET,
   [ChainId.SHARDEUM]: BUSD_NET,
+  [ChainId.SHARDEUMV]: BUSD_NET,
   [ChainId.QUAI]: BUSD_NET,
 }
 

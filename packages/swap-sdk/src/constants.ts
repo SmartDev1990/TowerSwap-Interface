@@ -9,6 +9,7 @@ export enum ChainId {
   CMP = 256256,
   CMP_TESTNET = 7001,
   SHARDEUM = 8081,
+  SHARDEUMV = 8082,
   QUAI = 9000,
 }
 
@@ -24,7 +25,8 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
   [ChainId.CMP]: '0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a', //unverify contract
   [ChainId.CMP_TESTNET]: '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
-  [ChainId.SHARDEUM]: '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
+  [ChainId.SHARDEUM]: '0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F',
+  [ChainId.SHARDEUMV]: '0xaF56dAa09dD5C6eF1e72fC9cEf34CDf48AB33303',
   [ChainId.QUAI]: '0x1B9735cFB121153536647182fE122d85D6Ae1dB1',
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -38,7 +40,8 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
   [ChainId.CMP]: '0xf6106b14de90ff9d265a71eb198a4c0cb6eb1e3eb65b5d976cd5c6466315e7ae',
   [ChainId.CMP_TESTNET]: '0xae2716f3f717dc7a8bff548df955914dbd417b22c2c0fece9c0880b203d4b359',
-  [ChainId.SHARDEUM]: '0x1e1e5a8682174c135a501eebbf35c5ce244ee90f78317202363873eb44dca7ca',
+  [ChainId.SHARDEUM]: '0x3e88eef79b4277868829a66b1493cb418bdc4dfe6305db33cf35d65d5942707b',
+  [ChainId.SHARDEUMV]: '0x3e88eef79b4277868829a66b1493cb418bdc4dfe6305db33cf35d65d5942707b',
   [ChainId.QUAI]: '0x0feeaa479bd613d42ac33abf72367f6b85fcd6d3fb5a921fd43db22f159610a6',
 }
 
@@ -112,7 +115,15 @@ export const WBNB = {
   ),
   [ChainId.SHARDEUM]: new ERC20Token(
     ChainId.SHARDEUM,
-    '0x1DAcbaB28Decd115c8AA6F183877C71b942aE406',
+    '0xaF56dAa09dD5C6eF1e72fC9cEf34CDf48AB33303',
+    18,
+    'WSHM',
+    'Wrapped SHARDEUM',
+    'https://www.shardeum.org'
+  ),
+  [ChainId.SHARDEUMV]: new ERC20Token(
+    ChainId.SHARDEUMV,
+    '0xBb5e1777A331ED93E07cF043363e48d320eb96c4',
     18,
     'WSHM',
     'Wrapped SHARDEUM',
@@ -137,6 +148,7 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.CMP]: WBNB[ChainId.CMP],
   [ChainId.CMP_TESTNET]: WBNB[ChainId.CMP_TESTNET],
   [ChainId.SHARDEUM]: WBNB[ChainId.SHARDEUM],
+  [ChainId.SHARDEUMV]: WBNB[ChainId.SHARDEUMV],
   [ChainId.QUAI]: WBNB[ChainId.QUAI],
 }
 
@@ -164,5 +176,6 @@ export const NATIVE: Record<
   [ChainId.CMP]: { name: 'CMP', symbol: 'CMP', decimals: 18 },
   [ChainId.CMP_TESTNET]: { name: 'ZETA', symbol: 'aZETA', decimals: 18 },
   [ChainId.SHARDEUM]: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
+  [ChainId.SHARDEUMV]: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
   [ChainId.QUAI]: { name: 'QUAI', symbol: 'QUAI', decimals: 18 },
 }

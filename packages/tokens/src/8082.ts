@@ -1,18 +1,18 @@
 import { ChainId, WBNB, ERC20Token } from '@pancakeswap/sdk'
 
-export const shardeumvTokens = {
-  wcmp: WBNB[ChainId.SHARDEUM],
+export const shardeumTokens = {
+  wcmp: WBNB[ChainId.SHARDEUMV],
   tw: new ERC20Token(
-  ChainId.SHARDEUM,
-  '0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5',
+  ChainId.SHARDEUMV,
+  '0xF6b74a6ca157e990B55B822558CBE5D3147BE508',
   18,
   'TWS',
   'TowerSwap Testnet',
   'https://towerswap.finance',
   ),
   usdt: new ERC20Token(
-  ChainId.SHARDEUM,
-  '0x8bfF3074829588E2CE5f6B1dA45e65D0C5a611b3',
+  ChainId.SHARDEUMV,
+  '0xBb5e1777A331ED93E07cF043363e48d320eb96c4',
   18,
   'USDT',
   'Tether USD',

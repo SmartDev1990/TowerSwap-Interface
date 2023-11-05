@@ -11,7 +11,8 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
   [ChainId.CMP_TESTNET]: '0x33fea934d76c80c9a857a766ee1354381d6c6364',
-  [ChainId.SHARDEUM]: '0x4adffb6b308bdfc2aae94d7887d904303ed78113',
+  [ChainId.SHARDEUM]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
+  [ChainId.SHARDEUMV]: '0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F',
   [ChainId.QUAI]: '0x065aEFd340e153BCC497EeAAd970758434ADce5e',
 }
 
@@ -24,6 +25,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.CMP]: '',
   [ChainId.CMP_TESTNET]: '',
   [ChainId.SHARDEUM]: '',
+  [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
 }
 
@@ -52,6 +54,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [],
+  [ChainId.SHARDEUMV]: [],
 }
 
 /**
@@ -89,6 +92,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [],
+  [ChainId.SHARDEUMV]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -108,6 +112,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [],
+  [ChainId.SHARDEUMV]: [],
 }
 
 export const PINNED_PAIRS: {
