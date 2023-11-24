@@ -53,7 +53,7 @@ const walletsConfig = ({
       connectorId: ConnectorNames.Okx,
       installed: typeof window !== 'undefined' && Boolean(window.okxwallet),
       downloadLink: {
-        desktop: 'https://chrome.google.com/webstore/detail/pelagus/gaegollnpijhedifeeeepdoffkgfcmbc',
+        desktop: 'https://chromewebstore.google.com/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       },
       qrCode,
     },
@@ -64,7 +64,7 @@ const walletsConfig = ({
       connectorId: ConnectorNames.Pelagus,
       installed: typeof window !== 'undefined' && Boolean(window.pelaguswallet),
       downloadLink: {
-        desktop: 'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
+        desktop: 'https://chrome.google.com/webstore/detail/pelagus/gaegollnpijhedifeeeepdoffkgfcmbc',
       },
       qrCode,
     },

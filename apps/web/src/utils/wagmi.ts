@@ -134,7 +134,7 @@ class PelagusConnector extends InjectedConnector {
   public id = 'pelagus'
 
   async getProvider() {
-    if (!(window as any).pelaguswallet) throw new Error('Okx Wallet not found')
+    if (!(window as any).pelaguswallet) throw new Error('Pelagus Wallet not found')
     this.provider = (window as any).pelaguswallet
     return this.provider
   }
