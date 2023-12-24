@@ -1,0 +1,312 @@
+/* Add this CSS to your stylesheets */
+
+.launchpad-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns per row */
+  gap: 20px; /* Adjust the gap between cards as needed */
+  margin: 10px; /* Add top margin to separate from tabs */
+}
+
+
+.launchpad-container {
+  margin: 2px;
+}
+
+.capslabel {
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.title-h2 {
+  text-align: center;
+  color: white;
+  margin: 30px;
+  font-family: sans-serif;
+}
+
+.title-p {
+  color: white;
+  padding: 10px;
+  font-size: 22px;
+}
+.title-p2 {
+  color: yellow;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.two-column {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  padding-top: 10px;
+}
+
+.liqText {
+  color: black
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.softcap-label,
+.hardcap-label {
+  font-size: 12px;
+  color: #555;
+}
+
+.social-media-icon {
+  width: 24px;
+  height: 24px;
+  padding-right: 5px;
+}
+
+.social-media-icon2 {
+  width: 18px;
+  height: 18px;
+}
+
+.badge-icon {
+  width: 35px;
+  height: 35px;
+  padding-right: 5px;
+}
+
+progress {
+  width: 100%;
+  height: 20px; /* Adjust the height as needed */
+}
+
+.progress-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.softcap-marker,
+.hardcap-marker {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: #ffcc00; /* Softcap and hardcap color */
+  transform: translateX(-50%);
+}
+
+.softcap-marker {
+  left: 0;
+}
+
+.hardcap-marker {
+  left: 100%;
+}
+
+
+.capsText {
+  color: white;
+  font-size: 12px;
+}
+
+.liqText {
+  justify-content: flex-end;
+}
+
+.img-card {
+  width: 45px;
+  height: auto;
+  border-radius: 20px;
+  border: 2px solid yellow;
+  align-items: flex-start;
+  padding: 5px;
+}
+
+.img-card1 {
+  width: 120px;
+  height: auto;
+  border-radius: 90px;
+  border: 2px solid yellow;
+  align-items: flex-start;
+}
+
+.p-title {
+  font-size: 16px;
+}
+.p-title2 {
+  font-size: 10px;
+  color: yellow;
+}
+
+.launchpad-card {
+  background: white;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 4px solid #000;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: border-color 0.5s ease-in-out;
+  position: relative;
+  animation: animateBorder 2s infinite alternate;
+  -webkit-animation: changeBorderColor 2s infinite alternate; /* Untuk mendukung browser WebKit seperti Chrome dan Safari */
+  -moz-animation: changeBorderColor 2s infinite alternate;
+  -ms-animation: animateBorder 2s infinite alternate;
+}
+
+.badge2 {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007bff; /* Badge background color */
+  color: #fff; /* Text color */
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.badge-audit {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #e482f7; /* Badge background color */
+  color: #fff; /* Text color */
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.badge-safu {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #fffc07; /* Badge background color */
+  color: black; /* Text color */
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.launchpad-card:hover {
+  border-color: #3498db;
+}
+
+.launchpad-card-content {
+  padding: 20px;
+}
+
+
+@keyframes changeBorderColor {
+  0% {
+    border-color: #e74c3c;
+  }
+  25% {
+    border-color: #f39c12;
+  }
+  50% {
+    border-color: #2ecc71;
+  }
+  75% {
+    border-color: #3498db;
+  }
+  100% {
+    border-color: #e74c3c;
+  }
+}
+
+.snake-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.snake-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #2196F3, transparent);
+  animation: snake-progress-animation 2s linear infinite;
+}
+
+@keyframes snake-progress-animation {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.launchpad-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.launchpad-info {
+  padding: 16px;
+}
+
+.launchpad-info img {
+  max-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px; /* Add margin for better spacing */
+}
+
+.caps,
+.times {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px; /* Add padding for better spacing */
+  margin-bottom: 10px; /* Add margin for better spacing */
+}
+
+.caps p,
+.times p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.view-details-link {
+  display: block;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.view-details-link:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .launchpad-card {
+    width: 100%;
+  }
+
+  .launchpad-card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 10px;
+  }
+}

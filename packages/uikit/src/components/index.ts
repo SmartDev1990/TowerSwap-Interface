@@ -42,6 +42,7 @@ export * from "./Column";
 export * from "./Row";
 export * from "./Loader";
 export * from "./ScrollToTopButton";
+export * from "./LaunchpadHeader";
 export * from "./PageHeader";
 export * from "./Select";
 export * from "./Loading";

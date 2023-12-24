@@ -43,6 +43,7 @@ import {
   getNonBscVaultAddress,
   getCrossFarmingSenderAddress,
   getCrossFarmingReceiverAddress,
+  getSaleFactoryAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -97,6 +98,7 @@ import nonBscVault from 'config/abi/nonBscVault.json'
 import crossFarmingSenderAbi from 'config/abi/crossFarmingSender.json'
 import crossFarmingReceiverAbi from 'config/abi/crossFarmingReceiver.json'
 import crossFarmingProxyAbi from 'config/abi/crossFarmingProxy.json'
+import SaleFactory from 'config/abi/Factory.json'
 
 // Types
 import type {
@@ -173,6 +175,9 @@ export const getErc721Contract = (address: string, signer?: Signer | Provider) =
 }
 export const getLpContract = (address: string, chainId?: number, signer?: Signer | Provider) => {
   return getContract({ abi: lpTokenAbi, address, signer, chainId }) as LpToken
+}
+export const getSaleFactoryContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: SaleFactory, address: getSaleFactoryAddress(), signer })
 }
 export const getIfoV1Contract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: ifoV1Abi, address, signer }) as IfoV1

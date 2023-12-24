@@ -59,6 +59,7 @@ import {
   getNonBscVaultContract,
   getCrossFarmingProxyContract,
   getIfoCreditAddressContract,
+  getSaleFactoryContract,
 } from 'utils/contractHelpers'
 import { useSigner } from 'wagmi'
 
@@ -107,6 +108,12 @@ export const useERC721 = (address: string, withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getErc721Contract(address, providerOrSigner), [address, providerOrSigner])
 }
+
+export const useSaleFactory = () => {
+  const { data: signer } = useSigner()
+  return useMemo(() => getSaleFactoryContract(signer), [signer])
+}
+
 
 export const useCake = (): { reader: Cake; signer: Cake } => {
   const providerOrSigner = useProviderOrSigner(true, true)

@@ -1,0 +1,38 @@
+/* Add this CSS to your stylesheets */
+
+.launchpad-detail-container {
+  margin: 5px;
+}
+
+.detail-title {
+  text-align: flex-start;
+  color: black;
+  margin: 10px;
+  font-size: 22px;
+  font-family: Bahnschrift;
+}
+
+.border-column {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px; /* Add padding for better spacing */
+}
+
+.two-column-container {
+  display: flex;
+}
+
+.two-column-container-header {
+  padding-left: 20px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007bff; /* Badge background color */
+  color: #fff; /* Text color */
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}

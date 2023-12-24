@@ -13,6 +13,9 @@ export const getMasterChefAddress = (chainId?: number) => {
 export const getMasterChefV1Address = () => {
   return getAddress(addresses.masterChefV1)
 }
+export const getSaleFactoryAddress = () => {
+  return getAddress(addresses.presaleFactory)
+}
 export const getMulticallAddress = (chainId?: number) => {
   return getAddress(addresses.multiCall, chainId)
 }

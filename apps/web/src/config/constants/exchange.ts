@@ -12,8 +12,47 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
   [ChainId.CMP_TESTNET]: '0x33fea934d76c80c9a857a766ee1354381d6c6364',
   [ChainId.SHARDEUM]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
-  [ChainId.SHARDEUMV]: '0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F',
+  [ChainId.SHARDEUMV]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
   [ChainId.QUAI]: '0x010f336E87D0551e91D3C3749EA1D4deA11f9d3C',
+}
+
+export const PRESALE_FACTORY: ChainMap<string> = {
+  [ChainId.ETHEREUM]: '',
+  [ChainId.RINKEBY]: '',
+  [ChainId.GOERLI]: '',
+  [ChainId.BSC]: '',
+  [ChainId.BSC_TESTNET]: '',
+  [ChainId.CMP]: '',
+  [ChainId.CMP_TESTNET]: '0x870BA99649C234535c36756F0E85789B43dA4526',
+  [ChainId.SHARDEUM]: '',
+  [ChainId.SHARDEUMV]: '',
+  [ChainId.QUAI]: '',
+}
+
+export const PRIVATESALE_FACTORY: ChainMap<string> = {
+  [ChainId.ETHEREUM]: '',
+  [ChainId.RINKEBY]: '',
+  [ChainId.GOERLI]: '',
+  [ChainId.BSC]: '',
+  [ChainId.BSC_TESTNET]: '',
+  [ChainId.CMP]: '',
+  [ChainId.CMP_TESTNET]: '0xc56126DBA5668bED9302f6EBd579D425C4df7Ae4',
+  [ChainId.SHARDEUM]: '',
+  [ChainId.SHARDEUMV]: '',
+  [ChainId.QUAI]: '',
+}
+
+export const FAIRLAUNCH_FACTORY: ChainMap<string> = {
+  [ChainId.ETHEREUM]: '',
+  [ChainId.RINKEBY]: '',
+  [ChainId.GOERLI]: '',
+  [ChainId.BSC]: '',
+  [ChainId.BSC_TESTNET]: '',
+  [ChainId.CMP]: '',
+  [ChainId.CMP_TESTNET]: '0x1eDF4D8D93579d63e6Dd34cC4A4E49d54D3ab8e0',
+  [ChainId.SHARDEUM]: '',
+  [ChainId.SHARDEUMV]: '',
+  [ChainId.QUAI]: '',
 }
 
 // used to construct intermediary pairs for trading

@@ -41,7 +41,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.CMP]: '0xf6106b14de90ff9d265a71eb198a4c0cb6eb1e3eb65b5d976cd5c6466315e7ae',
   [ChainId.CMP_TESTNET]: '0xae2716f3f717dc7a8bff548df955914dbd417b22c2c0fece9c0880b203d4b359',
   [ChainId.SHARDEUM]: '0x3e88eef79b4277868829a66b1493cb418bdc4dfe6305db33cf35d65d5942707b',
-  [ChainId.SHARDEUMV]: '0x3e88eef79b4277868829a66b1493cb418bdc4dfe6305db33cf35d65d5942707b',
+  [ChainId.SHARDEUMV]: '0x916ffb8caf4f31bde4d2aad379045564f627c88d06b495d6d8fee674653866b5',
   [ChainId.QUAI]: '0x0feeaa479bd613d42ac33abf72367f6b85fcd6d3fb5a921fd43db22f159610a6',
 }
 
@@ -123,7 +123,7 @@ export const WBNB = {
   ),
   [ChainId.SHARDEUMV]: new ERC20Token(
     ChainId.SHARDEUMV,
-    '0xBb5e1777A331ED93E07cF043363e48d320eb96c4',
+    '0xcf2d86b78e12a08ef3373ee3b0d1d2a1370a7b2f',
     18,
     'WSHM',
     'Wrapped SHARDEUM',

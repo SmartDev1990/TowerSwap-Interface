@@ -117,7 +117,7 @@
     {
       "name": "Wrapped SHARDEUM",
       "symbol": "WSHM",
-      "address": "0xBb5e1777A331ED93E07cF043363e48d320eb96c4",
+      "address": "0xcf2d86b78e12a08ef3373ee3b0d1d2a1370a7b2f",
       "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
@@ -141,7 +141,7 @@
     {
       "name": "TowerSwap Token",
       "symbol": "TWS",
-      "address": "0xF6b74a6ca157e990B55B822558CBE5D3147BE508",
+      "address": "0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5",
       "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/towertoken.png"
