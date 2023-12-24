@@ -4,8 +4,14 @@ import request, { gql } from 'graphql-request'
 import { SNAPSHOT_API } from 'config/constants/endpoints'
 import { PANCAKE_SPACE, ADMINS } from 'views/Voting/config'
 
+interface ProposalResponse {
+  proposals: {
+    id: string;
+  }[];
+}
+
 export const getActiveCoreProposal = async (): Promise<string[]> => {
-  const response = await request(
+  const response: ProposalResponse = await request(
     SNAPSHOT_API,
     gql`
       query getProposals($first: Int!, $skip: Int!, $state: String!, $admins: [String]!) {
@@ -15,9 +21,10 @@ export const getActiveCoreProposal = async (): Promise<string[]> => {
       }
     `,
     { first: 1, skip: 0, state: ProposalState.ACTIVE, admins: ADMINS },
-  )
-  return response.proposals
-}
+  );
+
+  return response.proposals.map((proposal) => proposal.id);
+};
 
 export const useVotingStatus = () => {
   const { data: proposals = [] } = useSWRImmutable('anyActiveCoreProposals', getActiveCoreProposal)
