@@ -1,117 +1,67 @@
-import { ChainId } from '@pancakeswap/sdk';
-import ethereumImage from './images/1.png';
-import rinkebyImage from './images/4.png';
-import goerlyImage from './images/5.png';
-import bscImage from './images/56.png';
-import bsctestnetImage from './images/97.png';
-import cmpImage from './images/256256.png';
-import zetaImage from './images/Zeta.png';
-import shardeumImage from './images/8081.png';
-import shardeumvalidatorImage from './images/8082.png';
-import quaiImage from './images/9000.png';
+import { ChainId } from '@pancakeswap/sdk'
+import ethereumImage from './images/1.png'
+import rinkebyImage from './images/4.png'
+import goerlyImage from './images/5.png'
+import bscImage from './images/56.png'
+import bsctestnetImage from './images/97.png'
+import cmpImage from './images/256256.png'
+import zetaImage from './images/Zeta.png'
+import shardeumImage from './images/8081.png'
+import shardeumvalidatorImage from './images/8082.png'
+import quaiImage from './images/9000.png'
 
 interface CurrencyLogoProps {
-  chainId: number;
-  style?: React.CSSProperties; // Add this line
+  chainId: number
+  style?: React.CSSProperties // Add this line
 }
 
-const Ethereum: React.FC = () => (
-  <img
-    src={ethereumImage.src}
-    alt="Ethereum"
-  />
-);
-const Rinkeby: React.FC = () => (
-  <img
-    src={rinkebyImage.src}
-    alt="Rinkeby"
-  />
-);
-const Goerly: React.FC = () => (
-  <img
-    src={goerlyImage.src}
-    alt="Goerly"
-  />
-);
-const Bsc : React.FC = () => (
-  <img
-    src={bscImage.src}
-    alt="Bsc"
-  />
-);
-const Bsctestnet: React.FC = () => (
-  <img
-    src={bsctestnetImage.src}
-    alt="Bsctestnet"
-  />
-);
-const Cmp: React.FC = () => (
-  <img
-    src={cmpImage.src}
-    alt="Cmp"
-  />
-);
-const Zeta: React.FC = () => (
-  <img
-    src={zetaImage.src}
-    alt="Zeta"
-  />
-);
-const Shardeum: React.FC = () => (
-  <img
-    src={shardeumImage.src}
-    alt="Shardeum"
-  />
-);
-const Shardeumvalidator: React.FC = () => (
-  <img
-    src={shardeumvalidatorImage.src}
-    alt="Shardeumvalidator"
-  />
-);
-const Quai: React.FC = () => (
-  <img
-    src={quaiImage.src}
-    alt="Quai"
-  />
-);
+const Ethereum: React.FC = () => <img src={ethereumImage.src} alt="Ethereum" />
+const Rinkeby: React.FC = () => <img src={rinkebyImage.src} alt="Rinkeby" />
+const Goerly: React.FC = () => <img src={goerlyImage.src} alt="Goerly" />
+const Bsc: React.FC = () => <img src={bscImage.src} alt="Bsc" />
+const Bsctestnet: React.FC = () => <img src={bsctestnetImage.src} alt="Bsctestnet" />
+const Cmp: React.FC = () => <img src={cmpImage.src} alt="Cmp" />
+const Zeta: React.FC = () => <img src={zetaImage.src} alt="Zeta" />
+const Shardeum: React.FC = () => <img src={shardeumImage.src} alt="Shardeum" />
+const Shardeumvalidator: React.FC = () => <img src={shardeumvalidatorImage.src} alt="Shardeumvalidator" />
+const Quai: React.FC = () => <img src={quaiImage.src} alt="Quai" />
 
 const CurrencyLogo: React.FC<CurrencyLogoProps> = ({ chainId, style }) => {
-  let logoComponent;
+  let logoComponent
 
   switch (chainId) {
     case ChainId.ETHEREUM:
-      logoComponent = <Ethereum />;
-      break;
+      logoComponent = <Ethereum />
+      break
     case ChainId.RINKEBY:
-      logoComponent = <Rinkeby />;
-      break;
+      logoComponent = <Rinkeby />
+      break
     case ChainId.GOERLI:
-      logoComponent = <Goerly />;
-      break;
+      logoComponent = <Goerly />
+      break
     case ChainId.BSC:
-      logoComponent = <Bsc />;
-      break;
+      logoComponent = <Bsc />
+      break
     case ChainId.BSC_TESTNET:
-      logoComponent = <Bsctestnet />;
-      break;
+      logoComponent = <Bsctestnet />
+      break
     case ChainId.CMP:
-      logoComponent = <Cmp />;
-      break;
+      logoComponent = <Cmp />
+      break
     case ChainId.CMP_TESTNET:
-      logoComponent = <Zeta />;
-      break;
+      logoComponent = <Zeta />
+      break
     case ChainId.SHARDEUM:
-      logoComponent = <Shardeum />;
-      break;
+      logoComponent = <Shardeum />
+      break
     case ChainId.SHARDEUMV:
-      logoComponent = <Shardeumvalidator />;
-      break;
+      logoComponent = <Shardeumvalidator />
+      break
     case ChainId.QUAI:
-      logoComponent = <Quai />;
-      break;
+      logoComponent = <Quai />
+      break
     default:
-      logoComponent = null;
+      logoComponent = null
   }
 
   return (
@@ -128,7 +78,7 @@ const CurrencyLogo: React.FC<CurrencyLogoProps> = ({ chainId, style }) => {
     >
       {logoComponent}
     </div>
-  );
-};
+  )
+}
 
-export default CurrencyLogo;
+export default CurrencyLogo

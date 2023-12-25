@@ -5,7 +5,7 @@ const tokens = {
   tw: {
     symbol: "TWS",
     address: {
-    256256: "0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5",
+      256256: "0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5",
     },
     decimals: 18,
     projectLink: "https://towerswap.finance/",

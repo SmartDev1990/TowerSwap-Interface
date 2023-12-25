@@ -347,7 +347,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   return (
     <FarmsContext.Provider value={{ chosenFarmsMemoized }}>
-      <PageHeader borderRadius="10px" margin='22px'>
+      <PageHeader borderRadius="10px" margin="22px">
         <FarmFlexWrapper justifyContent="space-between">
           <Box>
             <FarmH1 as="h1" scale="xxl" color="black" mb="24px">

@@ -6,8 +6,8 @@ import { PANCAKE_SPACE, ADMINS } from 'views/Voting/config'
 
 interface ProposalResponse {
   proposals: {
-    id: string;
-  }[];
+    id: string
+  }[]
 }
 
 export const getActiveCoreProposal = async (): Promise<string[]> => {
@@ -21,10 +21,10 @@ export const getActiveCoreProposal = async (): Promise<string[]> => {
       }
     `,
     { first: 1, skip: 0, state: ProposalState.ACTIVE, admins: ADMINS },
-  );
+  )
 
-  return response.proposals.map((proposal) => proposal.id);
-};
+  return response.proposals.map((proposal) => proposal.id)
+}
 
 export const useVotingStatus = () => {
   const { data: proposals = [] } = useSWRImmutable('anyActiveCoreProposals', getActiveCoreProposal)

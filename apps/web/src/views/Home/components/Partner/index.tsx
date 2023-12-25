@@ -67,72 +67,72 @@ const Stats = () => {
 
       <Flex flexDirection={['column', null, null, 'row']}>
         <PartnerCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
-        <PartnerLogo height="40px" width="180px"/>
+          <PartnerLogo height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo1 height="40px" width="180px"/>
+          <PartnerLogo1 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo3 height="40px" width="180px"/>
+          <PartnerLogo3 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...StakedCardData} mb="16px">
-        <PartnerLogo15 height="40px" width="180px"/>
+          <PartnerLogo15 height="40px" width="180px" />
         </PartnerCard>
       </Flex>
       <Flex flexDirection={['column', null, null, 'row']}>
         <PartnerCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
-        <PartnerLogo5 height="40px" width="180px"/>
+          <PartnerLogo5 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo6 height="40px" width="180px"/>
+          <PartnerLogo6 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo7 height="40px" width="180px"/>
+          <PartnerLogo7 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...StakedCardData} mb="16px">
-        <PartnerLogo8 height="40px" width="180px"/>
+          <PartnerLogo8 height="40px" width="180px" />
         </PartnerCard>
       </Flex>
       <Flex flexDirection={['column', null, null, 'row']}>
         <PartnerCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
-        <PartnerLogo9 height="40px" width="180px"/>
+          <PartnerLogo9 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo10 height="40px" width="180px"/>
+          <PartnerLogo10 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo11 height="40px" width="180px"/>
+          <PartnerLogo11 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...StakedCardData} mb="16px">
-        <PartnerLogo12 height="40px" width="180px"/>
+          <PartnerLogo12 height="40px" width="180px" />
         </PartnerCard>
       </Flex>
       <Flex flexDirection={['column', null, null, 'row']}>
         <PartnerCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
-        <PartnerLogo13 height="40px" width="180px"/>
+          <PartnerLogo13 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo14 height="40px" width="180px"/>
+          <PartnerLogo14 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo4 height="40px" width="180px"/>
+          <PartnerLogo4 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...StakedCardData} mb="16px">
-        <PartnerLogo16 height="40px" width="180px"/>
+          <PartnerLogo16 height="40px" width="180px" />
         </PartnerCard>
       </Flex>
       <Flex flexDirection={['column', null, null, 'row']}>
         <PartnerCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '16px']}>
-        <PartnerLogo17 height="40px" width="180px"/>
+          <PartnerLogo17 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo18 height="40px" width="180px"/>
+          <PartnerLogo18 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-        <PartnerLogo19 height="40px" width="180px"/>
+          <PartnerLogo19 height="40px" width="180px" />
         </PartnerCard>
         <PartnerCard {...StakedCardData} mb="16px">
-        <PartnerLogo20 height="40px" width="180px"/>
+          <PartnerLogo20 height="40px" width="180px" />
         </PartnerCard>
       </Flex>
     </Flex>

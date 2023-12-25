@@ -19,5 +19,5 @@ export const StyledInputCurrencyWrapper = styled(Box)`
   width: 360px;
   border-radius: 25px;
   box-shadow: 0px 5px 5px 5px #77c99c;
-  marginBottom: 20px;
+  marginbottom: 20px;
 `

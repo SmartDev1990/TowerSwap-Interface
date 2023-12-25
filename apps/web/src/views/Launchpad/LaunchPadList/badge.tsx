@@ -1,5 +1,5 @@
 // Import styled-components
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // Definisikan komponen gaya menggunakan styled
 export const Badge2 = styled.p`
@@ -9,7 +9,7 @@ marginRight: '5px',
 marginBottom: '5px',
 backgroundColor: '#fffc07',
 padding: '3px'
-`;
+`
 
 export const BadgeAudit = styled.p`
   display: 'flex',
@@ -18,7 +18,7 @@ export const BadgeAudit = styled.p`
   marginBottom: '5px',
   backgroundColor: '#fffc07',
   padding: '3px'
-`;
+`
 
 export const BadgeSafu = styled.p`
   display: inline-block;
@@ -29,4 +29,4 @@ export const BadgeSafu = styled.p`
   font-size: 12px;
   font-weight: bold;
   margin-right: 5px;
-`;
+`

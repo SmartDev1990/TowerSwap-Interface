@@ -18,14 +18,18 @@ const StatCardContent: React.FC<
       justifyContent="center"
     >
       {isSmallerScreen && remainingWords.length > 13 ? (
-        <Heading scale="lg" textAlign="center">{remainingWords}</Heading>
+        <Heading scale="lg" textAlign="center">
+          {remainingWords}
+        </Heading>
       ) : (
         <Heading scale="xl">{remainingWords}</Heading>
       )}
       <Heading color={highlightColor} textAlign="center" scale="xl" mb="24px">
         {lastWord}
       </Heading>
-      <Text textAlign="center" color="textSubtle">{bodyText}</Text>
+      <Text textAlign="center" color="textSubtle">
+        {bodyText}
+      </Text>
     </Flex>
   )
 }

@@ -9,13 +9,13 @@ const priceHelperLps: SerializedFarmConfig[] = [
    * Prices are then fetched for all farms (masterchef + priceHelperLps).
    * Before storing to redux, farms without a PID are filtered out.
    */
-   {
-        pid: null,
-        lpSymbol: '',
-        lpAddress: '0xc1f595579c46acfb33902db3d7cff34bd6355615',
-        token: mainnetTokens.tw,
-        quoteToken: mainnetTokens.wcmp,
-    }
+  {
+    pid: null,
+    lpSymbol: '',
+    lpAddress: '0xc1f595579c46acfb33902db3d7cff34bd6355615',
+    token: mainnetTokens.tw,
+    quoteToken: mainnetTokens.wcmp,
+  },
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default priceHelperLps

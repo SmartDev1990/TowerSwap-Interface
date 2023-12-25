@@ -59,9 +59,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
       <Text>
-        {t(
-          'To avoid error, First select the two tokens you want to exchange before entering the amount of tokens',
-        )}
+        {t('To avoid error, First select the two tokens you want to exchange before entering the amount of tokens')}
       </Text>
     </>,
     { placement: 'bottom' },
@@ -114,7 +112,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 )}
               </ColoredIconButton>
             )}
-            <Flex alignItems="flex" >
+            <Flex alignItems="flex">
               <Button scale="sm">
                 {t('Avoid Error')}
                 {tooltipVisible && tooltip}

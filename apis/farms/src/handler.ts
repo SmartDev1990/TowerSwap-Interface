@@ -6,7 +6,7 @@ import { BUSD, CAKE, TW, WBNB } from '@pancakeswap/tokens'
 import { farmFetcher } from './helper'
 import { FarmKV, FarmResult } from './kv'
 import { updateLPsAPR } from './lpApr'
-import { cmptestnetProvider, bscTestnetProvider } from './provider'
+import { cmpProvider, bscTestnetProvider } from './provider'
 
 const pairAbi = [
   {
@@ -53,8 +53,8 @@ const cakeBusdPairMap = {
 }
 
 const getCakePrice = async (isTestnet: boolean) => {
-  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.BSC : ChainId.CMP
-  const pairContract = new Contract(pairConfig.address, pairAbi, isTestnet ? bscTestnetProvider : cmptestnetProvider)
+  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.BSC : ChainId.CMP]
+  const pairContract = new Contract(pairConfig.address, pairAbi, isTestnet ? bscTestnetProvider : cmpProvider)
   const reserves = await pairContract.getReserves()
   const { reserve0, reserve1 } = reserves
   const { tokenA, tokenB } = pairConfig

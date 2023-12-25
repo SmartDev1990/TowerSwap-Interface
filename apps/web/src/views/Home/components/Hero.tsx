@@ -106,8 +106,7 @@ const Hero = () => {
         `}
       </style>
       <BgWrapper>
-        <InnerWrapper>
-        </InnerWrapper>
+        <InnerWrapper></InnerWrapper>
       </BgWrapper>
       <Flex
         position="relative"

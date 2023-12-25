@@ -42,10 +42,7 @@ const PerpetualBanner = () => {
   const { isDesktop, isMobile } = useMatchBreakpoints()
   const { isDark } = useTheme()
 
-  const perpetualUrl = useMemo(
-    () => `https://towerswap.finance/swap`,
-    [code, isDark],
-  )
+  const perpetualUrl = useMemo(() => `https://towerswap.finance/swap`, [code, isDark])
   const headerRef = useRef<HTMLDivElement>(null)
 
   useIsomorphicEffect(() => {

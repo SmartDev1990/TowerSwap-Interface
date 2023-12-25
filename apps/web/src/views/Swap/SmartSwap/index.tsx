@@ -244,12 +244,7 @@ export function SmartSwapForm() {
 
   return (
     <>
-      <CurrencyInputHeader
-        title={""}
-        subtitle={""}
-        hasAmount={hasAmount}
-        onRefreshPrice={onRefreshPrice}
-      />
+      <CurrencyInputHeader title={''} subtitle={''} hasAmount={hasAmount} onRefreshPrice={onRefreshPrice} />
       <Wrapper id="swap-page" style={{ minHeight: '412px' }}>
         <AutoColumn gap="sm">
           <CurrencyInputPanel

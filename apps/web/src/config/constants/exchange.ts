@@ -139,9 +139,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   [ChainId.CMP_TESTNET]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [
-    [shardeumTokens.tw, shardeumTokens.usdt],
-  ],
+  [ChainId.SHARDEUM]: [[shardeumTokens.tw, shardeumTokens.usdt]],
   [ChainId.SHARDEUMV]: [],
 }
 

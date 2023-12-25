@@ -60,9 +60,7 @@ const AptosBanner = () => {
 
           <Button
             minHeight="48px"
-            onClick={() =>
-              window?.open('https://towerswap.finance/?chainId=8081', '_blank', 'noopener noreferrer')
-            }
+            onClick={() => window?.open('https://towerswap.finance/?chainId=8081', '_blank', 'noopener noreferrer')}
           >
             <Text color="invertedContrast" bold fontSize="16px" mr="4px">
               👋 {t('Trade Now')}

@@ -4,7 +4,6 @@ import { multicallAddresses } from '@pancakeswap/multicall'
 
 export default {
   masterChef: {
-
     8081: '',
     8082: '',
     7001: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',

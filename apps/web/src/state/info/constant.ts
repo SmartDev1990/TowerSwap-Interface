@@ -12,7 +12,7 @@ export const multiChainQueryMainToken = {
 }
 
 export const multiChainBlocksClient = {
-  BSC: "http://127.0.0.1:8000/subgraphs/name/Towerswap-info",
+  BSC: 'http://127.0.0.1:8000/subgraphs/name/Towerswap-info',
   ETH: BLOCKS_CLIENT_ETH,
 }
 
@@ -37,7 +37,7 @@ export const multiChainQueryClient = {
 }
 
 export const multiChainQueryEndPoint = {
-  BSC: "http://127.0.0.1:8000/subgraphs/name/Towerswap-info",
+  BSC: 'http://127.0.0.1:8000/subgraphs/name/Towerswap-info',
   ETH: INFO_CLIENT_ETH,
 }
 

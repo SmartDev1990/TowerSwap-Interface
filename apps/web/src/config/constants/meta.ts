@@ -4,8 +4,7 @@ import { PageMeta } from './types'
 
 export const DEFAULT_META: PageMeta = {
   title: 'TowerSwap',
-  description:
-    'The most popular AMM on CMP by user count! Earn TW through yield farming or staking',
+  description: 'The most popular AMM on CMP by user count! Earn TW through yield farming or staking',
   image: 'https://towerswap.finance/images/hero.png',
 }
 

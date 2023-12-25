@@ -19,14 +19,17 @@ const Outer = styled(Box)<{ background?: string }>`
   }
 `;
 
-
 const Inner = styled(Container)`
   padding-top: 32px;
   padding-bottom: 32px;
   position: relative;
 `;
 
-const LaunchpadHeader: React.FC<React.PropsWithChildren<LaunchpadHeaderProps>> = ({ background, children, ...props }) => (
+const LaunchpadHeader: React.FC<React.PropsWithChildren<LaunchpadHeaderProps>> = ({
+  background,
+  children,
+  ...props
+}) => (
   <Outer background={background} {...props}>
     <Inner>{children}</Inner>
   </Outer>

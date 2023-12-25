@@ -1,30 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import styled, { keyframes } from 'styled-components'
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Grid,
-  LinearProgress,
-  Box,
-  TextField,
-} from '@mui/material';
-import Web3 from 'web3';
-import FactoryAbi from './Abis/PrivateFactory.json';
-import PrivateSale from './Abis/PrivateSale.json';
-import Countdown from 'react-countdown';
-import { useRouter } from 'next/router';
-import Globe from "./Icons/Globe";
-import Telegram from "./Icons/Telegram";
-import Twitter from "./Icons/Twitter";
-import Discord from "./Icons/Discord";
-import Github from "./Icons/Github";
+import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
+import Web3 from 'web3'
+import FactoryAbi from './Abis/PrivateFactory.json'
+import PrivateSale from './Abis/PrivateSale.json'
+import Countdown from 'react-countdown'
+import { useRouter } from 'next/router'
+import Globe from './Icons/Globe'
+import Telegram from './Icons/Telegram'
+import Twitter from './Icons/Twitter'
+import Discord from './Icons/Discord'
+import Github from './Icons/Github'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import CurrencyLogo from '../Logo/ChainLogo';
+import CurrencyLogo from '../Logo/ChainLogo'
 import { PRIVATESALE_FACTORY } from 'config/constants/exchange'
-import { CURRENCY_TEXT} from '../Logo/currencylogo'
+import { CURRENCY_TEXT } from '../Logo/currencylogo'
 
 const CardContainer = styled.div`
   display: grid;
@@ -34,27 +25,27 @@ const CardContainer = styled.div`
 `
 
 const CardWrapper = styled.div`
-background: white;
-padding: 20px;
-width: 350px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-border: 4px solid #000;
-border-radius: 30px;
-overflow: hidden;
-transition: border-color 0.5s ease-in-out;
-position: relative;
-animation: animateBorder 2s infinite alternate;
--webkit-animation: changeBorderColor 2s infinite alternate; /* Untuk mendukung browser WebKit seperti Chrome dan Safari */
--moz-animation: changeBorderColor 2s infinite alternate;
--ms-animation: animateBorder 2s infinite alternate;
+  background: white;
+  padding: 20px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 4px solid #000;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: border-color 0.5s ease-in-out;
+  position: relative;
+  animation: animateBorder 2s infinite alternate;
+  -webkit-animation: changeBorderColor 2s infinite alternate; /* Untuk mendukung browser WebKit seperti Chrome dan Safari */
+  -moz-animation: changeBorderColor 2s infinite alternate;
+  -ms-animation: animateBorder 2s infinite alternate;
 `
 
 const CapsDiv = styled.div`
-display: flex;
-justify-content: space-between;
-padding-top: 10px;
-border-bottom: 1px solid #ddd;
-padding-bottom: 10px; /* Add padding for better spacing */
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px; /* Add padding for better spacing */
 `
 
 const CountdownTime = styled.div`
@@ -67,15 +58,15 @@ const CountdownTime = styled.div`
 `
 
 const LaunchpadLink = styled.div`
-display: block;
-text-decoration: none;
-color: inherit;
-margin-top: 20px;
-border-radius: 20px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-top: 20px;
+  border-radius: 20px;
 `
 
 const View = styled.div`
-display: block;
+  display: block;
   padding: 12px;
   background-color: #007bff;
   color: #fff;
@@ -105,34 +96,34 @@ const SnakeProgressDiv = styled.div`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #2196F3, transparent);
+    background: linear-gradient(90deg, transparent, #2196f3, transparent);
     animation: ${snakeProgressAnimation} 2s linear infinite;
   }
 `
 
 interface PrivateCardProps {
-  saleType: string;
-  factoryContractAddress: string;
+  saleType: string
+  factoryContractAddress: string
 }
 
 const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
-  const router = useRouter();
-  const [addresses, setAddresses] = useState<string[]>([]);
+  const router = useRouter()
+  const [addresses, setAddresses] = useState<string[]>([])
   const { chainId } = useActiveChainId()
-  const [contributionAmount, setContributionAmount] = useState('');
-  const [privateSaleAddresses, setPrivateSaleAddresses] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [launchpadInfoList, setLaunchpadInfoList] = useState([]);
-  const [calculatedTokens, setCalculatedTokens] = useState(0);
-  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
-  const [launchpad, setLaunchpad] = useState(null);
+  const [contributionAmount, setContributionAmount] = useState('')
+  const [privateSaleAddresses, setPrivateSaleAddresses] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [launchpadInfoList, setLaunchpadInfoList] = useState([])
+  const [calculatedTokens, setCalculatedTokens] = useState(0)
+  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false)
+  const [launchpad, setLaunchpad] = useState(null)
   const [participantInfo, setParticipantInfo] = useState({
-  contributionAmount: 0,
-  claimableTokens: 0,
-  });
-  const factoryContractAddress = PRIVATESALE_FACTORY[chainId];
-  const currencyText = CURRENCY_TEXT[chainId] || '';
-  let accounts;
+    contributionAmount: 0,
+    claimableTokens: 0,
+  })
+  const factoryContractAddress = PRIVATESALE_FACTORY[chainId]
+  const currencyText = CURRENCY_TEXT[chainId] || ''
+  let accounts
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -144,65 +135,64 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
       minute: 'numeric' as const,
       second: 'numeric' as const,
       timeZoneName: 'short' as const,
-    };
-    return new Date(timestamp * 1000).toLocaleDateString(undefined, options);
-  };
-
+    }
+    return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
+  }
 
   useEffect(() => {
     const fetchPrivateSaleAddresses = async () => {
       try {
-        setLoading(true);
+        setLoading(true)
 
-        const web3 = new Web3(window.ethereum);
+        const web3 = new Web3(window.ethereum)
 
-        const chainId = await web3.eth.getChainId();
+        const chainId = await web3.eth.getChainId()
 
-        accounts = await web3.eth.requestAccounts(); // Assign accounts
-        const account = accounts[0];
-        const factoryContract = new web3.eth.Contract(FactoryAbi.abi, factoryContractAddress);
-        const addresses = await factoryContract.methods.getAllPrivateSaleAddress().call();
-        console.log(`addresses:`, addresses);
+        accounts = await web3.eth.requestAccounts() // Assign accounts
+        const account = accounts[0]
+        const factoryContract = new web3.eth.Contract(FactoryAbi.abi, factoryContractAddress)
+        const addresses = await factoryContract.methods.getAllPrivateSaleAddress().call()
+        console.log(`addresses:`, addresses)
         if (!Array.isArray(addresses)) {
-              throw new Error('Invalid addresses format');
-            }
+          throw new Error('Invalid addresses format')
+        }
         const launchpadInfoPromises: Promise<any>[] = addresses.map(async (_launchpadAddress) => {
           try {
-            const privateSaleContract = new web3.eth.Contract(PrivateSale.abi, _launchpadAddress);
+            const privateSaleContract = new web3.eth.Contract(PrivateSale.abi, _launchpadAddress)
 
-            const tokenName = await privateSaleContract.methods.getTokenName().call();
-            const tokenSymbol = await privateSaleContract.methods.getTokenSymbol().call();
+            const tokenName = await privateSaleContract.methods.getTokenName().call()
+            const tokenSymbol = await privateSaleContract.methods.getTokenSymbol().call()
 
-            const caps = await privateSaleContract.methods.getCaps().call();
-            const softCap = Number(caps[0]) / 10**18;
-            const hardCap = Number(caps[1]) / 10**18;
-            const contributions = await privateSaleContract.methods.getContributions().call();
-            const times = await privateSaleContract.methods.getTimes().call();
-            const startTime = times[0];
-            const endTime = times[1];
-            const rates = await privateSaleContract.methods.getRates().call();
-            const priceRate = Number(rates[0]) / 10**18;
-            const listingRate = Number(rates[1]) / 10**18;
-            const liquidityPercent = await privateSaleContract.methods.getLiquidityPercent().call();
-            const liquidityLockup = await privateSaleContract.methods.getLiquidityLockupTime().call();
-            const dataURL = await privateSaleContract.methods.getDataURL().call();
+            const caps = await privateSaleContract.methods.getCaps().call()
+            const softCap = Number(caps[0]) / 10 ** 18
+            const hardCap = Number(caps[1]) / 10 ** 18
+            const contributions = await privateSaleContract.methods.getContributions().call()
+            const times = await privateSaleContract.methods.getTimes().call()
+            const startTime = times[0]
+            const endTime = times[1]
+            const rates = await privateSaleContract.methods.getRates().call()
+            const priceRate = Number(rates[0]) / 10 ** 18
+            const listingRate = Number(rates[1]) / 10 ** 18
+            const liquidityPercent = await privateSaleContract.methods.getLiquidityPercent().call()
+            const liquidityLockup = await privateSaleContract.methods.getLiquidityLockupTime().call()
+            const dataURL = await privateSaleContract.methods.getDataURL().call()
             if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
-              throw new Error('Invalid dataURL format');
+              throw new Error('Invalid dataURL format')
             }
-            const response = await fetch(dataURL);
+            const response = await fetch(dataURL)
             if (!response.ok) {
-              throw new Error(`Failed to fetch data from ${dataURL}, status: ${response.status}`);
+              throw new Error(`Failed to fetch data from ${dataURL}, status: ${response.status}`)
             }
-            const contentType = response.headers.get('content-type');
+            const contentType = response.headers.get('content-type')
             if (!contentType || !contentType.includes('application/json')) {
-              throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`);
+              throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`)
             }
-            const additionalData = await response.json();
-            const totalBNBContributed = await privateSaleContract.methods.getTotalBNBContributed().call();
+            const additionalData = await response.json()
+            const totalBNBContributed = await privateSaleContract.methods.getTotalBNBContributed().call()
 
-            const kycLink = await privateSaleContract.methods.getKYCLink().call();
-            const auditLink = await privateSaleContract.methods.getAuditLink().call();
-            const safuLink = await privateSaleContract.methods.getSAFULink().call();
+            const kycLink = await privateSaleContract.methods.getKYCLink().call()
+            const auditLink = await privateSaleContract.methods.getAuditLink().call()
+            const safuLink = await privateSaleContract.methods.getSAFULink().call()
 
             return {
               address: _launchpadAddress,
@@ -225,181 +215,205 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 auditLink,
                 safuLink,
               },
-            };
+            }
           } catch (error) {
-            console.error(`Error fetching launchpad info for address ${_launchpadAddress}:`, error);
-            return null;
+            console.error(`Error fetching launchpad info for address ${_launchpadAddress}:`, error)
+            return null
           }
-        });
+        })
 
-        const allLaunchpadInfo = await Promise.all(launchpadInfoPromises);
+        const allLaunchpadInfo = await Promise.all(launchpadInfoPromises)
 
         // Filter out null values (contracts that are not valid Launchpad contracts)
-        const validLaunchpadInfo = allLaunchpadInfo.filter(info => info !== null);
+        const validLaunchpadInfo = allLaunchpadInfo.filter((info) => info !== null)
 
-        setLaunchpadInfoList(validLaunchpadInfo);
-        setPrivateSaleAddresses(addresses);
+        setLaunchpadInfoList(validLaunchpadInfo)
+        setPrivateSaleAddresses(addresses)
       } catch (error) {
-        console.error('Error fetching Presale addresses:', error);
-        console.error('Error fetching launchpad info for address ${_launchpadAddress}:', error);
+        console.error('Error fetching Presale addresses:', error)
+        console.error('Error fetching launchpad info for address ${_launchpadAddress}:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchPrivateSaleAddresses();
-  }, [chainId]);
+    fetchPrivateSaleAddresses()
+  }, [chainId])
 
   return (
     <CardContainer>
       {launchpadInfoList.map((launchpad, index) => (
-          <CardWrapper key={index}>
-            <div className="launchpad-info">
-            <div style={{ display: 'flex'}}>
-             <div style={{ position: 'relative', display: 'inline-block' }}>
-              <img
-               style={{ border: '2px', borderRadius: '90px', width: '80px'}}
-               src={launchpad.info.additionalData.logoURL}
-               alt="Logo"
-              />
-              <CurrencyLogo chainId={chainId} />
+        <CardWrapper key={index}>
+          <div className="launchpad-info">
+            <div style={{ display: 'flex' }}>
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <img
+                  style={{ border: '2px', borderRadius: '90px', width: '80px' }}
+                  src={launchpad.info.additionalData.logoURL}
+                  alt="Logo"
+                />
+                <CurrencyLogo chainId={chainId} />
               </div>
               <div style={{ paddingLeft: '20px' }}>
-              <Typography style={{ fontSize: '18px', color: 'black'}}>
-                {launchpad.info.tokenName} Private Sale
-              </Typography>
-              {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
-                <div style={{ display: 'flex' }}>
-                {launchpad.info.kycLink && (
-                  <a href={launchpad.info.kycLink} target="_blank" rel="noopener noreferrer">
-                    <p className="badge2"> KYC</p>
-                  </a>
+                <Typography style={{ fontSize: '18px', color: 'black' }}>
+                  {launchpad.info.tokenName} Private Sale
+                </Typography>
+                {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
+                  <div style={{ display: 'flex' }}>
+                    {launchpad.info.kycLink && (
+                      <a href={launchpad.info.kycLink} target="_blank" rel="noopener noreferrer">
+                        <p className="badge2"> KYC</p>
+                      </a>
+                    )}
+                    {launchpad.info.auditLink && (
+                      <a href={launchpad.info.auditLink} target="_blank" rel="noopener noreferrer">
+                        <p className="badge-audit"> AUDIT</p>
+                      </a>
+                    )}
+                    {launchpad.info.safuLink && (
+                      <a href={launchpad.info.safuLink} target="_blank" rel="noopener noreferrer">
+                        <p className="badge-safu"> SAFU</p>
+                      </a>
+                    )}
+                  </div>
                 )}
-                  {launchpad.info.auditLink && (
-                    <a href={launchpad.info.auditLink} target="_blank" rel="noopener noreferrer">
-                      <p className="badge-audit"> AUDIT</p>
-                    </a>
-                  )}
-                  {launchpad.info.safuLink && (
-                    <a href={launchpad.info.safuLink} target="_blank" rel="noopener noreferrer">
-                      <p className="badge-safu"> SAFU</p>
-                    </a>
-                  )}
-                </div>
-              )}
-               {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
-                <div style={{ display: 'flex' }}>
-                {launchpad.info.additionalData.website && (
-                  <a style={{ marginRight: '10px'}} href={launchpad.info.additionalData.website} target="_blank" rel="noopener noreferrer">
-                    <Globe className="social-media-icon2" />
-                  </a>
+                {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
+                  <div style={{ display: 'flex' }}>
+                    {launchpad.info.additionalData.website && (
+                      <a
+                        style={{ marginRight: '10px' }}
+                        href={launchpad.info.additionalData.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Globe className="social-media-icon2" />
+                      </a>
+                    )}
+                    {launchpad.info.additionalData.telegram && (
+                      <a
+                        style={{ marginRight: '10px' }}
+                        href={launchpad.info.additionalData.telegram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Telegram className="social-media-icon2" />
+                      </a>
+                    )}
+                    {launchpad.info.additionalData.twitter && (
+                      <a
+                        style={{ marginRight: '10px' }}
+                        href={launchpad.info.additionalData.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Twitter className="social-media-icon2" />
+                      </a>
+                    )}
+                    {launchpad.info.additionalData.discord && (
+                      <a
+                        style={{ marginRight: '10px' }}
+                        href={launchpad.info.additionalData.discord}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Discord className="social-media-icon2" />
+                      </a>
+                    )}
+                    {launchpad.info.additionalData.github && (
+                      <a href={launchpad.info.additionalData.github} target="_blank" rel="noopener noreferrer">
+                        <Github className="social-media-icon2" />
+                      </a>
+                    )}
+                    {launchpad.info.additionalData.linkedin && (
+                      <a href={launchpad.info.additionalData.linkedin} target="_blank" rel="noopener noreferrer">
+                        <Github className="social-media-icon2" />
+                      </a>
+                    )}
+                  </div>
                 )}
-                  {launchpad.info.additionalData.telegram && (
-                    <a style={{ marginRight: '10px'}} href={launchpad.info.additionalData.telegram} target="_blank" rel="noopener noreferrer">
-                      <Telegram className="social-media-icon2" />
-                    </a>
-                  )}
-                  {launchpad.info.additionalData.twitter && (
-                    <a style={{ marginRight: '10px'}} href={launchpad.info.additionalData.twitter} target="_blank" rel="noopener noreferrer">
-                      <Twitter className="social-media-icon2" />
-                    </a>
-                  )}
-                  {launchpad.info.additionalData.discord && (
-                    <a style={{ marginRight: '10px'}} href={launchpad.info.additionalData.discord} target="_blank" rel="noopener noreferrer">
-                      <Discord className="social-media-icon2" />
-                    </a>
-                  )}
-                  {launchpad.info.additionalData.github && (
-                    <a href={launchpad.info.additionalData.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="social-media-icon2" />
-                    </a>
-                  )}
-                  {launchpad.info.additionalData.linkedin && (
-                    <a href={launchpad.info.additionalData.linkedin} target="_blank" rel="noopener noreferrer">
-                      <Github className="social-media-icon2" />
-                    </a>
-                  )}
-                </div>
-              )}
               </div>
-              </div>
-              <div className="caps">
-              <Typography style={{ fontSize: '14px', fontWeight: 'bold', color: 'black',paddingTop: '15px'}}>
+            </div>
+            <div className="caps">
+              <Typography style={{ fontSize: '14px', fontWeight: 'bold', color: 'black', paddingTop: '15px' }}>
                 1 {currencyText} = {Number(launchpad.info.priceRate)} {launchpad.info.tokenSymbol}
               </Typography>
-              <Typography style={{ fontSize: '14px', fontWeight: 'bold', color: 'black', paddingBottom: '15px', display: 'flex', alignItems: 'center' }}>
-                Max Buy: {Number(launchpad.info.contributions[1]) / 10**18} {currencyText}
+              <Typography
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  color: 'black',
+                  paddingBottom: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                Max Buy: {Number(launchpad.info.contributions[1]) / 10 ** 18} {currencyText}
               </Typography>
               <Box display="flex" alignItems="center">
-              <LinearProgress
-                variant="determinate"
-                value={Number(launchpad.info.totalBNBContributed) / Number(launchpad.info.hardCap) * 100}
+                <LinearProgress
+                  variant="determinate"
+                  value={(Number(launchpad.info.totalBNBContributed) / Number(launchpad.info.hardCap)) * 100}
+                  style={{
+                    marginTop: '10px',
+                    padding: '8px',
+                    borderRadius: '5px',
+                    flexGrow: 1,
+                  }}
+                />
+                <SnakeProgressDiv />
+              </Box>
+              <div
                 style={{
-                  marginTop: '10px',
-                  padding: '8px',
-                  borderRadius: '5px',
-                  flexGrow: 1,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  borderBottom: '1px solid white',
+                  paddingTop: '10px',
                 }}
-              />
-              <SnakeProgressDiv/>
-               </Box>
-             <div style={{
-               display: 'flex',
-               justifyContent: 'space-between',
-               borderBottom: '1px solid white',
-               paddingTop: '10px'
-             }}>
-             <Typography
-              style={{ color: 'black',  textAlign: 'right', fontSize: '12px'}}>
-              Progress:
-            </Typography>
-            <Typography
-             style={{ color: 'black',  textAlign: 'right', fontSize: '12px'}}>
-             {Number(launchpad.info.totalBNBContributed) / 10**18}/{Number(launchpad.info.hardCap)} {currencyText}
-           </Typography>
-            </div>
+              >
+                <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>Progress:</Typography>
+                <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>
+                  {Number(launchpad.info.totalBNBContributed) / 10 ** 18}/{Number(launchpad.info.hardCap)}{' '}
+                  {currencyText}
+                </Typography>
               </div>
+            </div>
+            <CapsDiv>
+              <Typography style={{ fontSize: '14px', color: 'black' }}>HardCap:</Typography>
+              <Typography style={{ fontSize: '14px', color: 'black', display: 'flex', alignItems: 'center' }}>
+                {Number(launchpad.info.hardCap)} {currencyText}
+              </Typography>
+            </CapsDiv>
+            <Grid>
               <CapsDiv>
-               <Typography style={{ fontSize: '14px', color: 'black' }}>
-                 HardCap:
-               </Typography>
-               <Typography style={{ fontSize: '14px', color: 'black', display: 'flex', alignItems: 'center' }}>
-                 {Number(launchpad.info.hardCap)} {currencyText}
-               </Typography>
-             </CapsDiv>
-              <Grid>
-              <CapsDiv>
-              {launchpad.info && <p className="liqText" >Liquidity:</p>}
-              {launchpad.info && <p className="liqText" >{Number(launchpad.info.liquidityPercent)}%</p>}
+                {launchpad.info && <p className="liqText">Liquidity:</p>}
+                {launchpad.info && <p className="liqText">{Number(launchpad.info.liquidityPercent)}%</p>}
               </CapsDiv>
               <CapsDiv>
-              {launchpad.info && <p className="liqText" >Lock:</p>}
-              {launchpad.info && <p className="liqText" >{Number(launchpad.info.liquidityLockup)} days</p>}
+                {launchpad.info && <p className="liqText">Lock:</p>}
+                {launchpad.info && <p className="liqText">{Number(launchpad.info.liquidityLockup)} days</p>}
               </CapsDiv>
-              </Grid>
-              <CountdownTime>
+            </Grid>
+            <CountdownTime>
               {new Date().getTime() < Number(launchpad.info.startTime) * 1000 ? (
-                <p style={{ color: 'black'}}>
-                Presale start in{' '}
-                <Countdown date={new Date(launchpad.info.startTime * 1000)} />
+                <p style={{ color: 'black' }}>
+                  Presale start in <Countdown date={new Date(launchpad.info.startTime * 1000)} />
                 </p>
               ) : new Date().getTime() < Number(launchpad.info.endTime) * 1000 ? (
-                <p style={{ color: 'black'}}>
-                Presale will end in{' '}
-                <Countdown date={new Date(launchpad.info.endTime * 1000)} />
+                <p style={{ color: 'black' }}>
+                  Presale will end in <Countdown date={new Date(launchpad.info.endTime * 1000)} />
                 </p>
               ) : (
-                <p style={{ color: 'black'}}>Presale complete</p>
+                <p style={{ color: 'black' }}>Presale complete</p>
               )}
-              </CountdownTime>
-              <LaunchpadLink onClick={() => router.push(`/Launchpad/${saleType}/${launchpad.address}`)}>
-                <View className="view-details-link">View Details</View>
-              </LaunchpadLink>
-            </div>
-          </CardWrapper>
+            </CountdownTime>
+            <LaunchpadLink onClick={() => router.push(`/Launchpad/${saleType}/${launchpad.address}`)}>
+              <View className="view-details-link">View Details</View>
+            </LaunchpadLink>
+          </div>
+        </CardWrapper>
       ))}
     </CardContainer>
-  );
-};
+  )
+}
 
-export default PrivateCard;
+export default PrivateCard

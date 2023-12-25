@@ -7,7 +7,7 @@ import useAuth from 'hooks/useAuth'
 // @ts-ignore
 // eslint-disable-next-line import/extensions
 import { useActiveHandle } from 'hooks/useEagerConnect.bmp.ts'
-import { useMemo, useState,useEffect } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useConnect } from 'wagmi'
 import Trans from './Trans'
 import UAuth, { UserInfo } from '@uauth/js'
@@ -16,7 +16,10 @@ import { ConnectModal } from './ConnectModal'
 const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
   const handleActive = useActiveHandle()
   const { login } = useAuth()
-  const {    t,    currentLanguage: { code },  } = useTranslation()
+  const {
+    t,
+    currentLanguage: { code },
+  } = useTranslation()
   const { connectAsync } = useConnect()
   const { chainId } = useActiveChainId()
   const [open, setOpen] = useState(false)
@@ -26,14 +29,14 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
   const [selected, setSelected] = useState(null)
   const [connectModalOpen, setconnectModalOpen] = useState(false)
 
-  const [uDauth, setUDauth] = useState<UAuth|undefined>()
+  const [uDauth, setUDauth] = useState<UAuth | undefined>()
   const [udUser, setUdUser] = useState<UserInfo | undefined>()
 
   useEffect(() => {
     const uD = new UAuth({
-      clientID: "2fe60d33-5fa3-4d67-8af3-d8e54ab536d7",
+      clientID: '2fe60d33-5fa3-4d67-8af3-d8e54ab536d7',
       redirectUri: `${location.origin}`,
-      scope: "openid wallet email profile:optional social:optional"
+      scope: 'openid wallet email profile:optional social:optional',
     })
     setUDauth(uD)
   }, [])
@@ -63,17 +66,18 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
         } catch (error) {
           console.log(error)
         }
-      } else if (selected == "NEZHA") {
+      } else if (selected == 'NEZHA') {
         handleClick()
       }
     }
     checkLogin()
-  },[selected, uDauth])
+  }, [selected, uDauth])
 
   useEffect(() => {
     if (uDauth != undefined && udUser == undefined) {
       try {
-        uDauth.user()
+        uDauth
+          .user()
           .then((user) => {
             setUdUser(user)
           })
@@ -98,14 +102,24 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
 
   return (
     <>
-      {udUser ? <Button onClick={() => {
-        handleConnectButton()
-      }}> {udUser.sub}</Button> : (
-          <Button onClick={() => {
+      {udUser ? (
+        <Button
+          onClick={() => {
             handleConnectButton()
-          }} {...props}>
-            {children || <Trans> Connect Wallet</Trans>}
-          </Button>
+          }}
+        >
+          {' '}
+          {udUser.sub}
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            handleConnectButton()
+          }}
+          {...props}
+        >
+          {children || <Trans> Connect Wallet</Trans>}
+        </Button>
       )}
 
       <WalletModalV2
@@ -116,9 +130,12 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
         login={login}
         onDismiss={() => setOpen(false)}
       />
-      <ConnectModal connectModalOpen={connectModalOpen} setSelected={setSelected} setconnectModalOpen={setconnectModalOpen} />
+      <ConnectModal
+        connectModalOpen={connectModalOpen}
+        setSelected={setSelected}
+        setconnectModalOpen={setconnectModalOpen}
+      />
     </>
-    
   )
 }
 

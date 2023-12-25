@@ -114,7 +114,6 @@ export const useSaleFactory = () => {
   return useMemo(() => getSaleFactoryContract(signer), [signer])
 }
 
-
 export const useCake = (): { reader: Cake; signer: Cake } => {
   const providerOrSigner = useProviderOrSigner(true, true)
   return useMemo(
