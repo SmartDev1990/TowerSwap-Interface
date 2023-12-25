@@ -16,28 +16,13 @@ import CurrencyLogo from '../Logo/ChainLogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { PRESALE_FACTORY } from 'config/constants/exchange'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
+import { CardWrapper } from './Css'
 
 const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 10px;
-`
-
-const CardWrapper = styled.div`
-  background: white;
-  padding: 20px;
-  width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 4px solid #000;
-  border-radius: 30px;
-  overflow: hidden;
-  transition: border-color 0.5s ease-in-out;
-  position: relative;
-  animation: animateBorder 2s infinite alternate;
-  -webkit-animation: changeBorderColor 2s infinite alternate; /* Untuk mendukung browser WebKit seperti Chrome dan Safari */
-  -moz-animation: changeBorderColor 2s infinite alternate;
-  -ms-animation: animateBorder 2s infinite alternate;
 `
 
 const CapsDiv = styled.div`
