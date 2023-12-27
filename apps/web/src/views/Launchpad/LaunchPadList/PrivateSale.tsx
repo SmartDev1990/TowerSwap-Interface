@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import styled, { keyframes } from 'styled-components'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 import FactoryAbi from './Abis/PrivateFactory.json'
 import PrivateSale from './Abis/PrivateSale.json'
 import Countdown from 'react-countdown'
 import { useRouter } from 'next/router'
+import { Contract } from '@ethersproject/contracts'
 import Globe from './Icons/Globe'
 import Telegram from './Icons/Telegram'
 import Twitter from './Icons/Twitter'
@@ -16,75 +17,17 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import CurrencyLogo from '../Logo/ChainLogo'
 import { PRIVATESALE_FACTORY } from 'config/constants/exchange'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
-import { CardWrapper } from './Css'
+import {
+  CardContainer,
+  CardWrapper,
+  CapsDiv,
+  CountdownTime,
+  LaunchpadLink,
+  View,
+  SnakeProgressDiv,
+ } from './Css/Animation'
+ import { useSigner } from 'wagmi'
 
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 10px;
-`
-
-const CapsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px; /* Add padding for better spacing */
-`
-
-const CountdownTime = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  padding: 5px;
-  box-shadow: 10px;
-`
-
-const LaunchpadLink = styled.div`
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  margin-top: 20px;
-  border-radius: 20px;
-`
-
-const View = styled.div`
-  display: block;
-  padding: 12px;
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 20px;
-`
-
-const snakeProgressAnimation = keyframes`
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-`
-
-const SnakeProgressDiv = styled.div`
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, #2196f3, transparent);
-    animation: ${snakeProgressAnimation} 2s linear infinite;
-  }
-`
 
 interface PrivateCardProps {
   saleType: string
@@ -102,6 +45,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
   const [calculatedTokens, setCalculatedTokens] = useState(0)
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false)
   const [launchpad, setLaunchpad] = useState(null)
+  const { data: signer } = useSigner()
   const [participantInfo, setParticipantInfo] = useState({
     contributionAmount: 0,
     claimableTokens: 0,
@@ -128,39 +72,32 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     const fetchPrivateSaleAddresses = async () => {
       try {
         setLoading(true)
-
-        const web3 = new Web3(window.ethereum)
-
-        const chainId = await web3.eth.getChainId()
-
-        accounts = await web3.eth.requestAccounts() // Assign accounts
-        const account = accounts[0]
-        const factoryContract = new web3.eth.Contract(FactoryAbi.abi, factoryContractAddress)
-        const addresses = await factoryContract.methods.getAllPrivateSaleAddress().call()
+        const factoryContract = new ethers.Contract(factoryContractAddress, FactoryAbi.abi, signer);
+        const addresses = await factoryContract.getAllPrivateSaleAddress()
         console.log(`addresses:`, addresses)
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
         }
         const launchpadInfoPromises: Promise<any>[] = addresses.map(async (_launchpadAddress) => {
           try {
-            const privateSaleContract = new web3.eth.Contract(PrivateSale.abi, _launchpadAddress)
+            const privateSaleContract = new ethers.Contract(_launchpadAddress, PrivateSale.abi, signer)
 
-            const tokenName = await privateSaleContract.methods.getTokenName().call()
-            const tokenSymbol = await privateSaleContract.methods.getTokenSymbol().call()
+            const tokenName = await privateSaleContract.getTokenName()
+            const tokenSymbol = await privateSaleContract.getTokenSymbol()
 
-            const caps = await privateSaleContract.methods.getCaps().call()
+            const caps = await privateSaleContract.getCaps()
             const softCap = Number(caps[0]) / 10 ** 18
             const hardCap = Number(caps[1]) / 10 ** 18
-            const contributions = await privateSaleContract.methods.getContributions().call()
-            const times = await privateSaleContract.methods.getTimes().call()
+            const contributions = await privateSaleContract.getContributions()
+            const times = await privateSaleContract.getTimes()
             const startTime = times[0]
             const endTime = times[1]
-            const rates = await privateSaleContract.methods.getRates().call()
+            const rates = await privateSaleContract.getRates()
             const priceRate = Number(rates[0]) / 10 ** 18
             const listingRate = Number(rates[1]) / 10 ** 18
-            const liquidityPercent = await privateSaleContract.methods.getLiquidityPercent().call()
-            const liquidityLockup = await privateSaleContract.methods.getLiquidityLockupTime().call()
-            const dataURL = await privateSaleContract.methods.getDataURL().call()
+            const liquidityPercent = await privateSaleContract.getLiquidityPercent()
+            const liquidityLockup = await privateSaleContract.getLiquidityLockupTime()
+            const dataURL = await privateSaleContract.getDataURL()
             if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
               throw new Error('Invalid dataURL format')
             }
@@ -173,11 +110,11 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
               throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`)
             }
             const additionalData = await response.json()
-            const totalBNBContributed = await privateSaleContract.methods.getTotalBNBContributed().call()
+            const totalBNBContributed = await privateSaleContract.getTotalBNBContributed()
 
-            const kycLink = await privateSaleContract.methods.getKYCLink().call()
-            const auditLink = await privateSaleContract.methods.getAuditLink().call()
-            const safuLink = await privateSaleContract.methods.getSAFULink().call()
+            const kycLink = await privateSaleContract.getKYCLink()
+            const auditLink = await privateSaleContract.getAuditLink()
+            const safuLink = await privateSaleContract.getSAFULink()
 
             return {
               address: _launchpadAddress,

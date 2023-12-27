@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
 import FairSale from '../../../LaunchPadList/Abis/FairSale.json'
 import Countdown from 'react-countdown'
 import Erc20Abi from '../../../LaunchPadList/Abis/Erc20.json'
 import RouterAbi from '../../../LaunchPadList/Abis/Router.json'
 import { BigNumber, ethers } from 'ethers'
+  import { useSigner } from 'wagmi'
 
 const Admin = () => {
   const router = useRouter()
@@ -15,22 +15,23 @@ const Admin = () => {
   const [isOwner, setIsOwner] = useState(false)
   const [softCapReached, setSoftCapReached] = useState(false)
   const [saleFinalized, setSaleFinalized] = useState(false)
+  const { data: signer } = useSigner()
 
   const fetchLaunchpadInfo = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const publicSaleContract = new web3.eth.Contract(FairSale.abi, address)
 
-      const softCap = await publicSaleContract.methods.getSoftCap().call()
-      const tokenBalance = await publicSaleContract.methods.getTokenBalance().call()
-      const ethBalance = await publicSaleContract.methods.getEtherBalance().call()
-      const liquidityPercent = await publicSaleContract.methods.getLiquidityPercent().call()
-      const tokenAddress = await publicSaleContract.methods.getTokenAddress().call()
-      const router = await publicSaleContract.methods.getRouter().call()
-      const contributions = await publicSaleContract.methods.getContributions().call()
-      const totalBNBContributed = await publicSaleContract.methods.getTotalBNBContributed().call()
-      const totalContributions = await publicSaleContract.methods.getTotalContributions().call()
-      const saleFinalized = await publicSaleContract.methods.saleFinalized().call()
+      const fairSaleContract = new ethers.Contract(address, FairSale.abi, signer)
+
+      const softCap = await fairSaleContract.getSoftCap()
+      const tokenBalance = await fairSaleContract.getTokenBalance()
+      const ethBalance = await fairSaleContract.getEtherBalance()
+      const liquidityPercent = await fairSaleContract.getLiquidityPercent()
+      const tokenAddress = await fairSaleContract.getTokenAddress()
+      const router = await fairSaleContract.getRouter()
+      const contributions = await fairSaleContract.getContributions()
+      const totalBNBContributed = await fairSaleContract.getTotalBNBContributed()
+      const totalContributions = await fairSaleContract.getTotalContributions()
+      const saleFinalized = await fairSaleContract.saleFinalized()
 
       setLaunchpadInfo({
         address,
@@ -56,16 +57,11 @@ const Admin = () => {
   useEffect(() => {
     const checkOwnership = async () => {
       try {
-        const web3 = new Web3(window.ethereum)
-        const accounts = await web3.eth.getAccounts()
-        const publicSaleContract = new web3.eth.Contract(FairSale.abi, address)
+        const fairSaleContract = new ethers.Contract(address, FairSale.abi, signer)
+        const owner: void | [] | (unknown[] & []) = await fairSaleContract.getCreator()
 
-        // Check if the connected account is the owner
-        const owner: void | [] | (unknown[] & []) = await publicSaleContract.methods.getCreator().call()
-
-        // Add a type check for owner
         if (typeof owner === 'string') {
-          setIsOwner(owner === accounts[0])
+          setIsOwner(owner === signer)
         } else {
           setIsOwner(false) // or handle other cases
         }
@@ -79,56 +75,61 @@ const Admin = () => {
   }, [address])
 
   const handleCompleteSale = async () => {
-    let transaction
-    let tokenContract
+    // let transaction;
+    let tokenContract;
+
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(FairSale.abi, launchpadInfo.address)
-      const tokenAddress = await publicSaleContract.methods.getTokenAddress().call()
+      const fairSaleContract = new ethers.Contract(address, FairSale.abi, signer);
+      const tokenAddress = await fairSaleContract.getTokenAddress();
+
       if (typeof tokenAddress === 'string') {
-        const tokenContract = new web3.eth.Contract(Erc20Abi.abi, tokenAddress)
+        tokenContract = new ethers.Contract(tokenAddress, Erc20Abi.abi);
       } else {
-        console.error('Invalid token address:', tokenAddress)
+        console.error('Invalid token address:', tokenAddress);
+        return; // Exit the function if the token address is invalid
       }
-      const isOwner: string | void | [] | (unknown[] & []) = await publicSaleContract.methods
-        .getCreator()
-        .call({ from: accounts[0] })
-      if (typeof isOwner === 'string' && isOwner === accounts[0]) {
+
+      const isOwner = await fairSaleContract.getCreator().call({ from: signer });
+
+      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
         if (launchpadInfo.info.totalContributions >= launchpadInfo.info.softCap) {
-          const routerAddress = launchpadInfo.info.router
-          const amount = ethers.constants.MaxUint256
-          await tokenContract.methods.approve(routerAddress, amount).send({
-            from: accounts[0],
-          })
-          await publicSaleContract.methods.finalizeSale().send({
-            from: accounts[0],
-          })
-          const saleFinalized = await publicSaleContract.methods.saleFinalized().call()
-          console.log('saleFinalized:', saleFinalized)
-          const transactionCount = await web3.eth.getTransactionCount(accounts[0])
-          transaction = await web3.eth.getTransaction(ethers.utils.hexlify(transactionCount))
-          fetchLaunchpadInfo()
+          const routerAddress = launchpadInfo.info.router;
+          const amount = ethers.constants.MaxUint256;
+
+          await tokenContract.approve(routerAddress, amount).send({
+            from: signer,
+          });
+
+          await fairSaleContract.finalizeSale().send({
+            from: signer,
+          });
+
+          const saleFinalized = await fairSaleContract.saleFinalized();
+          console.log('saleFinalized:', saleFinalized);
+
+          // const transactionCount = await ethers.provider.getTransactionCount(signer);
+          // transaction = await ethers.provider.getTransaction(ethers.utils.hexlify(transactionCount));
+
+
+          fetchLaunchpadInfo();
         }
       } else {
-        console.error('You are not the owner of the contract.')
+        console.error('You are not the owner of the contract.');
       }
     } catch (error) {
-      console.error('Error completing the sale:', error)
+      console.error('Error completing the sale:', error);
     }
-  }
+  };
 
   const handleWithdrawRemaining = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(FairSale.abi, address)
+      const fairSaleContract = new ethers.Contract(address, FairSale.abi, signer)
 
-      const isOwner = await publicSaleContract.methods.getCreator().call({ from: accounts[0] })
+      const isOwner = await fairSaleContract.getCreator().call({ from: signer })
 
-      if (typeof isOwner === 'string' && isOwner === accounts[0]) {
-        await publicSaleContract.methods.withdrawRemaining().send({
-          from: accounts[0],
+      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+        await fairSaleContract.withdrawRemaining().send({
+          from: signer,
         })
 
         // Refresh the launchpad information after withdrawing remaining funds
@@ -143,20 +144,12 @@ const Admin = () => {
 
   const handleCancelSale = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(FairSale.abi, launchpadInfo.address)
-
-      // Check if the connected account is the owner
-      const isOwner = await publicSaleContract.methods.getCreator().call({ from: accounts[0] })
-
-      if (typeof isOwner === 'string' && isOwner === accounts[0]) {
-        // Call the cancelSale function
-        await publicSaleContract.methods.cancelSale().send({
-          from: accounts[0],
+      const fairSaleContract = new ethers.Contract(address, FairSale.abi, signer)
+      const isOwner = await fairSaleContract.getCreator().call({ from: signer })
+      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+        await fairSaleContract.cancelSale().send({
+          from: signer,
         })
-
-        // Refresh the launchpad information after canceling the sale
         fetchLaunchpadInfo()
       } else {
         console.error('You are not the owner of the contract.')

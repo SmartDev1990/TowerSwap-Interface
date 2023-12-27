@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box } from '@mui/material'
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 import PrivateSale from './PrivateSale.json'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
@@ -16,6 +16,7 @@ import AdminOnly from '../LaunchpPadDetails/components/Private/onlyadmin'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
+import { useSigner } from 'wagmi'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -37,6 +38,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
   console.log(`address:`, address)
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const currencyText = CURRENCY_TEXT[chainId] || ''
+  const { data: signer } = useSigner()
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -55,20 +57,23 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        const web3 = new Web3(window.ethereum)
-        const privateSaleContract = new web3.eth.Contract(PrivateSale.abi, address)
-        const tokenContract = await privateSaleContract.methods.getTokenAddress().call()
-        const tokenName = await privateSaleContract.methods.getTokenName().call()
-        const tokenSymbol = await privateSaleContract.methods.getTokenSymbol().call()
-        const tokenSupply = await privateSaleContract.methods.getTokenTotalSupply().call()
+        const privateSaleContract = new ethers.Contract(address, PrivateSale.abi, signer)
+        const tokenContract = await privateSaleContract.getTokenAddress()
+        const tokenName = await privateSaleContract.getTokenName()
+        const tokenSymbol = await privateSaleContract.getTokenSymbol()
+        const tokenSupply = await privateSaleContract.getTokenTotalSupply()
 
-        const caps = await privateSaleContract.methods.getCaps().call()
-        const contributions = await privateSaleContract.methods.getContributions().call()
-        const times = await privateSaleContract.methods.getTimes().call()
-        const rates = await privateSaleContract.methods.getRates().call()
-        const liquidityPercent = await privateSaleContract.methods.getLiquidityPercent().call()
-        const liquidityLockup = await privateSaleContract.methods.getLiquidityLockupTime().call()
-        const dataURL = await privateSaleContract.methods.getDataURL().call()
+        const caps = await privateSaleContract.getCaps()
+        const softCap = caps[0]
+        const hardCap = caps[1]
+        const contributions = await privateSaleContract.getContributions()
+        const minBuy = contributions[0]
+        const maxBuy = contributions[1]
+        const times = await privateSaleContract.getTimes()
+        const rates = await privateSaleContract.getRates()
+        const liquidityPercent = await privateSaleContract.getLiquidityPercent()
+        const liquidityLockup = await privateSaleContract.getLiquidityLockupTime()
+        const dataURL = await privateSaleContract.getDataURL()
         if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
           throw new Error('Invalid dataURL format')
         }
@@ -82,12 +87,12 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
         }
         const additionalData = await response.json()
         console.log(`Additional Data:`, additionalData)
-        const totalBNBContributed = await privateSaleContract.methods.getTotalBNBContributed().call()
+        const totalBNBContributed = await privateSaleContract.getTotalBNBContributed()
         console.log(`launchpadInfo:`, launchpadInfo)
 
-        const kycLink = await privateSaleContract.methods.getKYCLink().call()
-        const auditLink = await privateSaleContract.methods.getAuditLink().call()
-        const safuLink = await privateSaleContract.methods.getSAFULink().call()
+        const kycLink = await privateSaleContract.getKYCLink()
+        const auditLink = await privateSaleContract.getAuditLink()
+        const safuLink = await privateSaleContract.getSAFULink()
         console.log(`kycLink:`, kycLink)
         console.log(`auditLink:`, auditLink)
         console.log(`auditLink:`, auditLink)
@@ -100,7 +105,11 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
             tokenSymbol,
             tokenSupply,
             caps,
+            softCap,
+            hardCap,
             contributions,
+            minBuy,
+            maxBuy,
             times,
             rates,
             liquidityPercent,
@@ -214,7 +223,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                         )}
                       </div>
                     )}
-                    {launchpadInfo?.info?.additionalData && ( // Check if logoURLs[0] exists
+                    {launchpadInfo?.info?.additionalData && ( 
                       <div style={{ display: 'flex' }}>
                         {launchpadInfo?.info?.additionalData.website && (
                           <a
@@ -331,7 +340,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                   Token to Sale:
                 </Typography>
                 <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
-                  {((Number(launchpadInfo.info.rates[0]) / 10 ** 18) * Number(launchpadInfo.info.caps[1])) / 10 ** 18}{' '}
+                  {((Number(launchpadInfo.info.rates[0]) / 10 ** 18) * Number(launchpadInfo.info.hardCap)) / 10 ** 18}{' '}
                   {launchpadInfo.info.tokenSymbol}
                 </Typography>
               </CapsDiv>
@@ -342,7 +351,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                 <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
                   {((Number(launchpadInfo.info.rates[1]) / 10 ** 18 / 100) *
                     Number(launchpadInfo.info.liquidityPercent) *
-                    Number(launchpadInfo.info.caps[1])) /
+                    Number(launchpadInfo.info.hardCap)) /
                     10 ** 18}{' '}
                   {launchpadInfo.info.tokenSymbol}
                 </Typography>
@@ -368,7 +377,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                   SoftCap:
                 </Typography>
                 <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
-                  {Number(launchpadInfo.info.caps[0]) / 10 ** 18} {currencyText}
+                  {Number(launchpadInfo.info.softCap) / 10 ** 18} {currencyText}
                 </Typography>
               </CapsDiv>
               <CapsDiv>
@@ -376,7 +385,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                   HardCap:
                 </Typography>
                 <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
-                  {Number(launchpadInfo.info.caps[1]) / 10 ** 18} {currencyText}
+                  {Number(launchpadInfo.info.hardCap) / 10 ** 18} {currencyText}
                 </Typography>
               </CapsDiv>
               <CapsDiv>
@@ -384,7 +393,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                   Min Buy:
                 </Typography>
                 <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
-                  {Number(launchpadInfo.info.contributions[0]) / 10 ** 18} {currencyText} {/* Corrected typo here */}
+                  {Number(launchpadInfo.info.minBuy) / 10 ** 18} {currencyText} {/* Corrected typo here */}
                 </Typography>
               </CapsDiv>
               <CapsDiv>
@@ -392,7 +401,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                   Max Buy:
                 </Typography>
                 <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
-                  {Number(launchpadInfo.info.contributions[1]) / 10 ** 18} {currencyText} {/* Corrected typo here */}
+                  {Number(launchpadInfo.info.maxBuy) / 10 ** 18} {currencyText} {/* Corrected typo here */}
                 </Typography>
               </CapsDiv>
               <CapsDiv>

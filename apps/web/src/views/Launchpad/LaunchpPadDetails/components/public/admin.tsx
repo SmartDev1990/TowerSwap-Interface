@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
 import PublicSale from '../../../LaunchPadList/Abis/PublicSale.json'
 import Countdown from 'react-countdown'
 import Erc20Abi from '../../../LaunchPadList/Abis/Erc20.json'
 import RouterAbi from '../../../LaunchPadList/Abis/Router.json'
 import { BigNumber, ethers } from 'ethers'
+import { useSigner } from 'wagmi'
 
 const Admin = () => {
   const router = useRouter()
@@ -15,23 +15,22 @@ const Admin = () => {
   const [isOwner, setIsOwner] = useState(false)
   const [softCapReached, setSoftCapReached] = useState(false)
   const [saleFinalized, setSaleFinalized] = useState(false)
+  const { data: signer } = useSigner()
 
   const fetchLaunchpadInfo = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
-
-      const caps = await publicSaleContract.methods.getCaps().call()
-      const tokenBalance = await publicSaleContract.methods.getTokenBalance().call()
-      const ethBalance = await publicSaleContract.methods.getEtherBalance().call()
-      const rates = await publicSaleContract.methods.getRates().call()
-      const liquidityPercent = await publicSaleContract.methods.getLiquidityPercent().call()
-      const tokenAddress = await publicSaleContract.methods.getTokenAddress().call()
-      const router = await publicSaleContract.methods.getRouter().call()
-      const contributions = await publicSaleContract.methods.getContributions().call()
-      const totalBNBContributed = await publicSaleContract.methods.getTotalBNBContributed().call()
-      const totalContributions = await publicSaleContract.methods.getTotalContributions().call()
-      const saleFinalized = await publicSaleContract.methods.saleFinalized().call()
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
+      const caps = await publicSaleContract.getCaps()
+      const tokenBalance = await publicSaleContract.getTokenBalance()
+      const ethBalance = await publicSaleContract.getEtherBalance()
+      const rates = await publicSaleContract.getRates()
+      const liquidityPercent = await publicSaleContract.getLiquidityPercent()
+      const tokenAddress = await publicSaleContract.getTokenAddress()
+      const router = await publicSaleContract.getRouter()
+      const contributions = await publicSaleContract.getContributions()
+      const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
+      const totalContributions = await publicSaleContract.getTotalContributions()
+      const saleFinalized = await publicSaleContract.saleFinalized()
 
       setLaunchpadInfo({
         address,
@@ -60,16 +59,11 @@ const Admin = () => {
   useEffect(() => {
     const checkOwnership = async () => {
       try {
-        const web3 = new Web3(window.ethereum)
-        const accounts = await web3.eth.getAccounts()
-        const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
+        const fairSaleContract = new ethers.Contract(address, PublicSale.abi, signer); // Assuming you want to use the first account
+        const owner: void | [] | (unknown[] & []) = await fairSaleContract.getCreator()
 
-        // Check if the connected account is the owner
-        const owner: void | [] | (unknown[] & []) = await publicSaleContract.methods.getCreator().call()
-
-        // Add a type check for owner
         if (typeof owner === 'string') {
-          setIsOwner(owner === accounts[0])
+          setIsOwner(owner === signer)
         } else {
           setIsOwner(false) // or handle other cases
         }
@@ -78,63 +72,43 @@ const Admin = () => {
       }
     }
 
-    checkOwnership()
-    fetchLaunchpadInfo()
-  }, [address])
+    checkOwnership();
+    fetchLaunchpadInfo();
+  }, [address]);
 
   const handleCompleteSale = async () => {
-    let transaction
+    // let transaction
     let tokenContract
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
 
-      const tokenAddress = await publicSaleContract.methods.getTokenAddress().call()
+      const tokenAddress = await publicSaleContract.getTokenAddress()
       if (typeof tokenAddress === 'string') {
-        const tokenContract = new web3.eth.Contract(Erc20Abi.abi, tokenAddress)
+        const tokenContract = new ethers.Contract(tokenAddress, Erc20Abi.abi)
       } else {
         console.error('Invalid token address:', tokenAddress)
       }
 
-      const isOwner = await publicSaleContract.methods.getCreator().call({ from: accounts[0] })
+      const isOwner = await publicSaleContract.getCreator().call({ from: signer })
 
-      if (typeof isOwner === 'string' && isOwner === accounts[0]) {
+      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
         if (launchpadInfo.info.totalContributions >= launchpadInfo.info.caps[0]) {
           const routerAddress = launchpadInfo.info.router
           const amount = ethers.constants.MaxUint256
-
-          // Approve the router to spend tokens on behalf of the user
-          await tokenContract.methods.approve(routerAddress, amount).send({
-            from: accounts[0],
+          await tokenContract.approve(routerAddress, amount).send({
+            from: signer,
           })
-
-          console.log('routerAddress:', routerAddress)
-
-          const tokenBalance = await publicSaleContract.methods.getTokenBalance().call()
-          const ethBalance = await publicSaleContract.methods.getEtherBalance().call()
-          console.log('tokenBalance:', tokenBalance)
-          console.log('ethBalance:', ethBalance)
-
-          const totalContributions = launchpadInfo.info.totalContributions
-          const softCap = launchpadInfo.info.rates[1]
-          const liquidityPercent = launchpadInfo.info.liquidityPercent
-          const tokenAmount = (totalContributions * softCap * liquidityPercent) / 100 / 10 ** 18
-          console.log('totalContributions:', totalContributions)
-          console.log('softCap:', softCap)
-          console.log('launchpadInfo.info.liquidityPercent:', launchpadInfo.info.liquidityPercent)
-          console.log('tokenAmount:', tokenAmount)
 
           // Now call finalizeSale function
-          await publicSaleContract.methods.finalizeSale().send({
-            from: accounts[0],
+          await publicSaleContract.finalizeSale().send({
+            from: signer,
           })
 
-          const saleFinalized = await publicSaleContract.methods.saleFinalized().call()
+          const saleFinalized = await publicSaleContract.saleFinalized()
           console.log('saleFinalized:', saleFinalized)
 
-          const transactionCount = await web3.eth.getTransactionCount(accounts[0])
-          transaction = await web3.eth.getTransaction(ethers.utils.hexlify(transactionCount))
+          // const transactionCount = await ethers.getTransactionCount(signer);
+          // transaction = await ethers.eth.getTransaction(ethers.utils.hexlify(transactionCount))
 
           fetchLaunchpadInfo()
         }
@@ -148,18 +122,16 @@ const Admin = () => {
 
   const handleWithdrawRemaining = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
 
-      const isOwner = await publicSaleContract.methods.getCreator().call({ from: accounts[0] })
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
 
-      if (typeof isOwner === 'string' && isOwner === accounts[0]) {
-        await publicSaleContract.methods.withdrawRemaining().send({
-          from: accounts[0],
+      const isOwner = await publicSaleContract.getCreator()
+
+      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+        await publicSaleContract.withdrawRemaining().send({
+          from: signer,
         })
 
-        // Refresh the launchpad information after withdrawing remaining funds
         fetchLaunchpadInfo()
       } else {
         console.error('You are not the owner of the contract.')
@@ -171,18 +143,12 @@ const Admin = () => {
 
   const handleCancelSale = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
-
-      const owner: void | [] | (unknown[] & []) = await publicSaleContract.methods.getCreator().call()
-
-      if (typeof isOwner === 'string' && isOwner === accounts[0]) {
-        // Call the cancelSale function
-        await publicSaleContract.methods.cancelSale().send({
-          from: accounts[0],
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
+      const isOwner = await publicSaleContract.getCreator().call({ from: signer })
+      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+        await publicSaleContract.cancelSale().send({
+          from: signer,
         })
-        // Refresh the launchpad information after canceling the sale
         fetchLaunchpadInfo()
       } else {
         console.error('You are not the owner of the contract.')

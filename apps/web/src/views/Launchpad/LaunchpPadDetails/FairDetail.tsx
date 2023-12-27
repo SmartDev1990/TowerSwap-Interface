@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Grid, LinearProgress, Box } from '@mui/material'
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 import Fair from './FairSale.json'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
@@ -15,6 +15,7 @@ import AdminOnly from '../LaunchpPadDetails/components/fair/onlyadmin'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
+import { useSigner } from 'wagmi'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const FairDetail: React.FC<FairDetailProps> = () => {
   console.log(`address:`, address)
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const currencyText = CURRENCY_TEXT[chainId] || ''
+  const { data: signer } = useSigner()
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -60,21 +62,20 @@ const FairDetail: React.FC<FairDetailProps> = () => {
           return
         }
 
-        const web3 = new Web3(window.ethereum)
-        const fairSaleContract = new web3.eth.Contract(Fair.abi, address)
-        const tokenContract = await fairSaleContract.methods.getTokenAddress().call()
-        const tokenName = await fairSaleContract.methods.getTokenName().call()
-        const tokenSymbol = await fairSaleContract.methods.getTokenSymbol().call()
-        const tokenSupply = await fairSaleContract.methods.getTokenTotalSupply().call()
+        const fairSaleContract = new ethers.Contract(address, Fair.abi, signer)
+        const tokenContract = await fairSaleContract.getTokenAddress()
+        const tokenName = await fairSaleContract.getTokenName()
+        const tokenSymbol = await fairSaleContract.getTokenSymbol()
+        const tokenSupply = await fairSaleContract.getTokenTotalSupply()
 
-        const softCap = await fairSaleContract.methods.getSoftCap().call()
+        const softCap = await fairSaleContract.getSoftCap()
         console.log(`softCap:`, softCap)
-        const allToken = await fairSaleContract.methods.getTokenForSale().call()
-        const contributions = await fairSaleContract.methods.getContributions().call()
-        const times = await fairSaleContract.methods.getTimes().call()
-        const liquidityPercent = await fairSaleContract.methods.getLiquidityPercent().call()
-        const liquidityLockup = await fairSaleContract.methods.getLiquidityLockupTime().call()
-        const dataURL = await fairSaleContract.methods.getDataURL().call()
+        const allToken = await fairSaleContract.getTokenForSale()
+        const contributions = await fairSaleContract.getContributions()
+        const times = await fairSaleContract.getTimes()
+        const liquidityPercent = await fairSaleContract.getLiquidityPercent()
+        const liquidityLockup = await fairSaleContract.getLiquidityLockupTime()
+        const dataURL = await fairSaleContract.getDataURL()
         if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
           throw new Error('Invalid dataURL format')
         }
@@ -88,12 +89,12 @@ const FairDetail: React.FC<FairDetailProps> = () => {
         }
         const additionalData = await response.json()
         console.log(`Additional Data:`, additionalData)
-        const totalBNBContributed = await fairSaleContract.methods.getTotalBNBContributed().call()
+        const totalBNBContributed = await fairSaleContract.getTotalBNBContributed()
         console.log(`launchpadInfo:`, launchpadInfo)
 
-        const kycLink = await fairSaleContract.methods.getKYCLink().call()
-        const auditLink = await fairSaleContract.methods.getAuditLink().call()
-        const safuLink = await fairSaleContract.methods.getSAFULink().call()
+        const kycLink = await fairSaleContract.getKYCLink()
+        const auditLink = await fairSaleContract.getAuditLink()
+        const safuLink = await fairSaleContract.getSAFULink()
         console.log(`kycLink:`, kycLink)
         console.log(`auditLink:`, auditLink)
         console.log(`auditLink:`, auditLink)

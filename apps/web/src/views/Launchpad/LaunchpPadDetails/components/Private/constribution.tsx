@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Grid, Button, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
-import PublicSale from '../../../LaunchPadList/Abis/PrivateSale.json'
+import { ethers } from 'ethers'
+import PrivateSale from '../../../LaunchPadList/Abis/PrivateSale.json'
 import Countdown from 'react-countdown'
 import { CURRENCY_TEXT } from '../../../Logo/currencylogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import { useSigner } from 'wagmi'
 
 import styled from 'styled-components'
 
@@ -40,6 +41,7 @@ const Contributions = () => {
     contributionAmount: 0,
     claimableTokens: 0,
   })
+  const { data: signer } = useSigner()
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -57,22 +59,24 @@ const Contributions = () => {
 
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
-      try {
-        const web3 = new Web3(window.ethereum)
-        const privateSaleContract = new web3.eth.Contract(PublicSale.abi, address)
 
-        const caps = await privateSaleContract.methods.getCaps().call()
-        const tokenSymbol = await privateSaleContract.methods.getTokenSymbol().call()
-        const rates = await privateSaleContract.methods.getRates().call()
-        const contributions = await privateSaleContract.methods.getContributions().call()
-        const totalBNBContributed = await privateSaleContract.methods.getTotalBNBContributed().call()
-        const totalContributions = await privateSaleContract.methods.getTotalContributions().call()
-        const participantNumber = await privateSaleContract.methods.getNumberOfParticipants().call()
-        const times = await privateSaleContract.methods.getTimes().call()
+      try {
+        const privateSaleContract = new ethers.Contract(address, PrivateSale.abi, signer);
+        const caps = await privateSaleContract.getCaps();
+        const softCap = caps[0]
+        const hardCap = caps[1]
+        const tokenSymbol = await privateSaleContract.getTokenSymbol()
+        const rates = await privateSaleContract.getRates()
+        const contributions = await privateSaleContract.getContributions()
+        const totalBNBContributed = await privateSaleContract.getTotalBNBContributed()
+        const totalContributions = await privateSaleContract.getTotalContributions()
+        const participantNumber = await privateSaleContract.getNumberOfParticipants()
+        const times = await privateSaleContract.getTimes()
         const startTime = times[0]
         const endTime = times[1]
 
-        console.log(`totalBNBContributed:`, totalBNBContributed)
+        const progressPercentage = (Number(totalBNBContributed) / Number(softCap)) * 100
+        const percentage = progressPercentage / 10 ** 18
 
         setLaunchpadInfo({
           address,
@@ -81,6 +85,8 @@ const Contributions = () => {
             contributions,
             totalBNBContributed,
             participantNumber,
+            progressPercentage,
+            percentage,
             startTime,
             endTime,
             rates,
@@ -102,16 +108,14 @@ const Contributions = () => {
 
   const handleContribute = async (fetchLaunchpadInfo) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const privateSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const privateSaleContract = new ethers.Contract(address, PrivateSale.abi)
 
-      const contributionInWei = web3.utils.toHex(contributionAmount)
+      const contributionInWei = ethers.utils.hexlify(contributionAmount);
 
       await privateSaleContract.methods
         .contribute()
         .send({
-          from: accounts[0],
+          from: signer,
           value: contributionInWei,
         })
         .on('error', (error) => {
@@ -127,13 +131,11 @@ const Contributions = () => {
 
   const handleClaimTokens = async (fetchLaunchpadInfo) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const privateSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const privateSaleContract = new ethers.Contract(address, PrivateSale.abi)
 
       // Call the claimTokens function
-      await privateSaleContract.methods.claimTokens().send({
-        from: accounts[0],
+      await privateSaleContract.claimTokens().send({
+        from: signer,
       })
 
       // Refresh the launchpad information after claiming tokens
@@ -145,13 +147,11 @@ const Contributions = () => {
 
   const handleClaimRefund = async (fetchLaunchpadInfo) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const privateSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const privateSaleContract = new ethers.Contract(address, PrivateSale.abi)
 
       // Call the claimRefund function
-      await privateSaleContract.methods.claimRefund().send({
-        from: accounts[0],
+      await privateSaleContract.claimRefund().send({
+        from: signer,
       })
 
       // Refresh the launchpad information after claiming refund
@@ -163,11 +163,9 @@ const Contributions = () => {
 
   const fetchParticipantInfo = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const privateSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const privateSaleContract = new ethers.Contract(address, PrivateSale.abi)
 
-      const result = await privateSaleContract.methods.getParticipantInfo().call()
+      const result = await privateSaleContract.getParticipantInfo()
 
       setParticipantInfo({
         contributionAmount: result[0],
@@ -175,7 +173,8 @@ const Contributions = () => {
       })
       console.log('contributionAmount:', contributionAmount)
       fetchParticipantInfo()
-      fetchParticipantInfo()
+      console.log('launchpadInfo:', launchpadInfo);
+      console.log('participantInfo:', participantInfo);
     } catch (error) {
       console.error('Error fetching participant info:', error)
     }
@@ -188,33 +187,33 @@ const Contributions = () => {
   return (
     <div className="launchpad-detail-container">
       <Grid item xs={12}>
-        <CountdownTime>
-          {new Date().getTime() < Number(launchpadInfo.info.startTime) * 1000 ? (
-            <p
-              style={{
-                color: 'black',
-              }}
-            >
-              Presale start in <Countdown date={new Date(launchpadInfo.info.startTime * 1000)} />
-            </p>
-          ) : new Date().getTime() < Number(launchpadInfo.info.endTime) * 1000 ? (
-            <p
-              style={{
-                color: 'black',
-              }}
-            >
-              Presale will end in <Countdown date={new Date(launchpadInfo.info.endTime * 1000)} />
-            </p>
-          ) : (
-            <p
-              style={{
-                color: 'black',
-              }}
-            >
-              Presale Complete
-            </p>
-          )}
-        </CountdownTime>
+      <CountdownTime>
+        {new Date().getTime() < Number(launchpadInfo.info.startTime) * 1000 ? (
+          <p
+            style={{
+              color: 'black',
+            }}
+          >
+            Presale start in <Countdown date={new Date(launchpadInfo.info.startTime * 1000)} />
+          </p>
+        ) : new Date().getTime() < Number(launchpadInfo.info.endTime) * 1000 ? (
+          <p
+            style={{
+              color: 'black',
+            }}
+          >
+            Presale will end in <Countdown date={new Date(launchpadInfo.info.endTime * 1000)} />
+          </p>
+        ) : (
+          <p
+            style={{
+              color: 'black',
+            }}
+          >
+            Presale Complete
+          </p>
+        )}
+      </CountdownTime>
         <div className="caps">
           <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'center', fontSize: '12px' }}>
             Progress {`(${progressPercentage.toFixed(2)}%)`}

@@ -5,6 +5,7 @@ import { Contract } from '@ethersproject/contracts'
 import poolsConfig from 'config/constants/pools'
 import { PoolCategory } from 'config/constants/types'
 import { TW } from '@pancakeswap/tokens'
+import { PRESALE_FACTORY, PRIVATESALE_FACTORY, FAIRLAUNCH_FACTORY } from 'config/constants/exchange'
 
 // Addresses
 import {
@@ -43,7 +44,9 @@ import {
   getNonBscVaultAddress,
   getCrossFarmingSenderAddress,
   getCrossFarmingReceiverAddress,
-  getSaleFactoryAddress,
+  getPrivatesaleFactoryAddress,
+  getPresaleFactoryAddress,
+  getFairFactoryAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -98,7 +101,9 @@ import nonBscVault from 'config/abi/nonBscVault.json'
 import crossFarmingSenderAbi from 'config/abi/crossFarmingSender.json'
 import crossFarmingReceiverAbi from 'config/abi/crossFarmingReceiver.json'
 import crossFarmingProxyAbi from 'config/abi/crossFarmingProxy.json'
-import SaleFactory from 'config/abi/Factory.json'
+import presaleFactory from 'config/abi/Factory.json'
+import privatesaleFactory from 'config/abi/PrivateFactory.json'
+import fairsaleFactory from 'config/abi/FairFactory.json'
 
 // Types
 import type {
@@ -167,6 +172,15 @@ export const getContract = ({
   return new Contract(address, abi, signerOrProvider)
 }
 
+export const getPrivatesaleFactoryContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: privatesaleFactory, address: getPrivatesaleFactoryAddress(), signer })
+}
+export const getPresaleFactoryContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: presaleFactory, address: getPresaleFactoryAddress(), signer })
+}
+export const getFairFactoryContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: fairsaleFactory, address: getPresaleFactoryAddress(), signer })
+}
 export const getBep20Contract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: bep20Abi, address, signer }) as Erc20
 }
@@ -175,9 +189,6 @@ export const getErc721Contract = (address: string, signer?: Signer | Provider) =
 }
 export const getLpContract = (address: string, chainId?: number, signer?: Signer | Provider) => {
   return getContract({ abi: lpTokenAbi, address, signer, chainId }) as LpToken
-}
-export const getSaleFactoryContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: SaleFactory, address: getSaleFactoryAddress(), signer })
 }
 export const getIfoV1Contract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: ifoV1Abi, address, signer }) as IfoV1

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box } from '@mui/material'
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 import FactoryAbi from './Abis/Factory.json'
 import FairFactoryAbi from './Abis/FairFactory.json'
 import FairSale from './Abis/FairSale.json'
@@ -17,60 +17,21 @@ import CurrencyLogo from '../Logo/ChainLogo'
 import styled from 'styled-components'
 import { FAIRLAUNCH_FACTORY } from 'config/constants/exchange'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
-import { CardWrapper } from './Css'
+import {
+  CardContainer,
+  CardWrapper,
+  CapsDiv,
+  CountdownTime,
+  LaunchpadLink,
+  View,
+  SnakeProgressDiv,
+ } from './Css/Animation'
+  import { useSigner } from 'wagmi'
 
 interface FairCardProps {
   saleType: string
   factoryContractAddress: string
 }
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 10px;
-`
-
-const CountdownTime = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  padding: 5px;
-  box-shadow: 10px;
-`
-
-const CapsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px; /* Add padding for better spacing */
-`
-
-const Caps = styled.div`
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-`
-const LaunchpadLink = styled.div`
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  margin-top: 20px;
-  border-radius: 20px;
-`
-
-const View = styled.div`
-  display: block;
-  padding: 12px;
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 20px;
-`
 
 const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
   const router = useRouter()
@@ -79,6 +40,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
   const { chainId } = useActiveChainId()
   const [launchpadInfoList, setLaunchpadInfoList] = useState([])
   const factoryContractAddress = FAIRLAUNCH_FACTORY[chainId]
+  const { data: signer } = useSigner()
   const currencyText = CURRENCY_TEXT[chainId] || ''
   let accounts
 
@@ -100,29 +62,25 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
     const fetchFairSaleAddresses = async () => {
       try {
         setLoading(true)
-
-        const web3 = new Web3(window.ethereum)
-        accounts = await web3.eth.requestAccounts() // Assign accounts
-        const account = accounts[0]
-        const factoryContract = new web3.eth.Contract(FairFactoryAbi.abi, factoryContractAddress)
-        const addresses = await factoryContract.methods.getAllFairLaunchAddress().call()
+        const factoryContract = new ethers.Contract(factoryContractAddress, FairFactoryAbi.abi, signer)
+        const addresses = await factoryContract.getAllFairLaunchAddress()
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
         }
         const launchpadInfoPromises: Promise<any>[] = addresses.map(async (_launchpadAddress) => {
           console.log(`address:`, _launchpadAddress)
           try {
-            const fairSaleContract = new web3.eth.Contract(FairSale.abi, _launchpadAddress)
+            const fairSaleContract = new ethers.Contract(_launchpadAddress, FairSale.abi, signer)
 
-            const tokenName = await fairSaleContract.methods.getTokenName().call()
-            const tokenSymbol = await fairSaleContract.methods.getTokenSymbol().call()
+            const tokenName = await fairSaleContract.getTokenName()
+            const tokenSymbol = await fairSaleContract.getTokenSymbol()
 
-            const softCap = await fairSaleContract.methods.getSoftCap().call()
-            const contributions = await fairSaleContract.methods.getContributions().call()
-            const times = await fairSaleContract.methods.getTimes().call()
-            const liquidityPercent = await fairSaleContract.methods.getLiquidityPercent().call()
-            const liquidityLockup = await fairSaleContract.methods.getLiquidityLockupTime().call()
-            const dataURL = await fairSaleContract.methods.getDataURL().call()
+            const softCap = await fairSaleContract.getSoftCap()
+            const contributions = await fairSaleContract.getContributions()
+            const times = await fairSaleContract.getTimes()
+            const liquidityPercent = await fairSaleContract.getLiquidityPercent()
+            const liquidityLockup = await fairSaleContract.getLiquidityLockupTime()
+            const dataURL = await fairSaleContract.getDataURL()
             if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
               throw new Error('Invalid dataURL format')
             }
@@ -135,11 +93,11 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
               throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`)
             }
             const additionalData = await response.json()
-            const totalBNBContributed = await fairSaleContract.methods.getTotalBNBContributed().call()
+            const totalBNBContributed = await fairSaleContract.getTotalBNBContributed()
 
-            const kycLink = await fairSaleContract.methods.getKYCLink().call()
-            const auditLink = await fairSaleContract.methods.getAuditLink().call()
-            const safuLink = await fairSaleContract.methods.getSAFULink().call()
+            const kycLink = await fairSaleContract.getKYCLink()
+            const auditLink = await fairSaleContract.getAuditLink()
+            const safuLink = await fairSaleContract.getSAFULink()
 
             return {
               address: _launchpadAddress,

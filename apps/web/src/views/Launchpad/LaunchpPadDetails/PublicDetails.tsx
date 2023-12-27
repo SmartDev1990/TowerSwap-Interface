@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box } from '@mui/material'
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 import PublicSale from './PublicSale.json'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
@@ -16,6 +16,7 @@ import AdminOnly from '../LaunchpPadDetails/components/public/onlyadmin'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
+import { useSigner } from 'wagmi'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -36,6 +37,7 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
   const { address } = router.query as { address?: string }
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const currencyText = CURRENCY_TEXT[chainId] || ''
+  const { data: signer } = useSigner()
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -54,20 +56,19 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        const web3 = new Web3(window.ethereum)
-        const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
-        const tokenContract = await publicSaleContract.methods.getTokenAddress().call()
-        const tokenName = await publicSaleContract.methods.getTokenName().call()
-        const tokenSymbol = await publicSaleContract.methods.getTokenSymbol().call()
-        const tokenSupply = await publicSaleContract.methods.getTokenTotalSupply().call()
+        const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
+        const tokenContract = await publicSaleContract.getTokenAddress()
+        const tokenName = await publicSaleContract.getTokenName()
+        const tokenSymbol = await publicSaleContract.getTokenSymbol()
+        const tokenSupply = await publicSaleContract.getTokenTotalSupply()
 
-        const caps = await publicSaleContract.methods.getCaps().call()
-        const contributions = await publicSaleContract.methods.getContributions().call()
-        const times = await publicSaleContract.methods.getTimes().call()
-        const rates = await publicSaleContract.methods.getRates().call()
-        const liquidityPercent = await publicSaleContract.methods.getLiquidityPercent().call()
-        const liquidityLockup = await publicSaleContract.methods.getLiquidityLockupTime().call()
-        const dataURL = await publicSaleContract.methods.getDataURL().call()
+        const caps = await publicSaleContract.getCaps()
+        const contributions = await publicSaleContract.getContributions()
+        const times = await publicSaleContract.getTimes()
+        const rates = await publicSaleContract.getRates()
+        const liquidityPercent = await publicSaleContract.getLiquidityPercent()
+        const liquidityLockup = await publicSaleContract.getLiquidityLockupTime()
+        const dataURL = await publicSaleContract.getDataURL()
         if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
           throw new Error('Invalid dataURL format')
         }
@@ -80,12 +81,12 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
           throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`)
         }
         const additionalData = await response.json()
-        const totalBNBContributed = await publicSaleContract.methods.getTotalBNBContributed().call()
+        const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
         console.log(`launchpadInfo:`, launchpadInfo)
 
-        const kycLink = await publicSaleContract.methods.getKYCLink().call()
-        const auditLink = await publicSaleContract.methods.getAuditLink().call()
-        const safuLink = await publicSaleContract.methods.getSAFULink().call()
+        const kycLink = await publicSaleContract.getKYCLink()
+        const auditLink = await publicSaleContract.getAuditLink()
+        const safuLink = await publicSaleContract.getSAFULink()
         console.log(`kycLink:`, kycLink)
         console.log(`auditLink:`, auditLink)
         console.log(`auditLink:`, auditLink)

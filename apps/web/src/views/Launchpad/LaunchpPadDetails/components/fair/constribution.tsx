@@ -1,13 +1,14 @@
 // LaunchpadDetail.js
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { ethers } from 'ethers'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
 import PublicSale from '../../../LaunchPadList/Abis/FairSale.json'
 import Countdown from 'react-countdown'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../../../Logo/currencylogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import { useSigner } from 'wagmi'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ const Contributions = () => {
     contributionAmount: 0,
     claimableTokens: 0,
   })
+  const { data: signer } = useSigner()
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -57,24 +59,20 @@ const Contributions = () => {
   useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        const web3 = new Web3(window.ethereum)
-        const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
-
-        const softCap = await publicSaleContract.methods.getSoftCap().call()
-        const tokenSymbol = await publicSaleContract.methods.getTokenSymbol().call()
-        const contributions = await publicSaleContract.methods.getContributions().call()
-        const saleFinalized = await publicSaleContract.methods.saleFinalized().call()
-        const allToken = await publicSaleContract.methods.getTokenForSale().call()
-        const totalBNBContributed = await publicSaleContract.methods.getTotalBNBContributed().call()
-        const totalContributions = await publicSaleContract.methods.getTotalContributions().call()
-        const participantNumber = await publicSaleContract.methods.getNumberOfParticipants().call()
-        const times = await publicSaleContract.methods.getTimes().call()
+        const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
+        const softCap = await publicSaleContract.getSoftCap()
+        const tokenSymbol = await publicSaleContract.getTokenSymbol()
+        const contributions = await publicSaleContract.getContributions()
+        const saleFinalized = await publicSaleContract.saleFinalized()
+        const allToken = await publicSaleContract.getTokenForSale()
+        const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
+        const totalContributions = await publicSaleContract.getTotalContributions()
+        const participantNumber = await publicSaleContract.getNumberOfParticipants()
+        const times = await publicSaleContract.getTimes()
         const startTime = times[0]
         const endTime = times[1]
         const progressPercentage = (Number(totalBNBContributed) / Number(softCap)) * 100
         const percentage = progressPercentage / 10 ** 18
-
-        console.log(`totalBNBContributed:`, totalBNBContributed)
 
         setLaunchpadInfo({
           address,
@@ -107,15 +105,13 @@ const Contributions = () => {
 
   const handleContribute = async (fetchLaunchpadInfo) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
-      const contributionInWei = web3.utils.toHex(contributionAmount)
+      const contributionInWei = ethers.utils.hexlify(contributionAmount);
       await publicSaleContract.methods
         .contribute()
         .send({
-          from: accounts[0],
+          from: signer,
           value: contributionInWei,
         })
         .on('error', (error) => {
@@ -131,13 +127,11 @@ const Contributions = () => {
 
   const handleClaimTokens = async (fetchLaunchpadInfo) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
       // Call the claimTokens function
-      await publicSaleContract.methods.claimTokens().send({
-        from: accounts[0],
+      await publicSaleContract.claimTokens().send({
+        from: signer,
       })
 
       // Refresh the launchpad information after claiming tokens
@@ -149,13 +143,11 @@ const Contributions = () => {
 
   const handleClaimRefund = async (fetchLaunchpadInfo) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
       // Call the claimRefund function
-      await publicSaleContract.methods.claimRefund().send({
-        from: accounts[0],
+      await publicSaleContract.claimRefund().send({
+        from: signer,
       })
 
       // Refresh the launchpad information after claiming refund
@@ -167,11 +159,9 @@ const Contributions = () => {
 
   const fetchParticipantInfo = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, launchpadInfo.address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
-      const result = await publicSaleContract.methods.getParticipantInfo().call()
+      const result = await publicSaleContract.getParticipantInfo()
 
       setParticipantInfo({
         contributionAmount: result[0],

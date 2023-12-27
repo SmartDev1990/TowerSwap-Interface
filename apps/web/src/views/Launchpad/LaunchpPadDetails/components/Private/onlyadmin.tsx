@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
+import { ethers } from 'ethers'
 import PublicSale from '../../../LaunchPadList/Abis/PrivateSale.json'
 import Countdown from 'react-countdown'
+import { useSigner } from 'wagmi'
 
 const AdminOnly = () => {
   const router = useRouter()
@@ -13,16 +14,16 @@ const AdminOnly = () => {
   const [safuLink, setSAFULink] = useState('')
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const [isOwner, setIsOwner] = useState(false)
+  const { data: signer } = useSigner()
 
   const fetchLaunchpadInfo = async () => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
-      const caps = await publicSaleContract.methods.getCaps().call()
-      const contributions = await publicSaleContract.methods.getContributions().call()
-      const totalBNBContributed = await publicSaleContract.methods.getTotalBNBContributed().call()
-      const participantNumber = await publicSaleContract.methods.getNumberOfParticipants().call()
+      const caps = await publicSaleContract.getCaps()
+      const contributions = await publicSaleContract.getContributions()
+      const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
+      const participantNumber = await publicSaleContract.getNumberOfParticipants()
 
       setLaunchpadInfo({
         address,
@@ -40,26 +41,24 @@ const AdminOnly = () => {
 
   const handleSetLink = async (linkType, linkValue) => {
     try {
-      const web3 = new Web3(window.ethereum)
-      const accounts = await web3.eth.getAccounts()
-      const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
+      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
       switch (linkType) {
         case 'KYC':
-          await publicSaleContract.methods.setKYCLink().send({ from: accounts[0] })
+          await publicSaleContract.setKYCLink().send({ from: signer })
           break
         case 'Audit':
-          await publicSaleContract.methods.setAuditLink().send({ from: accounts[0] })
+          await publicSaleContract.setAuditLink().send({ from: signer })
           break
         case 'SAFU':
-          await publicSaleContract.methods.setSAFULink().send({ from: accounts[0] })
+          await publicSaleContract.setSAFULink().send({ from: signer })
           break
         default:
           console.error('Invalid link type')
           return
       }
 
-      const newLink = await publicSaleContract.methods[`get${linkType}Link`]().call()
+      const newLink = await publicSaleContract.methods[`get${linkType}Link`]()
       if (typeof newLink === 'string') {
         switch (linkType) {
           case 'KYC':
@@ -87,16 +86,14 @@ const AdminOnly = () => {
   useEffect(() => {
     const checkOwnership = async () => {
       try {
-        const web3 = new Web3(window.ethereum)
-        const accounts = await web3.eth.getAccounts()
-        const publicSaleContract = new web3.eth.Contract(PublicSale.abi, address)
+        const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
         // Check if the connected account is the owner
-        const owner: void | [] | (unknown[] & []) = await publicSaleContract.methods.getCreator().call()
+        const owner: void | [] | (unknown[] & []) = await publicSaleContract.getCreator()
 
         // Add a type check for owner
         if (typeof owner === 'string') {
-          setIsOwner(owner === accounts[0])
+          setIsOwner(owner === signer)
         } else {
           setIsOwner(false) // or handle other cases
         }

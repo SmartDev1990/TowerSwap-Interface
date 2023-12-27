@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
+import { ethers } from 'ethers'
 import styled, { keyframes } from 'styled-components'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import Web3 from 'web3'
 import FactoryAbi from './Abis/Factory.json'
 import PrivateSale from './Abis/PublicSale.json'
 import Countdown from 'react-countdown'
@@ -16,75 +16,16 @@ import CurrencyLogo from '../Logo/ChainLogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { PRESALE_FACTORY } from 'config/constants/exchange'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
-import { CardWrapper } from './Css'
-
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin: 10px;
-`
-
-const CapsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px; /* Add padding for better spacing */
-`
-
-const CountdownTime = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  padding: 5px;
-  box-shadow: 10px;
-`
-
-const LaunchpadLink = styled.div`
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  margin-top: 20px;
-  border-radius: 20px;
-`
-
-const View = styled.div`
-  display: block;
-  padding: 12px;
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 20px;
-`
-
-const snakeProgressAnimation = keyframes`
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-`
-
-const SnakeProgressDiv = styled.div`
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, #2196f3, transparent);
-    animation: ${snakeProgressAnimation} 2s linear infinite;
-  }
-`
+import {
+  CardContainer,
+  CardWrapper,
+  CapsDiv,
+  CountdownTime,
+  LaunchpadLink,
+  View,
+  SnakeProgressDiv,
+ } from './Css/Animation'
+import { useSigner } from 'wagmi'
 
 interface PrivateCardProps {
   saleType: string
@@ -102,6 +43,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
   const [calculatedTokens, setCalculatedTokens] = useState(0)
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false)
   const [launchpad, setLaunchpad] = useState(null)
+  const { data: signer } = useSigner()
   const [participantInfo, setParticipantInfo] = useState({
     contributionAmount: 0,
     claimableTokens: 0,
@@ -128,38 +70,32 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     const fetchPrivateSaleAddresses = async () => {
       try {
         setLoading(true)
-
-        const web3 = new Web3(window.ethereum)
-
-        const chainId = await web3.eth.getChainId()
-
-        accounts = await web3.eth.requestAccounts() // Assign accounts
-        const account = accounts[0]
-        const factoryContract = new web3.eth.Contract(FactoryAbi.abi, factoryContractAddress)
-        const addresses = await factoryContract.methods.getAllPublicSaleAddress().call()
+        const factoryContract = new ethers.Contract(factoryContractAddress, FactoryAbi.abi, signer);
+        console.log('Available Methods:', factoryContract.functions);
+        const addresses = await factoryContract.getAllPublicSaleAddress()
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
         }
         const launchpadInfoPromises: Promise<any>[] = addresses.map(async (_launchpadAddress) => {
           try {
-            const publicSaleContract = new web3.eth.Contract(PrivateSale.abi, _launchpadAddress)
+            const publicSaleContract = new ethers.Contract(_launchpadAddress, PrivateSale.abi, signer)
 
-            const tokenName = await publicSaleContract.methods.getTokenName().call()
-            const tokenSymbol = await publicSaleContract.methods.getTokenSymbol().call()
+            const tokenName = await publicSaleContract.getTokenName()
+            const tokenSymbol = await publicSaleContract.getTokenSymbol()
 
-            const caps = await publicSaleContract.methods.getCaps().call()
+            const caps = await publicSaleContract.getCaps()
             const softCap = Number(caps[0]) / 10 ** 18
             const hardCap = Number(caps[1]) / 10 ** 18
-            const contributions = await publicSaleContract.methods.getContributions().call()
-            const times = await publicSaleContract.methods.getTimes().call()
+            const contributions = await publicSaleContract.getContributions()
+            const times = await publicSaleContract.getTimes()
             const startTime = times[0]
             const endTime = times[1]
-            const rates = await publicSaleContract.methods.getRates().call()
+            const rates = await publicSaleContract.getRates()
             const priceRate = Number(rates[0]) / 10 ** 18
             const listingRate = Number(rates[1]) / 10 ** 18
-            const liquidityPercent = await publicSaleContract.methods.getLiquidityPercent().call()
-            const liquidityLockup = await publicSaleContract.methods.getLiquidityLockupTime().call()
-            const dataURL = await publicSaleContract.methods.getDataURL().call()
+            const liquidityPercent = await publicSaleContract.getLiquidityPercent()
+            const liquidityLockup = await publicSaleContract.getLiquidityLockupTime()
+            const dataURL = await publicSaleContract.getDataURL()
             if (typeof dataURL !== 'string' || (dataURL as string).trim() === '') {
               throw new Error('Invalid dataURL format')
             }
@@ -172,11 +108,11 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
               throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`)
             }
             const additionalData = await response.json()
-            const totalBNBContributed = await publicSaleContract.methods.getTotalBNBContributed().call()
+            const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
 
-            const kycLink = await publicSaleContract.methods.getKYCLink().call()
-            const auditLink = await publicSaleContract.methods.getAuditLink().call()
-            const safuLink = await publicSaleContract.methods.getSAFULink().call()
+            const kycLink = await publicSaleContract.getKYCLink()
+            const auditLink = await publicSaleContract.getAuditLink()
+            const safuLink = await publicSaleContract.getSAFULink()
 
             return {
               address: _launchpadAddress,

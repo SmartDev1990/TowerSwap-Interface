@@ -59,7 +59,9 @@ import {
   getNonBscVaultContract,
   getCrossFarmingProxyContract,
   getIfoCreditAddressContract,
-  getSaleFactoryContract,
+  getPresaleFactoryContract,
+  getPrivatesaleFactoryContract,
+  getFairFactoryContract,
 } from 'utils/contractHelpers'
 import { useSigner } from 'wagmi'
 
@@ -80,6 +82,21 @@ import { useActiveChainId } from './useActiveChainId'
 /**
  * Helper hooks to get specific contracts (by ABI)
  */
+
+ export const useSalePresaleFactory = (address: string) => {
+   const { data: signer } = useSigner()
+   return useMemo(() => getPresaleFactoryContract(address, signer), [address, signer])
+ }
+
+ export const usePrivatesaleFactory = (address: string) => {
+   const { data: signer } = useSigner()
+   return useMemo(() => getPrivatesaleFactoryContract(address, signer), [address, signer])
+ }
+
+ export const useFairsaleFactory = (address: string) => {
+   const { data: signer } = useSigner()
+   return useMemo(() => getFairFactoryContract(address, signer), [address, signer])
+ }
 
 export const useIfoV1Contract = (address: string) => {
   const { data: signer } = useSigner()
@@ -107,11 +124,6 @@ export const useERC20 = (address: string, withSignerIfPossible = true) => {
 export const useERC721 = (address: string, withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getErc721Contract(address, providerOrSigner), [address, providerOrSigner])
-}
-
-export const useSaleFactory = () => {
-  const { data: signer } = useSigner()
-  return useMemo(() => getSaleFactoryContract(signer), [signer])
 }
 
 export const useCake = (): { reader: Cake; signer: Cake } => {
