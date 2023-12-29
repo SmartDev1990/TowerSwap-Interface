@@ -1,64 +1,50 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import PublicSale from '../../../LaunchPadList/Abis/PrivateSale.json'
 import Countdown from 'react-countdown'
 import { useSigner } from 'wagmi'
+import { useAccount } from 'wagmi'
+import { usePrivatesaleAddress } from 'hooks/useContract';
+import { useActiveChainId } from 'hooks/useActiveChainId'
 
-const AdminOnly = () => {
+
+const AdminOnly = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   const router = useRouter()
   const { address } = router.query as { address?: string }
+  const { address: account } = useAccount()
   const [kycLink, setKYCLink] = useState('')
   const [auditLink, setAuditLink] = useState('')
   const [safuLink, setSAFULink] = useState('')
-  const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const [isOwner, setIsOwner] = useState(false)
   const { data: signer } = useSigner()
+  const { chainId } = useActiveChainId()
+  const privateSaleContract = usePrivatesaleAddress(address);
 
-  const fetchLaunchpadInfo = async () => {
-    try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-      const caps = await publicSaleContract.getCaps()
-      const contributions = await publicSaleContract.getContributions()
-      const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
-      const participantNumber = await publicSaleContract.getNumberOfParticipants()
-
-      setLaunchpadInfo({
-        address,
-        info: {
-          caps,
-          contributions,
-          totalBNBContributed,
-          participantNumber,
-        },
-      })
-    } catch (error) {
-      console.error(`Error fetching launchpad info for address ${address}:`, error)
-    }
+  if (!launchpadInfo || !launchpadInfo.info) {
+    return <div>Loading...</div>;
   }
 
   const handleSetLink = async (linkType, linkValue) => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
 
       switch (linkType) {
         case 'KYC':
-          await publicSaleContract.setKYCLink().send({ from: signer })
+          await privateSaleContract.setKYCLink().send({ from: account })
           break
         case 'Audit':
-          await publicSaleContract.setAuditLink().send({ from: signer })
+          await privateSaleContract.setAuditLink().send({ from: account })
           break
         case 'SAFU':
-          await publicSaleContract.setSAFULink().send({ from: signer })
+          await privateSaleContract.setSAFULink().send({ from: account })
           break
         default:
           console.error('Invalid link type')
           return
       }
 
-      const newLink = await publicSaleContract.methods[`get${linkType}Link`]()
+      const newLink = await privateSaleContract.methods[`get${linkType}Link`]()
       if (typeof newLink === 'string') {
         switch (linkType) {
           case 'KYC':
@@ -86,16 +72,11 @@ const AdminOnly = () => {
   useEffect(() => {
     const checkOwnership = async () => {
       try {
-        const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-        // Check if the connected account is the owner
-        const owner: void | [] | (unknown[] & []) = await publicSaleContract.getCreator()
-
-        // Add a type check for owner
+        const owner: void | [] | (unknown[] & []) = await privateSaleContract.getCreator()
         if (typeof owner === 'string') {
-          setIsOwner(owner === signer)
+          setIsOwner(owner === account)
         } else {
-          setIsOwner(false) // or handle other cases
+          setIsOwner(false)
         }
       } catch (error) {
         console.error('Error checking ownership:', error)
@@ -103,15 +84,10 @@ const AdminOnly = () => {
     }
 
     checkOwnership()
-    fetchLaunchpadInfo()
   }, [address])
 
-  if (!launchpadInfo) {
-    return <div>Loading...</div>
-  }
-
   return (
-    <Card style={{ marginTop: '10px' }}>
+    <Card style={{ marginTop: '10px', padding: '20px' }}>
       <div className="launchpad-detail-container">
         {isOwner && (
           <Grid item xs={12}>

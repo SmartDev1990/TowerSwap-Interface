@@ -1,53 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
-import { ethers } from 'ethers'
-import PublicSale from '../../../LaunchPadList/Abis/PublicSale.json'
+import { ethers, utils } from 'ethers'
 import Countdown from 'react-countdown'
 import { useSigner } from 'wagmi'
+import { useAccount } from 'wagmi'
+import { usePresaleAddress } from 'hooks/useContract'
 
-const AdminOnly = () => {
+const AdminOnly = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   const router = useRouter()
   const { address } = router.query as { address?: string }
   const [kycLink, setKYCLink] = useState('')
   const [auditLink, setAuditLink] = useState('')
   const [safuLink, setSAFULink] = useState('')
-  const [launchpadInfo, setLaunchpadInfo] = useState(null)
-  const [isOwner, setIsOwner] = useState(false)
+  const [owner, setOwner] = useState(false)
   const { data: signer } = useSigner()
+  const { address: account } = useAccount()
+  const publicSaleContract = usePresaleAddress(address)
 
-  const fetchLaunchpadInfo = async () => {
-    try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-      const caps = await publicSaleContract.getCaps()
-      const contributions = await publicSaleContract.getContributions()
-      const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
-      const participantNumber = await publicSaleContract.getNumberOfParticipants()
-
-      setLaunchpadInfo({
-        address,
-        info: {
-          caps,
-          contributions,
-          totalBNBContributed,
-          participantNumber,
-        },
-      })
-    } catch (error) {
-      console.error(`Error fetching launchpad info for address ${address}:`, error)
-    }
+  if (!launchpadInfo || !launchpadInfo.info) {
+    return <div>Loading...</div>;
   }
 
   const handleSetLink = async (linkType, linkValue) => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
       switch (linkType) {
         case 'KYC':
-          await publicSaleContract.setKYCLink().send({ from: signer })
+          await publicSaleContract.setKYCLink().send({ from: account })
           break
         case 'Audit':
-          await publicSaleContract.setAuditLink().send({ from: signer })
+          await publicSaleContract.setAuditLink().send({ from: account })
           break
         case 'SAFU':
           await publicSaleContract.setSAFULink().send({ from: signer })
@@ -85,16 +67,11 @@ const AdminOnly = () => {
   useEffect(() => {
     const checkOwnership = async () => {
       try {
-        const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-        // Check if the connected account is the owner
         const owner: void | [] | (unknown[] & []) = await publicSaleContract.getCreator()
-
-        // Add a type check for owner
         if (typeof owner === 'string') {
-          setIsOwner(owner === signer)
+          setOwner(owner === account)
         } else {
-          setIsOwner(false) // or handle other cases
+          setOwner(false)
         }
       } catch (error) {
         console.error('Error checking ownership:', error)
@@ -102,7 +79,6 @@ const AdminOnly = () => {
     }
 
     checkOwnership()
-    fetchLaunchpadInfo()
   }, [address])
 
   if (!launchpadInfo) {
@@ -110,9 +86,9 @@ const AdminOnly = () => {
   }
 
   return (
-    <Card style={{ marginTop: '10px' }}>
+    <Card style={{ marginTop: '10px', padding: '20px' }}>
       <div className="launchpad-detail-container">
-        {isOwner && (
+        {owner && (
           <Grid item xs={12}>
             <>
               <Typography

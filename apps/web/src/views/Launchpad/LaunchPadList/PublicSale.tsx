@@ -26,6 +26,7 @@ import {
   SnakeProgressDiv,
  } from './Css/Animation'
 import { useSigner } from 'wagmi'
+import { usePresaleFactory } from 'hooks/useContract'
 
 interface PrivateCardProps {
   saleType: string
@@ -48,7 +49,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     contributionAmount: 0,
     claimableTokens: 0,
   })
-  const factoryContractAddress = PRESALE_FACTORY[chainId]
+  const factoryContractAddress = usePresaleFactory()
   const currencyText = CURRENCY_TEXT[chainId] || ''
   let accounts
 
@@ -70,9 +71,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     const fetchPrivateSaleAddresses = async () => {
       try {
         setLoading(true)
-        const factoryContract = new ethers.Contract(factoryContractAddress, FactoryAbi.abi, signer);
-        console.log('Available Methods:', factoryContract.functions);
-        const addresses = await factoryContract.getAllPublicSaleAddress()
+        const addresses = await factoryContractAddress.getAllPublicSaleAddress()
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
         }

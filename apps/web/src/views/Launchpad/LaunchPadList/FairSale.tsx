@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box } from '@mui/material'
 import { ethers } from 'ethers'
-import FactoryAbi from './Abis/Factory.json'
-import FairFactoryAbi from './Abis/FairFactory.json'
+import FairFactory from './Abis/FairFactory.json'
 import FairSale from './Abis/FairSale.json'
 import Countdown from 'react-countdown'
 import { useRouter } from 'next/router'
@@ -27,6 +26,7 @@ import {
   SnakeProgressDiv,
  } from './Css/Animation'
   import { useSigner } from 'wagmi'
+  import { useFairsaleFactory } from 'hooks/useContract'
 
 interface FairCardProps {
   saleType: string
@@ -39,9 +39,10 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
   const [loading, setLoading] = useState(false)
   const { chainId } = useActiveChainId()
   const [launchpadInfoList, setLaunchpadInfoList] = useState([])
-  const factoryContractAddress = FAIRLAUNCH_FACTORY[chainId]
-  const { data: signer } = useSigner()
   const currencyText = CURRENCY_TEXT[chainId] || ''
+  const { data: signer } = useSigner()
+  const factoryContractAddress = FAIRLAUNCH_FACTORY[chainId]
+  console.log(`factoryContractAddress:`, factoryContractAddress)
   let accounts
 
   const formatDateTime = (timestamp) => {
@@ -62,7 +63,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
     const fetchFairSaleAddresses = async () => {
       try {
         setLoading(true)
-        const factoryContract = new ethers.Contract(factoryContractAddress, FairFactoryAbi.abi, signer)
+        const factoryContract = new ethers.Contract(factoryContractAddress, FairFactory.abi, signer)
         const addresses = await factoryContract.getAllFairLaunchAddress()
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
@@ -139,11 +140,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
     }
 
     fetchFairSaleAddresses()
-  }, [factoryContractAddress])
-
-  if (!launchpadInfoList || !launchpadInfoList.length) {
-    return <div>Loading...</div>
-  }
+  }, [chainId])
 
   return (
     <CardContainer>

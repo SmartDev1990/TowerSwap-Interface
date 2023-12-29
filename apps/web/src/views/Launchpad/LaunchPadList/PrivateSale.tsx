@@ -3,7 +3,6 @@ import { BigNumber } from '@ethersproject/bignumber'
 import styled, { keyframes } from 'styled-components'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
 import { ethers } from 'ethers'
-import FactoryAbi from './Abis/PrivateFactory.json'
 import PrivateSale from './Abis/PrivateSale.json'
 import Countdown from 'react-countdown'
 import { useRouter } from 'next/router'
@@ -27,6 +26,7 @@ import {
   SnakeProgressDiv,
  } from './Css/Animation'
  import { useSigner } from 'wagmi'
+ import { usePrivatesaleFactory } from 'hooks/useContract'
 
 
 interface PrivateCardProps {
@@ -50,7 +50,8 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     contributionAmount: 0,
     claimableTokens: 0,
   })
-  const factoryContractAddress = PRIVATESALE_FACTORY[chainId]
+  const factoryContractAddress = usePrivatesaleFactory()
+  console.log(`factoryContractAddress:`, factoryContractAddress)
   const currencyText = CURRENCY_TEXT[chainId] || ''
   let accounts
 
@@ -72,11 +73,10 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     const fetchPrivateSaleAddresses = async () => {
       try {
         setLoading(true)
-        const factoryContract = new ethers.Contract(factoryContractAddress, FactoryAbi.abi, signer);
-        const addresses = await factoryContract.getAllPrivateSaleAddress()
-        console.log(`addresses:`, addresses)
+        const addresses = await factoryContractAddress.getAllPrivateSaleAddress()
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
+          setPrivateSaleAddresses(addresses);
         }
         const launchpadInfoPromises: Promise<any>[] = addresses.map(async (_launchpadAddress) => {
           try {

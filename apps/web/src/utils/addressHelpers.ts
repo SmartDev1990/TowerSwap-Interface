@@ -6,14 +6,14 @@ import { VaultKey } from 'state/types'
 export const getAddress = (address: Pool.Address, chainId?: number): string => {
   return address[chainId] ? address[chainId] : address[ChainId.CMP]
 }
-export const getPresaleFactoryAddress = () => {
-  return getAddress(addresses.presaleFactory)
+export const getPresaleFactoryAddress = (chainId?: number) => {
+  return getAddress(addresses.presaleFactory, chainId)
 }
-export const getPrivatesaleFactoryAddress = () => {
-  return getAddress(addresses.privateFactory)
+export const getPrivatesaleFactoryAddress = (chainId?: number) => {
+  return getAddress(addresses.privateFactory, chainId)
 }
-export const getFairFactoryAddress = () => {
-  return getAddress(addresses.fairFactory)
+export const getFairFactoryAddress = (chainId?: number) => {
+  return getAddress(addresses.fairFactory, chainId)
 }
 export const getMasterChefAddress = (chainId?: number) => {
   return getAddress(addresses.masterChef, chainId)

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box } from '@mui/material'
 import { ethers } from 'ethers'
-import PublicSale from './PublicSale.json'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
 import Telegram from './Icons/Telegram'
@@ -17,6 +16,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
 import { useSigner } from 'wagmi'
+import { usePresaleAddress } from 'hooks/useContract'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -38,6 +38,7 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const currencyText = CURRENCY_TEXT[chainId] || ''
   const { data: signer } = useSigner()
+  const publicSaleContract = usePresaleAddress(address)
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -53,10 +54,8 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
     return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
   }
 
-  useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
         const tokenContract = await publicSaleContract.getTokenAddress()
         const tokenName = await publicSaleContract.getTokenName()
         const tokenSymbol = await publicSaleContract.getTokenSymbol()
@@ -82,14 +81,9 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
         }
         const additionalData = await response.json()
         const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
-        console.log(`launchpadInfo:`, launchpadInfo)
-
-        const kycLink = await publicSaleContract.getKYCLink()
-        const auditLink = await publicSaleContract.getAuditLink()
-        const safuLink = await publicSaleContract.getSAFULink()
-        console.log(`kycLink:`, kycLink)
-        console.log(`auditLink:`, auditLink)
-        console.log(`auditLink:`, auditLink)
+        const participantNumber = await publicSaleContract.getNumberOfParticipants()
+        const participant = Number(participantNumber)
+        const saleFinalized = await publicSaleContract.saleFinalized()
 
         setLaunchpadInfo({
           address,
@@ -107,9 +101,8 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
             dataURL,
             totalBNBContributed,
             additionalData,
-            kycLink,
-            auditLink,
-            safuLink,
+            participant,
+            saleFinalized,
           },
         })
       } catch (error) {
@@ -117,8 +110,9 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
       }
     }
 
-    fetchLaunchpadInfo()
-  }, [address])
+    useEffect(() => {
+    fetchLaunchpadInfo();
+    }, [address]);
 
   if (!launchpadInfo) {
     return <div>Loading...</div>
@@ -311,7 +305,7 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
             </Card>
             <Card style={{ marginTop: '10px' }}>
               <CardContent>
-                <Contributions />
+                <Contributions launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo} />
               </CardContent>
             </Card>
           </Grid>
@@ -453,8 +447,8 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
             </CardContent>
           </Card>
           <Grid item xs={12}>
-            <Admin />
-            <AdminOnly />
+            <Admin launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo} />
+            <AdminOnly launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo}/>
           </Grid>
         </Grid>
       </Grid>

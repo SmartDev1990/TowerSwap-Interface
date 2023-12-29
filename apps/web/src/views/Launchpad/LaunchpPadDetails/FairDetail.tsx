@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Grid, LinearProgress, Box } from '@mui/material'
 import { ethers } from 'ethers'
-import Fair from './FairSale.json'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
 import Telegram from './Icons/Telegram'
@@ -16,6 +15,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
 import { useSigner } from 'wagmi'
+import { useFairsaleAddress } from 'hooks/useContract'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -38,6 +38,7 @@ const FairDetail: React.FC<FairDetailProps> = () => {
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const currencyText = CURRENCY_TEXT[chainId] || ''
   const { data: signer } = useSigner()
+  const fairSaleContract = useFairsaleAddress(address)
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -53,22 +54,16 @@ const FairDetail: React.FC<FairDetailProps> = () => {
     return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
   }
 
-  useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        if (!address) {
-          // If address is undefined, do not proceed with the API call
-          console.error('Address is undefined.')
-          return
-        }
-
-        const fairSaleContract = new ethers.Contract(address, Fair.abi, signer)
         const tokenContract = await fairSaleContract.getTokenAddress()
+        const tokenAddress = tokenContract
         const tokenName = await fairSaleContract.getTokenName()
         const tokenSymbol = await fairSaleContract.getTokenSymbol()
         const tokenSupply = await fairSaleContract.getTokenTotalSupply()
 
         const softCap = await fairSaleContract.getSoftCap()
+        const onlySoftcap = Number(softCap)
         console.log(`softCap:`, softCap)
         const allToken = await fairSaleContract.getTokenForSale()
         const contributions = await fairSaleContract.getContributions()
@@ -88,16 +83,11 @@ const FairDetail: React.FC<FairDetailProps> = () => {
           throw new Error(`Invalid content type. Expected JSON, but received ${contentType}`)
         }
         const additionalData = await response.json()
-        console.log(`Additional Data:`, additionalData)
         const totalBNBContributed = await fairSaleContract.getTotalBNBContributed()
-        console.log(`launchpadInfo:`, launchpadInfo)
+        const saleFinalized = await fairSaleContract.saleFinalized()
+        const participantNumber = await fairSaleContract.getNumberOfParticipants()
+        const participant = Number(participantNumber)
 
-        const kycLink = await fairSaleContract.getKYCLink()
-        const auditLink = await fairSaleContract.getAuditLink()
-        const safuLink = await fairSaleContract.getSAFULink()
-        console.log(`kycLink:`, kycLink)
-        console.log(`auditLink:`, auditLink)
-        console.log(`auditLink:`, auditLink)
 
         setLaunchpadInfo({
           address,
@@ -107,6 +97,7 @@ const FairDetail: React.FC<FairDetailProps> = () => {
             tokenSymbol,
             tokenSupply,
             softCap,
+            onlySoftcap,
             contributions,
             times,
             allToken,
@@ -115,19 +106,24 @@ const FairDetail: React.FC<FairDetailProps> = () => {
             dataURL,
             totalBNBContributed,
             additionalData,
-            kycLink,
-            auditLink,
-            safuLink,
+            participant,
+            saleFinalized,
+            tokenAddress,
           },
-        })
+        });
       } catch (error) {
-        console.error(`Error fetching launchpad info for address ${address}:`, error)
+        console.error(`Error fetching launchpad info for address ${address}:`, error);
       }
     }
-    if (address) {
-      fetchLaunchpadInfo()
-    }
-  }, [address])
+
+    useEffect(() => {
+    fetchLaunchpadInfo();
+  }, [address]);
+
+  if (!launchpadInfo) {
+    return <div>Loading...</div>
+  }
+
 
   return (
     <div style={{ margin: '12px' }}>
@@ -316,7 +312,7 @@ const FairDetail: React.FC<FairDetailProps> = () => {
             </Card>
             <Card style={{ marginTop: '10px' }}>
               <CardContent>
-                <Contributions />
+                <Contributions launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo} />
               </CardContent>
             </Card>
           </Grid>
@@ -428,11 +424,19 @@ const FairDetail: React.FC<FairDetailProps> = () => {
                   {Number(launchpadInfo?.info?.liquidityLockup)} Days
                 </Typography>
               </CapsDiv>
+              <CapsDiv className="two-column border-column">
+                <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
+                Listing:
+                </Typography>
+                <Typography style={{ fontSize: '16px', fontFamily: 'Bahnschrift', color: 'black' }}>
+                TowerSwap
+                </Typography>
+              </CapsDiv>
             </CardContent>
           </Card>
           <Grid item xs={12}>
-            <Admin />
-            <AdminOnly />
+            <Admin launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo} />
+            <AdminOnly launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo}/>
           </Grid>
         </Grid>
       </Grid>

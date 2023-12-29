@@ -62,6 +62,10 @@ import {
   getPresaleFactoryContract,
   getPrivatesaleFactoryContract,
   getFairFactoryContract,
+  getPrivatesaleContract,
+  getPublicsaleContract,
+  getFairsaleContract,
+  getTokensaleContract,
 } from 'utils/contractHelpers'
 import { useSigner } from 'wagmi'
 
@@ -83,19 +87,42 @@ import { useActiveChainId } from './useActiveChainId'
  * Helper hooks to get specific contracts (by ABI)
  */
 
- export const useSalePresaleFactory = (address: string) => {
-   const { data: signer } = useSigner()
-   return useMemo(() => getPresaleFactoryContract(address, signer), [address, signer])
+ export const usePresaleFactory = (withSignerIfPossible = true) => {
+   const { chainId } = useActiveChainId()
+   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
+   return useMemo(() => getPresaleFactoryContract(providerOrSigner, chainId), [providerOrSigner, chainId])
  }
 
- export const usePrivatesaleFactory = (address: string) => {
-   const { data: signer } = useSigner()
-   return useMemo(() => getPrivatesaleFactoryContract(address, signer), [address, signer])
+ export const usePrivatesaleFactory = (withSignerIfPossible = true) => {
+   const { chainId } = useActiveChainId()
+   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
+   return useMemo(() => getPrivatesaleFactoryContract(providerOrSigner, chainId), [providerOrSigner, chainId])
  }
 
- export const useFairsaleFactory = (address: string) => {
+ export const useFairsaleFactory = (withSignerIfPossible = true) => {
+   const { chainId } = useActiveChainId()
+   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
+   return useMemo(() => getFairFactoryContract(providerOrSigner, chainId), [providerOrSigner, chainId])
+ }
+
+ export const usePresaleAddress = (address: string) => {
    const { data: signer } = useSigner()
-   return useMemo(() => getFairFactoryContract(address, signer), [address, signer])
+   return useMemo(() => getPublicsaleContract(address, signer), [address, signer])
+ }
+
+ export const usePrivatesaleAddress = (address: string) => {
+   const { data: signer } = useSigner()
+   return useMemo(() => getPrivatesaleContract(address, signer), [address, signer])
+ }
+
+ export const useFairsaleAddress = (address: string) => {
+   const { data: signer } = useSigner()
+   return useMemo(() => getFairsaleContract(address, signer), [address, signer])
+ }
+
+ export const useTokensaleAddress = (address: string) => {
+   const { data: signer } = useSigner()
+   return useMemo(() => getTokensaleContract(address, signer), [address, signer])
  }
 
 export const useIfoV1Contract = (address: string) => {

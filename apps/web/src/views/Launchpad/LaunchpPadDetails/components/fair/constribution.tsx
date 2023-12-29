@@ -1,7 +1,7 @@
 // LaunchpadDetail.js
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box, TextField } from '@mui/material'
 import PublicSale from '../../../LaunchPadList/Abis/FairSale.json'
 import Countdown from 'react-countdown'
@@ -9,28 +9,25 @@ import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../../../Logo/currencylogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useSigner } from 'wagmi'
+import BigNumber from 'bignumber.js'
+import {
+  CardContainer,
+  CardWrapper,
+  CapsDiv,
+  CountdownTime,
+  LaunchpadLink,
+  View,
+  SnakeProgressDiv,
+} from '../../Css/Animation'
+import { useFairsaleAddress } from 'hooks/useContract';
 
-const CapsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px; /* Add padding for better spacing */
-`
+interface Contributions {
+  amount: BigNumber
+}
 
-const CountdownTime = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  padding: 5px;
-  box-shadow: 10px;
-`
-
-const Contributions = () => {
+const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   const router = useRouter()
   const { address } = router.query as { address?: string }
-  const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const [contributionAmount, setContributionAmount] = useState('')
   const [presaleComplete, setPresaleComplete] = useState(false)
   const [progressValue, setProgressValue] = useState(0)
@@ -41,6 +38,7 @@ const Contributions = () => {
     claimableTokens: 0,
   })
   const { data: signer } = useSigner()
+  const fairSaleContract = useFairsaleAddress(address)
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -56,59 +54,14 @@ const Contributions = () => {
     return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
   }
 
-  useEffect(() => {
-    const fetchLaunchpadInfo = async () => {
-      try {
-        const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
-        const softCap = await publicSaleContract.getSoftCap()
-        const tokenSymbol = await publicSaleContract.getTokenSymbol()
-        const contributions = await publicSaleContract.getContributions()
-        const saleFinalized = await publicSaleContract.saleFinalized()
-        const allToken = await publicSaleContract.getTokenForSale()
-        const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
-        const totalContributions = await publicSaleContract.getTotalContributions()
-        const participantNumber = await publicSaleContract.getNumberOfParticipants()
-        const times = await publicSaleContract.getTimes()
-        const startTime = times[0]
-        const endTime = times[1]
-        const progressPercentage = (Number(totalBNBContributed) / Number(softCap)) * 100
-        const percentage = progressPercentage / 10 ** 18
+  if (!launchpadInfo || !launchpadInfo.info) {
+  return <div>Loading...</div>;
+}
 
-        setLaunchpadInfo({
-          address,
-          info: {
-            softCap,
-            contributions,
-            percentage,
-            progressPercentage,
-            totalBNBContributed,
-            participantNumber,
-            startTime,
-            endTime,
-            tokenSymbol,
-            totalContributions,
-            allToken,
-            saleFinalized,
-          },
-        })
-      } catch (error) {
-        console.error(`Error fetching launchpad info for address ${address}:`, error)
-      }
-    }
-
-    fetchLaunchpadInfo()
-  }, [address])
-
-  if (!launchpadInfo) {
-    return <div>Loading...</div>
-  }
-
-  const handleContribute = async (fetchLaunchpadInfo) => {
+  const handleContribute = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-      const contributionInWei = ethers.utils.hexlify(contributionAmount);
-      await publicSaleContract.methods
+      const contributionInWei = ethers.utils.parseEther(contributionAmount);
+      await fairSaleContract
         .contribute()
         .send({
           from: signer,
@@ -125,32 +78,22 @@ const Contributions = () => {
     }
   }
 
-  const handleClaimTokens = async (fetchLaunchpadInfo) => {
+  const handleClaimTokens = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-      // Call the claimTokens function
-      await publicSaleContract.claimTokens().send({
+      await fairSaleContract.claimTokens().send({
         from: signer,
       })
-
-      // Refresh the launchpad information after claiming tokens
       fetchLaunchpadInfo()
     } catch (error) {
       console.error('Error claiming tokens:', error)
     }
   }
 
-  const handleClaimRefund = async (fetchLaunchpadInfo) => {
+  const handleClaimRefund = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-      // Call the claimRefund function
-      await publicSaleContract.claimRefund().send({
+      await fairSaleContract.claimRefund().send({
         from: signer,
       })
-
-      // Refresh the launchpad information after claiming refund
       fetchLaunchpadInfo()
     } catch (error) {
       console.error('Error claiming refund:', error)
@@ -159,21 +102,20 @@ const Contributions = () => {
 
   const fetchParticipantInfo = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-      const result = await publicSaleContract.getParticipantInfo()
-
+      const result = await fairSaleContract.getParticipantInfo()
       setParticipantInfo({
         contributionAmount: result[0],
         claimableTokens: result[1],
       })
       console.log('contributionAmount:', contributionAmount)
       fetchParticipantInfo()
-      fetchParticipantInfo()
     } catch (error) {
       console.error('Error fetching participant info:', error)
     }
   }
+
+  const participantNumber = Number(launchpadInfo.info.participantNumber) / 10 ** 18
+  console.log('participantNumber:', participantNumber)
 
   const contributionInBNB = Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18
   const softCapInBNB = Number(launchpadInfo.info.softCap) / 10 ** 18
@@ -223,8 +165,8 @@ const Contributions = () => {
                 borderRadius: '5px',
                 flexGrow: 1,
               }}
-              className="snake-progress" // Apply the CSS class
             />
+            <SnakeProgressDiv />
           </Box>
           <CapsDiv>
             <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
@@ -279,7 +221,7 @@ const Contributions = () => {
             Participant:
           </Typography>
           <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
-            {Number(launchpadInfo.info.participantNumber)}
+            {Number(launchpadInfo.info.participant)}
           </Typography>
         </CapsDiv>
         <CapsDiv>
@@ -301,7 +243,7 @@ const Contributions = () => {
               fontSize: '12px',
             }}
           >
-            {Number(launchpadInfo.info.totalContributions) / 10 ** 18} {currencyText}
+            {Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18} {currencyText}
           </Typography>
         </CapsDiv>
       </Grid>

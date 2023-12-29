@@ -5,103 +5,58 @@ import PublicSale from '../../../LaunchPadList/Abis/PublicSale.json'
 import Countdown from 'react-countdown'
 import Erc20Abi from '../../../LaunchPadList/Abis/Erc20.json'
 import RouterAbi from '../../../LaunchPadList/Abis/Router.json'
-import { BigNumber, ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import { useSigner } from 'wagmi'
+import { useAccount } from 'wagmi'
+import { usePresaleAddress, useTokensaleAddress } from 'hooks/useContract';
+import { useActiveChainId } from 'hooks/useActiveChainId'
 
-const Admin = () => {
+const Admin = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   const router = useRouter()
   const { address } = router.query as { address?: string }
-  const [launchpadInfo, setLaunchpadInfo] = useState(null)
-  const [isOwner, setIsOwner] = useState(false)
+  const [owner, setOwner] = useState(false)
+  const { chainId } = useActiveChainId();
   const [softCapReached, setSoftCapReached] = useState(false)
   const [saleFinalized, setSaleFinalized] = useState(false)
   const { data: signer } = useSigner()
+  const publicSaleContract = usePresaleAddress(address);
+  const tokenContract = useTokensaleAddress(launchpadInfo.info.tokenContract);
+  const { address: account } = useAccount()
 
-  const fetchLaunchpadInfo = async () => {
-    try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
-      const caps = await publicSaleContract.getCaps()
-      const tokenBalance = await publicSaleContract.getTokenBalance()
-      const ethBalance = await publicSaleContract.getEtherBalance()
-      const rates = await publicSaleContract.getRates()
-      const liquidityPercent = await publicSaleContract.getLiquidityPercent()
-      const tokenAddress = await publicSaleContract.getTokenAddress()
-      const router = await publicSaleContract.getRouter()
-      const contributions = await publicSaleContract.getContributions()
-      const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
-      const totalContributions = await publicSaleContract.getTotalContributions()
-      const saleFinalized = await publicSaleContract.saleFinalized()
-
-      setLaunchpadInfo({
-        address,
-        info: {
-          caps,
-          rates,
-          contributions,
-          totalBNBContributed,
-          totalContributions,
-          liquidityPercent,
-          tokenAddress,
-          router,
-          tokenBalance,
-          ethBalance,
-          saleFinalized,
-        },
-      })
-
-      const softCap = caps[0]
-      setSoftCapReached(totalBNBContributed >= softCap)
-    } catch (error) {
-      console.error(`Error fetching launchpad info for address ${address}:`, error)
-    }
+  if (!launchpadInfo || !launchpadInfo.info) {
+    return <div>Loading...</div>;
   }
 
   useEffect(() => {
-    const checkOwnership = async () => {
-      try {
-        const fairSaleContract = new ethers.Contract(address, PublicSale.abi, signer); // Assuming you want to use the first account
-        const owner: void | [] | (unknown[] & []) = await fairSaleContract.getCreator()
-
-        if (typeof owner === 'string') {
-          setIsOwner(owner === signer)
-        } else {
-          setIsOwner(false) // or handle other cases
+      const checkOwnership = async () => {
+        try {
+          const owner = await publicSaleContract.getCreator();
+          setOwner(owner === account);
+        } catch (error) {
+          console.error('Error checking ownership:', error);
         }
-      } catch (error) {
-        console.error('Error checking ownership:', error)
-      }
-    }
-
+      };
     checkOwnership();
-    fetchLaunchpadInfo();
   }, [address]);
 
   const handleCompleteSale = async () => {
     // let transaction
     let tokenContract
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
 
-      const tokenAddress = await publicSaleContract.getTokenAddress()
-      if (typeof tokenAddress === 'string') {
-        const tokenContract = new ethers.Contract(tokenAddress, Erc20Abi.abi)
-      } else {
-        console.error('Invalid token address:', tokenAddress)
-      }
+      const owner = await publicSaleContract.getCreator()
 
-      const isOwner = await publicSaleContract.getCreator().call({ from: signer })
-
-      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+      if (typeof owner === 'string' || (owner && typeof owner.getAddress === 'function' && owner.getAddress() === account)) {
         if (launchpadInfo.info.totalContributions >= launchpadInfo.info.caps[0]) {
           const routerAddress = launchpadInfo.info.router
           const amount = ethers.constants.MaxUint256
           await tokenContract.approve(routerAddress, amount).send({
-            from: signer,
+            from: account,
           })
 
           // Now call finalizeSale function
           await publicSaleContract.finalizeSale().send({
-            from: signer,
+            from: account,
           })
 
           const saleFinalized = await publicSaleContract.saleFinalized()
@@ -122,14 +77,10 @@ const Admin = () => {
 
   const handleWithdrawRemaining = async () => {
     try {
-
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
-
-      const isOwner = await publicSaleContract.getCreator()
-
-      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+      const owner = await publicSaleContract.getCreator()
+      if (typeof owner === 'string' || (owner && typeof owner.getAddress === 'function' && owner.getAddress() === account)) {
         await publicSaleContract.withdrawRemaining().send({
-          from: signer,
+          from: account,
         })
 
         fetchLaunchpadInfo()
@@ -143,11 +94,10 @@ const Admin = () => {
 
   const handleCancelSale = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
-      const isOwner = await publicSaleContract.getCreator().call({ from: signer })
-      if (typeof isOwner === 'string' || (isOwner && typeof isOwner.getAddress === 'function' && isOwner.getAddress() === signer)) {
+      const owner = await publicSaleContract.getCreator().call({ from: account })
+      if (typeof owner === 'string' || (owner && typeof owner.getAddress === 'function' && owner.getAddress() === account)) {
         await publicSaleContract.cancelSale().send({
-          from: signer,
+          from: account,
         })
         fetchLaunchpadInfo()
       } else {
@@ -158,22 +108,10 @@ const Admin = () => {
     }
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetchLaunchpadInfo()
-    }
-
-    fetchData()
-  }, [address])
-
-  if (!launchpadInfo) {
-    return <div>Loading...</div>
-  }
-
   return (
-    <Card style={{ marginTop: '10px' }}>
+    <Card style={{ marginTop: '10px', padding: '20px' }}>
       <div className="launchpad-detail-container">
-        {isOwner && (
+        {owner && (
           <Grid item xs={12}>
             <>
               <Typography
@@ -187,19 +125,21 @@ const Admin = () => {
               >
                 Creator Panel
               </Typography>
-              {launchpadInfo.info.caps[0] && (
+              {owner && launchpadInfo.info.caps[0] && (
                 <Grid item xs={12} style={{ marginBottom: '10px' }}>
                   <Button variant="contained" color="primary" onClick={handleCompleteSale}>
                     Finalize Sale
                   </Button>
                 </Grid>
               )}
+              {owner && (
               <Grid item xs={12} style={{ marginBottom: '10px' }}>
                 <Button variant="contained" color="secondary" onClick={handleCancelSale}>
                   Cancel Sale
                 </Button>
               </Grid>
-              {isOwner && launchpadInfo.info.saleFinalized && (
+              )}
+              {owner && launchpadInfo.info.saleFinalized && (
                 <Grid item xs={12}>
                   <Button variant="contained" color="primary" onClick={handleWithdrawRemaining}>
                     Withdraw Remaining

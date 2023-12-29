@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Grid, Button, LinearProgress, Box, TextField } from '@mui/material'
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import PublicSale from '../../../LaunchPadList/Abis/PublicSale.json'
 import Countdown from 'react-countdown'
 import styled from 'styled-components'
@@ -10,28 +10,20 @@ import { CURRENCY_TEXT } from '../../../Logo/currencylogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { provider } from 'utils/wagmi'
 import { useSigner } from 'wagmi'
+import { usePresaleAddress } from 'hooks/useContract'
+import {
+  CardContainer,
+  CardWrapper,
+  CapsDiv,
+  CountdownTime,
+  LaunchpadLink,
+  View,
+  SnakeProgressDiv,
+} from '../../Css/Animation'
 
-const CapsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px; /* Add padding for better spacing */
-`
-
-const CountdownTime = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-  padding: 5px;
-  box-shadow: 10px;
-`
-
-const Contributions = () => {
+const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   const router = useRouter()
   const { address } = router.query as { address?: string }
-  const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const [contributionAmount, setContributionAmount] = useState('')
   const [presaleComplete, setPresaleComplete] = useState(false)
   const [progressValue, setProgressValue] = useState(0)
@@ -42,6 +34,7 @@ const Contributions = () => {
     contributionAmount: 0,
     claimableTokens: 0,
   })
+  const publicSaleContract = usePresaleAddress(address)
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -57,53 +50,14 @@ const Contributions = () => {
     return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
   }
 
-  useEffect(() => {
-    const fetchLaunchpadInfo = async () => {
-      try {
-        const publicSaleContract = new ethers.Contract(address, PublicSale.abi, signer)
-        const caps = await publicSaleContract.getCaps()
-        const tokenSymbol = await publicSaleContract.getTokenSymbol()
-        const rates = await publicSaleContract.getRates()
-        const contributions = await publicSaleContract.getContributions()
-        const totalBNBContributed = await publicSaleContract.getTotalBNBContributed()
-        const totalContributions = await publicSaleContract.getTotalContributions()
-        const participantNumber = await publicSaleContract.getNumberOfParticipants()
-        const times = await publicSaleContract.getTimes()
-        const startTime = times[0]
-        const endTime = times[1]
 
-        console.log(`totalBNBContributed:`, totalBNBContributed)
-
-        setLaunchpadInfo({
-          address,
-          info: {
-            caps,
-            contributions,
-            totalBNBContributed,
-            participantNumber,
-            startTime,
-            endTime,
-            rates,
-            tokenSymbol,
-            totalContributions,
-          },
-        })
-      } catch (error) {
-        console.error(`Error fetching launchpad info for address ${address}:`, error)
-      }
-    }
-
-    fetchLaunchpadInfo()
-  }, [address])
-
-  if (!launchpadInfo) {
-    return <div>Loading...</div>
+  if (!launchpadInfo || !launchpadInfo.info) {
+    return <div>Loading...</div>;
   }
 
-  const handleContribute = async (fetchLaunchpadInfo) => {
+  const handleContribute = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-      const contributionInWei = ethers.utils.hexlify(contributionAmount);
+      const contributionInWei = ethers.utils.parseEther(contributionAmount);
 
       await publicSaleContract.methods
         .contribute()
@@ -122,9 +76,8 @@ const Contributions = () => {
     }
   }
 
-  const handleClaimTokens = async (fetchLaunchpadInfo) => {
+  const handleClaimTokens = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
       // Call the claimTokens function
       await publicSaleContract.claimTokens().send({
         from: signer,
@@ -137,16 +90,11 @@ const Contributions = () => {
     }
   }
 
-  const handleClaimRefund = async (fetchLaunchpadInfo) => {
+  const handleClaimRefund = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
-      // Call the claimRefund function
       await publicSaleContract.claimRefund().send({
         from: signer,
       })
-
-      // Refresh the launchpad information after claiming refund
       fetchLaunchpadInfo()
     } catch (error) {
       console.error('Error claiming refund:', error)
@@ -155,16 +103,12 @@ const Contributions = () => {
 
   const fetchParticipantInfo = async () => {
     try {
-      const publicSaleContract = new ethers.Contract(address, PublicSale.abi)
-
       const result = await publicSaleContract.getParticipantInfo()
-
       setParticipantInfo({
         contributionAmount: result[0],
         claimableTokens: result[1],
       })
       console.log('contributionAmount:', contributionAmount)
-      fetchParticipantInfo()
       fetchParticipantInfo()
     } catch (error) {
       console.error('Error fetching participant info:', error)
@@ -173,8 +117,7 @@ const Contributions = () => {
 
   const contributionInBNB = Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18
   const softCapInBNB = Number(launchpadInfo.info.caps[1]) / 10 ** 18
-  const progressPercentage = Number(contributionInBNB / softCapInBNB) * 100
-  console.log('progressPercentage:', progressPercentage)
+  const progressPercentage = Number(contributionInBNB) / Number(softCapInBNB) * 100
 
   return (
     <div className="launchpad-detail-container">
@@ -251,9 +194,13 @@ const Contributions = () => {
       </Grid>
 
       <Grid item xs={12} style={{ marginTop: '10px' }}>
-        <Button variant="contained" color="primary" onClick={handleClaimTokens}>
-          Claim Tokens
-        </Button>
+        {launchpadInfo.info.saleFinalized ? (
+          <Button variant="contained" color="primary" onClick={handleClaimTokens}>
+            Claim Tokens
+          </Button>
+        ) : (
+          <Typography style={{ color: 'black' }}></Typography>
+        )}
       </Grid>
 
       <Grid item xs={12} style={{ marginTop: '10px' }}>
@@ -272,7 +219,7 @@ const Contributions = () => {
             Participant:
           </Typography>
           <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
-            {launchpadInfo.info.participantNumber}
+            {launchpadInfo.info.participant}
           </Typography>
         </CapsDiv>
         <CapsDiv>
@@ -294,7 +241,7 @@ const Contributions = () => {
               fontSize: '12px',
             }}
           >
-            {Number(launchpadInfo.info.totalContributions) / 10 ** 18} / {Number(launchpadInfo.info.caps[1]) / 10 ** 18}{' '}
+            {Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18} / {Number(launchpadInfo.info.caps[1]) / 10 ** 18}{' '}
             {currencyText}
           </Typography>
         </CapsDiv>
@@ -303,7 +250,7 @@ const Contributions = () => {
             Total Token Sold:
           </Typography>
           <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
-            {((Number(launchpadInfo.info.totalContributions) / 10 ** 18) * Number(launchpadInfo.info.rates[0])) /
+            {((Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18) * Number(launchpadInfo.info.rates[0])) /
               10 ** 18}{' '}
             / {((Number(launchpadInfo.info.rates[0]) / 10 ** 18) * Number(launchpadInfo.info.caps[1])) / 10 ** 18}{' '}
             {launchpadInfo.info.tokenSymbol}

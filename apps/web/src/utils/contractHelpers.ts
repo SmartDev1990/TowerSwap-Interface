@@ -5,7 +5,6 @@ import { Contract } from '@ethersproject/contracts'
 import poolsConfig from 'config/constants/pools'
 import { PoolCategory } from 'config/constants/types'
 import { TW } from '@pancakeswap/tokens'
-import { PRESALE_FACTORY, PRIVATESALE_FACTORY, FAIRLAUNCH_FACTORY } from 'config/constants/exchange'
 
 // Addresses
 import {
@@ -104,6 +103,10 @@ import crossFarmingProxyAbi from 'config/abi/crossFarmingProxy.json'
 import presaleFactory from 'config/abi/Factory.json'
 import privatesaleFactory from 'config/abi/PrivateFactory.json'
 import fairsaleFactory from 'config/abi/FairFactory.json'
+import presale from 'config/abi/PublicSale.json'
+import privatesale from 'config/abi/PrivateSale.json'
+import fairsale from 'config/abi/FairSale.json'
+import tokensale from 'config/abi/tokensale.json'
 
 // Types
 import type {
@@ -172,14 +175,26 @@ export const getContract = ({
   return new Contract(address, abi, signerOrProvider)
 }
 
-export const getPrivatesaleFactoryContract = (address: string, signer?: Signer | Provider) => {
-  return getContract({ abi: privatesaleFactory, address: getPrivatesaleFactoryAddress(), signer })
+export const getPrivatesaleFactoryContract = (signer?: Signer | Provider, chainId?: number) => {
+  return getContract({ abi: privatesaleFactory, address: getPrivatesaleFactoryAddress(chainId), signer })
 }
-export const getPresaleFactoryContract = (address: string, signer?: Signer | Provider) => {
-  return getContract({ abi: presaleFactory, address: getPresaleFactoryAddress(), signer })
+export const getPrivatesaleContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: privatesale, address, signer })
 }
-export const getFairFactoryContract = (address: string, signer?: Signer | Provider) => {
-  return getContract({ abi: fairsaleFactory, address: getPresaleFactoryAddress(), signer })
+export const getPresaleFactoryContract = (signer?: Signer | Provider, chainId?: number) => {
+  return getContract({ abi: presaleFactory, address: getPresaleFactoryAddress(chainId), signer })
+}
+export const getPublicsaleContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: privatesale, address, signer })
+}
+export const getFairFactoryContract = (signer?: Signer | Provider, chainId?: number) => {
+  return getContract({ abi: fairsaleFactory, address: getFairFactoryAddress(chainId), signer })
+}
+export const getFairsaleContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: fairsale, address, signer })
+}
+export const getTokensaleContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: tokensale, address, signer })
 }
 export const getBep20Contract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: bep20Abi, address, signer }) as Erc20

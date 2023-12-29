@@ -1,9 +1,7 @@
-// LaunchpadDetail.js
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Card, CardContent, Typography, Button, Grid, LinearProgress, Box } from '@mui/material'
 import { ethers } from 'ethers'
-import PrivateSale from './PrivateSale.json'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
 import Telegram from './Icons/Telegram'
@@ -17,6 +15,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
 import { useSigner } from 'wagmi'
+import { usePrivatesaleAddress } from 'hooks/useContract'
 
 const CapsDiv = styled.div`
   display: flex;
@@ -39,6 +38,8 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
   const [launchpadInfo, setLaunchpadInfo] = useState(null)
   const currencyText = CURRENCY_TEXT[chainId] || ''
   const { data: signer } = useSigner()
+  const privateSaleContract = usePrivatesaleAddress(address)
+
 
   const formatDateTime = (timestamp) => {
     const options = {
@@ -54,14 +55,13 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
     return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
   }
 
-  useEffect(() => {
     const fetchLaunchpadInfo = async () => {
       try {
-        const privateSaleContract = new ethers.Contract(address, PrivateSale.abi, signer)
         const tokenContract = await privateSaleContract.getTokenAddress()
         const tokenName = await privateSaleContract.getTokenName()
         const tokenSymbol = await privateSaleContract.getTokenSymbol()
         const tokenSupply = await privateSaleContract.getTokenTotalSupply()
+        const isOwner = await privateSaleContract.getCreator();
 
         const caps = await privateSaleContract.getCaps()
         const softCap = caps[0]
@@ -88,14 +88,9 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
         const additionalData = await response.json()
         console.log(`Additional Data:`, additionalData)
         const totalBNBContributed = await privateSaleContract.getTotalBNBContributed()
-        console.log(`launchpadInfo:`, launchpadInfo)
-
-        const kycLink = await privateSaleContract.getKYCLink()
-        const auditLink = await privateSaleContract.getAuditLink()
-        const safuLink = await privateSaleContract.getSAFULink()
-        console.log(`kycLink:`, kycLink)
-        console.log(`auditLink:`, auditLink)
-        console.log(`auditLink:`, auditLink)
+        const participantNumber = await privateSaleContract.getNumberOfParticipants()
+        const participant = Number(participantNumber)
+        const saleFinalized = await privateSaleContract.saleFinalized()
 
         setLaunchpadInfo({
           address,
@@ -104,6 +99,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
             tokenName,
             tokenSymbol,
             tokenSupply,
+            isOwner,
             caps,
             softCap,
             hardCap,
@@ -117,9 +113,8 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
             dataURL,
             totalBNBContributed,
             additionalData,
-            kycLink,
-            auditLink,
-            safuLink,
+            participant,
+            saleFinalized,
           },
         })
       } catch (error) {
@@ -127,8 +122,9 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
       }
     }
 
-    fetchLaunchpadInfo()
-  }, [address])
+    useEffect(() => {
+    fetchLaunchpadInfo();
+  }, [address]);
 
   if (!launchpadInfo) {
     return <div>Loading...</div>
@@ -223,7 +219,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
                         )}
                       </div>
                     )}
-                    {launchpadInfo?.info?.additionalData && ( 
+                    {launchpadInfo?.info?.additionalData && (
                       <div style={{ display: 'flex' }}>
                         {launchpadInfo?.info?.additionalData.website && (
                           <a
@@ -297,7 +293,7 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
             </Card>
             <Card style={{ marginTop: '10px' }}>
               <CardContent>
-                <Contributions />
+                <Contributions launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo} />
               </CardContent>
             </Card>
           </Grid>
@@ -439,8 +435,8 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
             </CardContent>
           </Card>
           <Grid item xs={12}>
-            <Admin />
-            <AdminOnly />
+            <Admin launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo} />
+            <AdminOnly launchpadInfo={launchpadInfo} fetchLaunchpadInfo={fetchLaunchpadInfo}/>
           </Grid>
         </Grid>
       </Grid>
