@@ -114,9 +114,6 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
     }
   }
 
-  const participantNumber = Number(launchpadInfo.info.participantNumber) / 10 ** 18
-  console.log('participantNumber:', participantNumber)
-
   const contributionInBNB = Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18
   const softCapInBNB = Number(launchpadInfo.info.softCap) / 10 ** 18
   const progressPercentage = Number(contributionInBNB / softCapInBNB) * 100
@@ -180,7 +177,7 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
       </Grid>
       <Grid item xs={12} style={{ marginTop: '20px' }}>
         <TextField
-          label="Contribution Amount (BNB)"
+          label={currencyText}
           variant="outlined"
           fullWidth
           value={contributionAmount}

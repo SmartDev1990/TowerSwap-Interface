@@ -9,6 +9,8 @@ import Telegram from './Icons/Telegram'
 import Twitter from './Icons/Twitter'
 import Discord from './Icons/Discord'
 import Github from './Icons/Github'
+import WhitePaper from './Icons/WhitePaper'
+import Linkedin from './Icons/Linkedin'
 import Contributions from '../LaunchpPadDetails/components/public/constribution'
 import Admin from '../LaunchpPadDetails/components/public/admin'
 import AdminOnly from '../LaunchpPadDetails/components/public/onlyadmin'
@@ -63,6 +65,7 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
 
         const caps = await publicSaleContract.getCaps()
         const contributions = await publicSaleContract.getContributions()
+        const minBuy = contributions[0]
         const times = await publicSaleContract.getTimes()
         const rates = await publicSaleContract.getRates()
         const liquidityPercent = await publicSaleContract.getLiquidityPercent()
@@ -84,6 +87,9 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
         const participantNumber = await publicSaleContract.getNumberOfParticipants()
         const participant = Number(participantNumber)
         const saleFinalized = await publicSaleContract.saleFinalized()
+        const kycLink = await publicSaleContract.getKYCLink()
+        const auditLink = await publicSaleContract.getAuditLink()
+        const safuLink = await publicSaleContract.getSAFULink()
 
         setLaunchpadInfo({
           address,
@@ -94,6 +100,7 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
             tokenSupply,
             caps,
             contributions,
+            minBuy,
             times,
             rates,
             liquidityPercent,
@@ -103,6 +110,9 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
             additionalData,
             participant,
             saleFinalized,
+            kycLink,
+            auditLink,
+            safuLink,
           },
         })
       } catch (error) {
@@ -243,6 +253,16 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
                             <Globe className="social-media-icon" />
                           </a>
                         )}
+                        {launchpadInfo?.info?.additionalData.whitepaper && (
+                          <a
+                            href={launchpadInfo?.info?.additionalData.whitepaper}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ margin: '5px' }}
+                          >
+                            <WhitePaper className="social-media-icon" />
+                          </a>
+                        )}
                         {launchpadInfo?.info?.additionalData.telegram && (
                           <a
                             href={launchpadInfo?.info?.additionalData.telegram}
@@ -281,6 +301,16 @@ const PublicSaleDetail: React.FC<PublicSaleDetailProps> = () => {
                             style={{ margin: '5px' }}
                           >
                             <Github className="social-media-icon" />
+                          </a>
+                        )}
+                        {launchpadInfo?.info?.additionalData.linkedin && (
+                          <a
+                          style={{ margin: '5px' }}
+                          href={launchpadInfo?.info?.additionalData.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >
+                            <Linkedin className="social-media-icon2" />
                           </a>
                         )}
                       </div>

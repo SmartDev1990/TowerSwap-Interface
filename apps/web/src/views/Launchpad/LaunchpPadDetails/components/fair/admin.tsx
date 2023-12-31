@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ethers, utils } from 'ethers'
 import { Card, CardContent, Typography, Button, Grid } from '@mui/material';
-import { useAccount } from 'wagmi';
-import { useSigner } from 'wagmi';
+import { useSigner, useAccount } from 'wagmi';
 import { useFairsaleAddress, useTokensaleAddress } from 'hooks/useContract';
 import { useActiveChainId } from 'hooks/useActiveChainId';
 

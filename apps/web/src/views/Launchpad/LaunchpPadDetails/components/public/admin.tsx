@@ -40,8 +40,6 @@ const Admin = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   }, [address]);
 
   const handleCompleteSale = async () => {
-    // let transaction
-    let tokenContract
     try {
 
       const owner = await publicSaleContract.getCreator()
@@ -94,7 +92,7 @@ const Admin = ({ launchpadInfo, fetchLaunchpadInfo }) => {
 
   const handleCancelSale = async () => {
     try {
-      const owner = await publicSaleContract.getCreator().call({ from: account })
+      const owner = await publicSaleContract.getCreator()
       if (typeof owner === 'string' || (owner && typeof owner.getAddress === 'function' && owner.getAddress() === account)) {
         await publicSaleContract.cancelSale().send({
           from: account,

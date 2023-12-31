@@ -23,6 +23,7 @@ import {
   CountdownTime,
   LaunchpadLink,
   View,
+  Progress,
   SnakeProgressDiv,
  } from './Css/Animation'
  import { useSigner } from 'wagmi'
@@ -115,6 +116,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
             const kycLink = await privateSaleContract.getKYCLink()
             const auditLink = await privateSaleContract.getAuditLink()
             const safuLink = await privateSaleContract.getSAFULink()
+            const progressPercentage = Number(totalBNBContributed) / Number(softCap) * 100
 
             return {
               address: _launchpadAddress,
@@ -124,6 +126,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 softCap,
                 hardCap,
                 contributions,
+                progressPercentage,
                 startTime,
                 endTime,
                 priceRate,
@@ -162,6 +165,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
     fetchPrivateSaleAddresses()
   }, [chainId])
 
+
   return (
     <CardContainer>
       {launchpadInfoList.map((launchpad, index) => (
@@ -177,8 +181,8 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 <CurrencyLogo chainId={chainId} />
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <Typography style={{ fontSize: '18px', color: 'black' }}>
-                  {launchpad.info.tokenName} Private Sale
+                <Typography style={{ fontSize: '22px', color: 'black' }}>
+                  {launchpad.info.tokenName}
                 </Typography>
                 {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
                   <div style={{ display: 'flex' }}>
@@ -256,65 +260,54 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
               </div>
             </div>
             <div className="caps">
-              <Typography style={{ fontSize: '14px', fontWeight: 'bold', color: 'black', paddingTop: '15px' }}>
+              <Typography style={{ fontSize: '18px', color: '#26098f', paddingTop: '15px' }}>
                 1 {currencyText} = {Number(launchpad.info.priceRate)} {launchpad.info.tokenSymbol}
               </Typography>
-              <Typography
-                style={{
-                  fontSize: '14px',
-                  fontWeight: 'bold',
-                  color: 'black',
-                  paddingBottom: '15px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                Max Buy: {Number(launchpad.info.contributions[1]) / 10 ** 18} {currencyText}
-              </Typography>
-              <Box display="flex" alignItems="center">
-                <LinearProgress
-                  variant="determinate"
-                  value={(Number(launchpad.info.totalBNBContributed) / Number(launchpad.info.hardCap)) * 100}
-                  style={{
-                    marginTop: '10px',
-                    padding: '8px',
-                    borderRadius: '5px',
-                    flexGrow: 1,
-                  }}
-                />
-                <SnakeProgressDiv />
-              </Box>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  borderBottom: '1px solid white',
-                  paddingTop: '10px',
-                }}
-              >
-                <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>Progress:</Typography>
-                <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>
-                  {Number(launchpad.info.totalBNBContributed) / 10 ** 18}/{Number(launchpad.info.hardCap)}{' '}
-                  {currencyText}
+              <Progress>
+                <Typography style={{ fontSize: '12px', color: 'black' }}>Soft/HardCap: {Number(launchpad.info.softCap)}/{Number(launchpad.info.hardCap)} {currencyText}</Typography>
+                <Typography style={{ fontSize: '12px', color: 'black', display: 'flex', alignItems: 'center' }}>
+                  Max Buy: {Number(launchpad.info.contributions[1]) / 10 ** 18} {currencyText}
                 </Typography>
+                </Progress>
+              <div className="caps">
+              <Progress>
+                <Typography style={{ color: 'black', textAlign: 'center', fontSize: '12px' }}>
+                  Progress
+                </Typography>
+                <Typography style={{ color: 'black', textAlign: 'center', fontSize: '12px' }}>
+                  {`${launchpad.info.progressPercentage.toFixed(2)}%`}
+                </Typography>
+              </Progress>
+                <Box display="flex" alignItems="center">
+                  <LinearProgress
+                    variant="determinate"
+                    value={(Number(launchpad.info.totalBNBContributed) / Number(launchpad.info.hardCap)) * 100}
+                    style={{
+                      marginTop: '10px',
+                      padding: '5px',
+                      borderRadius: '5px',
+                      flexGrow: 1,
+                    }}
+                  />
+                </Box>
+                <Progress style={{ paddingBottom: '10px'}}>
+                  <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>
+                    {Number(launchpad.info.totalBNBContributed)} {currencyText}
+                  </Typography>
+                  <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
+                    {Number(launchpad.info.hardCap)} {currencyText}
+                  </Typography>
+                </Progress>
               </div>
             </div>
-            <CapsDiv>
-              <Typography style={{ fontSize: '14px', color: 'black' }}>HardCap:</Typography>
-              <Typography style={{ fontSize: '14px', color: 'black', display: 'flex', alignItems: 'center' }}>
-                {Number(launchpad.info.hardCap)} {currencyText}
-              </Typography>
-            </CapsDiv>
-            <Grid>
-              <CapsDiv>
-                {launchpad.info && <p className="liqText">Liquidity:</p>}
-                {launchpad.info && <p className="liqText">{Number(launchpad.info.liquidityPercent)}%</p>}
-              </CapsDiv>
-              <CapsDiv>
-                {launchpad.info && <p className="liqText">Lock:</p>}
-                {launchpad.info && <p className="liqText">{Number(launchpad.info.liquidityLockup)} days</p>}
-              </CapsDiv>
+            <Grid style={{ padding: '20px', background: '#e8e8e8', borderRadius: '20px'}}>
+              <Progress>
+                {launchpad.info && <p className="liqText">Liquidity: {Number(launchpad.info.liquidityPercent)}%</p>}
+                {launchpad.info && <p className="liqText">Lock: {Number(launchpad.info.liquidityLockup)} days</p>}
+              </Progress>
             </Grid>
+            <Grid>
+            <CapsDiv>
             <CountdownTime>
               {new Date().getTime() < Number(launchpad.info.startTime) * 1000 ? (
                 <p style={{ color: 'black' }}>
@@ -331,6 +324,8 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
             <LaunchpadLink onClick={() => router.push(`/Launchpad/${saleType}/${launchpad.address}`)}>
               <View className="view-details-link">View Details</View>
             </LaunchpadLink>
+            </CapsDiv>
+          </Grid>
           </div>
         </CardWrapper>
       ))}

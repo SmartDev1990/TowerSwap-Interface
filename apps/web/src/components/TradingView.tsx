@@ -36,7 +36,7 @@ const initializeTradingView = (TradingViewObj: any, theme: DefaultTheme, localeC
     id: opts.container_id,
     autosize: true,
     height: '100%',
-    symbol: 'BINANCE:BNBBUSD',
+    symbol: opts.symbol || 'BINANCE:BNBBUSD',
     interval: '5',
     timezone,
     theme: theme.isDark ? 'dark' : 'light',
@@ -47,6 +47,7 @@ const initializeTradingView = (TradingViewObj: any, theme: DefaultTheme, localeC
     allow_symbol_change: true,
     hide_side_toolbar: false,
     enabled_features: ['header_fullscreen_button'],
+    chart_type: 'candlestick',
     ...opts,
   })
 }

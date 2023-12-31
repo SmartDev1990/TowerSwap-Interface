@@ -112,7 +112,12 @@ const config: (
       fillIcon: RocketIcon,
       showItemsOnMobile: true,
       supportChainIds: SUPPORT_ONLY_BSC,
-      items: [].map((item) => addMenuItemSupported(item, chainId)),
+      items: [
+        {
+          label: t('Launchpad List'),
+          href: '/Launchpad',
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
       label: t('NFT'),
@@ -120,7 +125,12 @@ const config: (
       icon: NftIcon,
       fillIcon: NftFillIcon,
       image: '/images/decorations/nft.png',
-      items: [],
+      items: [
+        {
+          label: t('MarketPlace'),
+          href: '/nfts',
+        },
+      ].map((item) => addMenuItemSupported(item, chainId)),
     },
 
     {

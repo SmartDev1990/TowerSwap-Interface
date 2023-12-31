@@ -4,10 +4,12 @@ import { Card, CardContent, Typography, Grid, LinearProgress, Box } from '@mui/m
 import { ethers } from 'ethers'
 import Countdown from 'react-countdown'
 import Globe from './Icons/Globe'
+import WhitePaper from './Icons/WhitePaper'
 import Telegram from './Icons/Telegram'
 import Twitter from './Icons/Twitter'
 import Discord from './Icons/Discord'
 import Github from './Icons/Github'
+import Linkedin from './Icons/Linkedin'
 import Contributions from '../LaunchpPadDetails/components/fair/constribution'
 import Admin from '../LaunchpPadDetails/components/fair/admin'
 import AdminOnly from '../LaunchpPadDetails/components/fair/onlyadmin'
@@ -87,6 +89,9 @@ const FairDetail: React.FC<FairDetailProps> = () => {
         const saleFinalized = await fairSaleContract.saleFinalized()
         const participantNumber = await fairSaleContract.getNumberOfParticipants()
         const participant = Number(participantNumber)
+        const kycLink = await fairSaleContract.getKYCLink()
+        const auditLink = await fairSaleContract.getAuditLink()
+        const safuLink = await fairSaleContract.getSAFULink()
 
 
         setLaunchpadInfo({
@@ -109,6 +114,9 @@ const FairDetail: React.FC<FairDetailProps> = () => {
             participant,
             saleFinalized,
             tokenAddress,
+            kycLink,
+            auditLink,
+            safuLink,
           },
         });
       } catch (error) {
@@ -250,6 +258,16 @@ const FairDetail: React.FC<FairDetailProps> = () => {
                             <Globe className="social-media-icon" />
                           </a>
                         )}
+                        {launchpadInfo?.info?.additionalData.whitepaper && (
+                          <a
+                            href={launchpadInfo?.info?.additionalData.whitepaper}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ margin: '5px' }}
+                          >
+                            <WhitePaper className="social-media-icon" />
+                          </a>
+                        )}
                         {launchpadInfo?.info?.additionalData.telegram && (
                           <a
                             href={launchpadInfo?.info?.additionalData.telegram}
@@ -288,6 +306,16 @@ const FairDetail: React.FC<FairDetailProps> = () => {
                             style={{ margin: '5px' }}
                           >
                             <Github className="social-media-icon" />
+                          </a>
+                        )}
+                        {launchpadInfo?.info?.additionalData.linkedin && (
+                          <a
+                            href={launchpadInfo?.info?.additionalData.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ margin: '5px' }}
+                          >
+                            <Linkedin className="social-media-icon" />
                           </a>
                         )}
                       </div>

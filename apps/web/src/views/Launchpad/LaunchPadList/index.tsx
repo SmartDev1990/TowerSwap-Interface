@@ -47,11 +47,6 @@ const LaunchpadList = (props: LaunchpadInfo) => {
               {t('Launch Your Sales')}
             </Button>
           </Box>
-          {/* {chainId === ChainId.CMP_TESTNET && (
-          <Box>
-            <BCakeBoosterCard />
-          </Box>
-        )} */}
         </FarmFlexWrapper>
       </LaunchpadHeader>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px' }}>

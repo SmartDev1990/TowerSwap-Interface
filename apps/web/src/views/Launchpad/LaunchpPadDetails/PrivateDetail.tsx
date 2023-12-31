@@ -91,6 +91,9 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
         const participantNumber = await privateSaleContract.getNumberOfParticipants()
         const participant = Number(participantNumber)
         const saleFinalized = await privateSaleContract.saleFinalized()
+        const kycLink = await privateSaleContract.getKYCLink()
+        const auditLink = await privateSaleContract.getAuditLink()
+        const safuLink = await privateSaleContract.getSAFULink()
 
         setLaunchpadInfo({
           address,
@@ -115,6 +118,9 @@ const PrivateSaleDetail: React.FC<PrivateSaleDetailProps> = () => {
             additionalData,
             participant,
             saleFinalized,
+            kycLink,
+            auditLink,
+            safuLink,
           },
         })
       } catch (error) {

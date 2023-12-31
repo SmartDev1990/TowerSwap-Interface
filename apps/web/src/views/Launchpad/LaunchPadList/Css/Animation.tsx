@@ -19,7 +19,7 @@ const changeBorderColor = keyframes`
 `;
 
 export const CardWrapper = styled.div`
-  background: white;
+  background: #faf1ff;
   padding: 20px;
   width: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -44,6 +44,12 @@ export const CapsDiv = styled.div`
   padding-top: 10px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px; /* Add padding for better spacing */
+`
+
+export const Progress = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
 `
 
 export const CountdownTime = styled.div`

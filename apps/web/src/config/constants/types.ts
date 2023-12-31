@@ -24,6 +24,7 @@ export interface Address {
   8081: string
   8082: string
   9000: string
+  56: string
   [chainId: number]: string
 }
 

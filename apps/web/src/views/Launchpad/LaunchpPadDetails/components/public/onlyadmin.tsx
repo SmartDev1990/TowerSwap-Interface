@@ -26,13 +26,13 @@ const AdminOnly = ({ launchpadInfo, fetchLaunchpadInfo }) => {
     try {
       switch (linkType) {
         case 'KYC':
-          await publicSaleContract.setKYCLink().send({ from: account })
+          await publicSaleContract.setKYCLink(linkValue).send({ from: account })
           break
         case 'Audit':
-          await publicSaleContract.setAuditLink().send({ from: account })
+          await publicSaleContract.setAuditLink(linkValue).send({ from: account })
           break
         case 'SAFU':
-          await publicSaleContract.setSAFULink().send({ from: signer })
+          await publicSaleContract.setSAFULink(linkValue).send({ from: signer })
           break
         default:
           console.error('Invalid link type')
