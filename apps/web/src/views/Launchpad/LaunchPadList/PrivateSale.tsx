@@ -87,8 +87,8 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
             const tokenSymbol = await privateSaleContract.getTokenSymbol()
 
             const caps = await privateSaleContract.getCaps()
-            const softCap = Number(caps[0]) / 10 ** 18
-            const hardCap = Number(caps[1]) / 10 ** 18
+            const softCap = caps[0]
+            const hardCap = caps[1]
             const contributions = await privateSaleContract.getContributions()
             const times = await privateSaleContract.getTimes()
             const startTime = times[0]
@@ -116,7 +116,9 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
             const kycLink = await privateSaleContract.getKYCLink()
             const auditLink = await privateSaleContract.getAuditLink()
             const safuLink = await privateSaleContract.getSAFULink()
-            const progressPercentage = Number(totalBNBContributed) / Number(softCap) * 100
+            const capsInWei = Number(caps[1]) / 10 ** 18
+
+            const progressPercentage = Number(totalBNBContributed) / Number(capsInWei) * 100 / 10**18
 
             return {
               address: _launchpadAddress,
@@ -177,6 +179,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                   style={{ border: '2px', borderRadius: '90px', width: '80px' }}
                   src={launchpad.info.additionalData.logoURL}
                   alt="Logo"
+                  loading="lazy"
                 />
                 <CurrencyLogo chainId={chainId} />
               </div>
@@ -203,60 +206,6 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                     )}
                   </div>
                 )}
-                {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
-                  <div style={{ display: 'flex' }}>
-                    {launchpad.info.additionalData.website && (
-                      <a
-                        style={{ marginRight: '10px' }}
-                        href={launchpad.info.additionalData.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Globe className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.telegram && (
-                      <a
-                        style={{ marginRight: '10px' }}
-                        href={launchpad.info.additionalData.telegram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Telegram className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.twitter && (
-                      <a
-                        style={{ marginRight: '10px' }}
-                        href={launchpad.info.additionalData.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Twitter className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.discord && (
-                      <a
-                        style={{ marginRight: '10px' }}
-                        href={launchpad.info.additionalData.discord}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Discord className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.github && (
-                      <a href={launchpad.info.additionalData.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.linkedin && (
-                      <a href={launchpad.info.additionalData.linkedin} target="_blank" rel="noopener noreferrer">
-                        <Github className="social-media-icon2" />
-                      </a>
-                    )}
-                  </div>
-                )}
               </div>
             </div>
             <div className="caps">
@@ -264,7 +213,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 1 {currencyText} = {Number(launchpad.info.priceRate)} {launchpad.info.tokenSymbol}
               </Typography>
               <Progress>
-                <Typography style={{ fontSize: '12px', color: 'black' }}>Soft/HardCap: {Number(launchpad.info.softCap)}/{Number(launchpad.info.hardCap)} {currencyText}</Typography>
+                <Typography style={{ fontSize: '12px', color: 'black' }}>Soft/HardCap: {Number(launchpad.info.softCap / 10 ** 18)}/{Number(launchpad.info.hardCap / 10 ** 18)} {currencyText}</Typography>
                 <Typography style={{ fontSize: '12px', color: 'black', display: 'flex', alignItems: 'center' }}>
                   Max Buy: {Number(launchpad.info.contributions[1]) / 10 ** 18} {currencyText}
                 </Typography>
@@ -278,24 +227,24 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                   {`${launchpad.info.progressPercentage.toFixed(2)}%`}
                 </Typography>
               </Progress>
-                <Box display="flex" alignItems="center">
-                  <LinearProgress
-                    variant="determinate"
-                    value={(Number(launchpad.info.totalBNBContributed) / Number(launchpad.info.hardCap)) * 100}
-                    style={{
-                      marginTop: '10px',
-                      padding: '5px',
-                      borderRadius: '5px',
-                      flexGrow: 1,
-                    }}
-                  />
-                </Box>
+              <Box display="flex" alignItems="center">
+              <LinearProgress
+                variant="determinate"
+                value={(Number(launchpad.info.totalBNBContributed / 10**18) / Number(launchpad.info.hardCap / 10 ** 18)) * 100}
+                style={{
+                  marginTop: '10px',
+                  padding: '4px',
+                  borderRadius: '5px',
+                  flexGrow: 1,
+                }}
+              />
+              </Box>
                 <Progress style={{ paddingBottom: '10px'}}>
                   <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>
-                    {Number(launchpad.info.totalBNBContributed)} {currencyText}
+                    {Number(launchpad.info.totalBNBContributed / 10 ** 18)} {currencyText}
                   </Typography>
                   <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
-                    {Number(launchpad.info.hardCap)} {currencyText}
+                    {Number(launchpad.info.hardCap / 10 ** 18)} {currencyText}
                   </Typography>
                 </Progress>
               </div>
@@ -315,7 +264,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 </p>
               ) : new Date().getTime() < Number(launchpad.info.endTime) * 1000 ? (
                 <p style={{ color: 'black' }}>
-                  Presale will end in <Countdown date={new Date(launchpad.info.endTime * 1000)} />
+                  Presale end in <Countdown date={new Date(launchpad.info.endTime * 1000)} />
                 </p>
               ) : (
                 <p style={{ color: 'black' }}>Presale complete</p>

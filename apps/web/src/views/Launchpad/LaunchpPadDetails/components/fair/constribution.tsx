@@ -58,25 +58,17 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   return <div>Loading...</div>;
 }
 
-  const handleContribute = async () => {
-    try {
-      const contributionInWei = ethers.utils.parseEther(contributionAmount);
-      await fairSaleContract
-        .contribute()
-        .send({
-          from: signer,
-          value: contributionInWei,
-        })
-        .on('error', (error) => {
-          console.error('Error contributing to the sale:', error.message)
-        })
+const handleContribute = async () => {
+  try {
+    const amount = ethers.utils.parseEther(contributionAmount);
 
-      fetchLaunchpadInfo()
-      await fetchParticipantInfo()
-    } catch (error) {
-      console.error('Error contributing to the sale:', error)
-    }
+    await fairSaleContract.contribute({ value: amount }); // Use the { value: amount } option to send BNB along with the transaction
+
+    fetchLaunchpadInfo();
+  } catch (error) {
+    console.error('Error contributing to the sale:', error);
   }
+};
 
   const handleClaimTokens = async () => {
     try {

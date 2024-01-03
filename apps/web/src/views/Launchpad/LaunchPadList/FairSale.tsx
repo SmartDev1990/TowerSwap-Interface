@@ -42,7 +42,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
   const [launchpadInfoList, setLaunchpadInfoList] = useState([])
   const currencyText = CURRENCY_TEXT[chainId] || ''
   const { data: signer } = useSigner()
-  const factoryContractAddress = FAIRLAUNCH_FACTORY[chainId]
+  const factoryContractAddress = useFairsaleFactory()
   console.log(`factoryContractAddress:`, factoryContractAddress)
   let accounts
 
@@ -64,8 +64,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
     const fetchFairSaleAddresses = async () => {
       try {
         setLoading(true)
-        const factoryContract = new ethers.Contract(factoryContractAddress, FairFactory.abi, signer)
-        const addresses = await factoryContract.getAllFairLaunchAddress()
+        const addresses = await factoryContractAddress.getAllFairLaunchAddress()
         if (!Array.isArray(addresses)) {
           throw new Error('Invalid addresses format')
         }
@@ -230,7 +229,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
                     )}
                   </div>
                 )}
-                {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
+                {/* {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
                   <div style={{ display: 'flex' }}>
                     {launchpad.info.additionalData.website && (
                       <a
@@ -288,7 +287,7 @@ const FairCard: React.FC<FairCardProps> = ({ saleType }) => {
                       </a>
                     )}
                   </div>
-                )}
+                )} */}
               </div>
             </div>
             <div className="caps">

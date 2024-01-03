@@ -40,38 +40,35 @@ const Admin = ({ launchpadInfo, fetchLaunchpadInfo }) => {
   }, [address]);
 
   const handleCompleteSale = async () => {
+    // let transaction;
     try {
-
-      const owner = await publicSaleContract.getCreator()
+      const owner = await publicSaleContract.getCreator();
+      console.log('Owner:', owner);
 
       if (typeof owner === 'string' || (owner && typeof owner.getAddress === 'function' && owner.getAddress() === account)) {
-        if (launchpadInfo.info.totalContributions >= launchpadInfo.info.caps[0]) {
-          const routerAddress = launchpadInfo.info.router
-          const amount = ethers.constants.MaxUint256
-          await tokenContract.approve(routerAddress, amount).send({
-            from: account,
-          })
+        const routerAddress = await publicSaleContract.getRouter();
+        const amount = ethers.constants.MaxUint256;
 
-          // Now call finalizeSale function
-          await publicSaleContract.finalizeSale().send({
-            from: account,
-          })
+        // Uncomment the following line if needed
+        // await tokenContract.approve(routerAddress, amount, { from: account });
 
-          const saleFinalized = await publicSaleContract.saleFinalized()
-          console.log('saleFinalized:', saleFinalized)
+        await publicSaleContract.finalizeSale({ from: account });
 
-          // const transactionCount = await ethers.getTransactionCount(signer);
-          // transaction = await ethers.eth.getTransaction(ethers.utils.hexlify(transactionCount))
+        const saleFinalized = await publicSaleContract.saleFinalized();
+        console.log('Sale Finalized:', saleFinalized);
 
-          fetchLaunchpadInfo()
-        }
+        // const transactionCount = await ethers.getTransactionCount(signer);
+        // transaction = await ethers.eth.getTransaction(ethers.utils.hexlify(transactionCount));
+
+        fetchLaunchpadInfo();
       } else {
-        console.error('You are not the owner of the contract.')
+        console.error('You are not the owner of the contract.');
       }
     } catch (error) {
-      console.error('Error completing the sale:', error)
+      console.error('Error completing the sale:', error);
     }
-  }
+  };
+
 
   const handleWithdrawRemaining = async () => {
     try {

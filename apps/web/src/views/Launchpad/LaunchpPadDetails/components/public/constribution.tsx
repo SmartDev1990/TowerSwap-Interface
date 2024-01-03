@@ -1,16 +1,16 @@
-// LaunchpadDetail.js
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { Card, CardContent, Typography, Grid, Button, LinearProgress, Box, TextField } from '@mui/material'
-import { ethers, BigNumber } from 'ethers'
-import PublicSale from '../../../LaunchPadList/Abis/PublicSale.json'
-import Countdown from 'react-countdown'
-import styled from 'styled-components'
-import { CURRENCY_TEXT } from '../../../Logo/currencylogo'
-import { useActiveChainId } from 'hooks/useActiveChainId'
-import { provider } from 'utils/wagmi'
-import { useSigner, useAccount } from 'wagmi'
-import { usePresaleAddress } from 'hooks/useContract'
+// LaunchpadDetail.tsx
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Card, CardContent, Typography, Grid, Button, LinearProgress, Box, TextField } from '@mui/material';
+import { ethers } from 'ethers';
+import PublicSale from '../../../LaunchPadList/Abis/PublicSale.json';
+import Countdown from 'react-countdown';
+import styled from 'styled-components';
+import { CURRENCY_TEXT } from '../../../Logo/currencylogo';
+import { useActiveChainId } from 'hooks/useActiveChainId';
+import { provider } from 'utils/wagmi';
+import { useSigner, useAccount } from 'wagmi';
+import { usePresaleAddress } from 'hooks/useContract';
 import {
   CardContainer,
   CardWrapper,
@@ -19,49 +19,49 @@ import {
   LaunchpadLink,
   View,
   SnakeProgressDiv,
-} from '../../Css/Animation'
-import { ethersToBigNumber } from '@pancakeswap/utils/bigNumber'
+} from '../../Css/Animation';
+import { ethersToBigNumber } from '@pancakeswap/utils/bigNumber';
 
-const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
-  const router = useRouter()
-  const { address } = router.query as { address?: string }
+interface ContributionsProps {
+  launchpadInfo: any;
+  fetchLaunchpadInfo: () => void;
+}
+
+const Contributions: React.FC<ContributionsProps> = ({ launchpadInfo, fetchLaunchpadInfo }) => {
+  const router = useRouter();
+  const { address } = router.query as { address?: string };
   const { address: account } = useAccount();
   const [contributionAmount, setContributionAmount] = useState<string>('');
-  const [presaleComplete, setPresaleComplete] = useState(false)
-  const [progressValue, setProgressValue] = useState(0)
-  const { chainId } = useActiveChainId()
-  const currencyText = CURRENCY_TEXT[chainId] || ''
-  const { data: signer } = useSigner()
-  const publicSaleContract = usePresaleAddress(address)
+  const [presaleComplete, setPresaleComplete] = useState(false);
+  const [progressValue, setProgressValue] = useState(0);
+  const { chainId } = useActiveChainId();
+  const currencyText = CURRENCY_TEXT[chainId] || '';
+  const { data: signer } = useSigner();
+  const publicSaleContract = usePresaleAddress(address);
 
-  const formatDateTime = (timestamp) => {
+  const formatDateTime = (timestamp: number) => {
     const options = {
       weekday: 'long' as const,
-      year: 'numeric' as const, // Specify the type as 'numeric'
+      year: 'numeric' as const,
       month: 'long' as const,
       day: 'numeric' as const,
       hour: 'numeric' as const,
       minute: 'numeric' as const,
       second: 'numeric' as const,
       timeZoneName: 'short' as const,
-    }
-    return new Date(timestamp * 1000).toLocaleDateString(undefined, options)
-  }
-
+    };
+    return new Date(timestamp * 1000).toLocaleDateString(undefined, options);
+  };
 
   if (!launchpadInfo || !launchpadInfo.info) {
     return <div>Loading...</div>;
   }
 
-
   const handleContribute = async () => {
     try {
-      const amount = ethersToBigNumber(BigNumber.from(contributionAmount));
+      const amount = ethers.utils.parseEther(contributionAmount);
 
-      await publicSaleContract.contribute().send({
-        from: account,
-        value: amount,
-      });
+      await publicSaleContract.contribute({ value: amount }); // Use the { value: amount } option to send BNB along with the transaction
 
       fetchLaunchpadInfo();
     } catch (error) {
@@ -69,48 +69,49 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
     }
   };
 
+
   const handleClaimTokens = async () => {
     try {
-      await publicSaleContract.claimTokens().send({
+      await publicSaleContract.claimTokens({
         from: account,
-      })
-      fetchLaunchpadInfo()
+      });
+      fetchLaunchpadInfo();
     } catch (error) {
-      console.error('Error claiming tokens:', error)
+      console.error('Error claiming tokens:', error);
     }
-  }
+  };
 
   const handleClaimRefund = async () => {
     try {
-      await publicSaleContract.claimRefund().send({
+      await publicSaleContract.claimRefund({
         from: account,
-      })
-      fetchLaunchpadInfo()
+      });
+      fetchLaunchpadInfo();
     } catch (error) {
-      console.error('Error claiming refund:', error)
+      console.error('Error claiming refund:', error);
     }
-  }
+  };
 
-  const contributionInBNB = Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18
-  const softCapInBNB = Number(launchpadInfo.info.caps[1]) / 10 ** 18
-  const progressPercentage = Number(contributionInBNB) / Number(softCapInBNB) * 100
+  const contributionInBNB = Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18;
+  const softCapInBNB = Number(launchpadInfo.info.caps[1]) / 10 ** 18;
+  const progressPercentage = (Number(contributionInBNB) / Number(softCapInBNB)) * 100;
 
   return (
     <div className="launchpad-detail-container">
       <Grid item xs={12}>
-      <CountdownTime>
-        {new Date().getTime() < Number(launchpadInfo.info.times[0]) * 1000 ? (
-          <p style={{ color: 'black' }}>
-            Presale start in <Countdown date={new Date(launchpadInfo.info.times[0] * 1000)} />
-          </p>
-        ) : new Date().getTime() < Number(launchpadInfo.info.times[1]) * 1000 ? (
-          <p style={{ color: 'black' }}>
-            Presale will end in <Countdown date={new Date(launchpadInfo.info.times[1] * 1000)} />
-          </p>
-        ) : (
-          <p style={{ color: 'black' }}>Presale complete</p>
-        )}
-      </CountdownTime>
+        <CountdownTime>
+          {new Date().getTime() < Number(launchpadInfo.info.times[0]) * 1000 ? (
+            <p style={{ color: 'black' }}>
+              Presale start in <Countdown date={new Date(launchpadInfo.info.times[0] * 1000)} />
+            </p>
+          ) : new Date().getTime() < Number(launchpadInfo.info.times[1]) * 1000 ? (
+            <p style={{ color: 'black' }}>
+              Presale will end in <Countdown date={new Date(launchpadInfo.info.times[1] * 1000)} />
+            </p>
+          ) : (
+            <p style={{ color: 'black' }}>Presale complete</p>
+          )}
+        </CountdownTime>
         <div className="caps">
           <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'center', fontSize: '12px' }}>
             Progress {`(${progressPercentage.toFixed(2)}%)`}
@@ -193,7 +194,7 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
               fontSize: '12px',
             }}
           >
-            {currencyText} constribution:
+            {currencyText} contribution:
           </Typography>
           <Typography
             style={{
@@ -203,8 +204,8 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
               fontSize: '12px',
             }}
           >
-            {Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18} / {Number(launchpadInfo.info.caps[1]) / 10 ** 18}{' '}
-            {currencyText}
+            {Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18} /{' '}
+            {Number(launchpadInfo.info.caps[1]) / 10 ** 18} {currencyText}
           </Typography>
         </CapsDiv>
         <CapsDiv>
@@ -214,13 +215,14 @@ const Contributions = ({ launchpadInfo, fetchLaunchpadInfo }) => {
           <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
             {((Number(launchpadInfo.info.totalBNBContributed) / 10 ** 18) * Number(launchpadInfo.info.rates[0])) /
               10 ** 18}{' '}
-            / {((Number(launchpadInfo.info.rates[0]) / 10 ** 18) * Number(launchpadInfo.info.caps[1])) / 10 ** 18}{' '}
+            /{' '}
+            {((Number(launchpadInfo.info.rates[0]) / 10 ** 18) * Number(launchpadInfo.info.caps[1])) / 10 ** 18}{' '}
             {launchpadInfo.info.tokenSymbol}
           </Typography>
         </CapsDiv>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default Contributions
+export default Contributions;

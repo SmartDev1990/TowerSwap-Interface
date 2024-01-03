@@ -51,8 +51,8 @@ export const zeta3: Chain = {
 
 export const shardeum: Chain = {
   id: 8081,
-  name: 'SHARDEUM TESTNET',
-  network: 'Shardeum Sphinx 1.X',
+  name: 'Shardeum Dapp',
+  network: 'Shardeum Dapp 1.X',
   rpcUrls: {
     default: 'https://dapps.shardeum.org/',
   },
@@ -67,7 +67,7 @@ export const shardeum: Chain = {
 
 export const shardeumValidators: Chain = {
   id: 8082,
-  name: 'SHARDEUM VALIDATORS',
+  name: 'Shardeum Sphinx',
   network: 'Shardeum Sphinx Validator 1.X',
   rpcUrls: {
     default: 'https://sphinx.shardeum.org/',

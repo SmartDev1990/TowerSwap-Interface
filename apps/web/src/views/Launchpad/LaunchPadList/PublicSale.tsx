@@ -16,7 +16,6 @@ import Github from './Icons/Github'
 import Linkedin from './Icons/Linkedin'
 import CurrencyLogo from '../Logo/ChainLogo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { PRESALE_FACTORY } from 'config/constants/exchange'
 import { CURRENCY_TEXT } from '../Logo/currencylogo'
 import {
   CardContainer,
@@ -86,8 +85,6 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
             const tokenSymbol = await publicSaleContract.getTokenSymbol()
 
             const caps = await publicSaleContract.getCaps()
-            const softCap = Number(caps[0]) / 10 ** 18
-            const hardCap = Number(caps[1]) / 10 ** 18
             const contributions = await publicSaleContract.getContributions()
             const times = await publicSaleContract.getTimes()
             const startTime = times[0]
@@ -115,16 +112,16 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
             const kycLink = await publicSaleContract.getKYCLink()
             const auditLink = await publicSaleContract.getAuditLink()
             const safuLink = await publicSaleContract.getSAFULink()
+            const capsInWei = Number(caps[1]) / 10 ** 18
 
-            const progressPercentage = Number(totalBNBContributed) / Number(hardCap) * 100 / 10**18
+            const progressPercentage = Number(totalBNBContributed) / Number(capsInWei) * 100 / 10**18
 
             return {
               address: _launchpadAddress,
               info: {
                 tokenName,
                 tokenSymbol,
-                softCap,
-                hardCap,
+                caps,
                 contributions,
                 progressPercentage,
                 startTime,
@@ -180,6 +177,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                   style={{ border: '2px', borderRadius: '90px', width: '75px' }}
                   src={launchpad.info.additionalData.logoURL}
                   alt="Logo"
+                  loading="lazy"
                 />
                 <CurrencyLogo chainId={chainId} />
               </div>
@@ -253,80 +251,6 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                     )}
                   </div>
                 )}
-                {launchpad.info.additionalData && ( // Check if logoURLs[0] exists
-                  <div style={{ display: 'flex' }}>
-                    {launchpad.info.additionalData.website && (
-                      <a
-                        style={{ marginRight: '5px' }}
-                        href={launchpad.info.additionalData.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Globe className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.whitepaper && (
-                      <a
-                        style={{ marginRight: '5px' }}
-                        href={launchpad.info.additionalData.whitepaper}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <WhitePaper className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.telegram && (
-                      <a
-                        style={{ marginRight: '5px' }}
-                        href={launchpad.info.additionalData.telegram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Telegram className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.twitter && (
-                      <a
-                        style={{ marginRight: '5px' }}
-                        href={launchpad.info.additionalData.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Twitter className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.discord && (
-                      <a
-                        style={{ marginRight: '5px' }}
-                        href={launchpad.info.additionalData.discord}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Discord className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.github && (
-                      <a
-                      style={{ marginRight: '5px' }}
-                      href={launchpad.info.additionalData.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >
-                        <Github className="social-media-icon2" />
-                      </a>
-                    )}
-                    {launchpad.info.additionalData.linkedin && (
-                      <a
-                      style={{ marginRight: '5px' }}
-                      href={launchpad.info.additionalData.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >
-                        <Linkedin className="social-media-icon2" />
-                      </a>
-                    )}
-                  </div>
-                )}
               </div>
             </div>
             <div className="caps">
@@ -334,7 +258,7 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 1 {currencyText} = {Number(launchpad.info.priceRate)} {launchpad.info.tokenSymbol}
               </Typography>
               <Progress>
-                <Typography style={{ fontSize: '12px', color: 'black' }}>Soft/HardCap: {Number(launchpad.info.softCap)}/{Number(launchpad.info.hardCap)} {currencyText}</Typography>
+                <Typography style={{ fontSize: '12px', color: 'black' }}>Soft/HardCap: {Number(launchpad.info.caps[0] / 10**18)}/{Number(launchpad.info.caps[1] / 10**18)} {currencyText}</Typography>
                 <Typography style={{ fontSize: '12px', color: 'black', display: 'flex', alignItems: 'center' }}>
                   Max Buy: {Number(launchpad.info.contributions[1]) / 10 ** 18} {currencyText}
                 </Typography>
@@ -349,23 +273,23 @@ const PrivateCard: React.FC<PrivateCardProps> = ({ saleType }) => {
                 </Typography>
               </Progress>
                 <Box display="flex" alignItems="center">
-                  <LinearProgress
-                    variant="determinate"
-                    value={(Number(launchpad.info.totalBNBContributed) / Number(launchpad.info.hardCap)) * 100}
-                    style={{
-                      marginTop: '10px',
-                      padding: '5px',
-                      borderRadius: '5px',
-                      flexGrow: 1,
-                    }}
-                  />
+                <LinearProgress
+                  variant="determinate"
+                  value={(Number(launchpad.info.totalBNBContributed / 10**18) / Number(launchpad.info.caps[1] / 10**18)) * 100}
+                  style={{
+                    marginTop: '10px',
+                    padding: '4px',
+                    borderRadius: '5px',
+                    flexGrow: 1,
+                  }}
+                />
                 </Box>
                 <Progress style={{ paddingBottom: '10px'}}>
                   <Typography style={{ color: 'black', textAlign: 'right', fontSize: '12px' }}>
                     {Number(launchpad.info.totalBNBContributed) / 10**18} {currencyText}
                   </Typography>
                   <Typography style={{ color: 'black', marginLeft: '10px', textAlign: 'right', fontSize: '12px' }}>
-                    {Number(launchpad.info.hardCap)} {currencyText}
+                    {Number(launchpad.info.caps[1] / 10**18)} {currencyText}
                   </Typography>
                 </Progress>
               </div>
