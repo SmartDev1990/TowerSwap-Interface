@@ -36,19 +36,20 @@ const Admin = ({ launchpadInfo, fetchLaunchpadInfo }) => {
 
   const handleCompleteSale = async () => {
   try {
+    console.log('tokenContract:', tokenContract)
+    const routerAddress = await privateSaleContract.getRouter();
+    const caps = await privateSaleContract.getCaps()
+    const softCap = caps[0]
+    const totalBNBContributed = await privateSaleContract.getTotalBNBContributed()
+    console.log('routerAddress:', routerAddress)
     const owner = await privateSaleContract.getCreator();
     if (typeof owner === 'string' || (owner && typeof owner.getAddress === 'function' && owner.getAddress() === account)) {
-      if (launchpadInfo.info.totalContributions >= launchpadInfo.info.caps[0]) {
-        const routerAddress = launchpadInfo.info.router;
+      if (totalBNBContributed >= softCap) {
         const amount = ethers.constants.MaxUint256;
 
-        await tokenContract.approve(routerAddress, amount).send({
-          from: account,
-        });
+        await tokenContract.approve(routerAddress, amount, { from: account})
 
-        await privateSaleContract.finalizeSale().send({
-          from: account,
-        });
+        await privateSaleContract.finalizeSale({from: account});
 
         await fetchLaunchpadInfo();
       }

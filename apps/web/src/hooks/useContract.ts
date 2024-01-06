@@ -111,6 +111,7 @@ import { useActiveChainId } from './useActiveChainId'
  }
 
  export const usePrivatesaleAddress = (address: string) => {
+   const { chainId } = useActiveChainId()
    const { data: signer } = useSigner()
    return useMemo(() => getPrivatesaleContract(address, signer), [address, signer])
  }
