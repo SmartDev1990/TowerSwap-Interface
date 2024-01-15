@@ -70,7 +70,7 @@ export const shardeumValidators: Chain = {
   name: 'Shardeum Sphinx',
   network: 'Shardeum Sphinx Validator 1.X',
   rpcUrls: {
-    default: 'https://rpc2-sphinx.shardeum.org',
+    default: 'https://sphinx.shardeum.org',
   },
   nativeCurrency: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
   blockExplorers: {
