@@ -107,16 +107,17 @@ const config: (
     },
     {
       label: t('Launchpad'),
-      href: '/Launchpad',
+      href: 'https://launch.towerswap.finance',
       icon: RocketIcon,
       fillIcon: RocketIcon,
       showItemsOnMobile: true,
-      supportChainIds: SUPPORT_ONLY_BSC,
+      type: DropdownMenuItemType.EXTERNAL_LINK,
+      // supportChainIds: SUPPORT_ONLY_BSC,
       items: [
-        {
-          label: t('Launchpad List'),
-          href: '/Launchpad',
-        },
+        // {
+        //   label: t('Launchpad List'),
+        //   href: '/Launchpad',
+        // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
@@ -159,12 +160,7 @@ const config: (
         },
         {
           label: t('Docs'),
-          href: 'https://towerswap.gitbook.io/towerswap-finance',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-        },
-        {
-          label: t('PitchDeck'),
-          href: 'https://docdro.id/thzR1J1',
+          href: 'https://drive.google.com/file/d/1MViEJEIq6EhsxMaq5lapBmmUEui-Yh1F/view?usp=sharing',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
