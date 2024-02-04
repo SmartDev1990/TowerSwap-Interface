@@ -78,7 +78,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
       {!isBSC && chain && (
         <Box mb="12px">
           <Flex justifyContent="space-between" alignItems="center" mb="8px">
-            <Flex bg={COLORS.ETH} borderRadius="16px" pl="4px" pr="8px" py="2px">
+            <Flex borderRadius="16px" pl="4px" pr="8px" py="2px">
               <ChainLogo chainId={chain.id} />
               <Text color="white" ml="4px">
                 {chain.name}
@@ -113,37 +113,9 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
         </Box>
       )}
       <Box mb="24px">
-        <Flex justifyContent="space-between" alignItems="center" mb="8px">
-          <Flex bg={COLORS.BNB} borderRadius="16px" pl="4px" pr="8px" py="2px">
-            <ChainLogo chainId={ChainId.CMP} />
-            <Text color="white" ml="4px">
-              Caduceus Chain
-            </Text>
-          </Flex>
-          <LinkExternal href={getBlockExploreLink(account, 'address', ChainId.CMP)}>
-            {getBlockExploreName(ChainId.CMP)}
-          </LinkExternal>
-        </Flex>
+
         <Flex alignItems="center" justifyContent="space-between">
-          <Text color="textSubtle">CMP {t('Balance')}</Text>
-          {!bnbBalance.isFetched ? (
-            <Skeleton height="22px" width="60px" />
-          ) : (
-            <Text>{formatBigNumber(bnbBalance.data.value, 6)}</Text>
-          )}
-        </Flex>
-        {wBNBBalance.gt(0) && (
-          <Flex alignItems="center" justifyContent="space-between">
-            <Text color="textSubtle">WCMP {t('Balance')}</Text>
-            {wBNBFetchStatus !== FetchStatus.Fetched ? (
-              <Skeleton height="22px" width="60px" />
-            ) : (
-              <Text>{getFullDisplayBalance(wBNBBalance, wBNBToken.decimals, 6)}</Text>
-            )}
-          </Flex>
-        )}
-        <Flex alignItems="center" justifyContent="space-between">
-          <Text color="textSubtle">{t('TW Balance')}</Text>
+          <Text color="textSubtle">{t('TWS Balance')}</Text>
           {cakeFetchStatus !== FetchStatus.Fetched ? (
             <Skeleton height="22px" width="60px" />
           ) : (
@@ -152,7 +124,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
         </Flex>
       </Box>
       {/* <CakeBenefitsCard onDismiss={onDismiss} /> */}
-      <Button variant="secondary" width="100%" minHeight={48} onClick={handleLogout}>
+      <Button variant="primary" width="100%" minHeight={48} onClick={handleLogout}>
         {t('Disconnect Wallet')}
       </Button>
     </>

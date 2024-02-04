@@ -12,7 +12,6 @@ import FormattedPriceImpact from './FormattedPriceImpact'
 import { StyledBalanceMaxMini, SwapCallbackError } from './styleds'
 
 const SwapModalFooterContainer = styled(AutoColumn)`
-  margin-top: 24px;
   padding: 16px;
   border-radius: ${({ theme }) => theme.radii.default};
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};

@@ -251,7 +251,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       cakePrice={cakePrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
       bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP}
+      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
@@ -271,7 +271,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       max={stakedBalance}
       onConfirm={handleUnstake}
       tokenName={lpSymbol}
-      showCrossChainFarmWarning={chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP}
+      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP}
       decimals={18}
     />,
   )

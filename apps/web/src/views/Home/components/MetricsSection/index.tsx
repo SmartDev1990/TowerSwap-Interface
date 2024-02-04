@@ -36,13 +36,13 @@ const Stats = () => {
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       {/* <GradientLogo height="100px" width="100px" mb="24px" /> */}
-      <Heading textAlign="center" color="white" scale="xl" mb="32px">
-        {t('Tower Token')}
+      <Heading textAlign="center" color="black" scale="xl" mb="32px">
+        {t('TOWERSWAP TOKEN')}
       </Heading>
       {/* <Heading textAlign="center" scale="xl" mb="32px"> */}
       {/*   {t('Trusted with billions.')} */}
       {/* </Heading> */}
-      <Text textAlign="center" color="white">
+      <Text textAlign="center" color="black">
         {t('Tower token is the main token in TowerSwap')}
       </Text>
       {/*
@@ -71,7 +71,7 @@ const Stats = () => {
           <StatCardContent headingText={t('Symbol')} bodyText={t('TWS')} highlightColor={theme.colors.primary} />
         </IconCard>
         <IconCard {...TradesCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
-          <StatCardContent headingText={t('Supply')} bodyText={t('12.000.000')} highlightColor={theme.colors.primary} />
+          <StatCardContent headingText={t('Supply')} bodyText={t('350.000.000')} highlightColor={theme.colors.primary} />
         </IconCard>
         <IconCard {...StakedCardData}>
           <StatCardContent headingText={t('Decimal')} bodyText={t('18')} highlightColor={theme.colors.failure} />

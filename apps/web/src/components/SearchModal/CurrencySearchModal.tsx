@@ -27,6 +27,7 @@ const Footer = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
   text-align: center;
+  color: black;
 `
 const StyledModalContainer = styled(ModalContainer)`
   width: 100%;

@@ -405,7 +405,7 @@ function FullPositionCard({
               <Button
                 as={NextLinkFromReactRouter}
                 to={`/add/${currencyId(currency0)}/${currencyId(currency1)}?step=1`}
-                variant="text"
+                variant="primary"
                 startIcon={<AddIcon color="primary" />}
                 width="100%"
               >

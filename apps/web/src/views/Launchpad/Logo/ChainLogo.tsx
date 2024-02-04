@@ -48,7 +48,7 @@ const CurrencyLogo: React.FC<CurrencyLogoProps> = ({ chainId, style }) => {
     case ChainId.CMP:
       logoComponent = <Cmp />
       break
-    case ChainId.CMP_TESTNET:
+    case ChainId.ZETA_TESTNET:
       logoComponent = <Zeta />
       break
     case ChainId.SHARDEUM:

@@ -123,12 +123,12 @@
       "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
     },
     {
-      "name": "EMMET Token",
-      "symbol": "EMMET",
-      "address": "0xc03B1253770a34289f8Aa44b694b190dF9bb69b8",
+      "name": "Test USDT",
+      "symbol": "tUSDT",
+      "address": "0xEB2fb10Cb1cb9F0cd19D3d0213d2B69B368146A8",
       "chainId": 7001,
       "decimals": 18,
-      "logoURI": "https://svgshare.com/i/yqH.svg"
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
     },
     {
       "name": "EMMET ETH",
@@ -173,7 +173,7 @@
     {
       "name": "Wrapped SHARDEUM",
       "symbol": "WSHM",
-      "address": "0xB3538cE1Cb028A1F895050ca9479631d867517C6",
+      "address": "0xCc07bc8E60e4C814b7bB63Eae03Ee7D8b79d476e",
       "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"

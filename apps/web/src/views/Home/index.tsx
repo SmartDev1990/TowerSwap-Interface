@@ -30,12 +30,10 @@ import MultipleBanner from './components/Banners/MultipleBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.2191001400560224) 0%,
-    rgba(237, 240, 255, 0.3227415966386554) 100%
-  );
-  background-size: 100% 120%;
+  background: #F3EDC8;
+  background-size: 80% 100%;
+  box-shadow: 2px;
+  border: 2px solid;
   background-repeat: no-repeat;
 
   ${({ theme }) => theme.mediaQueries.md} {
@@ -93,7 +91,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </StyledHeroSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background="#F3EDC8"
         containerProps={{
           id: 'home-4',
         }}
@@ -104,7 +102,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background="#f5eda5"
         containerProps={{
           id: 'home-4',
         }}
@@ -115,7 +113,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradientCardHeader}
+        background='#F3EDC8'
         index={2}
         hasCurvedDivider={false}
       >
@@ -125,7 +123,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background="#f5eda5"
         index={2}
         hasCurvedDivider={false}
       >
@@ -151,7 +149,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradientCardHeader}
+        background='#F3EDC8'
         index={2}
         hasCurvedDivider={false}
       >
@@ -159,36 +157,36 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background="#f5eda5"
         index={2}
         hasCurvedDivider={false}
       >
         <Partner />
       </PageSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradientCardHeader}
+        background='#F3EDC8'
         index={2}
         hasCurvedDivider={false}
       >
         <RoadmapSection />
       </PageSection>
-      {/* <PageSection
+      <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(90deg, rgba(75,7,102,1) 6%, rgba(10,55,85,1) 93%)"
         index={2}
         hasCurvedDivider={false}
       >
         <WinSection />
-      </PageSection> */}
+      </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background='#F3EDC8'
         index={2}
         hasCurvedDivider={false}
       >
         <FaqSection />
-      </PageSection>
+      </PageSection> */}
     </>
   )
 }

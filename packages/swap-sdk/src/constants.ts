@@ -7,7 +7,7 @@ export enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   CMP = 256256,
-  CMP_TESTNET = 7001,
+  ZETA_TESTNET = 7001,
   SHARDEUM = 8081,
   SHARDEUMV = 8082,
   QUAI = 9000,
@@ -24,9 +24,9 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
   [ChainId.CMP]: '0x55A9f6AA17886DC17E407b3Ec4570f0CA8b9704a', //unverify contract
-  [ChainId.CMP_TESTNET]: '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
+  [ChainId.ZETA_TESTNET]: '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
   [ChainId.SHARDEUM]: '0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F',
-  [ChainId.SHARDEUMV]: '0xeb73A83b70614aa75dB9Bf514c638ed9Ddf702Ef',
+  [ChainId.SHARDEUMV]: '0x5b395C56bE17E0C566b659A44e41d095aC06a5fB',
   [ChainId.QUAI]: '0x1B9735cFB121153536647182fE122d85D6Ae1dB1',
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -39,7 +39,7 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
   [ChainId.CMP]: '0xf6106b14de90ff9d265a71eb198a4c0cb6eb1e3eb65b5d976cd5c6466315e7ae',
-  [ChainId.CMP_TESTNET]: '0xae2716f3f717dc7a8bff548df955914dbd417b22c2c0fece9c0880b203d4b359',
+  [ChainId.ZETA_TESTNET]: '0xae2716f3f717dc7a8bff548df955914dbd417b22c2c0fece9c0880b203d4b359',
   [ChainId.SHARDEUM]: '0x3e88eef79b4277868829a66b1493cb418bdc4dfe6305db33cf35d65d5942707b',
   [ChainId.SHARDEUMV]: '0x916ffb8caf4f31bde4d2aad379045564f627c88d06b495d6d8fee674653866b5',
   [ChainId.QUAI]: '0x0feeaa479bd613d42ac33abf72367f6b85fcd6d3fb5a921fd43db22f159610a6',
@@ -105,8 +105,8 @@ export const WBNB = {
     'Wrapped CMP',
     'https://www.binance.org'
   ),
-  [ChainId.CMP_TESTNET]: new ERC20Token(
-    ChainId.CMP_TESTNET,
+  [ChainId.ZETA_TESTNET]: new ERC20Token(
+    ChainId.ZETA_TESTNET,
     '0xF88EF72D453B94ABB390275dA1a02Fc0CB723b5F',
     18,
     'WZETA',
@@ -123,7 +123,7 @@ export const WBNB = {
   ),
   [ChainId.SHARDEUMV]: new ERC20Token(
     ChainId.SHARDEUMV,
-    '0xB3538cE1Cb028A1F895050ca9479631d867517C6',
+    '0xCc07bc8E60e4C814b7bB63Eae03Ee7D8b79d476e',
     18,
     'WSHM',
     'Wrapped SHARDEUM',
@@ -146,7 +146,7 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.BSC]: WBNB[ChainId.BSC],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
   [ChainId.CMP]: WBNB[ChainId.CMP],
-  [ChainId.CMP_TESTNET]: WBNB[ChainId.CMP_TESTNET],
+  [ChainId.ZETA_TESTNET]: WBNB[ChainId.ZETA_TESTNET],
   [ChainId.SHARDEUM]: WBNB[ChainId.SHARDEUM],
   [ChainId.SHARDEUMV]: WBNB[ChainId.SHARDEUMV],
   [ChainId.QUAI]: WBNB[ChainId.QUAI],
@@ -174,7 +174,7 @@ export const NATIVE: Record<
     decimals: 18,
   },
   [ChainId.CMP]: { name: 'CMP', symbol: 'CMP', decimals: 18 },
-  [ChainId.CMP_TESTNET]: { name: 'ZETA', symbol: 'aZETA', decimals: 18 },
+  [ChainId.ZETA_TESTNET]: { name: 'ZETA', symbol: 'aZETA', decimals: 18 },
   [ChainId.SHARDEUM]: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
   [ChainId.SHARDEUMV]: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
   [ChainId.QUAI]: { name: 'QUAI', symbol: 'QUAI', decimals: 18 },

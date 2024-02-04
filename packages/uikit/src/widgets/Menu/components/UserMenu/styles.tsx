@@ -12,7 +12,7 @@ export const UserMenuItem = styled.button<UserMenuItemProps>`
   align-items: center;
   border: 0;
   background: transparent;
-  color: ${({ theme, disabled }) => theme.colors[disabled ? "textDisabled" : "textSubtle"]};
+  color: ${({ theme, disabled }) => theme.colors[disabled ? '#F3EDC8' : '#EAD196']};
   cursor: pointer;
   display: flex;
   font-size: 16px;
@@ -28,7 +28,7 @@ export const UserMenuItem = styled.button<UserMenuItemProps>`
   }
 
   &:hover:not(:disabled) {
-    background-color: ${({ theme }) => theme.colors.tertiary};
+    background-color: #F3EDC8;
   }
 
   &:active:not(:disabled) {

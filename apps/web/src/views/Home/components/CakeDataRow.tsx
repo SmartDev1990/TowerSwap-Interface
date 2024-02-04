@@ -60,6 +60,8 @@ const Grid = styled.div`
     grid-gap: 32px;
     grid-template-columns: repeat(3, auto);
   }
+
+  margin: auto;
 `
 
 const emissionsPerBlock = 11.16
@@ -129,7 +131,7 @@ const CakeDataRow = () => {
   }, [isIntersecting])
 
   return (
-    <Grid>
+    <Grid style={{ margin: 'auto' }}>
       <Flex flexDirection="column" style={{ gridArea: 'a' }}>
         <Text color="textSubtle">{t('Circulating Supply')}</Text>
         {circulatingSupply ? (

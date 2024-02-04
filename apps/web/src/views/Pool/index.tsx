@@ -14,7 +14,7 @@ import { AppHeader, AppBody } from '../../components/App'
 import Page from '../Page'
 
 const Body = styled(CardBody)`
-  background-color: ${({ theme }) => theme.colors.dropdownDeep};
+  background-color: #e6e094
 `
 
 export default function Pool() {
@@ -121,7 +121,7 @@ export default function Pool() {
                 {t("Don't see a pair you joined?")}
               </Text>
               <Link href="/find" passHref>
-                <Button id="import-pool-link" variant="secondary" scale="sm" as="a">
+                <Button id="import-pool-link" variant="primary" scale="sm" as="a">
                   {t('Find other LP tokens')}
                 </Button>
               </Link>

@@ -24,7 +24,7 @@ const StatCardContent: React.FC<
       ) : (
         <Heading scale="xl">{remainingWords}</Heading>
       )}
-      <Heading color={highlightColor} textAlign="center" scale="xl" mb="24px">
+      <Heading color="#353547" textAlign="center" scale="xl" mb="24px">
         {lastWord}
       </Heading>
       <Text textAlign="center" color="textSubtle">

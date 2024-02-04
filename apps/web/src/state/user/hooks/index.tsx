@@ -426,7 +426,7 @@ export function useGasPrice(chainIdOverride?: number): string {
   )
   const { data } = useFeeData({
     chainId,
-    enabled: chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP,
+    enabled: chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP,
     watch: true,
   })
   if (chainId === ChainId.CMP) {

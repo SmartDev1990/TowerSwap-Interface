@@ -28,8 +28,8 @@ export const TOWER_MAINNET = new ERC20Token(
 )
 
 export const TOWER_TESTNET = new ERC20Token(
-  ChainId.CMP_TESTNET,
-  '0x09FB691A786284e99D122D2B68dE40D253fec299',
+  ChainId.ZETA_TESTNET,
+  '0x0915bC79D6e9Ab5808987b383242d3AE2f923b32',
   18,
   'TW',
   'TowerTestnet Token',
@@ -134,8 +134,8 @@ export const BUSD_CMP = new ERC20Token(
 )
 
 export const BUSD_CMPTESTNET = new ERC20Token(
-  ChainId.CMP_TESTNET,
-  '0x33fea934d76C80C9a857a766Ee1354381d6C6364',
+  ChainId.ZETA_TESTNET,
+  '0xEB2fb10Cb1cb9F0cd19D3d0213d2B69B368146A8',
   18,
   'BUSD',
   'Binance USD',
@@ -185,7 +185,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.CMP]: BUSD_CMP,
-  [ChainId.CMP_TESTNET]: BUSD_CMPTESTNET,
+  [ChainId.ZETA_TESTNET]: BUSD_CMPTESTNET,
   [ChainId.SHARDEUM]: BUSD_NET,
   [ChainId.SHARDEUMV]: USDT_SHARDEUMV,
   [ChainId.QUAI]: BUSD_NET,
@@ -198,7 +198,7 @@ export const CAKE = {
 
 export const TW = {
   [ChainId.CMP]: TOWER_MAINNET,
-  [ChainId.CMP_TESTNET]: TOWER_TESTNET,
+  [ChainId.ZETA_TESTNET]: TOWER_TESTNET,
 }
 
 export const USDC = {

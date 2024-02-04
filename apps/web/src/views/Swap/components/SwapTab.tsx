@@ -23,7 +23,6 @@ const Wrapper = styled.div`
   }
   &:hover {
     background-color: ${({ theme }) => theme.colors.input};
-    border-radius: 20px 20px 0 0;
   }
 `
 

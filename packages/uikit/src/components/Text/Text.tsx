@@ -12,7 +12,7 @@ const getColor = ({ color, theme }: ThemedProps) => {
 };
 
 const Text = styled.div<TextProps>`
-  color: ${getColor};
+  color: black;
   font-weight: ${({ bold }) => (bold ? 600 : 400)};
   line-height: 1.5;
   ${({ textTransform }) => textTransform && `text-transform: ${textTransform};`}

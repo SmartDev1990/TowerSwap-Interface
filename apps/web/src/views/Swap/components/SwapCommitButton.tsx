@@ -263,7 +263,7 @@ export default function SwapCommitButton({
             )}
           </CommitButton>
           <CommitButton
-            variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'primary'}
+            variant={isValid && priceImpactSeverity > 2 ? 'success' : 'primary'}
             onClick={() => {
               onSwapHandler()
             }}

@@ -368,7 +368,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
               </Button>
             </NextLinkFromReactRouter> */}
           </Box>
-          {/* {chainId === ChainId.CMP_TESTNET && (
+          {/* {chainId === ChainId.ZETA_TESTNET && (
             <Box>
               <BCakeBoosterCard />
             </Box>

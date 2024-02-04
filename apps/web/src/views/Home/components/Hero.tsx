@@ -105,46 +105,22 @@ const Hero = () => {
           }
         `}
       </style>
-      <BgWrapper>
-        <InnerWrapper></InnerWrapper>
-      </BgWrapper>
-      <Flex
-        position="relative"
-        flexDirection={['column-reverse', null, null, 'row']}
-        alignItems={['flex-end', null, null, 'center']}
-        justifyContent="center"
-        mt={[account ? '10px' : '50px', null, 0]}
-        id="homepage-hero"
-      >
-        <Flex flex="1" flexDirection="column">
-          <Heading scale="xl" color="white" mb="24px">
-            {t('TOWERSWAP DEX')}
-          </Heading>
-          <Heading scale="md" color="white" mb="24px">
-            {t(
-              'Decentralized Exchange Made For Everybody. Swap, Farm, Stake, Earn passive income and increase your financial freedom by trade on TowerSwap exchange.',
-            )}
-          </Heading>
+      <Flex>
+        <Flex justifyContent="center" alignItems="center" flexDirection="column">
+        <Heading scale="xl" color="#2b2404" mb="24px" mt="30px" textAlign="center">
+          {t('TOWERSWAP EXCHANGE')}
+        </Heading>
+        <Heading scale="md" color="#2b2404" mb="24px" textAlign="center">
+          {t(
+            'Decentralized Exchange Made For Everybody. Swap, Farm, Stake, Earn passive income and increase your financial freedom by trading on TowerSwap exchange.',
+          )}
+        </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
             <NextLinkFromReactRouter to="/swap">
-              <Button variant={!account ? 'secondary' : 'primary'}>{t('Trade Now')}</Button>
+              <Button variant={!account ? 'tertiary' : 'primary'} mb="24px">{t('Trade Now')}</Button>
             </NextLinkFromReactRouter>
           </Flex>
-        </Flex>
-        <Flex
-          height={['192px', null, null, '100%']}
-          width={['192px', null, null, '100%']}
-          flex={[null, null, null, '1']}
-          mb={['24px', null, null, '0']}
-          position="relative"
-        >
-          <BunnyWrapper>
-            <Image src={bunnyImage} priority placeholder="blur" alt={t('Lunar bunny')} />
-          </BunnyWrapper>
-          <StarsWrapper>
-            <CompositeImage {...starsImage} />
-          </StarsWrapper>
         </Flex>
       </Flex>
     </>

@@ -53,6 +53,7 @@ const LabelWrapper = styled.div`
 const ControlStretch = styled(Flex)`
   > div {
     flex: 1;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -188,7 +189,7 @@ export function PoolControls<T>({
         />
         <FilterContainer>
           <LabelWrapper>
-            <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase">
+            <Text fontSize="12px" bold color="#edfeff" textTransform="uppercase">
               {t("Sort by")}
             </Text>
             <ControlStretch>

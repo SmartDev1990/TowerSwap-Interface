@@ -54,8 +54,8 @@ const Stats = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
-      <Heading textAlign="center" color="white" scale="xl" mb="32px">
-        {t('Partner')}
+      <Heading textAlign="center" color="#353547" scale="xl" mb="32px">
+        {t('PARTNER')}
       </Heading>
       <Text textAlign="center" color="textSubtle">
         {t('TowerSwap Main Partner')}

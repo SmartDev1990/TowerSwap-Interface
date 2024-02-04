@@ -326,7 +326,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       cakePrice={cakePrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
       bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP}
+      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
@@ -347,7 +347,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       onConfirm={handleUnstake}
       tokenName={lpSymbol}
       decimals={18}
-      showCrossChainFarmWarning={chainId !== ChainId.CMP_TESTNET && chainId !== ChainId.CMP}
+      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP}
     />,
   )
 

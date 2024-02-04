@@ -17,7 +17,7 @@ const ButtonWrapper = styled.div`
 `
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
-  border: 1px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.colors.dropdown)};
+  border: 1px solid #fbf49c;
   border-radius: 10px;
   display: flex;
   padding: 6px;
@@ -26,7 +26,7 @@ const BaseWrapper = styled.div<{ disable?: boolean }>`
     cursor: ${({ disable }) => !disable && 'pointer'};
     background-color: ${({ theme, disable }) => !disable && theme.colors.background};
   }
-  background-color: ${({ theme, disable }) => disable && theme.colors.dropdown};
+  background-color: #fbf49c;
   opacity: ${({ disable }) => disable && '0.4'};
 `
 

@@ -99,7 +99,7 @@ const SlippageTabs = () => {
               setSlippageInput('')
               setUserSlippageTolerance(10)
             }}
-            variant={userSlippageTolerance === 10 ? 'primary' : 'tertiary'}
+            variant={userSlippageTolerance === 10 ? 'primary' : 'tertiary'} 
           >
             0.1%
           </Button>

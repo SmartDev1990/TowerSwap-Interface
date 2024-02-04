@@ -7,14 +7,14 @@ describe('getFarmPrices tests', () => {
         pid: 1,
         lpAddress: '0xCF506651b80796D34085dADb1c761ebF71BB2b8d',
         token: {
-          chainId: 512512,
+          chainId: 7001,
           address: '0x09FB691A786284e99D122D2B68dE40D253fec299',
           symbol: 'TW',
           name: 'TowerTest Token',
           decimals: 18,
         },
         quoteToken: {
-          chainId: 512512,
+          chainId: 7001,
           address: '0xaB6b6212e5443228D586cE5Aeb54B02b185208Cc',
           symbol: 'WCMP',
           name: 'Wrapped CMP',

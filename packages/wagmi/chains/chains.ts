@@ -19,7 +19,7 @@ export const avalandche: Chain = {
 
 export const zeta: Chain = {
   id: 7001,
-  name: 'ZETA Athens 3',
+  name: 'ZETA',
   network: 'ZETA TESTNET',
   rpcUrls: {
     default: 'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
@@ -51,7 +51,7 @@ export const zeta3: Chain = {
 
 export const shardeum: Chain = {
   id: 8081,
-  name: 'Shardeum Dapp',
+  name: 'SHM Dapp',
   network: 'Shardeum Dapp 1.X',
   rpcUrls: {
     default: 'https://dapps.shardeum.org/',
@@ -67,7 +67,7 @@ export const shardeum: Chain = {
 
 export const shardeumValidators: Chain = {
   id: 8082,
-  name: 'Shardeum Sphinx',
+  name: 'SHM Sphinx',
   network: 'Shardeum Sphinx Validator 1.X',
   rpcUrls: {
     default: 'https://sphinx.shardeum.org',
@@ -83,7 +83,7 @@ export const shardeumValidators: Chain = {
 
 export const quai: Chain = {
   id: 9000,
-  name: 'QUAI IRON AGE',
+  name: 'QUAI',
   network: 'Cyprus1',
   rpcUrls: {
     default: 'https://rpc.cyprus1.colosseum.quaiscan.io/',

@@ -148,12 +148,12 @@ const nativeStableLpMap = {
     wNative: 'WBNB',
     stable: 'BUSD',
   },
-  [ChainId.CMP_TESTNET]: {
+  [ChainId.ZETA_TESTNET]: {
     address: '0x6b9dB0B7504e04E2a4E5C4B6B22bD84E9a8710fd',
     wNative: 'WCMP',
     stable: 'BUSD',
   },
-  [ChainId.CMP_TESTNET]: {
+  [ChainId.ZETA_TESTNET]: {
     address: '0xdfb709e2a4724379e7337846e523eb688441b52f',
     wNative: 'WSHM',
     stable: 'USDT',

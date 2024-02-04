@@ -113,11 +113,11 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
               </ColoredIconButton>
             )}
             <Flex alignItems="flex">
-              <Button scale="sm">
+              <Button scale="sm" mr="10px">
                 {t('Avoid Error')}
                 {tooltipVisible && tooltip}
                 <Flex ref={targetRef}>
-                  <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
+                  <HelpIcon ml="10px" width="20px" height="20px" color="textSubtle" />
                 </Flex>
               </Button>
             </Flex>

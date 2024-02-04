@@ -2,7 +2,7 @@ import { ChainId } from '@pancakeswap/sdk'
 import FarmsBscPriceHelper from './56'
 import FarmsBscTestnetPriceHelper from './97'
 import FarmsCmpPriceHelper from './256256'
-import FarmsCmpTestnetPriceHelper from './512512'
+import FarmsCmpTestnetPriceHelper from './7001'
 import FarmsEthereumPriceHelper from './1'
 import FarmsGoerliPriceHelper from './5'
 
@@ -14,7 +14,7 @@ export const getFarmsPriceHelperLpFiles = (chainId: ChainId) => {
       return FarmsBscTestnetPriceHelper
     case ChainId.CMP:
       return FarmsCmpPriceHelper
-    case ChainId.CMP_TESTNET:
+    case ChainId.ZETA_TESTNET:
       return FarmsCmpTestnetPriceHelper
     case ChainId.ETHEREUM:
       return FarmsEthereumPriceHelper
