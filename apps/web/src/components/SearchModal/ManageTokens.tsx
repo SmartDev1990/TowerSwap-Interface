@@ -122,7 +122,7 @@ export default function ManageTokens({
             {userAddedTokens?.length} {userAddedTokens.length === 1 ? t('Imported Token') : t('Imported Tokens')}
           </Text>
           {userAddedTokens.length > 0 && (
-            <Button variant="tertiary" onClick={handleRemoveAll}>
+            <Button variant="primary" onClick={handleRemoveAll}>
               {t('Clear all')}
             </Button>
           )}

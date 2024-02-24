@@ -103,21 +103,23 @@ export const moreSectionData = (t: TranslateFunction): SalesSectionProps => ({
 export const launchpadSectionData = (t: TranslateFunction): SalesSectionProps => ({
   headingText: t('Tower Launchpad'),
   bodyText: t(
-    'Get additional income through the features that we have provided, We have prepared farming and staking features so that the tokens that you have work for you, everyone is free to choose where their tokens will be stored and we have prepared a place..',
+    'Launch your project sales with us, If you are ready to launch your project into the world, join us and let us be your partner on the journey towards success.',
   ),
-  reverse: false,
+  reverse: true,
   primaryButton: {
-    to: 'https://towerswap.gitbook.io/towerswap-finance',
-    text: t('Coming Soon'),
-    external: false,
+    to: 'https://launch.towerswap.finance',
+    text: 'Launch Now',
+    external: true,
   },
   secondaryButton: {
     to: 'https://towerswap.gitbook.io/towerswap-finance',
-    text: t(''),
+    text: '',
     external: true,
   },
   images: {
     path: '/images/home/bridge/',
-    attributes: [{ src: 'hero', alt: t('Folder with cake token') }],
+    attributes: [
+      { src: 'benefits', alt: t('Folder with cake token') },
+    ],
   },
 })

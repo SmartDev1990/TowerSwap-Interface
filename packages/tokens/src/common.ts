@@ -27,6 +27,15 @@ export const TOWER_MAINNET = new ERC20Token(
   'https://towerswap.finance/',
 )
 
+export const TOWER_ZETA = new ERC20Token(
+  ChainId.ZETA,
+  '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
+  18,
+  'TWS',
+  'TowerSwap Token',
+  'https://towerswap.finance/',
+)
+
 export const TOWER_TESTNET = new ERC20Token(
   ChainId.ZETA_TESTNET,
   '0x0915bC79D6e9Ab5808987b383242d3AE2f923b32',
@@ -151,6 +160,15 @@ export const BUSD_NET = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const USDT_ZETA = new ERC20Token(
+  ChainId.ZETA,
+  '0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7',
+  18,
+  'USDT',
+  'USDT_ETH',
+  'https://www.paxos.com/busd/',
+)
+
 export const USDC_NET = new ERC20Token(
   ChainId.SHARDEUM,
   '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
@@ -186,6 +204,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.CMP]: BUSD_CMP,
   [ChainId.ZETA_TESTNET]: BUSD_CMPTESTNET,
+  [ChainId.ZETA]: USDT_ZETA,
   [ChainId.SHARDEUM]: BUSD_NET,
   [ChainId.SHARDEUMV]: USDT_SHARDEUMV,
   [ChainId.QUAI]: BUSD_NET,
@@ -199,6 +218,7 @@ export const CAKE = {
 export const TW = {
   [ChainId.CMP]: TOWER_MAINNET,
   [ChainId.ZETA_TESTNET]: TOWER_TESTNET,
+  [ChainId.ZETA]: TOWER_ZETA,
 }
 
 export const USDC = {

@@ -4,7 +4,7 @@ import addresses from 'config/constants/contracts'
 import { VaultKey } from 'state/types'
 
 export const getAddress = (address: Pool.Address, chainId?: number): string => {
-  return address[chainId] ? address[chainId] : address[ChainId.CMP]
+  return address[chainId] ? address[chainId] : address[ChainId.ZETA]
 }
 export const getPresaleFactoryAddress = (chainId?: number) => {
   return getAddress(addresses.presaleFactory, chainId)

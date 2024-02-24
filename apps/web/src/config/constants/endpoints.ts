@@ -39,11 +39,11 @@ export const ACCESS_RISK_API = 'https://red.alert.pancakeswap.com/red-api'
 export const CELER_API = 'https://api.celerscan.com/scan'
 
 export const INFO_CLIENT_WITH_CHAIN = {
-  [ChainId.CMP]: INFO_CLIENT,
+  [ChainId.ZETA]: INFO_CLIENT,
   [ChainId.ETHEREUM]: INFO_CLIENT_ETH,
 }
 
 export const BLOCKS_CLIENT_WITH_CHAIN = {
-  [ChainId.CMP]: BLOCKS_CLIENT,
+  [ChainId.ZETA]: BLOCKS_CLIENT,
   [ChainId.ETHEREUM]: BLOCKS_CLIENT_ETH,
 }

@@ -8,7 +8,7 @@ export default function useNativeCurrency(): NativeCurrency {
     try {
       return Native.onChain(chainId)
     } catch (e) {
-      return Native.onChain(ChainId.CMP)
+      return Native.onChain(ChainId.ZETA)
     }
   }, [chainId])
 }

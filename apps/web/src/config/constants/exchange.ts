@@ -11,8 +11,9 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
   [ChainId.ZETA_TESTNET]: '0x33fea934d76c80c9a857a766ee1354381d6c6364',
+  [ChainId.ZETA]: '0xc4fFE53C82028C2Bb775AC3EEC48a10D79143f9C',
   [ChainId.SHARDEUM]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
-  [ChainId.SHARDEUMV]: '0xa37b30c9980B52DDbCb74148F03926bd5AE4a2cD',
+  [ChainId.SHARDEUMV]: '0xe7F391Fc60c3dADb5567B2b37B545A7C4d2C5964',
   [ChainId.QUAI]: '0x118f305bA163cD200Da7Dff5CFC19F0631FeDb91',
 }
 
@@ -71,6 +72,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.ZETA_TESTNET]: [],
+  [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
@@ -105,6 +107,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.ZETA_TESTNET]: [],
+  [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
@@ -119,6 +122,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
   [ChainId.ZETA_TESTNET]: [],
+  [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
@@ -137,6 +141,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [bscTokens.dai, bscTokens.usdt],
   ],
   [ChainId.ZETA_TESTNET]: [],
+  [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
   [ChainId.SHARDEUM]: [[shardeumTokens.tw, shardeumTokens.usdt]],
@@ -169,9 +174,9 @@ export const BASE_FEE = new Percent(JSBI.BigInt(25), BIPS_BASE)
 export const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 
 // BNB
-export const DEFAULT_INPUT_CURRENCY = 'BNB'
+export const DEFAULT_INPUT_CURRENCY = 'ZETA'
 // CAKE
-export const DEFAULT_OUTPUT_CURRENCY = '0x828AefE6579eBc100788128C3db8c7ECc8844A62'
+export const DEFAULT_OUTPUT_CURRENCY = '0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7'
 
 // Handler string is passed to Gelato to use PCS router
 export const GELATO_HANDLER = 'pancakeswap'

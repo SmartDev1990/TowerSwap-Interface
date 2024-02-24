@@ -30,8 +30,8 @@ import MultipleBanner from './components/Banners/MultipleBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
-  background: #F3EDC8;
-  background-size: 80% 100%;
+  background: linear-gradient(192deg, rgba(255,245,198,0.5440301120448179) 1%, rgba(255,255,240,0.6112570028011204) 27%, rgba(255,245,198,0.57484243697479) 50%, rgba(255,254,235,0.5104166666666667) 73%, rgba(255,245,198,0.5216211484593838) 99%);
+  background-size: 100% 100%;
   box-shadow: 2px;
   border: 2px solid;
   background-repeat: no-repeat;
@@ -138,18 +138,18 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         <SalesSection {...moreSectionData(t)} />
         TODO: until we are enable fetch multi-chain farms
         {chainId === ChainId.BSC && <FarmsPoolsRow />}
-      </PageSection>
+      </PageSection>  */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
+        background='#F3EDC8'
         index={2}
         hasCurvedDivider={false}
       >
         <SalesSection {...launchpadSectionData(t)} />
-      </PageSection> */}
+      </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background='#F3EDC8'
+        background="#f5eda5"
         index={2}
         hasCurvedDivider={false}
       >
@@ -157,7 +157,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background="#f5eda5"
+        background='#F3EDC8'
         index={2}
         hasCurvedDivider={false}
       >

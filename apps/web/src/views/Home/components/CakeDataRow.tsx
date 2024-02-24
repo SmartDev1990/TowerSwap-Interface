@@ -1,6 +1,6 @@
 import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
 import cakeAbi from 'config/abi/cake.json'
-import { mainnetTokens } from '@pancakeswap/tokens'
+import { testnetTokens } from '@pancakeswap/tokens'
 import { useTranslation } from '@pancakeswap/localization'
 import { useIntersectionObserver } from '@pancakeswap/hooks'
 import { useEffect, useState } from 'react'
@@ -90,10 +90,10 @@ const CakeDataRow = () => {
   } = useSWR(
     loadData ? ['cakeDataRow'] : null,
     async () => {
-      const totalSupplyCall = { abi: cakeAbi, address: mainnetTokens.tw.address, name: 'totalSupply' }
+      const totalSupplyCall = { abi: cakeAbi, address: testnetTokens.tw.address, name: 'totalSupply' }
       const burnedTokenCall = {
         abi: cakeAbi,
-        address: mainnetTokens.tw.address,
+        address: testnetTokens.tw.address,
         name: 'balanceOf',
         params: ['0x000000000000000000000000000000000000dEaD'],
       }
@@ -154,7 +154,7 @@ const CakeDataRow = () => {
       <StyledColumn noMobileBorder style={{ gridArea: 'c' }}>
         <Text color="textSubtle">{t('Max Supply')}</Text>
 
-        <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={12000000} />
+        <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={350000000} />
       </StyledColumn>
       <StyledColumn noDesktopBorder style={{ gridArea: 'd' }}>
         <Text color="textSubtle">{t('Market cap')}</Text>

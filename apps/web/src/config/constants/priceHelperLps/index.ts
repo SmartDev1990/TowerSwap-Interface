@@ -15,7 +15,7 @@ export const getPoolsPriceHelperLpFiles = (chainId: ChainId) => {
       return PoolsBscPriceHelper
     case ChainId.BSC_TESTNET:
       return PoolsBscTestnetPriceHelper
-    case ChainId.CMP:
+    case ChainId.ZETA:
       return PoolsCmpPriceHelper
     case ChainId.ZETA_TESTNET:
       return PoolsCmpTestnetPriceHelper

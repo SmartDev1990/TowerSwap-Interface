@@ -217,7 +217,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             {
               step: 2,
               tx: '',
-              chainId: ChainId.CMP,
+              chainId: ChainId.ZETA,
               status: FarmTransactionStatus.PENDING,
             },
           ],
@@ -273,7 +273,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
             },
             {
               step: 2,
-              chainId: ChainId.CMP,
+              chainId: ChainId.ZETA,
               tx: '',
               status: FarmTransactionStatus.PENDING,
             },
@@ -326,7 +326,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       cakePrice={cakePrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
       bCakeMultiplier={bCakeMultiplier}
-      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP}
+      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.ZETA}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
       allowance={allowance}
@@ -347,7 +347,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       onConfirm={handleUnstake}
       tokenName={lpSymbol}
       decimals={18}
-      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP}
+      showCrossChainFarmWarning={chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.ZETA}
     />,
   )
 

@@ -19,7 +19,7 @@ export const avalandche: Chain = {
 
 export const zeta: Chain = {
   id: 7001,
-  name: 'ZETA',
+  name: 'ZETA TESTNET',
   network: 'ZETA TESTNET',
   rpcUrls: {
     default: 'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
@@ -33,18 +33,18 @@ export const zeta: Chain = {
   },
 }
 
-export const zeta3: Chain = {
-  id: 7001,
-  name: 'ZETA Athens 3',
-  network: 'ZETA TESTNET',
+export const zetaMainnet: Chain = {
+  id: 7000,
+  name: 'ZETA',
+  network: 'ZETA Mainnet',
   rpcUrls: {
-    default: 'https://zetachain-athens-evm.blockpi.network/v1/rpc/public',
+    default: 'https://zetachain-evm.blockpi.network:443/v1/rpc/public',
   },
-  nativeCurrency: { name: 'Zetachain', symbol: 'aZETA', decimals: 18 },
+  nativeCurrency: { name: 'Zetachain', symbol: 'ZETA', decimals: 18 },
   blockExplorers: {
     default: {
       name: 'ZetaScan',
-      url: 'https://zetachain-athens-3.blockscout.com/',
+      url: 'https://explorer.zetachain.com/',
     },
   },
 }

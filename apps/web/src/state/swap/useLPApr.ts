@@ -23,7 +23,7 @@ interface PoolReserveVolumeResponse {
 
 export const useLPApr = (pair?: Pair) => {
   const { data: poolData } = useSWRImmutable(
-    pair && pair.chainId === ChainId.CMP ? ['LP7dApr', pair.liquidityToken.address] : null,
+    pair && pair.chainId === ChainId.ZETA ? ['LP7dApr', pair.liquidityToken.address] : null,
     async () => {
       const timestampsArray = getDeltaTimestamps()
       const blocks = await getBlocksFromTimestamps(timestampsArray, 'desc', 1000)

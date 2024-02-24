@@ -22,12 +22,12 @@ export const multiChainStartTime = {
 }
 
 export const multiChainId = {
-  BSC: ChainId.CMP,
+  BSC: ChainId.ZETA,
   ETH: ChainId.ETHEREUM,
 }
 
 export const multiChainPaths = {
-  [ChainId.CMP]: '',
+  [ChainId.ZETA]: '',
   [ChainId.ETHEREUM]: '/eth',
 }
 

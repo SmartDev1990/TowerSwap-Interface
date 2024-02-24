@@ -413,7 +413,7 @@ export function useGasPrice(chainIdOverride?: number): string {
   const { data: cmpProviderGasPrice = GAS_PRICE_GWEI.default } = useSWR(
     library &&
       library.provider &&
-      chainId === ChainId.CMP &&
+      chainId === ChainId.ZETA &&
       userGas === GAS_PRICE_GWEI.rpcDefault && ['cmpProviderGasPrice', library.provider],
     async () => {
       const gasPrice = await library.getGasPrice()
@@ -426,13 +426,13 @@ export function useGasPrice(chainIdOverride?: number): string {
   )
   const { data } = useFeeData({
     chainId,
-    enabled: chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.CMP,
+    enabled: chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.ZETA,
     watch: true,
   })
-  if (chainId === ChainId.CMP) {
+  if (chainId === ChainId.ZETA) {
     return userGas === GAS_PRICE_GWEI.rpcDefault ? cmpProviderGasPrice : userGas
   }
-  if (chainId === ChainId.CMP) {
+  if (chainId === ChainId.ZETA) {
     return GAS_PRICE_GWEI.testnet
   }
   if (chain?.testnet) {

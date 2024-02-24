@@ -147,20 +147,19 @@ const config: (
           supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
-          label: t('Zeta Faucet'),
-          href: 'https://mirror.xyz/0xe61FEacC0F78538Cd1C7cDBACD46d7c7EB50d562/i5rHBWO6CbvXyHYeooiIpnsqtLPGvYBEMRnl75cQaFM',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
-        {
           label: t('Shardeum Faucet'),
           href: 'https://faucet-dapps.shardeum.org/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
           supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
-          label: t('Docs'),
+          label: t('WhitePaper'),
           href: 'https://drive.google.com/file/d/1MViEJEIq6EhsxMaq5lapBmmUEui-Yh1F/view?usp=sharing',
+          type: DropdownMenuItemType.EXTERNAL_LINK,
+        },
+        {
+          label: t('PitchDeck'),
+          href: 'https://drive.google.com/file/d/1TCIWfGtSpPTpYtouYCe__b43Hwrn9Qn4/view?usp=sharing',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),

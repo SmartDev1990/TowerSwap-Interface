@@ -22,6 +22,7 @@ const Bsc: React.FC = () => <img src={bscImage.src} alt="Bsc" />
 const Bsctestnet: React.FC = () => <img src={bsctestnetImage.src} alt="Bsctestnet" />
 const Cmp: React.FC = () => <img src={cmpImage.src} alt="Cmp" />
 const Zeta: React.FC = () => <img src={zetaImage.src} alt="Zeta" />
+const ZetaMainnet: React.FC = () => <img src={zetaImage.src} alt="ZetaMainnet" />
 const Shardeum: React.FC = () => <img src={shardeumImage.src} alt="Shardeum" />
 const Shardeumvalidator: React.FC = () => <img src={shardeumvalidatorImage.src} alt="Shardeumvalidator" />
 const Quai: React.FC = () => <img src={quaiImage.src} alt="Quai" />
@@ -50,6 +51,9 @@ const CurrencyLogo: React.FC<CurrencyLogoProps> = ({ chainId, style }) => {
       break
     case ChainId.ZETA_TESTNET:
       logoComponent = <Zeta />
+      break
+    case ChainId.ZETA:
+      logoComponent = <ZetaMainnet />
       break
     case ChainId.SHARDEUM:
       logoComponent = <Shardeum />

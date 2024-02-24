@@ -173,7 +173,7 @@
     {
       "name": "Wrapped SHARDEUM",
       "symbol": "WSHM",
-      "address": "0xCc07bc8E60e4C814b7bB63Eae03Ee7D8b79d476e",
+      "address": "0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F",
       "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
@@ -197,10 +197,26 @@
     {
       "name": "TowerSwap Token",
       "symbol": "TWS",
-      "address": "0x6311E91e89C82dBC5717Ae495B0cDac7db23d72e",
+      "address": "0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5",
       "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
+    },
+    {
+      "name": "Wrapped ZETA",
+      "symbol": "WZETA",
+      "address": "0x73C98555cEd0d331D7B94f7B1eCd2cbF617D068d",
+      "chainId": 7000,
+      "decimals": 18,
+      "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
+    },
+    {
+      "name": "ETHUSDT",
+      "symbol": "USDT.ETH",
+      "address": "0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7",
+      "chainId": 7000,
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
     }
   ]
 }

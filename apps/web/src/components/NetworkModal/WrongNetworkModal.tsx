@@ -16,7 +16,7 @@ export function WrongNetworkModal({ currentChain, onDismiss }: { currentChain: C
   const { logout } = useAuth()
   const { isConnected } = useAccount()
   const [, setSessionChainId] = useSessionChainId()
-  const chainId = currentChain.id || ChainId.CMP
+  const chainId = currentChain.id || ChainId.ZETA
   const { t } = useTranslation()
 
   const switchText = t('Switch to %network%', { network: currentChain.name })

@@ -9,7 +9,7 @@ export const useFetchPublicPoolsData = () => {
 
   useSlowRefreshEffect(() => {
     const fetchPoolsDataWithFarms = async () => {
-      const farmsConfig = await getFarmConfig(ChainId.CMP)
+      const farmsConfig = await getFarmConfig(ChainId.ZETA)
       const activeFarms = farmsConfig.filter((farm) => farm.v1pid !== 0)
       await dispatch(fetchFarmsPublicDataAsync(activeFarms.map((farm) => farm.v1pid)))
     }
