@@ -14,7 +14,7 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.ZETA]: '0xc4fFE53C82028C2Bb775AC3EEC48a10D79143f9C',
   [ChainId.SHARDEUM]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
   [ChainId.SHARDEUMV]: '0xe7F391Fc60c3dADb5567B2b37B545A7C4d2C5964',
-  [ChainId.QUAI]: '0x118f305bA163cD200Da7Dff5CFC19F0631FeDb91',
+  [ChainId.QUAI]: '0x0722ea27D58b14b17933aE03f055265e172293C9',
 }
 
 export const PRESALE_FACTORY: ChainMap<string> = {
@@ -25,6 +25,7 @@ export const PRESALE_FACTORY: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.CMP]: '',
   [ChainId.ZETA_TESTNET]: '0x870BA99649C234535c36756F0E85789B43dA4526',
+  [ChainId.ZETA]: '',
   [ChainId.SHARDEUM]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
@@ -38,6 +39,7 @@ export const PRIVATESALE_FACTORY: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.CMP]: '',
   [ChainId.ZETA_TESTNET]: '0xc56126DBA5668bED9302f6EBd579D425C4df7Ae4',
+  [ChainId.ZETA]: '',
   [ChainId.SHARDEUM]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
@@ -51,6 +53,7 @@ export const FAIRLAUNCH_FACTORY: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '',
   [ChainId.CMP]: '',
   [ChainId.ZETA_TESTNET]: '0x1eDF4D8D93579d63e6Dd34cC4A4E49d54D3ab8e0',
+  [ChainId.ZETA]: '',
   [ChainId.SHARDEUM]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',

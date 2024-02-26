@@ -30,9 +30,10 @@ import MultipleBanner from './components/Banners/MultipleBanner'
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
-  background: linear-gradient(192deg, rgba(255,245,198,0.5440301120448179) 1%, rgba(255,255,240,0.6112570028011204) 27%, rgba(255,245,198,0.57484243697479) 50%, rgba(255,254,235,0.5104166666666667) 73%, rgba(255,245,198,0.5216211484593838) 99%);
+  background: rgb(243,252,255);
+  background: linear-gradient(27deg, rgba(243,252,255,1) 4%, rgba(255,248,207,0.37316176470588236) 39%, rgba(243,252,255,0.5104166666666667) 68%, rgba(255,255,215,0.5608368347338936) 100%);
   background-size: 100% 100%;
-  box-shadow: 2px;
+  box-shadow: 2px 2px 5px 2px #3c3a0b;
   border: 2px solid;
   background-repeat: no-repeat;
 

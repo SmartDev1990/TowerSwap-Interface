@@ -4,7 +4,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@pancakeswap/localization'
 import Image from 'next/legacy/image'
 import styled, { keyframes } from 'styled-components'
-import bunnyImage from '../../../../public/images/home/lunar-bunny/astronaut-bunni.png'
+import bunnyImage from '../../../../public/images/home/lunar-bunny/astronaut-bunni3.png'
 import CompositeImage, { CompositeImageProps } from './CompositeImage'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 
@@ -42,6 +42,10 @@ const BgWrapper = styled.div`
   left: 0px;
 `
 
+const BunnyImage = styled(Image)`
+  width: 100px; // Adjust the width to your desired size
+`
+
 const InnerWrapper = styled.div`
   position: absolute;
   width: 100%;
@@ -49,7 +53,8 @@ const InnerWrapper = styled.div`
 `
 
 const BunnyWrapper = styled.div`
-  width: 100%;
+width: 250px;
+height: 250px;
   animation: ${flyingAnim} 3.5s ease-in-out infinite;
   will-change: transform;
   > span {
@@ -88,43 +93,32 @@ const Hero = () => {
   const { address: account } = useAccount()
 
   return (
-    <>
-      <style jsx global>
-        {`
-          .slide-svg-dark {
-            display: none;
-          }
-          .slide-svg-light {
-            display: block;
-          }
-          [data-theme='dark'] .slide-svg-dark {
-            display: block;
-          }
-          [data-theme='dark'] .slide-svg-light {
-            display: none;
-          }
-        `}
-      </style>
+    <Flex justifyContent="center" alignItems="center" flexDirection="column">
+      <Heading scale="xl" color="#48cdff" mb="24px" mt="30px" textAlign="center">
+        {t('TOWERSWAP DEX')}
+      </Heading>
+      <BunnyWrapper>
+        <BunnyImage src={bunnyImage} priority placeholder="blur" alt={t('Lunar bunny')} />
+      </BunnyWrapper>
+      <Heading scale="md" color="#2b2404" mb="12px" textAlign="center">
+        {t(
+          'Decentralized Exchange Made For Everybody.',
+        )}
+      </Heading>
+      <Heading scale="md" color="#2b2404" mb="24px" textAlign="center">
+        {t(
+          'Swap, Farm, Stake, Earn passive income with TowerSwap exchange.',
+        )}
+      </Heading>
       <Flex>
-        <Flex justifyContent="center" alignItems="center" flexDirection="column">
-        <Heading scale="xl" color="#2b2404" mb="24px" mt="30px" textAlign="center">
-          {t('TOWERSWAP EXCHANGE')}
-        </Heading>
-        <Heading scale="md" color="#2b2404" mb="24px" textAlign="center">
-          {t(
-            'Decentralized Exchange Made For Everybody. Swap, Farm, Stake, Earn passive income and increase your financial freedom by trading on TowerSwap exchange.',
-          )}
-        </Heading>
-          <Flex>
-            {!account && <ConnectWalletButton mr="8px" />}
-            <NextLinkFromReactRouter to="/swap">
-              <Button variant={!account ? 'tertiary' : 'primary'} mb="24px">{t('Trade Now')}</Button>
-            </NextLinkFromReactRouter>
-          </Flex>
-        </Flex>
+        {!account && <ConnectWalletButton mr="8px" />}
+        <NextLinkFromReactRouter to="/swap">
+          <Button variant={!account ? 'primary' : 'primary'} mb="24px">{t('Trade Now')}</Button>
+        </NextLinkFromReactRouter>
       </Flex>
-    </>
+    </Flex>
   )
+
 }
 
 export default Hero

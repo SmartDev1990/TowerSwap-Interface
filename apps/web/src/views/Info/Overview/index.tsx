@@ -77,7 +77,7 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
       {chainName === 'BSC' && !isStableSwap && (
         <Message variant="warning" mb="10px">
           <MessageText fontSize={16}>
-            {t('TowerkeSwap Info is currently under maintenance. Data may not be accurate or up-to-date.')}
+            {t('TowerSwap Info is currently under maintenance. Data may not be accurate or up-to-date.')}
           </MessageText>
         </Message>
       )}
