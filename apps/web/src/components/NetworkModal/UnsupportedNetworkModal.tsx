@@ -75,7 +75,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
         )}
         {isConnected && (
           <Button
-            variant="secondary"
+            variant="primary"
             onClick={() =>
               logout().then(() => {
                 switchNetworkLocal(ChainId.ZETA)

@@ -15,6 +15,7 @@ import Page from '../Page'
 
 const Body = styled(CardBody)`
   background-color: #e6e094
+  box-shadow: 2px 2px 4px 2px #676787;
 `
 
 export default function Pool() {

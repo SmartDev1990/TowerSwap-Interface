@@ -18,10 +18,10 @@ export const GRAPH_API_POTTERY = 'https://api.thegraph.com/subgraphs/name/smartd
  */
 export const GRAPH_API_PREDICTION_V1 = 'https://api.thegraph.com/subgraphs/name/pancakeswap/prediction'
 
-export const INFO_CLIENT = 'http://127.0.0.1:8000/subgraphs/name/Towerswap-info'
+export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/towerdevswap/towerdex'
 
 export const INFO_CLIENT_ETH = 'http://127.0.0.1:8000/subgraphs/name/Towerswap-info'
-export const BLOCKS_CLIENT = 'http://127.0.0.1:8000/subgraphs/name/Towerswap-block'
+export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/towerdevswap/blocktime'
 export const BLOCKS_CLIENT_ETH = 'http://127.0.0.1:8000/subgraphs/name/Towerswap-block'
 export const STABLESWAP_SUBGRAPH_CLIENT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap'
 export const GRAPH_API_NFTMARKET = 'https://api.thegraph.com/subgraphs/name/smartdev1990/nft-market'

@@ -58,7 +58,7 @@ export function WrongNetworkModal({ currentChain, onDismiss }: { currentChain: C
                 setSessionChainId(chainId)
               })
             }
-            variant="secondary"
+            variant="primary"
           >
             {t('Disconnect Wallet')}
           </Button>

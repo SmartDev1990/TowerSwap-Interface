@@ -67,13 +67,13 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         />
         <meta name="description" content="TowerSwap, the leading multichain DEX with the best farms for TWS." />
         <meta name="theme-color" content="#1FC7D4" />
-        <meta name="twitter:image" content="https://towerswap.finance/images/hero.png" />
+        <meta name="twitter:image" content="https://towerswap.finance/images/dexhero.png" />
         <meta
           name="twitter:description"
-          content="The new DeFi AMM on Caduceus! Earn TWS through yield farming or  stake it in Tower Pools to earn more tokens!"
+          content="The new DeFi AMM on ZetaChain! Earn TWS through yield farming or  stake it in Tower Pools to earn more tokens!"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="🗼TowerSwap - A next evolution DeFi exchange on Caduceus Chain (CMP)" />
+        <meta name="twitter:title" content="🗼TowerSwap - A next evolution DeFi exchange on ZetaChain (ZETA)" />
         <title>TowerSwap</title>
         {(Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts

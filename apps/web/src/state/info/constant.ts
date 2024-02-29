@@ -7,12 +7,12 @@ import { ETH_TOKEN_BLACKLIST, PCS_ETH_START, PCS_V2_START, TOKEN_BLACKLIST } fro
 export type MultiChainName = 'BSC' | 'ETH'
 
 export const multiChainQueryMainToken = {
-  BSC: 'CMP',
+  BSC: 'ZETA',
   ETH: 'ETH',
 }
 
 export const multiChainBlocksClient = {
-  BSC: 'http://127.0.0.1:8000/subgraphs/name/Towerswap-info',
+  BSC: INFO_CLIENT,
   ETH: BLOCKS_CLIENT_ETH,
 }
 
@@ -37,7 +37,7 @@ export const multiChainQueryClient = {
 }
 
 export const multiChainQueryEndPoint = {
-  BSC: 'http://127.0.0.1:8000/subgraphs/name/Towerswap-info',
+  BSC: INFO_CLIENT,
   ETH: INFO_CLIENT_ETH,
 }
 

@@ -4,8 +4,9 @@ import { Card, CardBody, Box, CardProps } from '@pancakeswap/uikit'
 
 const StyledCard = styled(Card)<{ background: string; rotation?: string }>`
   height: fit-content;
-  padding: 1px 1px 4px 1px;
+  padding: 1px 1px 2px 1px;
   box-sizing: border-box;
+  box-shadow: 2px 2px 4px 2px #3a535c;
 
   ${({ theme }) => theme.mediaQueries.md} {
     ${({ rotation }) => (rotation ? `transform: rotate(${rotation});` : '')}
