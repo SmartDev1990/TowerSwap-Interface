@@ -78,7 +78,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
+  [ChainId.SHARDEUM]: [],
   [ChainId.SHARDEUMV]: [],
 }
 
@@ -113,7 +113,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
+  [ChainId.SHARDEUM]: [],
   [ChainId.SHARDEUMV]: [],
 }
 
@@ -128,7 +128,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [shardeumTokens.tw, shardeumTokens.usdt],
+  [ChainId.SHARDEUM]: [],
   [ChainId.SHARDEUMV]: [],
 }
 
@@ -147,7 +147,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [[shardeumTokens.tw, shardeumTokens.usdt]],
+  [ChainId.SHARDEUM]: [],
   [ChainId.SHARDEUMV]: [],
 }
 

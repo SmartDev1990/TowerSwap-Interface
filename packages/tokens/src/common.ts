@@ -215,6 +215,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ZETA_TESTNET]: BUSD_CMPTESTNET,
   [ChainId.ZETA]: USDT_ZETA,
   [ChainId.SHARDEUMV]: USDT_SHARDEUMV,
+  [ChainId.SHARDEUM]: USDT_SHARDEUMV,
   [ChainId.QUAI]: BUSD_NET,
 }
 
