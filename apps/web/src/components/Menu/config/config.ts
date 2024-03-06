@@ -147,19 +147,13 @@ const config: (
           supportChainIds: SUPPORT_ONLY_BSC,
         },
         {
-          label: t('Shardeum Faucet'),
-          href: 'https://faucet-dapps.shardeum.org/',
-          type: DropdownMenuItemType.EXTERNAL_LINK,
-          supportChainIds: SUPPORT_ONLY_BSC,
-        },
-        {
           label: t('WhitePaper'),
-          href: 'https://drive.google.com/file/d/1MViEJEIq6EhsxMaq5lapBmmUEui-Yh1F/view?usp=sharing',
+          href: 'https://drive.google.com/file/d/1XJpsXJnlIUo2I7GQcoLCLaD2M7BYJisV/view?usp=drive_link',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
         {
           label: t('PitchDeck'),
-          href: 'https://drive.google.com/file/d/1TCIWfGtSpPTpYtouYCe__b43Hwrn9Qn4/view?usp=sharing',
+          href: 'https://drive.google.com/file/d/1xtNZbJ6tfF8IhUUS_zGKWuoQNdHQVKWL/view?usp=drive_link',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),

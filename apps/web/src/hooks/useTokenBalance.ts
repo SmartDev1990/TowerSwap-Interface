@@ -52,7 +52,7 @@ export const useGetBnbBalance = () => {
 
 export const useGetCakeBalance = () => {
   const { chainId } = useWeb3React()
-  const { balance, fetchStatus } = useTokenBalance(TW[chainId]?.address || TW[ChainId.ZETA_TESTNET]?.address, true)
+  const { balance, fetchStatus } = useTokenBalance(TW[chainId]?.address || TW[ChainId.SHARDEUMV]?.address, true)
 
   // TODO: Remove ethers conversion once useTokenBalance is converted to ethers.BigNumber
   return { balance: EthersBigNumber.from(balance.toString()), fetchStatus }

@@ -67,7 +67,7 @@ export const shardeum: Chain = {
 
 export const shardeumValidators: Chain = {
   id: 8082,
-  name: 'SHM Sphinx',
+  name: 'SHARDEUM',
   network: 'Shardeum Sphinx Validator 1.X',
   rpcUrls: {
     default: 'https://sphinx.shardeum.org',

@@ -4,7 +4,7 @@ import PoolsEthereumPriceHelper from './pools/1'
 import PoolsGoerliPriceHelper from './pools/5'
 import PoolsBscPriceHelper from './pools/56'
 import PoolsCmpPriceHelper from './pools/256256'
-import PoolsCmpTestnetPriceHelper from './pools/512512'
+import PoolsSHardeumPriceHelper from './pools/8082'
 import PoolsBscTestnetPriceHelper from './pools/97'
 
 export { getFarmsPriceHelperLpFiles }
@@ -17,8 +17,8 @@ export const getPoolsPriceHelperLpFiles = (chainId: ChainId) => {
       return PoolsBscTestnetPriceHelper
     case ChainId.ZETA:
       return PoolsCmpPriceHelper
-    case ChainId.ZETA_TESTNET:
-      return PoolsCmpTestnetPriceHelper
+    case ChainId.SHARDEUMV:
+      return PoolsShardeumPriceHelper
     case ChainId.ETHEREUM:
       return PoolsEthereumPriceHelper
     case ChainId.GOERLI:

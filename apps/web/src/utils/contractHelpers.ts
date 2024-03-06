@@ -163,7 +163,7 @@ import { ChainId } from '@pancakeswap/sdk'
 export const getContract = ({
   abi,
   address,
-  chainId = ChainId.ZETA,
+  chainId = ChainId.SHARDEUMV,
   signer,
 }: {
   abi: any
@@ -230,7 +230,7 @@ export const getPointCenterIfoContract = (signer?: Signer | Provider) => {
 export const getCakeContract = (signer?: Signer | Provider, chainId?: number) => {
   return getContract({
     abi: cakeAbi,
-    address: chainId ? TW[chainId].address : TW[ChainId.ZETA].address,
+    address: chainId ? TW[chainId].address : TW[ChainId.SHARDEUMV].address,
     signer,
   }) as Cake
 }

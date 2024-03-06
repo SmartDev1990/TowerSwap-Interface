@@ -24,7 +24,6 @@ const initialData = {
     contractAddress: {
       97: '',
       56: '',
-      256256: '0xd964CB5A5cE6B7c8fA26796760F8A5AeE9bee1a1',
       7001: '',
     },
     poolCategory: PoolCategory.CORE,

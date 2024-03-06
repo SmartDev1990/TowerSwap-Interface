@@ -36,12 +36,21 @@ export const TOWER_ZETA = new ERC20Token(
   'https://towerswap.finance/',
 )
 
+export const TOWER_SHARDEUM = new ERC20Token(
+  ChainId.SHARDEUMV,
+  '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
+  18,
+  'TWS',
+  'TowerSwap Token',
+  'https://towerswap.finance/',
+)
+
 export const TOWER_TESTNET = new ERC20Token(
   ChainId.ZETA_TESTNET,
-  '0x0915bC79D6e9Ab5808987b383242d3AE2f923b32',
+  '0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5',
   18,
-  'TW',
-  'TowerTestnet Token',
+  'TWS',
+  'TowerSwap Token',
   'https://towerswap.finance/',
 )
 
@@ -106,15 +115,6 @@ export const USDT_ETH = new ERC20Token(
   'https://tether.to/',
 )
 
-export const USDT_SHARDEUMV = new ERC20Token(
-  ChainId.SHARDEUMV,
-  '0x43891084581fD07Ee1189f3a2f04e51c26a95B77',
-  18,
-  'USDT',
-  'Tether USD',
-  'https://tether.to/',
-)
-
 export const BUSD_BSC = new ERC20Token(
   ChainId.BSC,
   '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
@@ -169,13 +169,22 @@ export const USDT_ZETA = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
-export const USDC_NET = new ERC20Token(
-  ChainId.SHARDEUM,
-  '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
+export const USDT_SHARDEUMV = new ERC20Token(
+  ChainId.SHARDEUMV,
+  '0x96a0fa4da6270cf2b65dd21e4fc2e387edeb8951',
   18,
-  'BUSD',
-  'Tower BUSD',
-  'https://www.paxos.com/busd/',
+  'USDT',
+  'Tether USD',
+  'https://tether.to/',
+)
+
+export const USDC_SHARDEUMV = new ERC20Token(
+  ChainId.SHARDEUMV,
+  '0xd9ad6a7d0052e04b1eaa7b340d48b0fcae1aff96',
+  6,
+  'USDC',
+  'USD Coin',
+  'https://tether.to/',
 )
 
 export const BUSD_ETH = new ERC20Token(
@@ -205,7 +214,6 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.CMP]: BUSD_CMP,
   [ChainId.ZETA_TESTNET]: BUSD_CMPTESTNET,
   [ChainId.ZETA]: USDT_ZETA,
-  [ChainId.SHARDEUM]: BUSD_NET,
   [ChainId.SHARDEUMV]: USDT_SHARDEUMV,
   [ChainId.QUAI]: BUSD_NET,
 }
@@ -219,6 +227,7 @@ export const TW = {
   [ChainId.CMP]: TOWER_MAINNET,
   [ChainId.ZETA_TESTNET]: TOWER_TESTNET,
   [ChainId.ZETA]: TOWER_ZETA,
+  [ChainId.SHARDEUMV]: TOWER_SHARDEUM,
 }
 
 export const USDC = {
@@ -226,7 +235,7 @@ export const USDC = {
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
-  [ChainId.SHARDEUM]: USDC_NET,
+  [ChainId.SHARDEUMV]: USDC_SHARDEUMV,
 }
 
 export const USDT = {

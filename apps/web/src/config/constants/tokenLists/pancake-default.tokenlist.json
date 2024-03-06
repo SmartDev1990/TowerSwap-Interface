@@ -176,7 +176,7 @@
       "address": "0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F",
       "chainId": 8082,
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
+      "logoURI": "https://i.ibb.co/PYFQFWp/8082.png"
     },
     {
       "name": "IceCreamSwap",
@@ -189,10 +189,18 @@
     {
       "name": "Tether USD",
       "symbol": "USDT",
-      "address": "0x43891084581fD07Ee1189f3a2f04e51c26a95B77",
+      "address": "0x96a0fa4da6270cf2b65dd21e4fc2e387edeb8951",
       "chainId": 8082,
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+      "logoURI": "https://seeklogo.com/images/T/tether-usdt-logo-FA55C7F397-seeklogo.com.png"
+    },
+    {
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "address": "0xd9ad6a7d0052e04b1eaa7b340d48b0fcae1aff96",
+      "chainId": 8082,
+      "decimals": 6,
+      "logoURI": "https://cryptologos.cc/logos/usd-coin-usdc-logo.png"
     },
     {
       "name": "TowerSwap Token",
