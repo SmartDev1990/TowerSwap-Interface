@@ -58,7 +58,7 @@ const cardData = [
     title: 'Trading',
     description: 'Core functionality of decentralized exchange. Exchange cryptocurrencies seamlessly.',
     buttonText: 'Start Trading',
-    route: '/trade',
+    route: '/swap',
     icon:'',
   },
   {
