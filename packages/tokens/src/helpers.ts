@@ -13,7 +13,7 @@ export const EMPTY_LIST: TokenAddressMap<ChainId> = {
   [ChainId.CMP]: {},
   [ChainId.ZETA_TESTNET]: {},
   [ChainId.ZETA]: {},
-  [ChainId.SHARDEUM]: {},
+  [ChainId.BASE]: {},
   [ChainId.SHARDEUMV]: {},
   [ChainId.QUAI]: {},
 }

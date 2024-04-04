@@ -10,7 +10,7 @@ export const CURRENCY_TEXT: ChainMap<string> = {
   [ChainId.CMP]: 'CMP',
   [ChainId.ZETA_TESTNET]: 'ZETA',
   [ChainId.ZETA]: 'ZETA',
-  [ChainId.SHARDEUM]: 'SHM',
+  [ChainId.BASE]: 'ETH',
   [ChainId.SHARDEUMV]: 'SHM',
   [ChainId.QUAI]: 'QUAI',
 }

@@ -95,11 +95,11 @@ const config: (
       showItemsOnMobile: true,
       items: [
         {
-          label: t('Farms'),
+          label: t('Liquidity Farms'),
           href: '/farms',
         },
         {
-          label: t('Pools'),
+          label: t('Staking Pools'),
           href: '/pools',
           supportChainIds: SUPPORT_ONLY_BSC,
         },

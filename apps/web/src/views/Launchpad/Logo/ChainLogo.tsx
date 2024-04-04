@@ -6,7 +6,7 @@ import bscImage from './images/56.png'
 import bsctestnetImage from './images/97.png'
 import cmpImage from './images/256256.png'
 import zetaImage from './images/Zeta.png'
-import shardeumImage from './images/8081.png'
+import shardeumImage from './images/8453.png'
 import shardeumvalidatorImage from './images/8082.png'
 import quaiImage from './images/9000.png'
 
@@ -55,7 +55,7 @@ const CurrencyLogo: React.FC<CurrencyLogoProps> = ({ chainId, style }) => {
     case ChainId.ZETA:
       logoComponent = <ZetaMainnet />
       break
-    case ChainId.SHARDEUM:
+    case ChainId.BASE:
       logoComponent = <Shardeum />
       break
     case ChainId.SHARDEUMV:

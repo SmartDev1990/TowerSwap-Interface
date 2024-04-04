@@ -19,7 +19,7 @@ export const SMART_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.CMP]: '0xbb38062B022c7d51E16Cd547264887b1950c1a32',
   [ChainId.ZETA_TESTNET]: '0xbb38062B022c7d51E16Cd547264887b1950c1a32',
   [ChainId.ZETA]: '0xbb38062B022c7d51E16Cd547264887b1950c1a32',
-  [ChainId.SHARDEUM]: '',
+  [ChainId.BASE]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
 }

@@ -16,16 +16,16 @@ export const InfoPageLayout = ({ children }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (account && chainId === ChainId.ZETA && router.query.chainName === 'bsc')
+    if (account && chainId === ChainId.ZETA && router.query.chainName === 'zeta')
+      router.replace('/info/zeta', undefined, { shallow: true })
+    if (account && chainId === ChainId.SHARDEUMV && router.query.chainName !== 'shm')
       router.replace('/info', undefined, { shallow: true })
-    if (account && chainId === ChainId.ETHEREUM && router.query.chainName !== 'eth')
-      router.replace('/info/eth', undefined, { shallow: true })
   }, [chainId, account, chainName, router])
 
   const isStableSwap = router.query.type === 'stableSwap'
   return (
     <>
-      {chainName === 'BSC' && (
+      {chainName === 'SHM' && (
         <SubMenuItems
           items={[
             {

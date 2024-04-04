@@ -49,18 +49,18 @@ export const zetaMainnet: Chain = {
   },
 }
 
-export const shardeum: Chain = {
-  id: 8081,
-  name: 'SHM Dapp',
-  network: 'Shardeum Dapp 1.X',
+export const base: Chain = {
+  id: 8453,
+  name: 'BASE L2',
+  network: 'Base Chain',
   rpcUrls: {
-    default: 'https://dapps.shardeum.org/',
+    default: 'https://base-rpc.publicnode.com',
   },
-  nativeCurrency: { name: 'SHARDEUM', symbol: 'SHM', decimals: 18 },
+  nativeCurrency: { name: 'Eth', symbol: 'ETH', decimals: 18 },
   blockExplorers: {
     default: {
       name: 'ShardeumScan',
-      url: 'https://explorer-dapps.shardeum.org/',
+      url: 'https://basescan.org/',
     },
   },
 }

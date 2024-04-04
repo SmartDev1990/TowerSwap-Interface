@@ -11,8 +11,8 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
   [ChainId.CMP]: '0xb0240848456412D1a33792DF4A1178053b9aecAa',
   [ChainId.ZETA_TESTNET]: '0x33fea934d76c80c9a857a766ee1354381d6c6364',
-  [ChainId.ZETA]: '0xc4fFE53C82028C2Bb775AC3EEC48a10D79143f9C',
-  [ChainId.SHARDEUM]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
+  [ChainId.ZETA]: '0xeeF9560CE1f1358011E41974dbE68F8a0Bd86E50',
+  [ChainId.BASE]: '0xCD3F8368f9d2489292208090aD26bb35a6562E2B',
   [ChainId.SHARDEUMV]: '0x37b1fC2b5062526bf6b177Fdcd5992122b138c4d',
   [ChainId.QUAI]: '0x18eA3D3a9AA9Eb6c30f35d5f7b90B154165Fff8b',
 }
@@ -26,7 +26,7 @@ export const PRESALE_FACTORY: ChainMap<string> = {
   [ChainId.CMP]: '',
   [ChainId.ZETA_TESTNET]: '0x870BA99649C234535c36756F0E85789B43dA4526',
   [ChainId.ZETA]: '',
-  [ChainId.SHARDEUM]: '',
+  [ChainId.BASE]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
 }
@@ -40,7 +40,7 @@ export const PRIVATESALE_FACTORY: ChainMap<string> = {
   [ChainId.CMP]: '',
   [ChainId.ZETA_TESTNET]: '0xc56126DBA5668bED9302f6EBd579D425C4df7Ae4',
   [ChainId.ZETA]: '',
-  [ChainId.SHARDEUM]: '',
+  [ChainId.BASE]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
 }
@@ -54,7 +54,7 @@ export const FAIRLAUNCH_FACTORY: ChainMap<string> = {
   [ChainId.CMP]: '',
   [ChainId.ZETA_TESTNET]: '0x1eDF4D8D93579d63e6Dd34cC4A4E49d54D3ab8e0',
   [ChainId.ZETA]: '',
-  [ChainId.SHARDEUM]: '',
+  [ChainId.BASE]: '',
   [ChainId.SHARDEUMV]: '',
   [ChainId.QUAI]: '',
 }
@@ -78,7 +78,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [],
+  [ChainId.BASE]: [],
   [ChainId.SHARDEUMV]: [],
 }
 
@@ -113,7 +113,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [],
+  [ChainId.BASE]: [],
   [ChainId.SHARDEUMV]: [],
 }
 
@@ -128,7 +128,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [],
+  [ChainId.BASE]: [],
   [ChainId.SHARDEUMV]: [],
 }
 
@@ -147,7 +147,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   [ChainId.ZETA]: [],
   [ChainId.CMP]: [],
   [ChainId.QUAI]: [],
-  [ChainId.SHARDEUM]: [],
+  [ChainId.BASE]: [],
   [ChainId.SHARDEUMV]: [],
 }
 

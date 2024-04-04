@@ -22,7 +22,7 @@ interface TopTokensResponse {
  */
 const fetchTopTokens = async (chainName: MultiChainName, timestamp24hAgo: number): Promise<string[]> => {
   const whereCondition =
-    chainName === 'ETH'
+    chainName === 'SHM'
       ? `where: { date_gt: ${timestamp24hAgo}, token_not_in: $blacklist, dailyVolumeUSD_gt:2000 }`
       : checkIsStableSwap()
       ? ''

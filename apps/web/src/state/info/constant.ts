@@ -4,51 +4,51 @@ import { infoClientETH, infoClient, infoStableSwapClient } from 'utils/graphql'
 import { ChainId } from '@pancakeswap/sdk'
 import { ETH_TOKEN_BLACKLIST, PCS_ETH_START, PCS_V2_START, TOKEN_BLACKLIST } from 'config/constants/info'
 
-export type MultiChainName = 'BSC' | 'ETH'
+export type MultiChainName = 'ZETA' | 'SHM'
 
 export const multiChainQueryMainToken = {
-  BSC: 'ZETA',
-  ETH: 'ETH',
+  ZETA: 'ZETA',
+  SHM: 'SHM',
 }
 
 export const multiChainBlocksClient = {
-  BSC: INFO_CLIENT,
-  ETH: BLOCKS_CLIENT_ETH,
+  ZETA: INFO_CLIENT,
+  SHM: "http://127.0.0.1:8000/subgraphs/name/Towerswap-block",
 }
 
 export const multiChainStartTime = {
-  BSC: 8438988,
-  ETH: PCS_ETH_START,
+  ZETA: 8438988,
+  SHM: 12028,
 }
 
 export const multiChainId = {
-  BSC: ChainId.ZETA,
-  ETH: ChainId.ETHEREUM,
+  ZETA: ChainId.ZETA,
+  SHM: ChainId.SHARDEUMV,
 }
 
 export const multiChainPaths = {
-  [ChainId.ZETA]: '',
-  [ChainId.ETHEREUM]: '/eth',
+  [ChainId.ZETA]: '/zeta',
+  [ChainId.SHARDEUMV]: '',
 }
 
 export const multiChainQueryClient = {
-  BSC: infoClient,
-  ETH: infoClientETH,
+  ZETA: infoClient,
+  SHM: infoClientETH,
 }
 
 export const multiChainQueryEndPoint = {
-  BSC: INFO_CLIENT,
-  ETH: INFO_CLIENT_ETH,
+  ZETA: "http://127.0.0.1:8000/subgraphs/name/Towerswap-info",
+  SHM: "http://127.0.0.1:8000/subgraphs/name/Towerswap-info-eth",
 }
 
 export const multiChainScan = {
-  BSC: 'https://mainnet.scan.caduceus.foundation/',
-  ETH: 'EtherScan',
+  ZETA: 'https://mainnet.scan.caduceus.foundation/',
+  SHM: 'https://explorer-sphinx.shardeum.org/',
 }
 
 export const multiChainTokenBlackList = {
-  BSC: TOKEN_BLACKLIST,
-  ETH: ETH_TOKEN_BLACKLIST,
+  ZETA: TOKEN_BLACKLIST,
+  SHM: ETH_TOKEN_BLACKLIST,
 }
 
 export const getMultiChainQueryEndPointWithStableSwap = (chainName: MultiChainName) => {

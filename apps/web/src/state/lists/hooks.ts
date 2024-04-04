@@ -185,7 +185,7 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
     [ChainId.CMP]: { ...map1[ChainId.CMP], ...map2[ChainId.CMP] },
     [ChainId.ZETA_TESTNET]: { ...map1[ChainId.ZETA_TESTNET], ...map2[ChainId.ZETA_TESTNET] },
     [ChainId.ZETA]: { ...map1[ChainId.ZETA], ...map2[ChainId.ZETA] },
-    [ChainId.SHARDEUM]: { ...map1[ChainId.SHARDEUM], ...map2[ChainId.SHARDEUM] },
+    [ChainId.BASE]: { ...map1[ChainId.BASE], ...map2[ChainId.BASE] },
     [ChainId.SHARDEUMV]: { ...map1[ChainId.SHARDEUMV], ...map2[ChainId.SHARDEUMV] },
     [ChainId.QUAI]: { ...map1[ChainId.QUAI], ...map2[ChainId.QUAI] },
   }

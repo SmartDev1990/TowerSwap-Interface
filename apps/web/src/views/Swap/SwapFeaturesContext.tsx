@@ -22,7 +22,7 @@ export const SwapFeaturesContext = createContext<{
   setIsChartDisplayed: null,
 })
 
-const CHART_SUPPORT_CHAIN_IDS = [ChainId.QUAI]
+const CHART_SUPPORT_CHAIN_IDS = [ChainId.SHARDEUMV]
 const ACCESS_TOKEN_SUPPORT_CHAIN_IDS = [ChainId.BSC]
 const STABLE_SUPPORT_CHAIN_IDS = [ChainId.BSC]
 

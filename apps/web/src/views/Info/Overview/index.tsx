@@ -74,7 +74,7 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
   const chainName = useGetChainName()
   return (
     <Page>
-      {chainName === 'BSC' && !isStableSwap && (
+      {chainName === 'SHM' && !isStableSwap && (
         <Message variant="warning" mb="10px">
           <MessageText fontSize={16}>
             {t('TowerSwap Info is currently under maintenance. Data may not be accurate or up-to-date.')}

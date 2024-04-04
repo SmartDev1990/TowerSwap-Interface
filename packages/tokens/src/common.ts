@@ -152,7 +152,7 @@ export const BUSD_CMPTESTNET = new ERC20Token(
 )
 
 export const BUSD_NET = new ERC20Token(
-  ChainId.SHARDEUM,
+  ChainId.BASE,
   '0xB21668048d42d7d6423B070B278F5Af14e1f1600',
   18,
   'BUSD',
@@ -215,7 +215,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ZETA_TESTNET]: BUSD_CMPTESTNET,
   [ChainId.ZETA]: USDT_ZETA,
   [ChainId.SHARDEUMV]: USDT_SHARDEUMV,
-  [ChainId.SHARDEUM]: USDT_SHARDEUMV,
+  [ChainId.BASE]: USDT_SHARDEUMV,
   [ChainId.QUAI]: BUSD_NET,
 }
 

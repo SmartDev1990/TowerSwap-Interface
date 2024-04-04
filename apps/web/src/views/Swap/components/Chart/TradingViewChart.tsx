@@ -33,7 +33,7 @@ const LoadingWrapper = styled.div<{ $isDark: boolean }>`
 const bnbToWBNBSymbol = (sym: string) => (sym === 'ZETA' ? 'WZETA' : sym)
 
 const ID = 'TV_SWAP_CHART'
-const SYMBOL_PREFIX = 'TOWER:'
+const SYMBOL_PREFIX = 'TOWERSWAP:'
 
 const TradingViewChart = ({ outputSymbol, inputSymbol, isDark, onTwChartSymbol }: TradingViewChartProps) => {
   const [isLoading, setIsLoading] = useState(true)

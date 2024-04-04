@@ -139,20 +139,12 @@
       "logoURI": "https://i.ibb.co/r0gZb1P/IMG-20231121-114931-301.png"
     },
     {
-      "name": "Wrapped SHARDEUM",
-      "symbol": "WSHM",
-      "address": "0xaF56dAa09dD5C6eF1e72fC9cEf34CDf48AB33303",
-      "chainId": 8081,
+      "name": "Wrapped ETH",
+      "symbol": "WETH",
+      "address": "0x4200000000000000000000000000000000000006",
+      "chainId": 8453,
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/SHM.png"
-    },
-    {
-      "name": "TowerSwap Token",
-      "symbol": "TWS",
-      "address": "0x8d6e7213bad28e00156c7ecddefac64cc508cad5",
-      "chainId": 8081,
-      "decimals": 18,
-      "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
+      "logoURI": "https://token-repository.dappradar.com/tokens?protocol=ethereum&contract=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2&file=logo.png"
     },
     {
       "name": "Wrapped QUAI",
@@ -177,14 +169,6 @@
       "chainId": 8082,
       "decimals": 18,
       "logoURI": "https://i.ibb.co/PYFQFWp/8082.png"
-    },
-    {
-      "name": "IceCreamSwap",
-      "symbol": "ICE",
-      "address": "0xb5C7882e37359572FD1cCFAA276e7Fdf70145D42",
-      "chainId": 8082,
-      "decimals": 18,
-      "logoURI": "https://pbs.twimg.com/profile_images/1532715330782605312/S3PvFlua_400x400.png"
     },
     {
       "name": "Tether USD",
@@ -213,7 +197,7 @@
     {
       "name": "Wrapped ZETA",
       "symbol": "WZETA",
-      "address": "0x73C98555cEd0d331D7B94f7B1eCd2cbF617D068d",
+      "address": "0x5f0b1a82749cb4e2278ec87f8bf6b618dc71a8bf",
       "chainId": 7000,
       "decimals": 18,
       "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
@@ -225,6 +209,14 @@
       "chainId": 7000,
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+    },
+    {
+      "name": "StellaCoin",
+      "symbol": "STELLA",
+      "address": "0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7",
+      "chainId": 7000,
+      "decimals": 18,
+      "logoURI": "https://i.ibb.co/x1pnjj1/twitter.png"
     }
   ]
 }

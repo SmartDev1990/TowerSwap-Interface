@@ -4,7 +4,7 @@ import { multicallAddresses } from '@pancakeswap/multicall'
 
 export default {
   masterChef: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x86AF084E7d9Ca3D7a435F69295cDFB34416A7eBd',
     7000: '',
@@ -12,7 +12,7 @@ export default {
     9000: '',
   },
   masterChefV1: {
-    8081: '',
+    8453: '',
     8082: '',
     7000: '',
     7001: '0x92ebcdA1e2C2d5B388d3f5450cF46930F0D179A0',
@@ -20,7 +20,7 @@ export default {
     9000: '',
   },
   sousChef: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -28,7 +28,7 @@ export default {
     9000: '',
   },
   lotteryV2: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -37,7 +37,7 @@ export default {
   },
   multiCall: multicallAddresses,
   pancakeProfile: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x843887ac63f97dA742d35C7e150069ff5827Cf80',
     7000: '',
@@ -45,7 +45,7 @@ export default {
     9000: '',
   },
   pancakeBunnies: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0xadfa8f3558d4937603df64f286d405300d6ee32c',
     7000: '',
@@ -53,7 +53,7 @@ export default {
     9000: '',
   },
   bunnyFactory: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x3997b0215D24984A7500645D2aD37ee2417B9e07',
     7000: '',
@@ -61,7 +61,7 @@ export default {
     9000: '',
   },
   claimRefund: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -69,7 +69,7 @@ export default {
     9000: '',
   },
   pointCenterIfo: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -77,7 +77,7 @@ export default {
     9000: '',
   },
   bunnySpecial: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -85,7 +85,7 @@ export default {
     9000: '',
   },
   tradingCompetitionEaster: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -93,7 +93,7 @@ export default {
     9000: '',
   },
   tradingCompetitionFanToken: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -101,7 +101,7 @@ export default {
     9000: '',
   },
   tradingCompetitionMobox: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -109,7 +109,7 @@ export default {
     9000: '',
   },
   tradingCompetitionMoD: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -117,7 +117,7 @@ export default {
     9000: '',
   },
   easterNft: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -125,17 +125,17 @@ export default {
     9000: '',
   },
   // cakeVault: {
-  //   8081: '',
+  //   8453: '',
   //   256256: '0x72f78a9B330cBA12F046BBf3C7D18610061fC65c',
   //   7001: '',
   // },
   // cakeFlexibleSideVault: {
-  //   8081: '',
+  //   8453: '',
   //   256256: '0xD962DAE1d0DCF72dEfA8ad4dd37D34837ad61b2d',
   //   7001: '',
   // },
   cakeVault: {
-    8081: '',
+    8453: '',
     8082: '',
     256256: '',
     7000: '',
@@ -143,7 +143,7 @@ export default {
     9000: '',
   },
   cakeFlexibleSideVault: {
-    8081: '',
+    8453: '',
     8082: '',
     256256: '',
     7001: '',
@@ -151,7 +151,7 @@ export default {
     9000: '',
   },
   predictionsBNB: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -159,7 +159,7 @@ export default {
     9000: '',
   },
   privateFactory: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x9F4d60b3C1B62458716CF74b382032a984F7b0DF',
     7000: '',
@@ -167,7 +167,7 @@ export default {
     9000: '',
   },
   presaleFactory: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x792158DAc1fa05749A39277c4ef6Cc06FB4296D8',
     7000: '',
@@ -175,7 +175,7 @@ export default {
     9000: '',
   },
   fairFactory: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x166272CA4052b392C4e57ec0e52A32c0F3495A20',
     7000: '',
@@ -183,7 +183,7 @@ export default {
     9000: '',
   },
   predictionsCAKE: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -191,7 +191,7 @@ export default {
     9000: '',
   },
   chainlinkOracleBNB: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -199,7 +199,7 @@ export default {
     9000: '',
   },
   chainlinkOracleCAKE: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -207,7 +207,7 @@ export default {
     9000: '',
   },
   predictionsV1: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -215,7 +215,7 @@ export default {
     9000: '',
   },
   bunnySpecialCakeVault: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -223,7 +223,7 @@ export default {
     9000: '',
   },
   bunnySpecialPrediction: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -231,7 +231,7 @@ export default {
     9000: '',
   },
   bunnySpecialLottery: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -239,7 +239,7 @@ export default {
     9000: '',
   },
   bunnySpecialXmas: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -247,7 +247,7 @@ export default {
     9000: '',
   },
   farmAuction: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -255,7 +255,7 @@ export default {
     9000: '',
   },
   AnniversaryAchievement: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -263,7 +263,7 @@ export default {
     9000: '',
   },
   nftMarket: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0xf5d0451128064c1aa5b3dff43fa2608d97c2572d',
     7000: '',
@@ -271,7 +271,7 @@ export default {
     9000: '',
   },
   nftSale: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -279,7 +279,7 @@ export default {
     9000: '',
   },
   pancakeSquad: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0xEdFa035C3db4709ebcFDd88E722B012fcCDd2139',
     7000: '',
@@ -287,7 +287,7 @@ export default {
     9000: '',
   },
   potteryDraw: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x4203646a8C1e452C54AC59ee34Bb1D101607Cac5',
     7000: '',
@@ -296,7 +296,7 @@ export default {
   },
   // TODO: multi
   zap: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -304,7 +304,7 @@ export default {
     9000: '',
   },
   iCake: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x04f7462b2C5418aa93d17CB72921C82560415598',
     7000: '',
@@ -312,7 +312,7 @@ export default {
     9000: '',
   },
   bCakeFarmBooster: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -320,7 +320,7 @@ export default {
     9000: '',
   },
   bCakeFarmBoosterProxyFactory: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -328,7 +328,7 @@ export default {
     9000: '',
   },
   nonBscVault: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '0x4EFe0F3A0a4d037b2770Db655C8c9708B15aeC88',
     7000: '',
@@ -336,7 +336,7 @@ export default {
     9000: '',
   },
   crossFarmingSender: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',
@@ -344,7 +344,7 @@ export default {
     9000: '',
   },
   crossFarmingReceiver: {
-    8081: '',
+    8453: '',
     8082: '',
     7001: '',
     7000: '',

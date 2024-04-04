@@ -22,6 +22,7 @@ import RoadmapSection from './components/RoadmapSection'
 import FaqSection from './components/FaqSection'
 // import WinSection from './components/WinSection'
 import FarmsPoolsRow from './components/FarmsPoolsRow'
+import MetricsSection3 from './components/MetricsSection3'
 // import Footer from './components/Footer'
 import CakeDataRow from './components/CakeDataRow'
 // import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
@@ -110,47 +111,11 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        <SalesSection {...swapSectionData(t)} />
+        <MetricsSection3 />
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background='#F3EDC8'
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <SalesSection {...bridgeSectionData(t)} />
-        {/* TODO: until we are enable fetch multi-chain farms */}
-        {chainId === ChainId.BSC && <FarmsPoolsRow />}
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="#f5eda5"
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <SalesSection {...earnSectionData(t)} />
-      </PageSection>
-      {/* <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradientCardHeader}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <SalesSection {...moreSectionData(t)} />
-        TODO: until we are enable fetch multi-chain farms
-        {chainId === ChainId.BSC && <FarmsPoolsRow />}
-      </PageSection>  */}
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background='#F3EDC8'
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <SalesSection {...launchpadSectionData(t)} />
-      </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background="#f5eda5"
+        background="#F3EDC8"
         index={2}
         hasCurvedDivider={false}
       >
@@ -158,7 +123,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
-        background='#F3EDC8'
+        background='#f5eda5'
         index={2}
         hasCurvedDivider={false}
       >

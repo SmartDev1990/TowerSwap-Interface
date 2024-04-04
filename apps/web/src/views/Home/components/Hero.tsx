@@ -4,7 +4,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@pancakeswap/localization'
 import Image from 'next/legacy/image'
 import styled, { keyframes } from 'styled-components'
-import bunnyImage from '../../../../public/images/home/lunar-bunny/astronaut-bunni3.png'
+// import bunnyImage from '../../../../public/images/home/lunar-bunny/hero-blockchain-development.webp'
 import CompositeImage, { CompositeImageProps } from './CompositeImage'
 import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 
@@ -94,12 +94,9 @@ const Hero = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
-      <Heading scale="xl" color="#48cdff" mb="24px" mt="30px" textAlign="center">
-        {t('TOWERSWAP DEX')}
+      <Heading scale="xxl" color="#48cdff" mb="24px" mt="30px" textAlign="center">
+        {t('TOWERSWAP EXCHANGE')}
       </Heading>
-      <BunnyWrapper>
-        <BunnyImage src={bunnyImage} priority placeholder="blur" alt={t('Lunar bunny')} />
-      </BunnyWrapper>
       <Heading scale="md" color="#2b2404" mb="12px" textAlign="center">
         {t(
           'Decentralized Exchange Made For Everybody.',
