@@ -72,7 +72,7 @@ const emissionsPerBlock = 11.16
  * https://twitter.com/PancakeSwap/status/1523913527626702849
  * https://bscscan.com/tx/0xd5ffea4d9925d2f79249a4ce05efd4459ed179152ea5072a2df73cd4b9e88ba7
  */
-const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
+const planetFinanceBurnedTokensWei = BigNumber.from('0')
 const cakeVaultAddress = getCakeVaultAddress()
 
 const CakeDataRow = () => {
