@@ -1,6 +1,6 @@
 import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
 import cakeAbi from 'config/abi/cake.json'
-import { testnetTokens } from '@pancakeswap/tokens'
+import { shardeumTokens } from '@pancakeswap/tokens'
 import { useTranslation } from '@pancakeswap/localization'
 import { useIntersectionObserver } from '@pancakeswap/hooks'
 import { useEffect, useState } from 'react'
@@ -88,10 +88,10 @@ const CakeDataRow = () => {
   } = useSWR(
     loadData ? ['cakeDataRow'] : null,
     async () => {
-      const totalSupplyCall = { abi: cakeAbi, address: testnetTokens.tw.address, name: 'totalSupply' }
+      const totalSupplyCall = { abi: cakeAbi, address: shardeumTokens.tw.address, name: 'totalSupply' }
       const burnedTokenCall = {
         abi: cakeAbi,
-        address: testnetTokens.tw.address,
+        address: shardeumTokens.tw.address,
         name: 'balanceOf',
         params: ['0x000000000000000000000000000000000000dEaD'],
       }

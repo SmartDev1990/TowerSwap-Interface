@@ -177,9 +177,9 @@ export const BASE_FEE = new Percent(JSBI.BigInt(25), BIPS_BASE)
 export const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 
 // BNB
-export const DEFAULT_INPUT_CURRENCY = 'ZETA'
+export const DEFAULT_INPUT_CURRENCY = 'SHM'
 // CAKE
-export const DEFAULT_OUTPUT_CURRENCY = '0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7'
+export const DEFAULT_OUTPUT_CURRENCY = '0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5'
 
 // Handler string is passed to Gelato to use PCS router
 export const GELATO_HANDLER = 'pancakeswap'

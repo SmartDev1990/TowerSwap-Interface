@@ -10,7 +10,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from '@gnosis.pm/safe-apps-wagmi'
 
-const CHAINS = [base, cmpMainnet, zetaMainnet, shardeumValidators, quai]
+const CHAINS = [base, shardeumValidators]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

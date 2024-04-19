@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 
 export const DEFAULT_META: PageMeta = {
   title: 'TowerSwap',
-  description: 'The most popular AMM on ZetaChain by user count! Earn TWS through yield farming or staking',
+  description: 'The new multichain DeFi AMM! Earn TWS through yield farming or staking',
   image: 'https://towerswap.finance/images/dexhero.png',
 }
 

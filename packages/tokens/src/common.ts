@@ -38,7 +38,7 @@ export const TOWER_ZETA = new ERC20Token(
 
 export const TOWER_SHARDEUM = new ERC20Token(
   ChainId.SHARDEUMV,
-  '0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5',
+  '0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5',
   18,
   'TWS',
   'TowerSwap Token',

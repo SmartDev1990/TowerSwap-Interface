@@ -70,10 +70,10 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         <meta name="twitter:image" content="https://towerswap.finance/images/dexhero.png" />
         <meta
           name="twitter:description"
-          content="The new DeFi AMM on ZetaChain! Earn TWS through yield farming or stake it in Tower Pools to earn more tokens!"
+          content="The new multichain DeFi AMM ! Earn TWS through yield farming or stake it in Tower Pools to earn more tokens!"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TowerSwap - A next evolution DeFi exchange on ZetaChain (ZETA)" />
+        <meta name="twitter:title" content="TowerSwap - A next evolution of multichain exchange" />
         <title>TowerSwap</title>
         {(Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts
