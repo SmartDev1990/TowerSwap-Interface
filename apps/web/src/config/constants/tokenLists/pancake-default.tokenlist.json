@@ -11,62 +11,6 @@
   "keywords": ["pancake", "default"],
   "tokens": [
     {
-      "name": "Wrapped BNB",
-      "symbol": "WBNB",
-      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/bnb.png"
-    },
-    {
-      "name": "BUSD Token",
-      "symbol": "BUSD",
-      "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/busd.png"
-    },
-    {
-      "name": "Ethereum Token",
-      "symbol": "ETH",
-      "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://pancakeswap.finance/images/tokens/0x2170Ed0880ac9A755fd29B2688956BD959F933F8.png"
-    },
-    {
-      "name": "BTCB Token",
-      "symbol": "BTCB",
-      "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/wbtc.png"
-    },
-    {
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "address": "0x55d398326f99059fF775485246999027B3197955",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
-    },
-    {
-      "name": "PancakeSwap Token",
-      "symbol": "CAKE",
-      "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
-    },
-    {
-      "name": "PancakeSwap Token",
-      "symbol": "CAKE",
-      "address": "0xFa60D973F7642B748046464e165A65B7323b0DEE",
-      "chainId": 97,
-      "decimals": 18,
-      "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"
-    },
-    {
       "name": "Wrapped CMP",
       "symbol": "WCMP",
       "address": "0x1fcbA3Cb797465F38839F48CA7c9cDA9d9aac28b",
@@ -81,62 +25,6 @@
       "chainId": 256256,
       "decimals": 18,
       "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
-    },
-    {
-      "name": "RageFun Token",
-      "symbol": "RAGE",
-      "address": "0x332022c0d9d87d06aa5b6eccec5c850ed622e49f",
-      "chainId": 256256,
-      "decimals": 9,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/rage.png"
-    },
-    {
-      "name": "LayerShit Token",
-      "symbol": "LSHIT",
-      "address": "0x9aa38572a33dc5bbed152f07e262bba526cfdb2b",
-      "chainId": 256256,
-      "decimals": 18,
-      "logoURI": "https://i.ibb.co/1mjgGjt/LSHIT-MASK1.png"
-    },
-    {
-      "name": "Tower USDT",
-      "symbol": "USDT",
-      "address": "0x8bFB6654C5cE007DD8E9474928c9Bf5199a09055",
-      "chainId": 256256,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
-    },
-    {
-      "name": "TowerSwap Token",
-      "symbol": "TWS",
-      "address": "0x0915bC79D6e9Ab5808987b383242d3AE2f923b32",
-      "chainId": 7001,
-      "decimals": 18,
-      "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
-    },
-    {
-      "name": "Wrapped ZETA",
-      "symbol": "WZETA",
-      "address": "0xF88EF72D453B94ABB390275dA1a02Fc0CB723b5F",
-      "chainId": 7001,
-      "decimals": 18,
-      "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
-    },
-    {
-      "name": "Test USDT",
-      "symbol": "tUSDT",
-      "address": "0xEB2fb10Cb1cb9F0cd19D3d0213d2B69B368146A8",
-      "chainId": 7001,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
-    },
-    {
-      "name": "EMMET ETH",
-      "symbol": "ETH",
-      "address": "0x9FAdC446f0968946a1242D98E640a7A84c4D4A80",
-      "chainId": 7001,
-      "decimals": 18,
-      "logoURI": "https://i.ibb.co/r0gZb1P/IMG-20231121-114931-301.png"
     },
     {
       "name": "Wrapped ETH",
@@ -203,20 +91,44 @@
       "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
     },
     {
-      "name": "ETHUSDT",
+      "name": "ZetaChain ZRC20 USDT on ETH",
       "symbol": "USDT.ETH",
       "address": "0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7",
       "chainId": 7000,
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/SmartDev1990/tower-asset-icon/main/icon/usdt.png"
+      "decimals": 6,
+      "logoURI": "https://seeklogo.com/images/T/tether-usdt-logo-FA55C7F397-seeklogo.com.png"
     },
     {
-      "name": "StellaCoin",
-      "symbol": "STELLA",
-      "address": "0x7c8dda80bbbe1254a7aacf3219ebe1481c6e01d7",
+      "name": "ZetaChain ZRC20 USDT on BSC",
+      "symbol": "USDT.BSC",
+      "address": "0x91d4f0d54090df2d81e834c3c8ce71c6c865e79f",
       "chainId": 7000,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/x1pnjj1/twitter.png"
+      "logoURI": "https://seeklogo.com/images/T/tether-usdt-logo-FA55C7F397-seeklogo.com.png"
+    },
+    {
+      "name": "ZetaChain ZRC20 ETH-eth_mainnet",
+      "symbol": "ETH.ETH",
+      "address": "0xd97b1de3619ed2c6beb3860147e30ca8a7dc9891",
+      "chainId": 7000,
+      "decimals": 18,
+      "logoURI": "https://cryptologos.cc/logos/ethereum-eth-logo.png"
+    },
+    {
+      "name": "ZetaChain ZRC20 BNB-bsc_mainnet",
+      "symbol": "BNB.BSC",
+      "address": "0x48f80608b672dc30dc7e3dbbd0343c5f02c738eb",
+      "chainId": 7000,
+      "decimals": 18,
+      "logoURI": "https://cryptologos.cc/logos/bnb-bnb-logo.png"
+    },
+    {
+      "name": "ZetaChain ZRC20 BTC-btc_mainnet",
+      "symbol": "BTC.BTC",
+      "address": "0x13a0c5930c028511dc02665e7285134b6d11a5f4",
+      "chainId": 7000,
+      "decimals": 8,
+      "logoURI": "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
     }
   ]
 }

@@ -8,7 +8,7 @@ import { ChainId } from '@pancakeswap/sdk'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { cmpRpcProvider, bscRpcProvider } from 'utils/providers'
+import { shardeumRpcProvider, bscRpcProvider } from 'utils/providers'
 import { useWeb3React } from '@pancakeswap/wagmi'
 import { useTokenContract } from './useContract'
 import { useSWRContract } from './useSWRContract'
@@ -22,7 +22,7 @@ const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
     () =>
       account
         ? {
-            contract: forceBSC ? contract.connect(cmpRpcProvider) : contract,
+            contract: forceBSC ? contract.connect(shardeumRpcProvider) : contract,
             methodName: 'balanceOf',
             params: [account],
           }

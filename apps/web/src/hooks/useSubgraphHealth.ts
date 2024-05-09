@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { request, gql } from 'graphql-request'
-import { cmpRpcProvider } from '../utils/providers'
+import { shardeumRpcProvider } from '../utils/providers'
 import { GRAPH_HEALTH } from '../config/constants/endpoints'
 import { useSlowRefreshEffect } from './useRefreshEffect'
 
@@ -54,7 +54,7 @@ const useSubgraphHealth = (subgraphName: string) => {
             }
           `,
             ),
-            currentBlockNumber ? Promise.resolve(currentBlockNumber) : cmpRpcProvider.getBlockNumber(),
+            currentBlockNumber ? Promise.resolve(currentBlockNumber) : shardeumRpcProvider.getBlockNumber(),
           ])
 
           const isHealthy = indexingStatusForCurrentVersion.health === 'healthy'

@@ -16,10 +16,10 @@ export const InfoPageLayout = ({ children }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (account && chainId === ChainId.ZETA && router.query.chainName === 'zeta')
-      router.replace('/info/zeta', undefined, { shallow: true })
+    if (account && chainId === ChainId.BASE && router.query.chainName === 'base')
+      router.replace('/info/base', undefined, { shallow: true })
     if (account && chainId === ChainId.SHARDEUMV && router.query.chainName !== 'shm')
-      router.replace('/info', undefined, { shallow: true })
+      router.replace('/info/shm', undefined, { shallow: true })
   }, [chainId, account, chainName, router])
 
   const isStableSwap = router.query.type === 'stableSwap'

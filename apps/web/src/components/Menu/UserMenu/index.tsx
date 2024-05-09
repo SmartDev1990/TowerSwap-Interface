@@ -67,14 +67,14 @@ const UserMenu = () => {
         </UserMenuItem>
         <UserMenuDivider />
         <NextLink href={`/profile/${account?.toLowerCase()}`} passHref>
-          <UserMenuItem as="a" disabled={isWrongNetwork || chainId !== ChainId.ZETA}>
+          <UserMenuItem as="a" disabled={isWrongNetwork || chainId !== ChainId.SHARDEUMV}>
             {t('Your NFTs')}
           </UserMenuItem>
         </NextLink>
         <ProfileUserMenuItem
           isLoading={isLoading}
           hasProfile={hasProfile}
-          disabled={isWrongNetwork || chainId !== ChainId.ZETA}
+          disabled={isWrongNetwork || chainId !== ChainId.SHARDEUMV}
         />
         <UserMenuDivider />
         <UserMenuItem as="button" onClick={logout}>

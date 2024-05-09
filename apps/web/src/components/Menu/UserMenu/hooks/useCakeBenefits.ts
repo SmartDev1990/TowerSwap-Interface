@@ -24,7 +24,7 @@ const useCakeBenefits = () => {
   } = useTranslation()
   const ifoCreditAddressContract = useIfoCreditAddressContract()
   const cakeVaultAddress = getCakeVaultAddress()
-  const currentBscBlock = useChainCurrentBlock(ChainId.ZETA)
+  const currentBscBlock = useChainCurrentBlock(ChainId.SHARDEUMV)
 
   const { data, status } = useSWR(account && currentBscBlock && ['cakeBenefits', account], async () => {
     const userVaultCalls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map((method) => ({
@@ -71,12 +71,12 @@ const useCakeBenefits = () => {
       iCake = getBalanceNumber(new BigNumber(credit.toString())).toLocaleString('en', { maximumFractionDigits: 3 })
 
       const eligiblePools = await getActivePools(currentBscBlock)
-      const poolAddresses = eligiblePools.map(({ contractAddress }) => getAddress(contractAddress, ChainId.ZETA))
+      const poolAddresses = eligiblePools.map(({ contractAddress }) => getAddress(contractAddress, ChainId.SHARDEUMV))
 
       const [cakeVaultBalance, total] = await getScores(
         PANCAKE_SPACE,
         [strategies.cakePoolBalanceStrategy('v1'), strategies.createTotalStrategy(poolAddresses, 'v1')],
-        ChainId.ZETA.toString(),
+        ChainId.SHARDEUMV.toString(),
         [account],
         currentBscBlock,
       )

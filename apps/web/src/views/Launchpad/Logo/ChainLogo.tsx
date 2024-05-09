@@ -56,7 +56,7 @@ const CurrencyLogo: React.FC<CurrencyLogoProps> = ({ chainId, style }) => {
       logoComponent = <ZetaMainnet />
       break
     case ChainId.BASE:
-      logoComponent = <Shardeum />
+      logoComponent = <Ethereum />
       break
     case ChainId.SHARDEUMV:
       logoComponent = <Shardeumvalidator />

@@ -18,7 +18,7 @@ interface ImportProps {
 }
 
 const getStandard = (chainId: ChainId) =>
-  chainId !== ChainId.ZETA_TESTNET && chainId !== ChainId.ZETA ? 'ERC20' : 'BEP20'
+  chainId !== ChainId.BASE && chainId !== ChainId.SHARDEUMV ? 'ERC20' : 'BEP20'
 
 function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
   const { chainId } = useActiveChainId()

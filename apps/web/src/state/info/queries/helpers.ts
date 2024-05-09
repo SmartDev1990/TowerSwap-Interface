@@ -209,7 +209,7 @@ export const fetchChartDataWithAddress = async (
   }
 }
 
-export async function getPairTokenMap(poolAddresses: string[], chainName: 'SHM' | 'ZETA') {
+export async function getPairTokenMap(poolAddresses: string[], chainName: 'SHM' | 'BASE') {
   let rawPairTokenResults: string[][]
   const calls = poolAddresses
     .map((poolAddress) => {
@@ -224,7 +224,7 @@ export async function getPairTokenMap(poolAddresses: string[], chainName: 'SHM' 
       abi: IPancakePairABI,
       calls,
       options: { requireSuccess: false },
-      chainId: chainName === 'SHM' ? ChainId.SHARDEUMV : ChainId.ZETA,
+      chainId: chainName === 'SHM' ? ChainId.BASE: ChainId.SHARDEUMV,
     })
   } catch (error) {
     console.info('Error fetching tokenIds from pair')
@@ -253,7 +253,7 @@ export async function getPairTokenMap(poolAddresses: string[], chainName: 'SHM' 
       abi: bep20Abi,
       calls: tokenCalls,
       options: { requireSuccess: false },
-      chainId: chainName === 'SHM' ? ChainId.SHARDEUMV : ChainId.ZETA,
+      chainId: chainName === 'SHM' ? ChainId.BASE: ChainId.SHARDEUMV,
     })
   } catch (error) {
     console.info('Error fetching tokenIds from pair')

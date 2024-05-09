@@ -18,9 +18,9 @@ export const CurrencyLogo: React.FC<
   React.PropsWithChildren<{
     address?: string
     size?: string
-    chainName?: 'SHM' | 'ZETA'
+    chainName?: 'SHM' | 'BASE'
   }>
-> = ({ address, size = '24px', chainName = 'ZETA', ...rest }) => {
+> = ({ address, size = '24px', chainName = 'BASE', ...rest }) => {
   const src = useMemo(() => {
     return getTokenLogoURL(new Token(multiChainId[chainName], address, 18, ''))
   }, [address, chainName])
@@ -40,7 +40,7 @@ interface DoubleCurrencyLogoProps {
   address0?: string
   address1?: string
   size?: number
-  chainName?: 'SHM' | 'ZETA'
+  chainName?: 'SHM' | 'BASE'
 }
 
 export const DoubleCurrencyLogo: React.FC<React.PropsWithChildren<DoubleCurrencyLogoProps>> = ({

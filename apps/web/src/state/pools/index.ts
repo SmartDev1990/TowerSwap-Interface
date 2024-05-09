@@ -20,7 +20,7 @@ import { multicallv2 } from 'utils/multicall'
 import { mainnetTokens } from '@pancakeswap/tokens'
 import { isAddress } from 'utils'
 import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { cmpRpcProvider } from 'utils/providers'
+import { shardeumRpcProvider } from 'utils/providers'
 import { getPoolsPriceHelperLpFiles } from 'config/constants/priceHelperLps/index'
 import fetchFarms from '../farms/fetchFarms'
 import getFarmsPrices from '../farms/getFarmsPrices'
@@ -140,7 +140,7 @@ export const fetchPoolsPublicDataAsync =
         fetchPoolsBlockLimits(),
         fetchPoolsTotalStaking(),
         fetchPoolsProfileRequirement(),
-        currentBlockNumber ? Promise.resolve(currentBlockNumber) : cmpRpcProvider.getBlockNumber(),
+        currentBlockNumber ? Promise.resolve(currentBlockNumber) : shardeumRpcProvider.getBlockNumber(),
       ])
 
       const blockLimitsSousIdMap = keyBy(blockLimits, 'sousId')
