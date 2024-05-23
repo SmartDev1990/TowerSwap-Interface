@@ -107,10 +107,10 @@ const config: (
     },
     {
       label: t('Launchpad'),
-      href: 'https://launch.towerswap.finance',
+      href: 'https://towerpad.org',
       icon: RocketIcon,
       fillIcon: RocketIcon,
-      showItemsOnMobile: true,
+      showItemsOnMobile: false,
       type: DropdownMenuItemType.EXTERNAL_LINK,
       // supportChainIds: SUPPORT_ONLY_BSC,
       items: [

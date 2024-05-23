@@ -41,7 +41,7 @@ export default function CurrencyLogo({
   }, [currency, uriLocations])
 
   if (currency?.isNative) {
-    if (currency.chainId === ChainId.SHARDEUMV) {
+    if (currency.chainId === ChainId.BASE) {
       return <BinanceIcon width={size} style={style} />
     }
     return <StyledLogo size={size} srcs={[`/images/chains/${currency.chainId}.png`]} width={size} style={style} />

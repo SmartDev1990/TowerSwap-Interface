@@ -54,7 +54,7 @@ const StyledFeaturesHeading = styled(Heading)`
 
 const cardData = [
   {
-    imageUrl: 'https://i.ibb.co/XFfFLLX/trading-using-technical-analysis-4920693-4100677.webp',
+    imageUrl: 'https://cdn3d.iconscout.com/3d/premium/thumb/chart-analysis-8421887-6629650.png',
     title: 'Trading',
     description: 'Core functionality of decentralized exchange. Exchange cryptocurrencies seamlessly.',
     buttonText: 'Start Trading',
@@ -62,7 +62,7 @@ const cardData = [
     icon:'',
   },
   {
-    imageUrl: 'https://i.ibb.co/09MNg86/3d-bitcoin-cryptocurrency-icon-illustration-png.webp',
+    imageUrl: 'https://t4.ftcdn.net/jpg/05/22/90/19/360_F_522901901_E8gJ6qd6s3Tg9zdUY0kI82hfui8sdSXM.png',
     title: 'Earning',
     description: 'Earn feature encompasses Staking and Farming, maximizing returns on cryptocurrencies.',
     buttonText: 'Start Earning',
@@ -70,15 +70,15 @@ const cardData = [
     icon:'',
   },
   {
-    imageUrl: 'https://i.ibb.co/WGGTYCD/rocket.png',
+    imageUrl: 'https://www.turnkeytown.com/img/ido-launchpad-development-multichain/banner-img.webp?f=webp',
     title: 'LaunchPad',
-    description: 'Tower Launchpad feature facilitates the launch of new cryptocurrency projects or tokens.',
+    description: 'Tower Launchpad feature facilitates the launch of new cryptocurrency projects.',
     buttonText: 'Launch Now',
     route: 'https://launch.towerswap.finance',
     icon:'',
   },
   {
-    imageUrl: 'https://i.ibb.co/PTYhjnd/nft-marketplace-5596112-4668614.webp',
+    imageUrl: 'https://cdn3d.iconscout.com/3d/premium/thumb/nft-marketplace-5596112-4668614.png?f=webp',
     title: 'MarketPlace',
     description: 'Tower MarketPlace is decentralized martketplace for trading, buying, and selling NFTs.',
     buttonText: 'Explore Marketplace',

@@ -24,7 +24,7 @@
       "address": "0x49Ca6d0e819E83471575bD4e140ab9a9f4e954d5",
       "chainId": 256256,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
+      "logoURI": "https://i.ibb.co.com/84htzqx/Logo.png"
     },
     {
       "name": "Wrapped ETH",
@@ -48,7 +48,7 @@
       "address": "0x030d7c5E786E9A287DDE9cB42A5f470c64dF0837",
       "chainId": 9000,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
+      "logoURI": "https://i.ibb.co.com/84htzqx/Logo.png"
     },
     {
       "name": "Wrapped SHARDEUM",
@@ -56,7 +56,7 @@
       "address": "0xcF2D86B78E12A08EF3373eE3B0d1D2a1370a7B2F",
       "chainId": 8082,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/PYFQFWp/8082.png"
+      "logoURI": "https://i.ibb.co.com/ZgpvDvd/8082.png"
     },
     {
       "name": "Tether USD",
@@ -80,7 +80,7 @@
       "address": "0x8D6E7213bad28E00156c7ecddEFac64Cc508CAD5",
       "chainId": 8082,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/dPL6jSq/Logo1.png"
+      "logoURI": "https://i.ibb.co.com/84htzqx/Logo.png"
     },
     {
       "name": "Wrapped ZETA",
@@ -88,7 +88,7 @@
       "address": "0x5f0b1a82749cb4e2278ec87f8bf6b618dc71a8bf",
       "chainId": 7000,
       "decimals": 18,
-      "logoURI": "https://i.ibb.co/hm2v2L4/7001.png"
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/200x200/21259.png"
     },
     {
       "name": "ZetaChain ZRC20 USDT on ETH",

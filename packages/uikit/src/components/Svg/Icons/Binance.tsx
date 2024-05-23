@@ -8,7 +8,7 @@ const Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
       <image
         width="96"
         height="96"
-        href="https://i.ibb.co/hm2v2L4/7001.png"
+        href="https://s2.coinmarketcap.com/static/img/coins/200x200/21259.png"
       />
     </Svg>
   );
